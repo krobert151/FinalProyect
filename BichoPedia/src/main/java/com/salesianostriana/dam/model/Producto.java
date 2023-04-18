@@ -1,4 +1,4 @@
-package com.salesianostriana.dam.controller;
+package com.salesianostriana.dam.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

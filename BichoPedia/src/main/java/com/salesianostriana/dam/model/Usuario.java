@@ -1,4 +1,4 @@
-package com.salesianostriana.dam.controller;
+package com.salesianostriana.dam.model;
 
 import java.time.LocalDate;
 import javax.persistence.Entity;
