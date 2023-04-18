@@ -1,31 +1,29 @@
-package com.salesianostriana.dam.model;
+package com.salesianostriana.dam.controller;
 
-import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
-@Table(name="usuario")
-public class Usuario {
+@Table(name="producto")
+public class Producto {
 	@Id
 	@GeneratedValue
-	private Long id_usuario;
-	
+	private int idProducto;
 	private String nombre;
-	private String apellidos;
-	private String correo;
-	private String username;
-	private String password;
-	private LocalDate fechaNac;
-	
+	private double precioU;
+	private String descripcion;
+	private int valoracion;
+	private String categoria;
 	
 }
