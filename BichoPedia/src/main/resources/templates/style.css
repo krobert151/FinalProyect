@@ -1,53 +1,18 @@
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
-.login{
-    background-image: url("../img/loginLandscape.jpg");
+
+.indexmain{
+    background-image: url("img/indexLandscape.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    
 }
-.login h2{
-    font-size:300%;
-    font-weight: bolder;
-    background: -webkit-linear-gradient(rgb(255, 255, 255),rgb(209, 209, 209));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: rgb(255, 255, 255);  
-    font-family: Helvetica, sans-serif;
-    
+.encuentro{
+    height: 60vh;
+    background-image: url("/img/bichoEncuentro.jpg");
+    background-position: center;
 
 }
-.logincard{
-    background-color: rgba(0, 0, 0, 0.281);
-    color: rgb(255, 255, 255);
-    box-shadow: 10px 10px 25px #111311;
-    backdrop-filter: blur(1px);
-    border-radius: 1rem;
-}
-.form-outline>div{
-    display: flex;
-}
-.form-outline>div>div{
+.encuentro>div{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin-right: 1em;
-    color:rgb(255, 255, 255);
-}
-.form-outline>div>div>i{
-    font-size: large;
-}
-.registerhref{
-    color: aliceblue;
-    text-decoration: none;
-}
-.registerhref:hover{
-    text-decoration: underline;
-    color: aliceblue;
-}
-.loginbutton{
-    background-color: rgb(40, 82, 3);
-    border: none;
-}
-.loginbutton:hover{
-    background-color: rgb(145, 163, 142);
+    justify-content: end;
+    
 }
