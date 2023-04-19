@@ -1,4 +1,4 @@
-package com.salesianostriana.dam.model;
+package com.salesianostriana.dam.bichopedia.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -1,4 +1,4 @@
-package com.salesianostriana.dam.model;
+package com.salesianostriana.dam.bichopedia.model;
 
 import java.time.LocalDate;
 import javax.persistence.Entity;
