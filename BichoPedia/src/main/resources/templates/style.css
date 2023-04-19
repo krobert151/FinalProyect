@@ -4,7 +4,9 @@
     background-image: url("img/indexLandscape.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
 }
+
 .encuentro{
     height: 100%;
     background-image: url("img/bichoEncuentro.jpg");
@@ -14,4 +16,38 @@
     flex-direction: column;
     justify-content: end;
     padding: 20px;
+    transition: all 0.3s ease;
+    border-radius: 5pt;
+
+}
+.blocks{
+    height: 90%;
+}
+.especies{
+    background-image: url("/img/bichoEspecie.jpg");
+}
+.registro{
+    background-image: url("/img/bichoRegistro.jpg");
+}
+.tienda{
+    background-image: url("/img/bichoTienda.png");
+}
+.mainblock{
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding: 20px;
+    transition: all 0.3s ease;
+    border-radius: 5pt;
+
+}
+.mainblock:hover {
+    transform: scale(1.1) translate(10px, 10px);
+}
+.encuentro:hover{
+    transform: scale(1.1) translate(-10px, -5px);
+
 }
