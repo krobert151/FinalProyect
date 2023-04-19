@@ -1,3 +1,4 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
 
 .indexmain{
     background-image: url("img/indexLandscape.jpg");
@@ -5,14 +6,12 @@
     background-size: cover;
 }
 .encuentro{
-    height: 60vh;
-    background-image: url("/img/bichoEncuentro.jpg");
+    height: 100%;
+    background-image: url("img/bichoEncuentro.jpg");
     background-position: center;
-
-}
-.encuentro>div{
+    background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: end;
-    
+    padding: 20px;
 }
