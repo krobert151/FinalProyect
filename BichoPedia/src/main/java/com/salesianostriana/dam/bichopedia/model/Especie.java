@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Especie {
 	@Id
 	@GeneratedValue
@@ -20,15 +22,10 @@ public class Especie {
 
 	private String nombre;
 	private String descripcion;
+	private String fotoUrl;
 	
 	@ManyToOne
 	private  Genero genero;
 	
-	public Especie(String nombre, String descripcion) {
-		
-		this.nombre=nombre;
-		this.descripcion=descripcion;
-		
-	}
 	
 }

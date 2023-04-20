@@ -26,6 +26,6 @@ public class Usuario {
 	private String username;
 	private String password;
 	private LocalDate fechaNac;
-	
+	private boolean admin;
 	
 }

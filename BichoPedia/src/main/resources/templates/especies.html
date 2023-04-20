@@ -46,33 +46,35 @@
         </nav>
     </header>
     <main>
-        <div class="d-flex justify-content-center row text-light">
-            <div class="col-10 vh-100 ">
-                <div>
-                    HEADER
+        <div class="vh-100">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-9 ">
+                    <form action="">
+                        <div class="d-flex my-3">
+                            <input type="text" class="form-control " id="especie" placeholder="Nombre de la especie"
+                            required>
+                            <button class="btn btn-light">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="especie : ${especieList}">
+                                <td th:text="${especie.nombre}"></td>
+                                <td th:text="${especie.descripcion}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="row my-5 justify-content-center containers " >
-                    <div class="col-7  ">
-                        <div class="encuentro">
-
-                            <h3>Encuentros</h3>
-                            <p></p>Mira los registros de los demas!!</p>
-
-                        </div>
-                    </div>
-                    <div class="col-5  d-flex flex-column justify-content-center">
-                        <div class="mainblock especies mb-2 ">
-                            <h3>Especies</h3>
-                        </div>
-                        <div class="mainblock registro my-2">
-                            <h3>Registro</h3>
-                        </div>
-                        <div class="mainblock tienda mt-2">
-                            <h3>Tienda</h3>
-                        </div>
-
-                    </div>
-                </div>
+                <div class="col"></div>
             </div>
         </div>
     </main>
