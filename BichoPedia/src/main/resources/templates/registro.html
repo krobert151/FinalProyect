@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Index</title>
+</head>
+<body class="indexmain">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand logo" href="javascript:void(0)"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mynavbar">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:void(0)">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:void(0)">Encuentros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:void(0)">Especies</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:void(0)">Tienda</a>
+                        </li>
+                    </ul>
+                    <button class="btn loginbutton" type="button">Login</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class=" row ">
+            <div class="col">
+            </div>
+            <div class="col-7 formulario my-5 py-5 px-4">
+                <form class="was-validated px-5">
+                    <div class="row">
+                        <div class="col-8">
+                            <div>
+                                <label for="especie">Especie:</label>
+                                <input type="text" class="form-control is-valid" id="especie" placeholder="Nombre de la especie"
+                                    required>
+                                <div class="invalid-feedback">Escribe el nombre de la especie</div>
+                            </div>
+
+                            <div>
+                                <label for="descripcion" class="form-label">Descripcion</label>
+                                <textarea class="form-control" id="descripcion" rows="3"
+                                    placeholder="Describe tu encuentro con el bicho."></textarea>
+                            </div>
+                            <div>
+                                <label for="zona">Zona</label>
+                                <input type="text" class="form-control is-valid" id="zona" placeholder="zona" required>
+                                <div class="invalid-feedback">Seleccione la zona.</div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div>
+                                <div>
+                                    <label for="sexo">Sexo</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="sexo" id="macho">
+                                        <label for="macho">
+                                            Macho
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="sexo" id="hembra">
+                                        <label for="hembra">
+                                            Hembra
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="tamaño">Tamaño(cm)</label>
+                                <input type="number" name="tamaño" id="tamaño" step="1" size="2">
+                            </div>
+                            <div>
+                                <label for="Peso">Peso(g)</label>
+                                <input type="number" name="Peso" id="Peso" step="1" size="2">
+                            </div>
+                            <div>
+                                <label for="encuentro">Encuentro</label>
+                                <input id="encuentro" class="form-control" type="date" required />
+                                <div class="invalid-feedback">
+                                    Selecciona la fecha
+                                </div>
+                            </div>
+                        </div>
+                    </div>                   
+                    <div class="custom-file my-5 d-flex justify-content-center">
+                        <div>
+                            <input type="file" class="custom-file-input" id="validatedCustomFile"
+                                accept="image/png,image/jpeg" required>
+                            <div class="invalid-feedback">Seleccione la foto del bicho.</div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center mt-2">
+                        <button class="btn btn-primary enviar" type="submit ">Enviar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+    </main>
+    <footer class="text-center text-lg-start text-muted bg-dark">
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+            <div class="me-5 d-none d-lg-block">
+                <span>Conecta con nosotros en las redes :</span>
+            </div>
+            <div>
+                <a href="https://www.instagram.com/" class="me-4 link-secondary">
+                    <i class="bi bi-instagram"></i>
+                </a>
+                <a href="https://twitter.com/home" class="me-4 link-secondary">
+                    <i class="bi bi-twitter"></i>
+                </a>
+                <a href="https://es-es.facebook.com/" class="me-4 link-secondary">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="https://www.youtube.com/" class="me-4 link-secondary">
+                    <i class="bi bi-youtube"></i>
+                </a>
+                <a href="https://www.pinterest.es/" class="me-4 link-secondary">
+                    <i class="bi bi-pinterest"></i>
+                </a>
+            </div>
+        </section>
+        <section>
+            <div class="container text-center text-md-start mt-5">
+                <div class="row mt-3">
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Dbichos
+                        </h6>
+                        <p>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam voluptatem blanditiis
+                            recusandae saepe odit voluptatum, quidem doloremque debitis libero architecto facilis ipsam
+                            excepturi vero inventore, impedit tempora accusantium, fugiat alias?
+                        </p>
+                    </div>
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Links
+                        </h6>
+                        <p>
+                            <a href="fotos.html" class="text-reset">Home</a>
+                        </p>
+                        <p>
+                            <a href="araña.html" class="text-reset">Encuentros</a>
+                        </p>
+                        <p>
+                            <a href="scolopendra.html" class="text-reset">Especies</a>
+                        </p>
+                        <p>
+                            <a href="scorpiones.html" class="text-reset">Tienda</a>
+                        </p>
+                    </div>
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Politicas
+                        </h6>
+                        <p>
+                            <a href="https://www.google.com/search?q=capibara&rlz=1C1CHBF_esES1036ES1036&sxsrf=AJOqlzVflMvtCNlqKRnoZTiTtV943xpbdg:1678868881599&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj5rb_6wd39AhWRg1wKHYXOA_gQ_AUoAXoECAEQAw&biw=1517&bih=694&dpr=0.9#imgrc=DJhkUrpfqQh6nM"
+                                class="text-reset">Bases Legales</a>
+                        </p>
+                        <p>
+                            <a href="https://www.google.com/search?q=capibara&rlz=1C1CHBF_esES1036ES1036&sxsrf=AJOqlzVflMvtCNlqKRnoZTiTtV943xpbdg:1678868881599&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj5rb_6wd39AhWRg1wKHYXOA_gQ_AUoAXoECAEQAw&biw=1517&bih=694&dpr=0.9#imgrc=DJhkUrpfqQh6nM"
+                                class="text-reset">Políticas de Privacidad</a>
+                        </p>
+                        <p>
+                            <a href="https://www.google.com/search?q=capibara&rlz=1C1CHBF_esES1036ES1036&sxsrf=AJOqlzVflMvtCNlqKRnoZTiTtV943xpbdg:1678868881599&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj5rb_6wd39AhWRg1wKHYXOA_gQ_AUoAXoECAEQAw&biw=1517&bih=694&dpr=0.9#imgrc=DJhkUrpfqQh6nM"
+                                class="text-reset">Políticas de Cookies</a>
+                        </p>
+                        <p>
+                            <a href="https://www.google.com/search?q=capibara&rlz=1C1CHBF_esES1036ES1036&sxsrf=AJOqlzVflMvtCNlqKRnoZTiTtV943xpbdg:1678868881599&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj5rb_6wd39AhWRg1wKHYXOA_gQ_AUoAXoECAEQAw&biw=1517&bih=694&dpr=0.9#imgrc=DJhkUrpfqQh6nM"
+                                class="text-reset">Ayuda</a>
+                        </p>
+                    </div>
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4">Contacto</h6>
+                        <p><i class="bi bi-house me-3 text-secondary"></i> Pajanosas, Calle Roma nº 69</p>
+                        <p>
+                            <i class="bi bi-envelope me-3 text-secondary"></i>
+                            robertorebolledo151@gmail.com
+                        </p>
+                        <p><i class="bi bi-phone me-3 text-secondary"></i> + 34 722 71 00 12</p>
+                    </div>
+                </div>
+            </div>
+        </section>  
+        <div class="text-center p-4">
+            © 2023 Copyright:
+            <a class="text-reset fw-bold" href="https://mdbootstrap.com/">LaMoyana.com</a>
+        </div>
+    </footer>
+</body>
+
+</html>
