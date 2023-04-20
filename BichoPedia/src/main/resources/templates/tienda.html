@@ -1,0 +1,33 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+	<title>TiendaEjemplo</title>
+</head>
+<body>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>precioU</th>
+                    <th>descripcion</th>
+                    <th>valoracion</th>
+                    <th>categoria</th>
+                </tr>
+                <tbody>
+                    <tr th:each="product: ${productList}">
+                        <td th:text="${product.nombre}"></td>
+                        <td th:text="${product.descripcion}"></td>
+                        <td th:text="${'€' + #numbers.formatDecimal(product.precioU, 1, 2)}"></td>
+                        <td th:text="${'€' + #numbers.formatDecimal(product.valoracion, 1, 2)}"></td>
+                        <td th:text="${product.categoria}"></td>
+                    </tr>
+                </tbody>
+            </thead>
+        </table>
+    </main>
+</body>
