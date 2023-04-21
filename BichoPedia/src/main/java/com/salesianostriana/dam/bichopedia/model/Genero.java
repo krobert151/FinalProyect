@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,10 +24,11 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table(name="Genero")
 public class Genero {
 	@Id
 	@GeneratedValue
-	private Long idGenero;
+	private Long id;
 	
 	private String nombre;
 	private String descripcion;

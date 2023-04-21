@@ -22,7 +22,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                     <span class="navbar-toggler-icon">
 						<img src="../static/img/indexLandscape.jpg" width="0"
-            			 th:src="@{img/indexLandscape.jpg}"/>
+            			th:src="@{img/indexLandscape.jpg}"/>
 					</span>
                 </button>
                 <div class="collapse navbar-collapse" id="mynavbar">
@@ -68,8 +68,8 @@
                         </thead>
                         <tbody>
                             <tr th:each="especie : ${especieList}">
-                                <td th:text="${especie.nombre}"></td>
-                                <td th:text="${especie.descripcion}"></td>
+                                <td th:text="${especie.nombre}">Nombre</td>
+                                <td th:text="${especie.descripcion}">Description</td>
                             </tr>
                         </tbody>
                     </table>

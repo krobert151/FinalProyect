@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,14 +16,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(name="Especie")
 public class Especie {
 	@Id
 	@GeneratedValue
-	private Long idEspecie;
+	private Long id;
 
 	private String nombre;
 	private String descripcion;
-	private String fotoUrl;
+	private String foto;
 	
 	@ManyToOne
 	private  Genero genero;
