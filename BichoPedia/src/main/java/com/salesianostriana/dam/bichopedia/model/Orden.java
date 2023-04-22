@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -18,39 +17,31 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
-@Table(name="Familia")
-public class Familia {
+@Table(name="Orden")
+public class Orden {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
-	private String nombre,descripcion;
-	
-	@ManyToOne
-	private Orden orden;
+	private String nombre, descripcion;
 	
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
 	@Builder.Default
 	@OneToMany(
-			mappedBy="familia",
-			fetch = FetchType.EAGER,
-			cascade = CascadeType.REMOVE, 
-			orphanRemoval = true)
-	private List<Genero> generos = new ArrayList<>();
+			mappedBy="orden",
+			fetch=FetchType.EAGER,
+			cascade=CascadeType.REMOVE,
+			orphanRemoval=true)
+	private List<Familia> familias = new ArrayList<>();
 	
-	public void addGenero(Genero g) {
-		g.setFamilia(this);
-		this.generos.add(g);
-	}
-	public void removeGenero(Genero g) {
-		this.generos.remove(g);
-		g.setFamilia(null);
-	}
+	
+	
+	
 	
 }
