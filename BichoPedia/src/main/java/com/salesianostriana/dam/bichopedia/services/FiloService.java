@@ -4,24 +4,23 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.salesianostriana.dam.bichopedia.model.Orden;
-import com.salesianostriana.dam.bichopedia.repo.OrdenRepository;
+import com.salesianostriana.dam.bichopedia.model.Filo;
+import com.salesianostriana.dam.bichopedia.repo.FiloRepository;
 import com.salesianostriana.dam.bichopedia.services.base.BaseService;
 @Service
-public class OrdenService extends BaseService<Orden,Long,OrdenRepository>{
+public class FiloService extends BaseService<Filo,Long,FiloRepository>{
 
-	public OrdenService(OrdenRepository repo) {
+	public FiloService(FiloRepository repo) {
 		super(repo);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public List<Orden> findAll() {
+	public List<Filo> findAll() {
 		// TODO Auto-generated method stub
-		return this.repositorio.findAll();
+		return repositorio.findAll();
 	}
-	
-	
-	
 
+	
+	
 }

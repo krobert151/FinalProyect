@@ -18,43 +18,42 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-
 @Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
-@Table(name="Orden")
-public class Orden {
+@Table(name="clase")
+public class Clase {
 	@Id
 	@GeneratedValue
 	private Long id;
+	 
 	private String nombre, descripcion,foto;
 	
 	@ManyToOne
-	private Clase clase;
+	private Filo filo;
 	
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
 	@Builder.Default
 	@OneToMany(
-			mappedBy="orden",
+			mappedBy="clase",
 			fetch=FetchType.EAGER,
 			cascade=CascadeType.REMOVE,
 			orphanRemoval=true)
-	private List<Familia> familias = new ArrayList<>();
+	private List<Orden>ordenes = new ArrayList<>();
 	
-	public void addFamilia(Familia f) {
-		f.setOrden(this);
-		this.familias.add(f);	
+	public void addOrden(Orden o) {
+		o.setClase(this);
+		this.ordenes.add(o);	
 		
 	}
-	public void removeFamilia(Familia f) {
-		this.familias.remove(f);
-		f.setOrden(null);
+	public void removeOrden(Orden o) {
+		this.ordenes.remove(o);
+		o.setClase(null);
 		
 	}
-	
 	
 	
 	
