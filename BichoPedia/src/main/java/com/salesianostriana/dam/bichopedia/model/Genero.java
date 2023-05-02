@@ -3,7 +3,7 @@ package com.salesianostriana.dam.bichopedia.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -30,8 +30,7 @@ public class Genero {
 	@GeneratedValue
 	private Long id;
 	
-	private String nombre;
-	private String descripcion;
+	private String nombre, descripcion,foto;
 	
 	@ManyToOne
 	private Familia familia;
@@ -41,9 +40,7 @@ public class Genero {
 	@Builder.Default
 	@OneToMany(
 			mappedBy="genero",
-			fetch = FetchType.EAGER,
-			cascade = CascadeType.REMOVE, 
-			orphanRemoval = true)
+			fetch = FetchType.EAGER)
 	private List<Especie> especies = new ArrayList<>();
 	
 	

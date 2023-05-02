@@ -2,10 +2,12 @@ package com.salesianostriana.dam.bichopedia.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.salesianostriana.dam.bichopedia.model.Orden;
 import com.salesianostriana.dam.bichopedia.repo.OrdenRepository;
 import com.salesianostriana.dam.bichopedia.services.base.BaseService;
-
+@Service
 public class OrdenService extends BaseService<Orden,Long,OrdenRepository>{
 
 	public OrdenService(OrdenRepository repo) {

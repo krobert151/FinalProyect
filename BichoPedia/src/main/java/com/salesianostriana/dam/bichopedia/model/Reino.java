@@ -28,7 +28,7 @@ public class Reino {
 	@GeneratedValue
 	private Long id;
 	
-	private String nombre,descripcion;
+	private String nombre,descripcion,foto;
 	
 	@OneToMany(
 			mappedBy="reino",
@@ -37,5 +37,15 @@ public class Reino {
 			orphanRemoval=true)
 	private List<Filo>filos = new ArrayList<>();
 	
+	public void addFilo(Filo f) {
+		f.setReino(this);
+		this.filos.add(f);		
+		
+	}
+	public void removeFilo(Filo f) {
+		this.filos.remove(f);
+		f.setReino(null);
+		
+	}
 	
 }

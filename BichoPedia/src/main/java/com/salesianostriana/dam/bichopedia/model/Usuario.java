@@ -1,10 +1,15 @@
 package com.salesianostriana.dam.bichopedia.model;
 
+
+
 import java.time.LocalDate;
+
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,4 +33,9 @@ public class Usuario {
 	private LocalDate fechaNac;
 	private boolean admin;
 	
+
+	
 }
+
+
+
