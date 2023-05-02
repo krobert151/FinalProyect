@@ -14,7 +14,9 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data
@@ -30,6 +32,9 @@ public class Reino {
 	
 	private String nombre,descripcion,foto;
 	
+	@EqualsAndHashCode.Exclude
+	@ToString.Exclude
+	@Builder.Default
 	@OneToMany(
 			mappedBy="reino",
 			fetch=FetchType.EAGER,

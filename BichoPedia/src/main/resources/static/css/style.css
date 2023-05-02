@@ -72,15 +72,27 @@
 
 }
 .registroBox{
-    background-size: cover;
-    background-position: center center;
+    position: relative;
     aspect-ratio: 1/1;
     display: flex;
     flex-direction: column;
     justify-content: end;
-    padding: 10px;
     border-radius: 5pt;
     border: rgb(0, 0, 0) 1px solid;
-    background-color: #fff9ed;
-
+    padding: 0;
 }
+.registroBox>img{
+    border-radius: 5pt;
+}
+.registroBox>div{
+    background-color: #2525255e;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5pt;
+}
+.background-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }

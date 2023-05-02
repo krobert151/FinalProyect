@@ -32,13 +32,15 @@
                             </button>
                         </div>
                     </form>
-                    <div class="row d-flex justify-content-center">
-                        <div class="registroBox col-3  m-1" th:each="especie : ${especieList}" 
-                        style="background-image: url('__@{especie.foto}__')">
-                            <h3 th:text="${especie.nombre}">Nombre</h3>
-                        <p th:text="${especie.descripcion}">Description</p>
-                        <img th:src="${especie.foto}" height="100%" width="100%"/> </div>
-                    </div>                    
+                    <div class="row d-flex justify-content-center text-light">
+                        <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1" th:each="especie : ${especieList}">
+                            <img class="background-image" th:src="${especie.foto}" />
+                            <div class="text">
+                                <h3 th:text="${especie.nombre}">Nombre</h3>
+                                <p th:text="${especie.descripcion}">Description</p>
+                            </div>
+                        </div>
+                    </div>                  
                 </div>
                 <div class="col"></div>
             </div>
