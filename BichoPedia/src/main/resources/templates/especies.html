@@ -15,34 +15,7 @@
 
 <body class="indexmain">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-			
-            <div class="container-fluid">
-                <a class="navbar-brand logo" href="javascript:void(0)"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-                    <span class="navbar-toggler-icon">
-						<img src="../static/img/indexLandscape.jpg" width="0"
-            			th:src="@{img/indexLandscape.jpg}"/>
-					</span>
-                </button>
-                <div class="collapse navbar-collapse" id="mynavbar">
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)">Encuentros</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)">Especies</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)">Tienda</a>
-                        </li>
-                    </ul>
-                    <button class="btn loginbutton" type="button">Login</button>
-                </div>
-            </div>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark" th:replace="~{fragmentos/menu::menu}" >
         </nav>
     </header>
     <main>
@@ -61,7 +34,7 @@
                     </form>
                     <div class="row d-flex justify-content-center">
                         <div class="registroBox col-3  m-1" th:each="especie : ${especieList}" 
-                        style="background-image: url('__${especie.foto}__')">
+                        style="background-image: url('__@{especie.foto}__')">
                             <h3 th:text="${especie.nombre}">Nombre</h3>
                         <p th:text="${especie.descripcion}">Description</p>
                         <img th:src="${especie.foto}" height="100%" width="100%"/> </div>
@@ -71,97 +44,7 @@
             </div>
         </div>
     </main>
-    <footer class="text-center text-lg-start text-muted bg-dark">
-        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-            <div class="me-5 d-none d-lg-block">
-                <span>Conecta con nosotros en las redes :</span>
-            </div>
-            <div>
-                <a href="https://www.instagram.com/" class="me-4 link-secondary">
-                    <i class="bi bi-instagram"></i>
-                </a>
-                <a href="https://twitter.com/home" class="me-4 link-secondary">
-                    <i class="bi bi-twitter"></i>
-                </a>
-                <a href="https://es-es.facebook.com/" class="me-4 link-secondary">
-                    <i class="bi bi-facebook"></i>
-                </a>
-                <a href="https://www.youtube.com/" class="me-4 link-secondary">
-                    <i class="bi bi-youtube"></i>
-                </a>
-                <a href="https://www.pinterest.es/" class="me-4 link-secondary">
-                    <i class="bi bi-pinterest"></i>
-                </a>
-            </div>
-        </section>
-        <section>
-            <div class="container text-center text-md-start mt-5">
-                <div class="row mt-3">
-                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                        <h6 class="text-uppercase fw-bold mb-4">
-                            Dbichos
-                        </h6>
-                        <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam voluptatem blanditiis
-                            recusandae saepe odit voluptatum, quidem doloremque debitis libero architecto facilis ipsam
-                            excepturi vero inventore, impedit tempora accusantium, fugiat alias?
-                        </p>
-                    </div>
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                        <h6 class="text-uppercase fw-bold mb-4">
-                            Links
-                        </h6>
-                        <p>
-                            <a href="fotos.html" class="text-reset">Home</a>
-                        </p>
-                        <p>
-                            <a href="araña.html" class="text-reset">Encuentros</a>
-                        </p>
-                        <p>
-                            <a href="scolopendra.html" class="text-reset">Especies</a>
-                        </p>
-                        <p>
-                            <a href="scorpiones.html" class="text-reset">Tienda</a>
-                        </p>
-                    </div>
-                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                        <h6 class="text-uppercase fw-bold mb-4">
-                            Politicas
-                        </h6>
-                        <p>
-                            <a href="https://www.google.com/search?q=capibara&rlz=1C1CHBF_esES1036ES1036&sxsrf=AJOqlzVflMvtCNlqKRnoZTiTtV943xpbdg:1678868881599&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj5rb_6wd39AhWRg1wKHYXOA_gQ_AUoAXoECAEQAw&biw=1517&bih=694&dpr=0.9#imgrc=DJhkUrpfqQh6nM"
-                                class="text-reset">Bases Legales</a>
-                        </p>
-                        <p>
-                            <a href="https://www.google.com/search?q=capibara&rlz=1C1CHBF_esES1036ES1036&sxsrf=AJOqlzVflMvtCNlqKRnoZTiTtV943xpbdg:1678868881599&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj5rb_6wd39AhWRg1wKHYXOA_gQ_AUoAXoECAEQAw&biw=1517&bih=694&dpr=0.9#imgrc=DJhkUrpfqQh6nM"
-                                class="text-reset">Políticas de Privacidad</a>
-                        </p>
-                        <p>
-                            <a href="https://www.google.com/search?q=capibara&rlz=1C1CHBF_esES1036ES1036&sxsrf=AJOqlzVflMvtCNlqKRnoZTiTtV943xpbdg:1678868881599&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj5rb_6wd39AhWRg1wKHYXOA_gQ_AUoAXoECAEQAw&biw=1517&bih=694&dpr=0.9#imgrc=DJhkUrpfqQh6nM"
-                                class="text-reset">Políticas de Cookies</a>
-                        </p>
-                        <p>
-                            <a href="https://www.google.com/search?q=capibara&rlz=1C1CHBF_esES1036ES1036&sxsrf=AJOqlzVflMvtCNlqKRnoZTiTtV943xpbdg:1678868881599&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj5rb_6wd39AhWRg1wKHYXOA_gQ_AUoAXoECAEQAw&biw=1517&bih=694&dpr=0.9#imgrc=DJhkUrpfqQh6nM"
-                                class="text-reset">Ayuda</a>
-                        </p>
-                    </div>
-                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                        <h6 class="text-uppercase fw-bold mb-4">Contacto</h6>
-                        <p><i class="bi bi-house me-3 text-secondary"></i> Pajanosas, Calle Roma nº 69</p>
-                        <p>
-                            <i class="bi bi-envelope me-3 text-secondary"></i>
-                            robertorebolledo151@gmail.com
-                        </p>
-                        <p><i class="bi bi-phone me-3 text-secondary"></i> + 34 722 71 00 12</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="text-center p-4">
-            © 2023 Copyright:
-            <a class="text-reset fw-bold" href="https://mdbootstrap.com/">LaMoyana.com</a>
-        </div>
+    <footer th:replace="~{fragmentos/footer::footer}">
     </footer>
 </body>
 
