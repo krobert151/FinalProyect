@@ -25,7 +25,7 @@
                 <div class="col-9 ">
                     <form action="">
                         <div class="d-flex my-3">
-                            <input type="text" class="form-control " id="especie" placeholder="Nombre de la especie"
+                            <input type="text" class="form-control " id="reino" placeholder="Nombre de la reino"
                             required>
                             <button class="btn btn-light">
                                 <i class="bi bi-search"></i>
@@ -33,11 +33,18 @@
                         </div>
                     </form>
                     <div class="row d-flex justify-content-center text-light">
-                        <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1" th:each="especie : ${especieList}">
-                            <img class="background-image" th:src="${especie.foto}" />
+                        <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1" th:each="reino : ${reinoList}">
+                            <img class="background-image" 
+                            th:if="${reino.filos != null and reino.filos.size() > 0 and reino.filos[0].clases 
+                                != null and reino.filos[0].clases.size() > 0 and reino.filos[0].clases[0].ordenes 
+                                != null and reino.filos[0].clases[0].ordenes.size() > 0 and reino.filos[0].clases[0].ordenes[0].familias 
+                                != null and reino.filos[0].clases[0].ordenes[0].familias.size() > 0 and reino.filos[0].clases[0].ordenes[0].familias[0].generos 
+                                != null and reino.filos[0].clases[0].ordenes[0].familias[0].generos.size() > 0 and reino.filos[0].clases[0].ordenes[0].familias[0].generos[0].especies 
+                                != null and reino.filos[0].clases[0].ordenes[0].familias[0].generos[0].especies.size() > 0}" 
+                            th:src="${reino.filos[0].clases[0].ordenes[0].familias[0].generos[0].especies[0].foto}" />
                             <div class="text">
-                                <h3 th:text="${especie.nombre}">Gypaetus barbatus</h3>
-                                <p th:text="${especie.descripcion}">Description</p>
+                                <h3 th:text="${reino.nombre}">Gypaetus barbatus</h3>
+                                <p th:text="${reino.descripcion}">Description</p>
                             </div>
                         </div>
                     </div>                  

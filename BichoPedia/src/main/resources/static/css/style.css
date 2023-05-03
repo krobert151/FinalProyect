@@ -68,7 +68,6 @@
 }
 .encuentro:hover{
     transform: scale(1.1) translate(-10px, -5px);
-   
 
 }
 .registroBox{
@@ -95,4 +94,10 @@
     width: 100%;
     height: 100%;
     z-index: -1;
-  }
+}
+.text>h3{
+    font-size: 1em;
+}
+.text>p{
+    font-size: 0.5em;
+}

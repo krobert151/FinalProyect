@@ -10,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -28,8 +29,8 @@ import lombok.ToString;
 @Table(name="usuario")
 public class Usuario {
 	@Id
-	@GeneratedValue
-	private Long id_usuario;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
 	
 	private String nombre;
 	private String apellidos;
@@ -38,7 +39,8 @@ public class Usuario {
 	private String passwd;
 	@Column(name="fechanac")
 	private LocalDate fechaNac;
-	private boolean administrator;
+
+	private boolean administrator  ;
 	
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
