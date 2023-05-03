@@ -101,3 +101,14 @@
 .text>p{
     font-size: 0.5em;
 }
+.botonTax{
+    background-color: aliceblue;
+    border-radius: 5pt;
+    border: 1px solid grey;
+}
+.botonTax>a{
+    text-decoration: none;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,4 +1,4 @@
-<!DOCTYPE html >
+<!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
@@ -15,7 +15,7 @@
 
 <body class="indexmain">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark" th:replace="~{fragmentos/menu::menu}" >
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark" th:replace="~{fragmentos/menu::menu}">
         </nav>
     </header>
     <main>
@@ -26,23 +26,31 @@
                     <form action="">
                         <div class="d-flex my-3">
                             <input type="text" class="form-control " id="especie" placeholder="Nombre de la especie"
-                            required>
+                                required>
                             <button class="btn btn-light">
                                 <i class="bi bi-search"></i>
                             </button>
                         </div>
                     </form>
                     <div class="row d-flex justify-content-center text-light">
-                        <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1" th:each="especie : ${especieList}">
+                        <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1"
+                            th:each="especie : ${especieList}">
                             <img class="background-image" th:src="${especie.foto}" />
                             <div class="text">
                                 <h3 th:text="${especie.nombre}">Gypaetus barbatus</h3>
                                 <p th:text="${especie.descripcion}">Description</p>
                             </div>
                         </div>
-                    </div>                  
+                    </div>
                 </div>
-                <div class="col"></div>
+                <div class="col pt-5 d-flex align-items-center">
+                    <button class="botonTax">
+                        <a class="py-1 px-3" href="/generos">
+                            <i class="bi bi-arrow-up"></i>
+                            <span>Genero</span>
+                        </a>
+                    </button>
+                </div>
             </div>
         </div>
     </main>
