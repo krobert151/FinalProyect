@@ -42,8 +42,7 @@ insert into Especie (id,nombre,descripcion,foto,genero_id) values (7,'Timon neva
 insert into Especie (id,nombre,descripcion,foto,genero_id) values (8,'Aquila adalberti','Aguila imperial ibérica','https://iberianlynxland.com/wp-content/uploads/2021/11/aguila_imperial.jpg',5);
 insert into Especie (id,nombre,descripcion,foto,genero_id) values (9,'Lynx pardinus','Lince ibérco','https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2022/03/21/16478695249126.jpg',6);
 
-<<<<<<< HEAD
+
 insert into Encuentro (id,usuario_id,especie_id,fecha,descripcion,foto,zona,tamanio,peso,sexo) values (1,1,1,'2023-01-01T12:30:30','encuentro de un bicho','https://lahuertinadetoni.es/wp-content/uploads/2015/01/233-163-Copiar.jpg','Gerena',10,5,'f');
-=======
---insert into Encuentro (id,usuario_id,especie_id,fecha,descripcion,foto,zona,tamanio,peso,sexo) values (1,1,1,'2023-01-01T12:30:30','encuentro de un bicho','fotito','Gerena',10,5,'f');
->>>>>>> 258a656b43d2123860e0ba16b3ec07cb901e66e6
+
+alter sequence hibernate_sequence restart with 1000;

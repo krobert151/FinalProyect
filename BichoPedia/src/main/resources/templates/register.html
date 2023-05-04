@@ -16,22 +16,6 @@
 
 <body>
     <header>
-<<<<<<< HEAD
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark" th:replace="~{fragmentos/menu::menu}">
-        </nav>
-    </header>
-    <main>
-    <section class="vh-100 login">
-        <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-12 col-md-10 col-lg-8 col-xl-6">
-                    <form class=" logincard p-5 text-center" method="POST" th:action="registerOk" th:object="${registerForm}">
-                        <h2 class="mb-5">Sing up</h2>
-                        <div class="form-outline mb-4 d-flex justify-content-around">
-                            <div class="me-2">
-                                <div>
-                                    <i class="bi bi-person-circle"></i>
-=======
         <nav th:replace="~{fragmentos/menu::menu}" >
         </nav>
     </header>
@@ -51,7 +35,6 @@
                                     <input type="text" id="nombre" class="form-control form-control-lg"
                                         placeholder="Nombre" required th:field="*{nombre}" />
                                     <label class="form-label" for="nombre"></label>
->>>>>>> 258a656b43d2123860e0ba16b3ec07cb901e66e6
                                 </div>
                                 <div>
                                     <input type="text" id="apellidos" class="form-control form-control-lg"
@@ -112,12 +95,7 @@
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
-        </div>
-    </section>
-=======
         </section>
->>>>>>> 258a656b43d2123860e0ba16b3ec07cb901e66e6
     </main>
 </body>
 

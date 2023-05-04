@@ -14254,3 +14254,15 @@ INSERT INTO Especie (nombre, descripcion, foto, genero_nombre) VALUES ('Lynx par
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+2023-05-04 14:06:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]<<<<<<< HEAD"
+Syntax error in SQL statement "[*]<<<<<<< HEAD"; SQL statement:
+<<<<<<< HEAD [42000-214]
+2023-05-04 14:06:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]======="
+Syntax error in SQL statement "[*]======="; SQL statement:
+======= [42000-214]
+2023-05-04 14:06:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]>>>>>>> 258a656b43d2123860e0ba16b3ec07cb901e66e6"
+Syntax error in SQL statement "[*]>>>>>>> 258a656b43d2123860e0ba16b3ec07cb901e66e6"; SQL statement:
+>>>>>>> 258a656b43d2123860e0ba16b3ec07cb901e66e6 [42000-214]
