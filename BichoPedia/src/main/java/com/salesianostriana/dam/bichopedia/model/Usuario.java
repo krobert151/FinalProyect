@@ -29,7 +29,7 @@ import lombok.ToString;
 @Table(name="usuario")
 public class Usuario {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
 	private String nombre;
@@ -40,6 +40,7 @@ public class Usuario {
 	@Column(name="fechanac")
 	private LocalDate fechaNac;
 
+	@Column(nullable = true)
 	private boolean administrator  ;
 	
 	@EqualsAndHashCode.Exclude
