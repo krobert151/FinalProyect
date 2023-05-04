@@ -9,9 +9,9 @@ import com.salesianostriana.dam.bichopedia.repo.EncuentroRepository;
 import com.salesianostriana.dam.bichopedia.services.base.BaseService;
 
 @Service
-public class EncuentroServices extends BaseService <Encuentro,Long,EncuentroRepository>{
+public class EncuentroService extends BaseService <Encuentro,Long,EncuentroRepository>{
 
-	public EncuentroServices(EncuentroRepository repo) {
+	public EncuentroService(EncuentroRepository repo) {
 		super(repo);
 		// TODO Auto-generated constructor stub
 	}

@@ -15,6 +15,11 @@
 </head>
 
 <body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark" th:replace="~{fragmentos/menu::menu}">
+        </nav>
+    </header>
+    <main>
     <section class="vh-100 login">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
@@ -89,6 +94,7 @@
             </div>
         </div>
     </section>
+    </main>
 </body>
 
 </html>

@@ -25,19 +25,19 @@
                 <div class="collapse navbar-collapse" id="mynavbar">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/">Home</a>
+                            <a class="nav-link" th:href="@{/}" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)">Encuentros</a>
+                            <a class="nav-link" th:href="@{/encuentros}" href="/encuentros">Encuentros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/especies">Especies</a>
+                            <a class="nav-link" th:href="@{/especies}" href="/especies">Especies</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/registro">Registrar</a>
+                            <a class="nav-link" th:href="@{/registro}" href="/registro">Registrar</a>
                         </li>
                     </ul>
-                    <button class="btn loginbutton bg-light" type="button" href="/login">Login</button>
+                    <button class="btn loginbutton bg-light" type="button" th:href="@{/register}" href="/register">Register</button>
                 </div>
             </div>
         </nav>

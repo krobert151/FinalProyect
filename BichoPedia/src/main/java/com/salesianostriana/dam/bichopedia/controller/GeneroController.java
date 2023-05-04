@@ -5,18 +5,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.salesianostriana.dam.bichopedia.repo.GeneroRepository;
+import com.salesianostriana.dam.bichopedia.services.GeneroService;
 
 @Controller
 public class GeneroController {
 
 	@Autowired 
-	private GeneroRepository repo;
+	private GeneroService service;
 	
 	@GetMapping("/generos")
 	public String showGeneros(Model model) {
 		
-		model.addAttribute("generoList",repo.findAll());
+		model.addAttribute("generoList",service.findAll());
 		
 		return "generos";
 	}

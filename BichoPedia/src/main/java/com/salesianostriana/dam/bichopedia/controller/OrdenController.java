@@ -5,18 +5,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.salesianostriana.dam.bichopedia.repo.OrdenRepository;
+import com.salesianostriana.dam.bichopedia.services.OrdenService;
 
 @Controller
 public class OrdenController {
 
 	@Autowired
-	private OrdenRepository repo;
+	private OrdenService service;
 	
 	@GetMapping("/ordenes")
 	public String showOrdenes(Model model) {
 		
-		model.addAttribute("ordenList", repo.findAll());
+		model.addAttribute("ordenList", service.findAll());
 		
 		return "ordenes";
 	}

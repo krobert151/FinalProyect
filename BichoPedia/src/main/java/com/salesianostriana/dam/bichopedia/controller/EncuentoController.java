@@ -5,22 +5,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.salesianostriana.dam.bichopedia.services.FiloService;
+import com.salesianostriana.dam.bichopedia.services.EncuentroService;
 
 @Controller
-public class FiloController {
-
+public class EncuentoController {
+	
 	@Autowired
-	private FiloService service;
+	private EncuentroService service;
 	
-	@GetMapping("/filos")
-	public String showFilos (Model model) {
+	@GetMapping("/encuentros")
+	public String encuentros(Model model) {
 		
-		model.addAttribute("filoList", service.findAll());
+		model.addAttribute("encuentroList", service.findAll());
 		
-		return "filos";
-		
-	} 
-	
+		return "encuentros";
+	}
 	
 }

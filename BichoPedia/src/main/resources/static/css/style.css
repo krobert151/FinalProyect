@@ -112,3 +112,22 @@
     display: flex;
     justify-content: space-between;
 }
+.encuentroBox{
+    position: relative;
+    aspect-ratio: 1/1;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    border-radius: 5pt;
+    border: rgb(0, 0, 0) 1px solid;
+    padding: 0;
+}
+.encuentroInfo{
+    text-align: center;
+}
+.encuentroInfo>h3{
+    font-size: 1.2em;
+}
+.encuentroInfo>span{
+    font-size: 0.75em;
+}

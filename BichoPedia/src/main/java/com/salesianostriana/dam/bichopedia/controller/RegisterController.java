@@ -25,11 +25,9 @@ public class RegisterController {
 	}
 	
 	@PostMapping("/registerOk")
-	public String nuevoUsuario (@ModelAttribute("registerForm")
-	Usuario usuario, Model model) {
+	public String nuevoUsuario (@ModelAttribute("registerForm") Usuario usuario) {
 		usuarioService.save(usuario);
-		model.addAttribute("usuario",usuario);
-		return "registerOk";
+		return "redirect:/";
 	} 
 	
 	

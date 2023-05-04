@@ -10,9 +10,8 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="../static/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <title>Index</title>
+    <title>Encuentros</title>
 </head>
-
 <body class="indexmain">
     <header>
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark" th:replace="~{fragmentos/menu::menu}">
@@ -33,23 +32,19 @@
                         </div>
                     </form>
                     <div class="row d-flex justify-content-center text-light">
-                        <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1"
-                            th:each="especie : ${especieList}">
-                            <img class="background-image" th:src="${especie.foto}" />
-                            <div class="text">
-                                <h3 th:text="${especie.nombre}">Gypaetus barbatus</h3>
-                                <p th:text="${especie.descripcion}">Description</p>
+                        <div class="encuentroBox col-6 col-md-6 col-lg-4 col-xl-2 m-2"
+                            th:each="encuentro : ${encuentroList}">
+                            <img class="background-image" th:src="${encuentro.foto}" src="https://lahuertinadetoni.es/wp-content/uploads/2015/01/233-163-Copiar.jpg" />
+                            <div class="encuentroInfo">
+                                <h3 th:text="${encuentro.especie.nombre}">Nombre especie</h3>
+                                <span th:text="${encuentro.zona}">zona</span>
+                                <span> - </span>
+                                <span th:text="${encuentro.usuario.nombre}">nombre</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col pt-5 d-flex align-items-center">
-                    <button class="botonTax">
-                        <a class="py-1 px-3" th:href="@{/generos}" href="/generos">
-                            <i class="bi bi-arrow-up"></i>
-                            <span>Genero</span>
-                        </a>
-                    </button>
+                <div class="col">
                 </div>
             </div>
         </div>
