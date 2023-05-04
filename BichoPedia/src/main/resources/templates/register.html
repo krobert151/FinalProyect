@@ -15,80 +15,88 @@
 </head>
 
 <body>
-    <section class="vh-100 login">
-        <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-12 col-md-10 col-lg-8 col-xl-6">
-                    <form class=" logincard p-5 text-center" method="POST" th:action="registerOk" th:object="${registerForm}">
-                        <h2 class="mb-5">Sing up</h2>
-                        <div class="form-outline mb-4 d-flex justify-content-around">
-                            <div class="me-2">
-                                <div>
-                                    <i class="bi bi-person-circle"></i>
+    <header>
+        <nav th:replace="~{fragmentos/menu::menu}" >
+        </nav>
+    </header>
+    <main>
+        <section class="vh-100 login">
+            <div class="container py-5 h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+                        <form class=" logincard p-5 text-center" method="POST" th:action="registerOk"
+                            th:object="${registerForm}">
+                            <h2 class="mb-5">Sing up</h2>
+                            <div class="form-outline mb-4 d-flex justify-content-around">
+                                <div class="me-2">
+                                    <div>
+                                        <i class="bi bi-person-circle"></i>
+                                    </div>
+                                    <input type="text" id="nombre" class="form-control form-control-lg"
+                                        placeholder="Nombre" required th:field="*{nombre}" />
+                                    <label class="form-label" for="nombre"></label>
                                 </div>
-                                <input type="text" id="nombre" class="form-control form-control-lg" placeholder="Nombre"
-                                    required th:field="*{nombre}"/>
-                                <label class="form-label" for="nombre"></label>
-                            </div>
-                            <div>
-                                <input type="text" id="apellidos" class="form-control form-control-lg"
-                                    placeholder="Apellidos" required th:field="*{apellidos}"/>
-                                <label class="form-label" for="apellidos"></label>
-                            </div>
-                        </div>
-                        <div class="form-outline mb-4">
-                            <div>
                                 <div>
-                                    <i class="bi bi-envelope-at"></i>
+                                    <input type="text" id="apellidos" class="form-control form-control-lg"
+                                        placeholder="Apellidos" required th:field="*{apellidos}" />
+                                    <label class="form-label" for="apellidos"></label>
                                 </div>
-                                <input type="email" id="correo" class="form-control form-control-lg" placeholder="correo"
-                                    required  th:field="*{correo}"/>
-                                <label class="form-label" for="correo"></label>
                             </div>
-                        </div>
-                        <div class="form-outline mb-4">
-                            <div>
+                            <div class="form-outline mb-4">
                                 <div>
-                                    <i class="bi bi-person-circle"></i>
+                                    <div>
+                                        <i class="bi bi-envelope-at"></i>
+                                    </div>
+                                    <input type="email" id="correo" class="form-control form-control-lg"
+                                        placeholder="correo" required th:field="*{correo}" />
+                                    <label class="form-label" for="correo"></label>
                                 </div>
-                                <input type="text" id="username" class="form-control form-control-lg" placeholder="Usuario"
-                                    required th:field="*{username}"/>
-                                <label class="form-label" for="username"></label>
                             </div>
-                        </div>
-                        <div class="form-outline mb-4">
-                            <div>
+                            <div class="form-outline mb-4">
                                 <div>
-                                    <i class="bi bi-lock"></i>
+                                    <div>
+                                        <i class="bi bi-person-circle"></i>
+                                    </div>
+                                    <input type="text" id="username" class="form-control form-control-lg"
+                                        placeholder="Usuario" required th:field="*{username}" />
+                                    <label class="form-label" for="username"></label>
                                 </div>
-                                <input type="password" id="passwd" class="form-control form-control-lg"
-                                    placeholder="Constraseña" required th:field="*{passwd}"/>
-                                <label class="form-label" for="passwd"></label>
                             </div>
-                        </div>
-                        <div class="form-outline mb-4">
-                            <div>
+                            <div class="form-outline mb-4">
                                 <div>
-                                    <i class="bi bi-calendar-event"></i>
+                                    <div>
+                                        <i class="bi bi-lock"></i>
+                                    </div>
+                                    <input type="password" id="passwd" class="form-control form-control-lg"
+                                        placeholder="Constraseña" required th:field="*{passwd}" />
+                                    <label class="form-label" for="passwd"></label>
                                 </div>
-                                <input type="date" id="fechaNac" class="form-control form-control-lg" required />
-                                <label class="form-label" for="fechaNac" th:field="${registerForm.fechaNac}"></label>
                             </div>
-                        </div>
-                        <div class="d-flex justify-content-around">
-                            <!-- Checkbox -->
-                            <div class="form-check d-flex justify-content-start mb-4">
-                                <input class="form-check-input me-2" type="checkbox" value="" id="form1Example3" />
-                                <label class="form-check-label" for="form1Example3"> Recordar contraseña </label>
+                            <div class="form-outline mb-4">
+                                <div>
+                                    <div>
+                                        <i class="bi bi-calendar-event"></i>
+                                    </div>
+                                    <input type="date" id="fechaNac" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="fechaNac"
+                                        th:field="${registerForm.fechaNac}"></label>
+                                </div>
                             </div>
-                            <p><a href="login.html" class="registerhref">Log in</a></p>
-                        </div>
-                        <button class="btn btn-primary btn-lg btn-block loginbutton" type="submit">Login</button>
-                    </form>
+                            <div class="d-flex justify-content-around">
+                                <!-- Checkbox -->
+                                <div class="form-check d-flex justify-content-start mb-4">
+                                    <input class="form-check-input me-2" type="checkbox" value="" id="form1Example3" />
+                                    <label class="form-check-label" for="form1Example3"> Recordar contraseña </label>
+                                </div>
+                                <p><a href="login.html" class="registerhref">Log in</a></p>
+                            </div>
+                            <button class="btn btn-primary btn-lg btn-block loginbutton" type="submit">Login</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 </body>
 
 </html>
