@@ -6,6 +6,4 @@ import com.salesianostriana.dam.bichopedia.model.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario,Long>{
 
-
-	
 }

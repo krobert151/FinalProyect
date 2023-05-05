@@ -39,6 +39,7 @@ public class Usuario {
 	private String passwd;
 	@Column(name="fechanac")
 	private LocalDate fechaNac;
+	
 
 	@Column(nullable = true)
 	private boolean administrator  ;
