@@ -1,5 +1,7 @@
 
-insert into Usuario (nombre,apellidos,correo,username,passwd,fechaNac,administrator) values ('Roberto','Rebolledo Naharro', 'robertorebolledo151@gmail.com', 'krobert151','krobert151','2004-10-12',true);
+insert into Usuario (id,nombre,apellidos,correo,username,passwd,fechaNac,administrator) values (1,'Roberto','Rebolledo Naharro', 'robertorebolledo151@gmail.com', 'krobert151','krobert151','2004-10-12',true);
+insert into Usuario (id,nombre,apellidos,correo,username,passwd,fechaNac,administrator) values (2,'User','Useruser', 'useruser@gmail.com', 'user','1234','1990-10-10',false);
+insert into Usuario (id,nombre,apellidos,correo,username,passwd,fechaNac,administrator) values (3,'Admin','AdminAdmin', 'adminadmin@gmail.com', 'admin','admin','1990-10-10',true);
 
 insert into Reino   (id,nombre,descripcion) values (1,'Animal','Reino animal');
 

@@ -14,46 +14,46 @@
 </head>
 
 <body>
-    <section class="vh-100 login ">
-        <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                    <div class=" logincard p-5 text-center">
-                        <h2 class="mb-5">Login</h2>
-                        <div class="form-outline mb-4">
-                            <div>
-                                <div>
-                                    <i class="bi bi-person-circle"></i>
-                                </div>
-                                <input type="text" id="user" class="form-control form-control-lg" placeholder="Usuario"
-                                    required />
-                                <label class="form-label" for="user"></label>
-                            </div>
-                        </div>
-                        <div class="form-outline mb-4">
-                            <div>
-                                <div>
-                                    <i class="bi bi-lock"></i>
-                                </div>
-                                <input type="password" id="password" class="form-control form-control-lg"
-                                    placeholder="Constraseña" required />
-                                <label class="form-label" for="password"></label>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-around">
-                            <!-- Checkbox -->
-                            <div class="form-check d-flex justify-content-start mb-4">
-                                <input class="form-check-input me-2" type="checkbox" value="" id="form1Example3" />
-                                <label class="form-check-label" for="form1Example3"> Recordar contraseña </label>
-                            </div>
-                            <p><a href="register.html" class="registerhref">Sing up</a></p>
-                        </div>
-                        <button class="btn btn-primary btn-lg btn-block loginbutton" type="submit">Login</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+	<header>
+        <nav th:replace="~{fragmentos/menu::menu}" >
+        </nav>
+    </header>
+	<main>
+	    <section class="vh-100 login ">
+	        <div class="container py-5 h-100">
+	            <div class="row d-flex justify-content-center align-items-center h-100">
+	                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+	                    <div class=" logincard p-5 text-center">
+	                        <form method="POST" action="#" th:action="@{/login}">
+	                            <h2 class="mb-5">Login</h2>
+	                            <div class="form-outline mb-4">
+	                                <div>
+	                                    <div>
+	                                        <i class="bi bi-person-circle"></i>
+	                                    </div>
+	                                    <input type="text" id="username" name="username"
+	                                    placeholder="Username" required autofocus />
+	                                    <label class="form-label" for="user"></label>
+	                                </div>
+	                            </div>
+	                            <div class="form-outline mb-4">
+	                                <div>
+	                                    <div>
+	                                        <i class="bi bi-lock"></i>
+	                                    </div>
+	                                    <input type="password" name="password" id="passwd" placeholder="Password"
+	                                    required />
+	                                    <label class="form-label" for="passwd"></label>
+	                                </div>
+	                            </div>
+	                            <button class="btn btn-primary btn-lg btn-block loginbutton" type="submit">Login</button>
+	                        </form>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </section>
+    </main>
 </body>
 
 </html>

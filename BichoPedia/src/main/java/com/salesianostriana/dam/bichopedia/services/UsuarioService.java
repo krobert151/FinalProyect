@@ -41,7 +41,7 @@ public class UsuarioService extends BaseService<Usuario,Long,UsuarioRepository>{
 
 	@Override
 	public Usuario edit(Usuario t) {
-		// TODO Auto-generated method stub
+
 		return usuarioRepository.save(t);
 	}
 

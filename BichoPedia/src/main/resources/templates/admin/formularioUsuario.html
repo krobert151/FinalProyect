@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/adminGestion.css}" href="/css/loginRegister.css">
+    <link rel="stylesheet" href="../../static/css/adminGestion.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <title>Sing up</title>
+</head>
+
+<body>
+    <header>
+        <nav th:replace="~{fragmentos/menu::menu}">
+        </nav>
+    </header>
+    <main>
+        <form th:action="${usuario.id != 0} ? @{/admin/usuarios/editar}  : @{/admin/newUser/submit} " th:object="${usuario}" method="post">
+            <div>
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" placeholder="Nombre" required th:field="*{nombre}" />
+            </div>
+            <div>
+                <label for="apellidos">Apellidos</label>
+                <input type="text" id="apellidos" placeholder="Apellidos" required th:field="*{apellidos}" />
+            </div>
+            <div>
+                <label for="correo">Correo</label>
+                <input type="email" id="correo" placeholder="correo" required th:field="*{correo}" />
+            </div>
+            <div>
+                <label for="username">Usuario</label>
+                <input type="text" id="username" placeholder="Usuario" required th:field="*{username}" />
+            </div>
+            <div>
+                <label for="passwd">Contraseña</label>
+                <input type="password" id="passwd" placeholder="Contraseña" required th:field="*{passwd}" />
+            </div>
+            <div>
+                <label for="fechanac">Fecha de Nacimiento</label>
+                <input type="date" id="fechanac" required th:field="*{fechaNac}" />
+            </div>
+            <div>
+                <button type="submit">Subir</button>
+            </div>
+        </form>
+    </main>
+</body>
+
+</html>

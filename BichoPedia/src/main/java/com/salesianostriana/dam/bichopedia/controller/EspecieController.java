@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.salesianostriana.dam.bichopedia.model.Especie;
 import com.salesianostriana.dam.bichopedia.services.EspecieService;
 
 @Controller
@@ -22,17 +23,14 @@ public class EspecieController {
 		return "especies";
 	}
 	
-	@GetMapping("/")
-	public String index() {
+	@GetMapping("/newEspecie")
+	public String newEspecie(Model model) {
 		
-		return "index";
+		model.addAttribute("especia", new Especie());
+		
+		return "newEspecie";
+		
 	}
 	
-	@GetMapping("/login")
-	public String login() {
-		
-		return "login";
-		
-	}
 	
 }
