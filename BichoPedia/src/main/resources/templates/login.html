@@ -26,12 +26,12 @@
 						<div class=" logincard p-5 text-center">
 							<form method="POST" action="#" th:action="@{/login}">
 								<h2 class="mb-5">Login</h2>
-								<div class="form-outline mb-4">
+								<div class="form-outline mb-4 ">
 									<div>
 										<div>
 											<i class="bi bi-person-circle"></i>
 										</div>
-										<input type="text" id="username" name="username" placeholder="Username" required
+										<input type="text" id="username" name="username" placeholder="Username" class="form-control form-control-lg" required
 											autofocus />
 										<label class="form-label" for="user"></label>
 									</div>
@@ -41,7 +41,7 @@
 										<div>
 											<i class="bi bi-lock"></i>
 										</div>
-										<input type="password" name="password" id="passwd" placeholder="Password"
+										<input type="password" name="password" id="passwd" class="form-control form-control-lg" placeholder="Password"
 											required />
 										<label class="form-label" for="passwd"></label>
 									</div>

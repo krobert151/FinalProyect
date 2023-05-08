@@ -52,7 +52,9 @@ public class SecurityConfig {
 	        .anyRequest().permitAll()
 	        .and().formLogin()
 	        .loginPage("/login")
+		    .defaultSuccessUrl("/")
 	        .permitAll();
+	    
 	    http
 	    .csrf().disable()
 	    .headers().frameOptions().disable();
