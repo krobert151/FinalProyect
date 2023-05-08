@@ -1,20 +1,7 @@
 body{
     background-color: rgb(5, 67, 7);
 }
-
 table{
-    background-color: rgb(194, 188, 180);
     width: 100%;
-    padding: 10px;
-}
-thead{
-    background-color: rgb(184, 192, 184);
-}
-tr{
-    display: flex;
-}
-th,td{
-    border: 1px solid black;
-    display: flex;
-    width: 100%;
+    background-color: white ;
 }

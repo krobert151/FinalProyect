@@ -40,9 +40,8 @@ public class UsuarioController {
 	
 	@PostMapping("/newUser/submit")
 	public String procesarUsuario(@ModelAttribute("usuario")Usuario usuario) {
-		usuarioService.save(usuario);	
-		return "redirect:/admin/usuarios";
-		
+	    usuarioService.save(usuario);    
+	    return "redirect:/admin/usuarios";
 	}
 	
 	
@@ -62,27 +61,11 @@ public class UsuarioController {
 	}
 	@PostMapping("/usuarios/editar")
 	public String editarUsuario(@ModelAttribute("usuario") Usuario usuario) {
-	    // Obtener el usuario existente desde la base de datos
-	    Optional<Usuario> usuarioExistente = Optional.ofNullable(usuarioService.findById(usuario.getId()));
 	    
-	    if (usuarioExistente.isPresent()) {
-	        // Actualizar los campos relevantes de la entidad de usuario
-	        Usuario usuarioActualizado = usuarioExistente.get();
-	        usuarioActualizado.setId(usuario.getId());
-	        usuarioActualizado.setNombre(usuario.getNombre());
-	        usuarioActualizado.setApellidos(usuario.getApellidos());
-	        usuarioActualizado.setCorreo(usuario.getCorreo());
-	        usuarioActualizado.setFechaNac(usuario.getFechaNac());
-	        usuarioActualizado.setUsername(usuario.getUsername());
-	        usuarioActualizado.setPasswd(usuario.getPasswd());
-	        usuarioActualizado.setAdministrator(usuario.isAdministrator());
-
-	        // Guardar la entidad de usuario actualizada en la base de datos
-	        usuarioService.save(usuarioActualizado);
-		return "redirect:/admin/usuarios";	
-	    } else {
-	        return "redirect:/admin/usuarios";
-	    }
+		usuarioService.edit(usuario);
+		
+		return "redirect:/admin/usuarios";
+		
 	}
 	
 	@GetMapping("/borrar/{id}")

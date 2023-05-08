@@ -21,24 +21,24 @@
     </header>
     <main>
         <h2 class="text-light">Gestion de usuarios</h2>
-        <table>
+        <table class="table">
             <thead>
                 <tr>
-                    <th>id</th>
-                    <th>nombre</th>
-                    <th>apellidos</th>
-                    <th>correo</th>
-                    <th>username</th>
-                    <th>password</th>
-                    <th>fechaNac</th>
-                    <th>admin</th>
-                    <th>Editar</th>
-                    <th>Borrar</th>
+                    <th scope="col">id</th>
+                    <th scope="col">nombre</th>
+                    <th scope="col">apellidos</th>
+                    <th scope="col">correo</th>
+                    <th scope="col">username</th>
+                    <th scope="col">password</th>
+                    <th scope="col">fechaNac</th>
+                    <th scope="col">admin</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Borrar</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="usuario:${userList}">
-                    <td th:text="${usuario.id}">Id</td>
+                    <td th:text="${usuario.id}" scope="row">Id</td>
                     <td th:text="${usuario.nombre}">Nombre</td>
                     <td th:text="${usuario.apellidos}">apellidos</td>
                     <td th:text="${usuario.correo}">correo</td>

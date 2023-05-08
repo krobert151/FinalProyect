@@ -1,7 +1,6 @@
-
-insert into Usuario (id,nombre,apellidos,correo,username,passwd,fechaNac,administrator) values (1,'Roberto','Rebolledo Naharro', 'robertorebolledo151@gmail.com', 'krobert151','krobert151','2004-10-12',true);
-insert into Usuario (id,nombre,apellidos,correo,username,passwd,fechaNac,administrator) values (2,'User','Useruser', 'useruser@gmail.com', 'user','1234','1990-10-10',false);
-insert into Usuario (id,nombre,apellidos,correo,username,passwd,fechaNac,administrator) values (3,'Admin','AdminAdmin', 'adminadmin@gmail.com', 'admin','admin','1990-10-10',true);
+insert into Usuario (nombre,apellidos,correo,username,passwd,fechaNac,administrator) values ('Roberto','Rebolledo Naharro', 'robertorebolledo151@gmail.com', 'krobert151','{bcrypt}$2a$10$A9DV.mG33AJifviPz4BxOOeRoHh15fuPNKpM3dOd6AFH6uz4EH1wC','2004-10-12',true);
+insert into Usuario (nombre,apellidos,correo,username,passwd,fechaNac,administrator) values ('User','Useruser', 'useruser@gmail.com', 'user','{bcrypt}$2a$10$RwEPPcLsFl9CLtewb/3ksOnazOUtSexxXF01x6mSJOfU/I2CFmMrW','1990-10-10',false);
+insert into Usuario (nombre,apellidos,correo,username,passwd,fechaNac,administrator) values ('Admin','AdminAdmin', 'adminadmin@gmail.com', 'admin','{bcrypt}$2a$10$wdNOqfAzt8.QbKs4B7VzSepgh6SzjqIHApOGq/bUj6tTPQl4Htp4G','1990-10-10',true);
 
 insert into Reino   (id,nombre,descripcion) values (1,'Animal','Reino animal');
 
