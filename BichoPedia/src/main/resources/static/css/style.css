@@ -48,13 +48,25 @@
     height: 33%;
     background-position: center;
     background-size: cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
     padding: 20px;
     transition: all 0.3s ease;
     border-radius: 5pt;
 
+}
+.mainblock>a{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+a:hover {
+    color: rgb(255, 255, 255);
+}
+
+/* Quita el subrayado de los enlaces */
+a {
+    text-decoration: none;
 }
 .formulario{
     background-color: rgba(222, 184, 135, 0.801);
@@ -101,17 +113,42 @@
 .text>p{
     font-size: 0.5em;
 }
-.botonTax{
-    background-color: aliceblue;
-    border-radius: 5pt;
-    border: 1px solid grey;
-}
-.botonTax>a{
+.botonTax {
+    background-color: #005c1f;
+    border: none;
+    border-radius: 5px;
+    display: inline-block;
+    transition: transform 0.2s ease-out;
+  }
+  .botonTax:hover {
+    transform: scale(1.1);
     text-decoration: none;
-    color: black;
+  }
+  .botonTax:hover a{
+        color: white;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  .botonLink {
+    color: white;
+    text-decoration: none;
     display: flex;
-    justify-content: space-between;
-}
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+  }
+  
+  .botonIcono {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+  }
+  
+  .botonTexto {
+    margin-left: 0.5rem;
+  }
+  
 .encuentroBox{
     position: relative;
     aspect-ratio: 1/1;
@@ -130,4 +167,17 @@
 }
 .encuentroInfo>span{
     font-size: 0.75em;
+}
+.loginbutton>a{
+    height: 100%;
+    width: 100%;
+    color: black;
+    text-decoration: none;
+}
+.loginbutton{
+    transition: all 0.3s ease;
+}
+.loginbutton:hover{
+    transform: scale(1.1);
+
 }
