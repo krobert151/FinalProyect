@@ -22,15 +22,18 @@ public class SecurityConfig {
 	private final PasswordEncoder passwordEncoder;
 	
 	@Bean
-	public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception{
-		
-		AuthenticationManagerBuilder authBuilder = 
-				http.getSharedObject(AuthenticationManagerBuilder.class);
-		
-		return authBuilder
-				.authenticationProvider(daoAuthenticationProvider())
-				.build();
-	}
+	public AuthenticationManager 
+	authenticationManager(HttpSecurity http) throws Exception {
+
+	AuthenticationManagerBuilder authBuilder =
+		http.getSharedObject(AuthenticationManagerBuilder.class);
+
+	return authBuilder
+	.authenticationProvider(daoAuthenticationProvider())
+	.build();
+
+
+}
 	
 	@Bean 
 	public DaoAuthenticationProvider daoAuthenticationProvider() {
@@ -45,6 +48,7 @@ public class SecurityConfig {
 	    http
 	    .authorizeRequests()
 	        .antMatchers("/css/**","/js/**","/webjars/**", "/h2-console/**").permitAll()
+	        .antMatchers("/admin/**").hasRole("ADMIN")
 	        .anyRequest().permitAll()
 	        .and().formLogin()
 	        .loginPage("/login")
