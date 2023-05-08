@@ -18,7 +18,7 @@
         </nav>
     </header>
     <main>
-        <form th:action="${usuario.id != null} ? @{/admin/usuarios/editar}  : @{/admin/newUser/submit} " th:object="${usuario}" method="post">
+        <form th:action="${usuario.id != 0} ? @{/admin/usuarios/editar}  : @{/admin/newUser/submit} " th:object="${usuario}" method="post">
             <div>
                 <label for="nombre">Nombre</label>
                 <input type="text" id="nombre" placeholder="Nombre" required th:field="*{nombre}" />
@@ -36,15 +36,11 @@
                 <input type="text" id="username" placeholder="Usuario" required th:field="*{username}" />
             </div>
             <div>
-                <label for="passwd">Contraseña</label>
-                <input type="password" id="passwd" placeholder="Contraseña" required th:field="*{passwd}" />
-            </div>
-            <div>
                 <label for="fechanac">Fecha de Nacimiento</label>
                 <input type="date" id="fechanac" required th:field="*{fechaNac}" />
             </div>
             <div>
-                <button type="submit">Subir</button>
+                <button type="submit" name="enviar" value="Enviar">Subir</button>
             </div>
         </form>
     </main>
