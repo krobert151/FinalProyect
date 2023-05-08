@@ -29,7 +29,6 @@
                     <th scope="col">apellidos</th>
                     <th scope="col">correo</th>
                     <th scope="col">username</th>
-                    <th scope="col">password</th>
                     <th scope="col">fechaNac</th>
                     <th scope="col">admin</th>
                     <th scope="col">Editar</th>
@@ -43,7 +42,6 @@
                     <td th:text="${usuario.apellidos}">apellidos</td>
                     <td th:text="${usuario.correo}">correo</td>
                     <td th:text="${usuario.username}">username</td>
-                    <td th:text="${usuario.passwd}">password</td>
                     <td th:text="${usuario.fechaNac}">fechaNac</td>
                     <td th:text="${usuario.administrator}">admin</td>
                     <td><a href="#" th:href="@{/admin/editarUsuario/{id}(id=${usuario.id})}">Editar</a></td>
