@@ -18,7 +18,8 @@
         </nav>
     </header>
     <main>
-        <form th:action="${usuario.id != 0} ? @{/admin/usuarios/editar}  : @{/admin/newUser/submit} " th:object="${usuario}" method="post">
+        <form th:action=" @{/admin/usuarios/editar} " th:object="${usuario}" method="post">
+            <input th:if="${usuario.id != 0}" type="hidden" name="id" th:field="*{id}" />
             <div>
                 <label for="nombre">Nombre</label>
                 <input type="text" id="nombre" placeholder="Nombre" required th:field="*{nombre}" />

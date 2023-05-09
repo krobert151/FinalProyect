@@ -1,5 +1,8 @@
 package com.salesianostriana.dam.bichopedia.controller;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,10 +20,10 @@ public class EspecieController {
 	
 	@GetMapping("/especies")
 	public String verEspecies(Model model) {
-		
-		model.addAttribute("especieList", service.findAll());
-		
-		return "especies";
+	    List<Especie> especies = service.findAll();
+	    Collections.shuffle(especies);
+	    model.addAttribute("especieList", especies);
+	    return "especies";
 	}
 	
 	@GetMapping("/newEspecie")

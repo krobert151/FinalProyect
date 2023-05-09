@@ -63,8 +63,6 @@
 a:hover {
     color: rgb(255, 255, 255);
 }
-
-/* Quita el subrayado de los enlaces */
 a {
     text-decoration: none;
 }
@@ -102,6 +100,7 @@ a {
     border-radius: 5pt;
 }
 .background-image {
+    object-fit: cover;
     position: absolute;
     width: 100%;
     height: 100%;
