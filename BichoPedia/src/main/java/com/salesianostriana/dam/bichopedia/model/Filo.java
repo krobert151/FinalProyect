@@ -33,6 +33,7 @@ public class Filo {
 	private Reino reino;
 	
 	private String nombre,descripcion,foto;
+	
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
 	@Builder.Default

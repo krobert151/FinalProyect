@@ -18,7 +18,7 @@ public class GeneroController {
 		
 		model.addAttribute("generoList",service.findAll());
 		
-		return "generos";
+		return "genero/generos";
 	}
 	
 }

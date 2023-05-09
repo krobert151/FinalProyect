@@ -30,6 +30,7 @@ public class Especie {
 
 	private String nombre;
 	private String descripcion;
+	private String detalles;
 	private String foto;
 	
 	@ManyToOne

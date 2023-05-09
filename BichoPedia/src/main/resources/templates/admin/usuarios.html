@@ -17,11 +17,16 @@
         <nav th:replace="~{fragmentos/menu::menu}" >
         </nav>
     </header>
-    <main>
-        <h2 class="text-light">Gestion de usuarios</h2>
-        <table class="table">
+    <main class="d-flex flex-column align-items-center">
+        <h2 class="text-light">Usuarios</h2>
+        <table class="table container mx-5">
             <thead>
                 <tr>
+                    <th scope="col" class="text-center ">        
+                        <a href="#" th:href="@{/register}">
+                            <i class="bi bi-plus-square"></i>
+                        </a>
+                    </th>
                     <th scope="col">id</th>
                     <th scope="col">nombre</th>
                     <th scope="col">apellidos</th>
@@ -29,12 +34,13 @@
                     <th scope="col">username</th>
                     <th scope="col">fechaNac</th>
                     <th scope="col">admin</th>
-                    <th scope="col">Editar</th>
-                    <th scope="col">Borrar</th>
+                    <th scope="col"></th>
+                    
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="usuario:${userList}">
+                <tr th:each="usuario:${userList}" >
+                    <td></td>
                     <td th:text="${usuario.id}" scope="row">Id</td>
                     <td th:text="${usuario.nombre}">Nombre</td>
                     <td th:text="${usuario.apellidos}">apellidos</td>
@@ -42,10 +48,17 @@
                     <td th:text="${usuario.username}">username</td>
                     <td th:text="${usuario.fechaNac}">fechaNac</td>
                     <td th:text="${usuario.administrator}">admin</td>
-                    <td><a href="#" th:href="@{/admin/editarUsuario/{id}(id=${usuario.id})}">Editar</a></td>
-                    <td><a href="#" th:href="@{/admin/borrar/{id}(id=${usuario.id})}">Borrar</a></td>                    </td>
+                    <td class="d-flex justify-content-around pe-4">
+                                <a href="#" th:href="@{/admin/editarUsuario/{id}(id=${usuario.id})}">
+                                    <i class="bi bi-pencil-square "></i>
+                                </a>
+                                <a href="#" th:href="@{/admin/borrar/{id}(id=${usuario.id})}">
+                                    <i class="bi bi-trash3-fill"></i>
+                                </a>
+                    </td>                    
                 </tr>
             </tbody>
+            
         </table>
     </main>
 </body>

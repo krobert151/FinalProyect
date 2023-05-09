@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link th:href="@{/css/style.css}" rel="stylesheet">
-        <link rel="stylesheet" href="../static/css/style.css">
+        <link rel="stylesheet" href="../../static/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <title>Index</title>
 </head>
@@ -21,8 +21,15 @@
     <main>
         <div>
             <div class="row">
-                <div class="col"></div>
-                <div class="col-9 ">
+                <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block">
+                    <button class="botonTax my-2">
+                        <a class="py-1 px-3 botonLink" th:href="@{/newReino}" href="/newReino">
+                            <span class="botonTexto">Nuevo Reino</span>
+                            <i class="bi bi-plus-circle botonIcono"></i>
+                        </a>
+                    </button>
+                </div>
+                <div class="col ">
                     <form action="">
                         <div class="d-flex my-3">
                             <input type="text" class="form-control " id="reino" placeholder="Nombre de la reino"
@@ -32,7 +39,7 @@
                             </button>
                         </div>
                     </form>
-                    <div class="row d-flex justify-content-center text-light">
+                    <div class=" row d-flex justify-content-center text-light">
                         <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1" th:each="reino : ${reinoList}">
                             <img class="background-image" 
                             th:if="${reino.filos != null and reino.filos.size() > 0 and reino.filos[0].clases 
@@ -49,7 +56,7 @@
                         </div>
                     </div>                  
                 </div>
-                <div class="col pt-5 d-flex flex-column justify-content-center">
+                <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block">
                     <button class="botonTax">
                         <a class="py-1 px-3 botonLink" th:href="@{/filos}" href="/filos">
                             <i class="bi bi-arrow-down botonIcono"></i>

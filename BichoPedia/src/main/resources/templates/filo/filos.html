@@ -21,8 +21,15 @@
     <main>
         <div>
             <div class="row">
-                <div class="col"></div>
-                <div class="col-9 ">
+                <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block">
+                    <button class="botonTax my-2">
+                        <a class="py-1 px-3 botonLink" th:href="@{/newFilo}" href="/newFilo">
+                            <span class="botonTexto">Nuevo Filo</span>
+                            <i class="bi bi-plus-circle botonIcono"></i>
+                        </a>
+                    </button>
+                </div>
+                <div class="col ">
                     <form action="">
                         <div class="d-flex my-3">
                             <input type="text" class="form-control " id="filo" placeholder="Nombre de la filo"
@@ -33,7 +40,8 @@
                         </div>
                     </form>
                     <div class="row d-flex justify-content-center text-light">
-                        <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1" th:each="filo : ${filoList}">
+                        <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1" 
+                            th:each="filo : ${filoList}">
                             <img class="background-image" 
                             th:if="${filo.clases != null and filo.clases.size() > 0 and filo.clases[0].ordenes 
                                 != null and filo.clases[0].ordenes.size() > 0 and filo.clases[0].ordenes[0].familias 
@@ -48,7 +56,7 @@
                         </div>
                     </div>                  
                 </div>
-                <div class="col pt-5 d-flex flex-column justify-content-center">
+                <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block">
                     <button class="botonTax my-2">
                         <a class="py-1 px-3 botonLink" th:href="@{/reinos}" href="/reinos">
                             <i class="bi bi-arrow-up botonIcono"></i>

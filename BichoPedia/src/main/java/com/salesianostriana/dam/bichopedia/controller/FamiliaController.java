@@ -18,7 +18,7 @@ public class FamiliaController {
 		
 		model.addAttribute("familiaList", service.findAll());
 		
-		return ("familias");
+		return "familia/familias";
 	}
 	
 }

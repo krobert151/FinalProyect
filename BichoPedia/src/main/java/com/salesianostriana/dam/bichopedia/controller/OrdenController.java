@@ -18,7 +18,7 @@ public class OrdenController {
 		
 		model.addAttribute("ordenList", service.findAll());
 		
-		return "ordenes";
+		return "orden/ordenes";
 	}
 	
 }

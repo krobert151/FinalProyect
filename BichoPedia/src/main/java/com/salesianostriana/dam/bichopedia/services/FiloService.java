@@ -18,7 +18,7 @@ public class FiloService extends BaseService<Filo,Long,FiloRepository>{
 	@Override
 	public List<Filo> findAll() {
 		// TODO Auto-generated method stub
-		return repositorio.findAll();
+		return this.repositorio.findAll();
 	}
 
 	

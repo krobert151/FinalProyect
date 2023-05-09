@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Index</title>
+</head>
+
+<body class="indexmain">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark" th:replace="~{fragmentos/menu::menu}">
+        </nav>
+    </header>
+    <main>
+        <div class=" row ">
+            <div class="col">
+            </div>
+            <div class="col-7 formulario my-5 py-5 px-4">
+                <form class="was-validated px-5" method="POST" th:action="@{/newFilo/submit}" th:object="${filo}">
+                    <div class="row">
+
+                        <div class="form-group">
+                            <label for="nombre">Nombre Cientifico</label>
+                            <input type="text" class="form-control is-valid" id="nombre"
+                                placeholder="Nombre científico del filo" required th:field="*{nombre}">
+                            <div class="invalid-feedback">Escribe el Nombre Cientifico del filo</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="descripcion">Nombre común</label>
+                            <input type="text" class="form-control is-valid" id="descripcion"
+                                placeholder="Nombre común del filo" required th:field="*{descripcion}">
+                            <div class="invalid-feedback">Escribe el Nombre común del filo</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="reino">Reino</label> <select
+                                th:field="*{reino}" class="form-control">
+                                <option value="-1">---</option>
+                                <option th:each="reino : ${reinos}"
+                                    th:value="${reino.id}" th:text="${reino.nombre}">Reino</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center mt-2">
+                        <button class="btn btn-primary enviar" type="submit ">Enviar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+    </main>
+    <footer th:replace="~{fragmentos/footer::footer}">
+    </footer>
+</body>
+
+</html>
