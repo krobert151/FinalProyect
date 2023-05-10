@@ -10,7 +10,6 @@ import com.salesianostriana.dam.bichopedia.model.Clase;
 import com.salesianostriana.dam.bichopedia.model.Filo;
 import com.salesianostriana.dam.bichopedia.services.ClaseService;
 import com.salesianostriana.dam.bichopedia.services.FiloService;
-import com.salesianostriana.dam.bichopedia.services.ReinoService;
 
 @Controller
 public class ClaseController {
@@ -20,10 +19,7 @@ public class ClaseController {
 	
 	@Autowired
 	private FiloService filoService;
-	
-	@Autowired
-	private ReinoService reinoService;
-	
+		
 
 	
 	@GetMapping("/clases")
@@ -39,7 +35,6 @@ public class ClaseController {
 		
 		model.addAttribute("clase", new Filo());		
 		model.addAttribute("filos", filoService.findAll());
-		model.addAttribute("reinos",reinoService.findAll());
 		
 		return "clase/claseForm";
 	}
