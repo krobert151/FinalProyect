@@ -21,5 +21,32 @@ public class FamiliaService extends BaseService<Familia,Long,FamiliaRepository>{
 		// TODO Auto-generated method stub
 		return this.repositorio.findAll();
 	}
+	
+	public List<Familia> sortedName(){
+		return this.repositorio.findAll()
+				.stream()
+				.sorted((x,y)->x.getNombre()
+						.compareToIgnoreCase(y.getNombre()))
+				.toList();			
+	}
+	
+	public List<Familia>sortedComunN(){
+		return this.repositorio.findAll()
+				.stream()
+				.sorted((x,y)->x.getDescripcion()
+						.compareToIgnoreCase(y.getDescripcion()))
+				.toList();
+	} 
+	
+	public List<Familia>sortedOrd(){
+		
+		return this.repositorio.findAll()
+				.stream()
+				.sorted((x,y)->x.getOrden().getNombre()
+						.compareToIgnoreCase(y.getOrden().getNombre()))
+				.toList();
+		
+	}
+	
 
 }

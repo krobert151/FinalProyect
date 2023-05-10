@@ -21,6 +21,27 @@ public class FiloService extends BaseService<Filo,Long,FiloRepository>{
 		return this.repositorio.findAll();
 	}
 
-	
+	public List<Filo>sortedName(){
+		return this.repositorio.findAll()
+				.stream()
+				.sorted((x,y)->x.getNombre()
+						.compareToIgnoreCase(y.getNombre()))
+				.toList();
+	};
+	public List<Filo>sortedComunN(){
+		return this.repositorio.findAll()
+				.stream()
+				.sorted((x,y)->x.getDescripcion()
+						.compareToIgnoreCase(y.getDescripcion()))
+				.toList();
+		
+	};
+	public List<Filo>sortedRei(){
+		return this.repositorio.findAll()
+				.stream()
+				.sorted((x,y)->x.getReino().getNombre()
+						.compareToIgnoreCase(y.getReino().getNombre()))
+				.toList();
+	};
 	
 }
