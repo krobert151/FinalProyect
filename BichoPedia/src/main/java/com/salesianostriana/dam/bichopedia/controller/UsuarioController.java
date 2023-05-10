@@ -15,13 +15,13 @@ import com.salesianostriana.dam.bichopedia.model.Usuario;
 import com.salesianostriana.dam.bichopedia.services.UsuarioService;
 
 @Controller
-@RequestMapping("/admin/")
+@RequestMapping("/users/")
 public class UsuarioController {
 
 	@Autowired
 	private UsuarioService usuarioService;
 	
-	@GetMapping("usuarios")
+	@GetMapping("/")
 	public String listarUsuarios(Model model) {
 		
 		model.addAttribute("userList", usuarioService.findAll());
@@ -41,7 +41,7 @@ public class UsuarioController {
 	@PostMapping("/newUser/submit")
 	public String procesarUsuario(@ModelAttribute("usuario")Usuario usuario) {
 	    usuarioService.save(usuario);    
-	    return "redirect:/admin/usuarios";
+	    return "redirect:/users/";
 	}
 	
 	
@@ -55,7 +55,7 @@ public class UsuarioController {
 			return "/admin/formularioUsuario";
 			
 		}else {
-			return "redirect:/admin/usuarios";
+			return "redirect:/users/";
 		}
 		
 	}
@@ -64,7 +64,7 @@ public class UsuarioController {
 	    
 		usuarioService.edit(usuario);
 		
-		return "redirect:/admin/usuarios";
+		return "redirect:/users/";
 		
 	}
 	

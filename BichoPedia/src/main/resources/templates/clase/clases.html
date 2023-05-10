@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block">
                     <button class="botonTax my-2">
-                        <a class="py-1 px-3 botonLink" th:href="@{/newClase}" href="/newClase">
+                        <a class="py-1 px-3 botonLink" th:href="@{/clases/newClase}" href="/newClase">
                             <span class="botonTexto">Nueva Clase</span>
                             <i class="bi bi-plus-circle botonIcono"></i>
                         </a>
@@ -53,13 +53,13 @@
                 </div>
                 <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block">
                     <button class="botonTax my-2">
-                        <a class="py-1 px-3 botonLink" href="/filos">
+                        <a class="py-1 px-3 botonLink" th:href="@{/filos/}">
                             <i class="bi bi-arrow-up botonIcono"></i>
                             <span class="botonTexto">Filos</span>
                         </a>
                     </button>
                     <button class="botonTax my-2">
-                        <a class="py-1 px-3 botonLink" href="/ordenes">
+                        <a class="py-1 px-3 botonLink" th:href="@{/ordenes/}">
                             <i class="bi bi-arrow-down botonIcono"></i>
                             <span class="botonTexto">Ordenes</span>
                         </a>
