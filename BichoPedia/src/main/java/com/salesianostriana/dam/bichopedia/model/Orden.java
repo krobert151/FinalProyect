@@ -29,7 +29,7 @@ public class Orden {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String nombre, descripcion,foto;
+	private String nombre, descripcion;
 	
 	@ManyToOne
 	private Clase clase;

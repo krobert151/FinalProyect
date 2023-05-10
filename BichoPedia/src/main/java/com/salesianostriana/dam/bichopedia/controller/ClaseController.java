@@ -21,8 +21,10 @@ public class ClaseController {
 	@Autowired
 	private FiloService filoService;
 	
-	@Autowired 
+	@Autowired
 	private ReinoService reinoService;
+	
+
 	
 	@GetMapping("/clases")
 	public String showCalses(Model model) {
@@ -37,7 +39,7 @@ public class ClaseController {
 		
 		model.addAttribute("clase", new Filo());		
 		model.addAttribute("filos", filoService.findAll());
-		//model.addAttribute("reinos", reinoService.findAll());
+		model.addAttribute("reinos",reinoService.findAll());
 		
 		return "clase/claseForm";
 	}

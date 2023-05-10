@@ -25,7 +25,6 @@
             <div class="col-7 formulario my-5 py-5 px-4">
                 <form class="was-validated px-5" method="POST" th:action="@{/newClase/submit}" th:object="${clase}">
                     <div class="row">
-
                         <div class="form-group">
                             <label for="nombre">Nombre Cientifico</label>
                             <input type="text" class="form-control is-valid" id="nombre"
@@ -38,25 +37,11 @@
                                 placeholder="Nombre común de la clase" required th:field="*{descripcion}">
                             <div class="invalid-feedback">Escribe el Nombre común de la clase</div>
                         </div>
-
-                        <!--<div class="form-group">
-                            <label for="filo">
-                                <select th:field="*{filo}" class="form-control">
-                                    <option th:each="reino : ${reinos}" th:text="${reino.nombre}">
-                                        <select> 
-                                            <option value="-1">---</option>
-                                            <option th:each="filo : ${filos}" th:value="${filo.id}" th:text="${filo.nombre}">filo</option>
-                                        </select>
-                                    </option>
-                                </select>
-                            </label>
-                        </div>-->
-
                         <div class="form-group">
-                            <label for="filo">Filo</label> <select
-                                th:field="*{filo}" class="form-control">
+                            <label for="filo">Filo</label> <select 
+                            th:field="*{filo}" class="form-control">
                                 <option value="-1">---</option>
-                                <option th:each="filo : ${filos}"
+                                <option th:each="filo : ${filos}" 
                                     th:value="${filo.id}" th:text="${filo.nombre}">Filo</option>
                             </select>
                         </div>

@@ -30,7 +30,7 @@ public class Genero {
 	@GeneratedValue
 	private Long id;
 	
-	private String nombre, descripcion,foto;
+	private String nombre, descripcion;
 	
 	@ManyToOne
 	private Familia familia;

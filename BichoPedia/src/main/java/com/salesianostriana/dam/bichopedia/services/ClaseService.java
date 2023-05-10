@@ -18,7 +18,7 @@ public class ClaseService extends BaseService <Clase,Long,ClaseRepository>{
 	@Override
 	public List<Clase> findAll() {
 		// TODO Auto-generated method stub
-		return repositorio.findAll();
+		return this.repositorio.findAll();
 	}
 	
 	
