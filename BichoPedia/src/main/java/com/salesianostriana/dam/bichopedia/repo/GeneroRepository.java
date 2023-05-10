@@ -9,6 +9,4 @@ import com.salesianostriana.dam.bichopedia.model.Genero;
 
 public interface GeneroRepository extends JpaRepository<Genero,Long>{
 	
-	@Query("select distinct g from Genero g join fetch g.especies")
-	List<Genero> findAllJoin();
-	}
+}

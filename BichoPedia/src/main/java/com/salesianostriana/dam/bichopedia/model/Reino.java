@@ -30,7 +30,7 @@ public class Reino {
 	@GeneratedValue
 	private Long id;
 	
-	private String nombre,descripcion,foto;
+	private String nombre,descripcion;
 	
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude

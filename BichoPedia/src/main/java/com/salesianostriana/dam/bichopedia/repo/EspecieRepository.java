@@ -7,5 +7,6 @@ import com.salesianostriana.dam.bichopedia.model.Especie;
 
 public interface EspecieRepository extends JpaRepository<Especie, Long>{
 
-
+	
+	
 }

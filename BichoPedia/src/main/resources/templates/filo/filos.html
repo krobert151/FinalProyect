@@ -21,11 +21,18 @@
     <main>
         <div>
             <div class="row">
-                <div class="col"></div>
-                <div class="col-9 ">
+                <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block">
+                    <button class="botonTax my-2">
+                        <a class="py-1 px-3 botonLink" th:href="@{/newFilo}" href="/newFilo">
+                            <span class="botonTexto">Nuevo Filo</span>
+                            <i class="bi bi-plus-circle botonIcono"></i>
+                        </a>
+                    </button>
+                </div>
+                <div class="col ">
                     <form action="">
                         <div class="d-flex my-3">
-                            <input type="text" class="form-control " id="familia" placeholder="Nombre de la familia"
+                            <input type="text" class="form-control " id="filo" placeholder="Nombre de la filo"
                             required>
                             <button class="btn btn-light">
                                 <i class="bi bi-search"></i>
@@ -33,28 +40,33 @@
                         </div>
                     </form>
                     <div class="row d-flex justify-content-center text-light">
-                        <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1" th:each="familia : ${familiaList}">
+                        <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1" 
+                            th:each="filo : ${filoList}">
                             <img class="background-image" 
-                            th:if="${familia.generos != null and familia.generos.size() > 0 and familia.generos[0].especies != null and familia.generos[0].especies.size() > 0}" 
-                            th:src="${familia.generos[0].especies[0].foto}" />                            
+                            th:if="${filo.clases != null and filo.clases.size() > 0 and filo.clases[0].ordenes 
+                                != null and filo.clases[0].ordenes.size() > 0 and filo.clases[0].ordenes[0].familias 
+                                != null and filo.clases[0].ordenes[0].familias.size() > 0 and filo.clases[0].ordenes[0].familias[0].generos 
+                                != null and filo.clases[0].ordenes[0].familias[0].generos.size() > 0 and filo.clases[0].ordenes[0].familias[0].generos[0].especies 
+                                != null and filo.clases[0].ordenes[0].familias[0].generos[0].especies.size() > 0}" 
+                            th:src="${filo.clases[0].ordenes[0].familias[0].generos[0].especies[0].foto}" />
                             <div class="text">
-                                <h3 th:text="${familia.nombre}">Gypaetus barbatus</h3>
-                                <p th:text="${familia.descripcion}">Description</p>
+                                <h3 th:text="${filo.nombre}">Gypaetus barbatus</h3>
+                                <p th:text="${filo.descripcion}">Description</p>
                             </div>
                         </div>
                     </div>                  
                 </div>
-                <div class="col pt-5 d-flex flex-column justify-content-center">
+                <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block">
                     <button class="botonTax my-2">
-                        <a  class="py-1 px-3 botonLink" th:href="@{/ordenes}" href="/ordenes">
+                        <a class="py-1 px-3 botonLink" th:href="@{/reinos}" href="/reinos">
                             <i class="bi bi-arrow-up botonIcono"></i>
-                            <span class="botonTexto" >Ordenes</span>
+                            <span class="botonTexto">Reinos</span>
                         </a>
                     </button>
                     <button class="botonTax my-2">
-                        <a  class="py-1 px-3 botonLink" th:href="@{/generos}" href="/generos">
+                        <a class="py-1 px-3 botonLink" th:href="@{/clases}" href="/clases">
                             <i class="bi bi-arrow-down botonIcono"></i>
-                            <span class="botonTexto" >Generos</span>
+                            <span class="botonTexto">Clases</span>
                         </a>
                     </button>
                 </div>

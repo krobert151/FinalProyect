@@ -16,7 +16,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-
 @Entity
 @Data
 @AllArgsConstructor
@@ -32,7 +31,8 @@ public class Filo {
 	@ManyToOne
 	private Reino reino;
 	
-	private String nombre,descripcion,foto;
+	private String nombre,descripcion;
+	
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
 	@Builder.Default
@@ -40,9 +40,12 @@ public class Filo {
 			mappedBy="filo",
 			fetch=FetchType.EAGER,
 			cascade = CascadeType.REMOVE,
-			orphanRemoval=true			
-			)
+			orphanRemoval=true)
 	private List<Clase>clases= new ArrayList<>();
+	
+	public Filo getFilo() {
+	    return this;
+	}
 	
 	public void addClase(Clase c) {
 		c.setFilo(this);

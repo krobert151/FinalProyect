@@ -1,7 +1,7 @@
 package com.salesianostriana.dam.bichopedia.model;
+
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,6 +29,7 @@ public class Especie {
 
 	private String nombre;
 	private String descripcion;
+	private String detalles;
 	private String foto;
 	
 	@ManyToOne
