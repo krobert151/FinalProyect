@@ -49,7 +49,7 @@ public class GeneroController {
 
 	}
 	
-	@GetMapping("/gestGeneros")
+	@GetMapping("/admin/gestGeneros")
 	public String crudGeneros(Model model) {
 		
 		List<Genero> generos = service.findAll();
@@ -58,7 +58,7 @@ public class GeneroController {
 		return "admin/generos";
 	}
 	
-	@GetMapping("/gestGeneros/sortedName")
+	@GetMapping("/admin/gestGeneros/sortedName")
 	public String crudGenerosSortedNAme(Model model) {
 		List<Genero> generos = service.sortedName();
 		
@@ -67,7 +67,7 @@ public class GeneroController {
 		
 	}
 	
-	@GetMapping("/gestGeneros/sortedFam")
+	@GetMapping("/admin/gestGeneros/sortedFam")
 	public String crudGenerosSortedFam(Model model) {
 		List<Genero> generos = service.sortedFam();
 		model.addAttribute("generos", generos);
@@ -75,7 +75,7 @@ public class GeneroController {
 		
 	}
 	
-	@GetMapping("/gestGeneros/sortedComun")
+	@GetMapping("/admin/gestGeneros/sortedComun")
 	public String crudGenerosSortedComun(Model model) {
 		List<Genero> generos = service.sortedComunN();
 		model.addAttribute("generos", generos);
@@ -83,7 +83,7 @@ public class GeneroController {
 		
 		
 	}
-	@GetMapping("/editarGenero/{id}")
+	@GetMapping("/admin/editarGenero/{id}")
 	public String mostrarFormularioEdicionGenero(@PathVariable("id")long id,Model model) {
 		Genero generoEdit= service.findById(id);
 		
@@ -94,7 +94,7 @@ public class GeneroController {
 		}else
 			return "redirect:/genero/gestGeneros";
 	}
-	@GetMapping("/borrar/{id}")
+	@GetMapping("/admin/borrar/{id}")
 	public String borrarGenero(@PathVariable("id")long id) {
 		
 		service.deleteById(id);

@@ -15,7 +15,7 @@ import com.salesianostriana.dam.bichopedia.model.Usuario;
 import com.salesianostriana.dam.bichopedia.services.UsuarioService;
 
 @Controller
-@RequestMapping("/users/")
+@RequestMapping("/admin/")
 public class UsuarioController {
 
 	@Autowired

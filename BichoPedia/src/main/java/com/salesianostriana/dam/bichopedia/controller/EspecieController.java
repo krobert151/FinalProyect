@@ -49,14 +49,14 @@ public class EspecieController {
 		return "redirect:/especies/";
 
 	}
-	@GetMapping("/gestEspecies")
+	@GetMapping("/admin/gestEspecies")
 	public String crudEspecies(Model model) {
 		List<Especie> especies = service.findAll();
 		
 		model.addAttribute("especies", especies);
 		return "admin/especies";
 	}
-	@GetMapping("/gestEspecies/sortedName")	
+	@GetMapping("/admin/gestEspecies/sortedName")	
 	public String crudEspeciesSortedName(Model model) {
 		List<Especie> especies = service.sortedName();
 		
@@ -65,7 +65,7 @@ public class EspecieController {
 			
 	}
 	
-	@GetMapping("/gestEspecies/sortedGen")	
+	@GetMapping("/admin/gestEspecies/sortedGen")	
 	public String crudEspeciesSortedGen(Model model) {
 		List<Especie> especies = service.sortedGen();
 		model.addAttribute("especies", especies);
@@ -73,14 +73,14 @@ public class EspecieController {
 		
 	}
 	
-	@GetMapping("/gestEspecies/sortedComun")
+	@GetMapping("/admin/gestEspecies/sortedComun")
 	public String crudEspeciesSortedComunName(Model model) {
 		List<Especie> especies = service.sortedComunN();
 		model.addAttribute("especies", especies);
 		return "admin/especies";
 	}
 	
-	@GetMapping("/editarEspecie/{id}")
+	@GetMapping("/admin/editarEspecie/{id}")
 	public String mostrarFormularioEdicionEspecie(@PathVariable("id") long id, Model model) {
 		Especie especieEdit= service.findById(id);
 		
@@ -94,7 +94,7 @@ public class EspecieController {
 		
 	}
 	
-	@GetMapping("/borrar/{id}")
+	@GetMapping("/admin/borrar/{id}")
 	public String borrarEspecie(@PathVariable("id")long id) {
 		service.deleteById(id);
 		return "redirect:/especies/gestEspecies";

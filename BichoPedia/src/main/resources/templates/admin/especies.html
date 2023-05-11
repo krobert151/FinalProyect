@@ -18,58 +18,52 @@
         <nav th:replace="~{fragmentos/menu::menu}">
         </nav>
     </header>
-    <main class="d-flex flex-column align-items-center">
-        <h2 class="text-light">Especies</h2>
+    <main class="container-fluid">
         <div class="row">
-
-            <div class="col-2">
-                
+            <div class="col-12">
+                <h2 class="text-light text-center">Especies</h2>
             </div>
-            <div class="col">
-                <table class="table container mx-5">
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="table">
                     <thead>
                         <tr>
                             <th scope="col" class="text-center ">
-                                <a href="#" th:href="@{/especies/newEspecie}">
+                                <a href="#" th:href="@{/especies/admin/newEspecie}">
                                     <i class="bi bi-plus-square"></i>
                                 </a>
                             </th>
-                            <th scope="col"><a th:href="@{/especies/gestEspecies}">Id</a></th>
-                            <th scope="col"><a th:href="@{/especies/gestEspecies/sortedName}">Nombre</a></th>
-                            <th scope="col"><a th:href="@{/especies/gestEspecies/sortedComun}">N.Común</a></th>
-                            <th scope="col">Descripción</th>
-                            <th scope="col">Foto Url</th>
-                            <th scope="col"><a th:href="@{/especies/gestEspecies/sortedGen}">N. Genero</a></th>
-                            <th scope="col"></th>
+                            <th class="col"><a th:href="@{/especies/admin/gestEspecies}">Id</a></th>
+                            <th class="col"><a th:href="@{/especies/admin/gestEspecies/sortedName}">Nombre</a></th>
+                            <th class="col"><a th:href="@{/especies/admin/gestEspecies/sortedComun}">N.Común</a></th>
+                            <th class="col">Descripción</th>
+                            <th class="col"><a th:href="@{/especies/admin/gestEspecies/sortedGen}">N. Genero</a></th>
+                            <th class="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="especie:${especies}">
-                            <td></td>
-                            <td th:text="${especie.id}" scope="row">Id</td>
-                            <td th:text="${especie.nombre}">Nombre</td>
-                            <td th:text="${especie.descripcion}">N.Común</td>
-                            <td th:text="${especie.detalles}">Descripcion</td>
-                            <td th:text="${especie.foto}">foto</td>
-                            <td th:text="${especie.genero.nombre}">Genero</td>
-                            <td class="pe-4">
-                            <a class="me-2" href="#" th:href="@{/especies/editarEspecie/{id}(id=${especie.id})}">
-                                <i class="bi bi-pencil-square "></i>
-                            </a>
-                            <a href="#" th:href="@{/especies/borrar/{id}(id=${especie.id})}">
-                                <i class="bi bi-trash3-fill"></i>
-                            </a>
+                            <td class="text-wrap d-flex justify-content-center"><img th:src="${especie.foto}"
+                            style="width:32px; height: 32px; object-fit: cover; border-radius: 10pt;" /></td>
+                            <td class="text-wrap" th:text="${especie.id}" scope="row">Id</td>
+                            <td class="text-wrap" th:text="${especie.nombre}">Nombre</td>
+                            <td class="text-wrap" th:text="${especie.descripcion}">N.Común</td>
+                            <td class="text-wrap" th:text="${especie.detalles}">Descripcion</td>
+                            <td class="text-wrap" th:text="${especie.genero.nombre}">Genero</td>
+                            <td class="text-wrap pe-4">
+                                <a class="me-2" href="#" th:href="@{/especies/admin/editarEspecie/{id}(id=${especie.id})}">
+                                    <i class="bi bi-pencil-square "></i>
+                                </a>
+                                <a href="#" th:href="@{/especies/admin/borrar/{id}(id=${especie.id})}">
+                                    <i class="bi bi-trash3-fill"></i>
+                                </a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div class="col-2">
-
-            </div>
-
         </div>
-
     </main>
 </body>
 

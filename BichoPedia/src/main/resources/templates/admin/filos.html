@@ -18,15 +18,11 @@
         <nav th:replace="~{fragmentos/menu::menu}">
         </nav>
     </header>
-    <main class="d-flex flex-column align-items-center">
-        <h2 class="text-light">Filos</h2>
+    <main class="container-fluid">
         <div class="row">
-
-            <div class="col-2">
-                
-            </div>
-            <div class="col">
-                <table class="table container mx-5">
+            <div class="col-12">
+                <h2 class="text-light text-center">Filos</h2>
+                <table class="table container ">
                     <thead>
                         <tr>
                             <th scope="col" class="text-center">
@@ -34,25 +30,32 @@
                                     <i class="bi bi-plus-square"></i>
                                 </a>
                             </th>
-                            <th scope="col"><a th:href="@{/filos/gestFilos}">Id</a></th>
-                            <th scope="col"><a th:href="@{/filos/gestFilos/sortedName}">Nombre</a></th>
-                            <th scope="col"><a th:href="@{/filos/gestFilos/sortedComun}">N.Común</a></th>
-                            <th scope="col"><a th:href="@{/filos/gestFilos/sortedRei}">N. Rei</a></th>
+                            <th scope="col"><a th:href="@{/filos/admin/gestFilos}">Id</a></th>
+                            <th scope="col"><a th:href="@{/filos/admin/gestFilos/sortedName}">Nombre</a></th>
+                            <th scope="col"><a th:href="@{/filos/admin/gestFilos/sortedComun}">N.Común</a></th>
+                            <th scope="col"><a th:href="@{/filos/admin/gestFilos/sortedRei}">N. Rei</a></th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="filos:${filos}">
-                            <td></td>
+                            <td class="text-wrap d-flex justify-content-center">
+                                <img                              th:if="${filos.clases != null and filos.clases.size() > 0 and filos.clases[0].ordenes 
+                                    != null and filos.clases[0].ordenes.size() > 0 and filos.clases[0].ordenes[0].familias 
+                                    != null and filos.clases[0].ordenes[0].familias.size() > 0 and filos.clases[0].ordenes[0].familias[0].generos 
+                                    != null and filos.clases[0].ordenes[0].familias[0].generos.size() > 0 and filos.clases[0].ordenes[0].familias[0].generos[0].especies 
+                                    != null and filos.clases[0].ordenes[0].familias[0].generos[0].especies.size() > 0}" 
+                                th:src="${filos.clases[0].ordenes[0].familias[0].generos[0].especies[0].foto}" 
+                                style="width:32px; height: 32px; object-fit: cover; border-radius: 10pt;" /></td>
                             <td th:text="${filos.id}" scope="row">Id</td>
                             <td th:text="${filos.nombre}">Nombre</td>
                             <td th:text="${filos.descripcion}">N.Común</td>
                             <td th:text="${filos.reino.nombre}">Reino</td>
                             <td class="pe-2">
-                            <a class="me-2" href="#" th:href="@{/filos/editarFilo/{id}(id=${filos.id})}">
+                            <a class="me-2" href="#" th:href="@{/filos/admin/editarFilo/{id}(id=${filos.id})}">
                                 <i class="bi bi-pencil-square "></i>
                             </a>
-                            <a href="#" th:href="@{/filos/borrar/{id}(id=${filos.id})}">
+                            <a href="#" th:href="@{/filos/admin/borrar/{id}(id=${filos.id})}">
                                 <i class="bi bi-trash3-fill"></i>
                             </a>
                             </td>
@@ -60,12 +63,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-2">
-
-            </div>
-
         </div>
-
     </main>
 </body>
 

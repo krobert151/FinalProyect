@@ -42,7 +42,7 @@ public class ReinoController {
 
 	}
 	
-	@GetMapping("/gestReinos")
+	@GetMapping("/admin/gestReinos")
 	public String crudReinos(Model model) {
 		List<Reino>reinos=service.findAll();
 		model.addAttribute("reinos", reinos);
@@ -50,7 +50,7 @@ public class ReinoController {
 			
 	}
 	
-	@GetMapping("/gestReinos/sortedName")
+	@GetMapping("/admin/gestReinos/sortedName")
 	public String crudReinosSortedName(Model model) {
 		List<Reino>reinos=service.sortedName();
 		model.addAttribute("reinos", reinos);
@@ -58,7 +58,7 @@ public class ReinoController {
 		
 	}
 	
-	@GetMapping("/gestReinos/sortedComun")
+	@GetMapping("/admin/gestReinos/sortedComun")
 	public String crudReinosSortedComun(Model model) {
 		List<Reino>reinos=service.sortedComunN();
 		model.addAttribute("reinos", reinos);
@@ -66,7 +66,7 @@ public class ReinoController {
 		
 	}
 	
-	@GetMapping("/editarReino/{id}")
+	@GetMapping("/admin/editarReino/{id}")
 	public String mostrarFormularioEdicionReinos(@PathVariable("id")long id,Model model) {
 		
 		Reino reinoEdit=service.findById(id);
@@ -80,7 +80,7 @@ public class ReinoController {
 		
 		
 	}
-	@GetMapping("borrar/{id}")
+	@GetMapping("/admin/borrar/{id}")
 	public String borrarReino(@PathVariable("id")long id) {
 		service.deleteById(id);
 		return "redirect:/reinos/gestReinos";

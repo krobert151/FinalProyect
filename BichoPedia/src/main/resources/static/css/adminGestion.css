@@ -4,7 +4,6 @@ body{
 }
 table{
     border-radius: 5pt;
-    width: 100%;
     background-color: white ;
 }
 a{
@@ -19,6 +18,10 @@ tbody>tr>td:last-child>a:first-child:hover{
 }
 tbody>tr>td:last-child>a:last-child:hover{
     color: red;
+}
+tbody>tr>td{
+    word-wrap: normal;
+    max-width: none;
 }
 thead>tr>th:first-child>a:hover{
     scale: 1.1;

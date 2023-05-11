@@ -48,35 +48,35 @@ public class OrdenController {
 
 	}
 	
-	@GetMapping("/gestOrdenes")
+	@GetMapping("/admin/gestOrdenes")
 	public String crudOrdenes(Model model) {
 		List<Orden> ordenes = service.findAll();
 		model.addAttribute("ordenes", ordenes);
 		return "admin/ordenes";
 		
 	}
-	@GetMapping("/gestOrdenes/sortedName")
+	@GetMapping("/admin/gestOrdenes/sortedName")
 	public String crudOrdenesSortedName(Model model) {
 		List<Orden> ordenes = service.sortedName();
 		model.addAttribute("ordenes", ordenes);
 		return "admin/ordenes";
 		
 	}
-	@GetMapping("/gestOrdenes/sortedComun")
+	@GetMapping("/admin/gestOrdenes/sortedComun")
 	public String crudOrdenesSortedComun(Model model) {
 		List<Orden> ordenes = service.sortedComunN();
 		model.addAttribute("ordenes", ordenes);
 		return "admin/ordenes";
 		
 	}
-	@GetMapping("/gestOrdenes/sortedCla")
+	@GetMapping("/admin/gestOrdenes/sortedCla")
 	public String crudOrdenesSortedCla(Model model) {
 		List<Orden> ordenes = service.sortedCla();
 		model.addAttribute("ordenes", ordenes);
 		return "admin/ordenes";
 		
 	}
-	@GetMapping("/editarOrden/{id}")
+	@GetMapping("/admin/editarOrden/{id}")
 	public String mostrarFormularioEdicionOrdenes(@PathVariable("id")long id, Model model) {
 		Orden ordenEdit = service.findById(id);
 		
@@ -90,7 +90,7 @@ public class OrdenController {
 			return "redirect:/ordenes/gestOrdenes";
 		
 	}
-	@GetMapping("borrar/{id}")
+	@GetMapping("/admin/borrar/{id}")
 	public String borrarOrden(@PathVariable("id")long id) {
 		service.deleteById(id);
 		return "redirect:/ordenes/gestOrdenes";

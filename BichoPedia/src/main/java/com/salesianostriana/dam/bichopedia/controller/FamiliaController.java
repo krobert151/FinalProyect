@@ -48,7 +48,7 @@ public class FamiliaController {
 
 	}
 	
-	@GetMapping("/gestFamilias")
+	@GetMapping("/admin/gestFamilias")
 	public String curdFamilias(Model model) {
 		List<Familia> familias = service.findAll();
 		model.addAttribute("familias", familias);
@@ -56,7 +56,7 @@ public class FamiliaController {
 		
 	}
 	
-	@GetMapping("/gestFamilias/sortedName")
+	@GetMapping("/admin/gestFamilias/sortedName")
 	public String crudFamiliasSortedName(Model model) {
 		List<Familia> familias = service.sortedName();
 		model.addAttribute("familias", familias);
@@ -64,14 +64,14 @@ public class FamiliaController {
 		
 	}
 	
-	@GetMapping("/gestFamilias/sortedOrd")
+	@GetMapping("/admin/gestFamilias/sortedOrd")
 	public String crudFamiliasSortedOrd(Model model) {
 		List<Familia> familias = service.sortedOrd();
 		model.addAttribute("familias", familias);
 		return "admin/familias";	
 		
 	}
-	@GetMapping("/gestFamilias/sortedComun")
+	@GetMapping("/admin/gestFamilias/sortedComun")
 	public String crudFamiliasSortedComun(Model model) {
 		List<Familia>familias=service.sortedComunN();
 		model.addAttribute("familias", familias);
@@ -79,7 +79,7 @@ public class FamiliaController {
 		
 	}
 	
-	@GetMapping("/editarFamilia/{id}")
+	@GetMapping("/admin/editarFamilia/{id}")
 	public String mostrarFormularioEdicionFamilias(@PathVariable("id")long id,Model model) {
 		Familia familiaEdit = service.findById(id);
 		
@@ -91,7 +91,7 @@ public class FamiliaController {
 			return "redirect:/familias/gestFamilias";
 		
 	}
-	@GetMapping("/borrar/{id}")
+	@GetMapping("/admin/borrar/{id}")
 	public String borrarFamilia(@PathVariable("id")long id) {
 		
 		service.deleteById(id);

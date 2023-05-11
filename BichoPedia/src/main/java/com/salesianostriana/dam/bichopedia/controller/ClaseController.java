@@ -49,35 +49,35 @@ public class ClaseController {
 
 	}
 	
-	@GetMapping("/gestClases")
+	@GetMapping("/admin/gestClases")
 	public String crudClases(Model model) {
 		List<Clase>clases = service.findAll();
 		model.addAttribute("clases", clases);
 		return "admin/clases";
 	}
 	
-	@GetMapping("/gestClases/sortedName")
+	@GetMapping("/admin/gestClases/sortedName")
 	public String crudClasesSortedName(Model model) {
 		List<Clase>clases = service.sortedName();
 		model.addAttribute("clases", clases);
 		return "admin/clases";
 	}
 	
-	@GetMapping("/gestClases/sortedComun")
+	@GetMapping("/admin/gestClases/sortedComun")
 	public String crudClasesSortedComun(Model model) {
 		List<Clase>clases = service.sortedComun();
 		model.addAttribute("clases", clases);
 		return "admin/clases";
 	}
 	
-	@GetMapping("/gestClases/sortedFil")
+	@GetMapping("/admin/gestClases/sortedFil")
 	public String crudClasesSortedFil(Model model) {
 		List<Clase>clases = service.sortedFil();
 		model.addAttribute("clases", clases);
 		return "admin/clases";
 	}
 
-	@GetMapping("/editarClase/{id}")
+	@GetMapping("/admin/editarClase/{id}")
 	public String mostrarFormularioEdicionClases(@PathVariable("id")long id,Model model) {
 			Clase claseEdit = service.findById(id);
 			
@@ -91,7 +91,7 @@ public class ClaseController {
 				return "redirect:/clases/gestClases";
 	}
 	
-	@GetMapping("borrar/{id}")
+	@GetMapping("/admin/borrar/{id}")
 	public String borrarClase(@PathVariable("id")long id) {
 		service.deleteById(id);
 		return "redirect:/clases/gestClases";

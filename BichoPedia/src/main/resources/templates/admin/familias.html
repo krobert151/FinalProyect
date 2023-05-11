@@ -18,15 +18,11 @@
         <nav th:replace="~{fragmentos/menu::menu}">
         </nav>
     </header>
-    <main class="d-flex flex-column align-items-center">
-        <h2 class="text-light">Familias</h2>
+    <main class="container-fluid">
         <div class="row">
-
-            <div class="col-2">
-                
-            </div>
-            <div class="col">
-                <table class="table container mx-5">
+            <div class="col-12">
+                <h2 class="text-center text-light">Familias</h2>
+                <table class="table container">
                     <thead>
                         <tr>
                             <th scope="col" class="text-center ">
@@ -34,38 +30,36 @@
                                     <i class="bi bi-plus-square"></i>
                                 </a>
                             </th>
-                            <th scope="col"><a th:href="@{/familias/gestFamilias}">Id</a></th>
-                            <th scope="col"><a th:href="@{/familias/gestFamilias/sortedName}">Nombre</a></th>
-                            <th scope="col"><a th:href="@{/familias/gestFamilias/sortedComun}">N.Común</a></th>
-                            <th scope="col"><a th:href="@{/familias/gestFamilias/sortedOrd}">N. Familias</a></th>
+                            <th scope="col"><a th:href="@{/familias/admin/gestFamilias}">Id</a></th>
+                            <th scope="col"><a th:href="@{/familias/admin/gestFamilias/sortedName}">Nombre</a></th>
+                            <th scope="col"><a th:href="@{/familias/admin/gestFamilias/sortedComun}">N.Común</a></th>
+                            <th scope="col"><a th:href="@{/familias/admin/gestFamilias/sortedOrd}">N. Familias</a></th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="familias:${familias}">
-                            <td></td>
+                            <td class="text-wrap d-flex justify-content-center">
+                                <img th:if="${familias.generos != null and familias.generos.size() > 0 and familias.generos[0].especies != null and familias.generos[0].especies.size() > 0}" 
+                            th:src="${familias.generos[0].especies[0].foto}" 
+                                style="width:32px; height: 32px; object-fit: cover; border-radius: 10pt;" /></td>    
                             <td th:text="${familias.id}" scope="row">Id</td>
                             <td th:text="${familias.nombre}">Nombre</td>
                             <td th:text="${familias.descripcion}">N.Común</td>
                             <td th:text="${familias.orden.nombre}">Orden</td>
                             <td class="pe-2">
-                            <a class="me-2" href="#" th:href="@{/familias/editarFamilia/{id}(id=${familias.id})}">
-                                <i class="bi bi-pencil-square "></i>
-                            </a>
-                            <a href="#" th:href="@{/familias/borrar/{id}(id=${familias.id})}">
-                                <i class="bi bi-trash3-fill"></i>
-                            </a>
+                                <a class="me-2" href="#" th:href="@{/familias/admin/editarFamilia/{id}(id=${familias.id})}">
+                                    <i class="bi bi-pencil-square "></i>
+                                </a>
+                                <a href="#" th:href="@{/familias/admin/borrar/{id}(id=${familias.id})}">
+                                    <i class="bi bi-trash3-fill"></i>
+                                </a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div class="col-2">
-
-            </div>
-
         </div>
-
     </main>
 </body>
 

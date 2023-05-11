@@ -45,7 +45,7 @@ public class FiloController {
 		return "redirect:/filos/";
 
 	}
-	@GetMapping("/gestFilos")
+	@GetMapping("/admin/gestFilos")
 	public String crudFilo(Model model) {
 		List<Filo>filos = service.findAll();
 		model.addAttribute("filos", filos);
@@ -53,7 +53,7 @@ public class FiloController {
 	
 	}
 	
-	@GetMapping("/gestFilos/sortedName")
+	@GetMapping("/admin/gestFilos/sortedName")
 	public String crudFiloSortedName(Model model) {
 		List<Filo>filos = service.sortedName();
 		model.addAttribute("filos", filos);
@@ -61,7 +61,7 @@ public class FiloController {
 		
 	}
 	
-	@GetMapping("/gestFilos/sortedComun")
+	@GetMapping("/admin/gestFilos/sortedComun")
 	public String crudFiloSortedComun(Model model) {
 		List<Filo>filos = service.sortedComunN();
 		model.addAttribute("filos", filos);
@@ -77,7 +77,7 @@ public class FiloController {
 		
 	}
 	
-	@GetMapping("/editarFilo/{id}")
+	@GetMapping("/admin/editarFilo/{id}")
 	public String mostrarFormularioEdicionFilos(@PathVariable("id")long id,Model model) {
 		Filo filoEdit = service.findById(id);
 		
@@ -89,7 +89,7 @@ public class FiloController {
 			return "redirect:/clases/gestClases";
 		
 	}
-	@GetMapping("borrar/{id}")
+	@GetMapping("/admin/borrar/{id}")
 	public String borrarFilo(@PathVariable("id")long id) {
 		service.deleteById(id);
 		return "redirect:/filos/gestFilos";
