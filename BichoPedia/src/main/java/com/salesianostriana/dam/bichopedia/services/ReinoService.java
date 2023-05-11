@@ -23,18 +23,10 @@ public class ReinoService extends BaseService<Reino, Long, ReinoRepository> {
 	}
 
 	public List<Reino> sortedName(){
-		return this.repositorio.findAll()
-				.stream()
-				.sorted((x,y)-> x.getNombre()
-						.compareToIgnoreCase(y.getNombre()))
-				.toList();
+		return this.repositorio.findByOrderByNombreAsc();
 	}
 	public List<Reino> sortedComunN(){
-		return this.repositorio.findAll()
-				.stream()
-				.sorted((x,y)->x.getDescripcion()
-						.compareToIgnoreCase(y.getDescripcion()))
-				.toList();
+		return this.repositorio.findByOrderByDescripcionAsc();
 	}
 	
 

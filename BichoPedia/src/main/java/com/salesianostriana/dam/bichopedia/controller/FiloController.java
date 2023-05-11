@@ -69,9 +69,9 @@ public class FiloController {
 		
 	}
 	
-	@GetMapping("/gestFilos/sortedRei")
+	@GetMapping("/gestFilos/sortedReino")
 	public String crudFiloSortedRei(Model model) {
-		List<Filo>filos = service.sortedRei();
+		List<Filo>filos = service.sortedReino();
 		model.addAttribute("filos", filos);
 		return "admin/filos";
 		

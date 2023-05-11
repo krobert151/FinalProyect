@@ -80,7 +80,7 @@ a {
     transform: scale(1.1) translate(-10px, -5px);
 
 }
-.registroBox{
+.registroBox>a{
     position: relative;
     aspect-ratio: 1/1;
     display: flex;
@@ -90,10 +90,14 @@ a {
     border: rgb(0, 0, 0) 1px solid;
     padding: 0;
 }
-.registroBox>img{
+.row>*{
+    padding-left: 0;
+    padding-right: 0;
+}
+.registroBox>a>img{
     border-radius: 5pt;
 }
-.registroBox>div{
+.registroBox>a>div{
     background-color: #2525255e;
     padding: 5px;
     margin: 5px;

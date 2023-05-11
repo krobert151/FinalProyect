@@ -18791,3 +18791,7 @@ Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/USUARIO
 	at org.h2.mvstore.FileStore.open(FileStore.java:128)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:452)
 	... 60 more
+2023-05-11 16:07:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Valor demasiado largo para la columna "DETALLES CHARACTER VARYING(255)": "U&'Los lic\\00f3sidos (Lycosidae) son una familia de ara\\00f1as araneomorfas, ent... (525)"
+Value too long for column "DETALLES CHARACTER VARYING(255)": "U&'Los lic\\00f3sidos (Lycosidae) son una familia de ara\\00f1as araneomorfas, ent... (525)"; SQL statement:
+update especie set descripcion=?, detalles=?, foto=?, genero_id=?, nombre=? where id=? [22001-214]

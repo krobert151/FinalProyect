@@ -34,6 +34,22 @@ public class EspecieController {
 	    return "especie/especies";
 	}
 	
+	@GetMapping("/details/{id}")
+	public String detalleEspecie(@PathVariable("id") Long id,Model model) {
+		
+		Especie especieDetailed = service.findById(id);
+		
+		if (especieDetailed != null) {
+			
+			model.addAttribute("especie", especieDetailed);
+			return "especie/especieDetails";
+			
+		}else
+			return "redirect:/especies/";
+		
+		
+	}
+	
 	@GetMapping("/newEspecie")
 	public String nuevaEspecie(Model model) {
 		
@@ -81,7 +97,7 @@ public class EspecieController {
 	}
 	
 	@GetMapping("/admin/editarEspecie/{id}")
-	public String mostrarFormularioEdicionEspecie(@PathVariable("id") long id, Model model) {
+	public String mostrarFormularioEdicionEspecie(@PathVariable("id") Long id, Model model) {
 		Especie especieEdit= service.findById(id);
 		
 		if(especieEdit != null) {
@@ -95,7 +111,7 @@ public class EspecieController {
 	}
 	
 	@GetMapping("/admin/borrar/{id}")
-	public String borrarEspecie(@PathVariable("id")long id) {
+	public String borrarEspecie(@PathVariable("id")Long id) {
 		service.deleteById(id);
 		return "redirect:/especies/gestEspecies";
 		

@@ -10,6 +10,7 @@
     <link rel="stylesheet" th:href="@{/css/adminGestion.css}" href="/css/loginRegister.css">
     <link rel="stylesheet" href="../../static/css/adminGestion.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script th:href="@{/js/script.js}" src="/js/script.js"></script>
     <title>Especies</title>
 </head>
 
@@ -26,33 +27,38 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="text-center ">
+                <table class="table ">
+                    <thead class="container-fluid">
+                        <tr class="row container-fluid">
+                            <th scope="col-1" class="text-center col-1 ">
                                 <a href="#" th:href="@{/especies/admin/newEspecie}">
                                     <i class="bi bi-plus-square"></i>
                                 </a>
                             </th>
-                            <th class="col"><a th:href="@{/especies/admin/gestEspecies}">Id</a></th>
-                            <th class="col"><a th:href="@{/especies/admin/gestEspecies/sortedName}">Nombre</a></th>
-                            <th class="col"><a th:href="@{/especies/admin/gestEspecies/sortedComun}">N.Común</a></th>
-                            <th class="col">Descripción</th>
-                            <th class="col"><a th:href="@{/especies/admin/gestEspecies/sortedGen}">N. Genero</a></th>
-                            <th class="col"></th>
+                            <th class="col-1"><a th:href="@{/especies/admin/gestEspecies}">Id</a></th>
+                            <th class="col-2"><a th:href="@{/especies/admin/gestEspecies/sortedName}">Nombre</a></th>
+                            <th class="col-2"><a th:href="@{/especies/admin/gestEspecies/sortedComun}">N.Común</a></th>
+                            <th class="col-4">Descripción</th>
+                            <th class="col-1"><a th:href="@{/especies/admin/gestEspecies/sortedGen}">N. Genero</a></th>
+                            <th class="col-1"></th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr th:each="especie:${especies}">
-                            <td class="text-wrap d-flex justify-content-center"><img th:src="${especie.foto}"
-                            style="width:32px; height: 32px; object-fit: cover; border-radius: 10pt;" /></td>
-                            <td class="text-wrap" th:text="${especie.id}" scope="row">Id</td>
-                            <td class="text-wrap" th:text="${especie.nombre}">Nombre</td>
-                            <td class="text-wrap" th:text="${especie.descripcion}">N.Común</td>
-                            <td class="text-wrap" th:text="${especie.detalles}">Descripcion</td>
-                            <td class="text-wrap" th:text="${especie.genero.nombre}">Genero</td>
-                            <td class="text-wrap pe-4">
-                                <a class="me-2" href="#" th:href="@{/especies/admin/editarEspecie/{id}(id=${especie.id})}">
+                    <tbody class="container-fluid">
+                        <tr th:each="especie:${especies}" class="row container-fluid">
+                            <td class="col-1 d-flex justify-content-center "><img th:src="${especie.foto}" /></td>
+                            <td class="col-1" th:text="${especie.id}" scope="row">Id</td>
+                            <td class="col-2" th:text="${especie.nombre}">Nombre</td>
+                            <td class="col-2" th:text="${especie.descripcion}">N.Común</td>
+                            <td class="col-4">
+                                <p th:text="${especie.detalles}" class="texto-completo" style="display:none"></p>
+                                <a th:text="${#strings.length(especie.detalles) gt 50} ? ${especie.detalles.substring(0, 50)}+'...' : ${especie.detalles}" class="texto-corto"></a>
+                                <a href="#" class="leer-mas" onclick="mostrarTextoCompleto(this)"> leer más</a>
+                            </td>
+                              
+                            <td class="col-1" th:text="${especie.genero.nombre}">Genero</td>
+                            <td class="col pe-4">
+                                <a class="me-2" href="#"
+                                    th:href="@{/especies/admin/editarEspecie/{id}(id=${especie.id})}">
                                     <i class="bi bi-pencil-square "></i>
                                 </a>
                                 <a href="#" th:href="@{/especies/admin/borrar/{id}(id=${especie.id})}">

@@ -24,31 +24,19 @@ public class GeneroService extends BaseService<Genero,Long,GeneroRepository>{
 	
 	public List<Genero> sortedName(){
 		
-		return this.repositorio.findAll()
-					.stream()
-					.sorted((x,y)->x.getNombre()
-							.compareToIgnoreCase(y.getNombre()))
-					.toList();
+		return this.repositorio.findByOrderByNombreAsc();
 		
 	}
 	
 	public List<Genero> sortedComunN(){
 		
-		return this.repositorio.findAll()
-					.stream()
-					.sorted((x,y)->x.getDescripcion()
-							.compareToIgnoreCase(y.getDescripcion()))
-					.toList();
+		return this.repositorio.findByOrderByFamiliaNombreAsc();
 		
 	}
 	
 	public List<Genero> sortedFam(){
 		
-		return this.repositorio.findAll()
-				.stream()
-				.sorted((x,y)->x.getFamilia().getNombre()
-						.compareToIgnoreCase(y.getFamilia().getNombre()))
-				.toList();
+		return this.repositorio.findByOrderByNombreAsc();
 		
 	}
 	

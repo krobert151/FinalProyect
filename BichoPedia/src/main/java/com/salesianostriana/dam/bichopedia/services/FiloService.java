@@ -22,26 +22,14 @@ public class FiloService extends BaseService<Filo,Long,FiloRepository>{
 	}
 
 	public List<Filo>sortedName(){
-		return this.repositorio.findAll()
-				.stream()
-				.sorted((x,y)->x.getNombre()
-						.compareToIgnoreCase(y.getNombre()))
-				.toList();
+		return this.repositorio.findByOrderByNombreAsc();
 	};
 	public List<Filo>sortedComunN(){
-		return this.repositorio.findAll()
-				.stream()
-				.sorted((x,y)->x.getDescripcion()
-						.compareToIgnoreCase(y.getDescripcion()))
-				.toList();
+		return this.repositorio.findByOrderByDescripcionAsc();
 		
 	};
-	public List<Filo>sortedRei(){
-		return this.repositorio.findAll()
-				.stream()
-				.sorted((x,y)->x.getReino().getNombre()
-						.compareToIgnoreCase(y.getReino().getNombre()))
-				.toList();
+	public List<Filo>sortedReino(){
+		return this.repositorio.findByOrderByReinoNombreAsc();
 	};
 	
 }
