@@ -27,5 +27,10 @@ public class EspecieService extends BaseService<Especie,Long,EspecieRepository>{
 		return this.repositorio.findByOrderByDescripcionAsc();
 	}
 	
+	public List<Especie> findAllByGenero(Long generoId){
+		
+		return this.repositorio.findByGeneroId(generoId);
+		
+	}
 	
 }

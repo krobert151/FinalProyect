@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.bichopedia.model.Clase;
 import com.salesianostriana.dam.bichopedia.model.Filo;
@@ -26,9 +27,17 @@ public class ClaseController {
 	private FiloService filoService;
 			
 	@GetMapping("/")
-	public String showCalses(Model model) {
+	public String showCalses(@RequestParam(name="filoId",required=false)Long filoId,  Model model) {
 		
-		model.addAttribute("claseList",service.findAll());
+		List<Clase>clases;
+		
+		if(filoId==null) 
+			clases= service.findAll();
+		else
+			clases=service.findAllByFiloId(filoId);
+			
+			
+		model.addAttribute("claseList",clases);
 		
 		return "clase/clases";
 		

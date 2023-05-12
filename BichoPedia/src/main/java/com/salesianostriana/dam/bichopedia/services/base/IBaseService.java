@@ -2,6 +2,8 @@ package com.salesianostriana.dam.bichopedia.services.base;
 
 import java.util.List;
 
+import org.springframework.data.domain.Sort;
+
 public interface IBaseService<T, ID> {
 
 	/**
@@ -43,5 +45,7 @@ public interface IBaseService<T, ID> {
 	 * @param id
 	 */
 	void deleteById(ID id);
+	
+	List<T> findAll(Sort sort);
 
 }

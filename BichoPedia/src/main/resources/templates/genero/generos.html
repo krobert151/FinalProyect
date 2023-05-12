@@ -41,11 +41,9 @@
                     </form>
                     <div class="row d-flex justify-content-center text-light">
                         <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1" th:each="genero : ${generoList}">
-                            <a class="h-100 w-100">
-
+                            <a class="h-100 w-100" th:href="@{/especies/?(idGenero=${genero.id})}">
                                 <img class="background-image"
                                     th:src="${not (#strings.isEmpty(genero.especies[0].foto))} ? ${genero.especies[0].foto} : '/img/fotoEspecie.png'" />
-
                                 <div class="text">
                                     <h3 th:text="${genero.nombre}">Gypaetus barbatus</h3>
                                     <p th:text="${genero.descripcion}">Description</p>

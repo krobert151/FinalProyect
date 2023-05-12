@@ -2,6 +2,7 @@ package com.salesianostriana.dam.bichopedia.services.base;
 
 import java.util.List;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
@@ -72,6 +73,12 @@ public abstract class BaseService<T, ID, R extends JpaRepository<T, ID>> impleme
 	public void deleteById(ID id) {
 		repositorio.deleteById(id);
 	}
+
+	@Override
+	public List<T> findAll(Sort sort) {
+		return repositorio.findAll(sort);
+	}
+	
 	
 	
 }

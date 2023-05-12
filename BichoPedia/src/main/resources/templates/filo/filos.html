@@ -40,8 +40,7 @@
                     </form>
                     <div class="row d-flex justify-content-center text-light">
                         <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1" th:each="filo : ${filoList}">
-                            <a class="h-100 w-100">
-
+                            <a class="h-100 w-100" th:href="@{/clases/?(filoId=${filo.id})}">
                                 <img class="background-image" th:if="${filo.clases != null and filo.clases.size() > 0 and filo.clases[0].ordenes 
                                     != null and filo.clases[0].ordenes.size() > 0 and filo.clases[0].ordenes[0].familias 
                                     != null and filo.clases[0].ordenes[0].familias.size() > 0 and filo.clases[0].ordenes[0].familias[0].generos 

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.bichopedia.model.Genero;
 import com.salesianostriana.dam.bichopedia.services.FamiliaService;
@@ -26,10 +27,16 @@ public class GeneroController {
 	
 	
 	@GetMapping("/")
-	public String showGeneros(Model model) {
+	public String showGeneros(@RequestParam(name="idFamilia", required=false)Long idFamilia, Model model) {
 		
-		model.addAttribute("generoList",service.findAll());
+		List<Genero> generos;
 		
+		if(idFamilia == null) {
+			generos= service.findAll();
+		}else {
+			generos= service.findAllByFamilia(idFamilia);
+		}
+		model.addAttribute("generoList",generos);
 		return "genero/generos";
 	}
 	

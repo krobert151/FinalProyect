@@ -32,4 +32,10 @@ public class FiloService extends BaseService<Filo,Long,FiloRepository>{
 		return this.repositorio.findByOrderByReinoNombreAsc();
 	};
 	
+	public List<Filo>FindAllByReinoId(Long reinoId){
+		
+		return this.repositorio.findByReinoId(reinoId);
+		
+	}
+	
 }

@@ -35,6 +35,11 @@ public class FamiliaService extends BaseService<Familia,Long,FamiliaRepository>{
 		return this.repositorio.findByOrderByOrdenNombreAsc();
 		
 	}
+	public List<Familia> findAllByOrdenId(Long ordenId){
+		
+		return this.repositorio.findByOrdenId(ordenId);
+		
+	}
 	
 
 }

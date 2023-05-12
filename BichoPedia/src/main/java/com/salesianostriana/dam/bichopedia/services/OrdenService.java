@@ -31,6 +31,11 @@ public class OrdenService extends BaseService<Orden,Long,OrdenRepository>{
 		return this.repositorio.findByOrderByDescripcionAsc();
 		
 	}
+	public List<Orden> findAllByClaseId(Long claseId){
+		
+		return this.repositorio.findByClaseId(claseId);
+		
+	}
 	
 	
 

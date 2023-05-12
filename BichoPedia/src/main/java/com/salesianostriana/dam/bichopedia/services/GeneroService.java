@@ -40,6 +40,11 @@ public class GeneroService extends BaseService<Genero,Long,GeneroRepository>{
 		
 	}
 	
+	public List<Genero> findAllByFamilia(Long familiaId){
+		
+		return this.repositorio.findByFamiliaId(familiaId);
+		
+	}
 	
 	
 	

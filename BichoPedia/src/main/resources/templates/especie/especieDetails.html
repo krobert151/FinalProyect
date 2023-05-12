@@ -19,8 +19,30 @@
         </nav>
     </header>
     <main>
-        <div>
-            
+        <div class="container fondodifu p-3 my-3 px-5">
+            <h1 class="text-center text-dark mb-4 nombreEspecie " th:text="${especie.nombre}" >Nombre de la especie</h1>
+            <div class="row text-dark">
+                <div class="col-3 col-md-6 col-lg-7 col-xl-8" >
+                    <img class="imagenEspecie" th:src="${especie.foto}"  src="../../static/img/fotoEspecie.png" alt="">
+                </div>
+                <div class="col">
+                    <ul class="d-flex flex-column taxList ms-3 pb-5 pt-4">
+                        <li>Reino :   <span th:text="${especie.genero.familia.orden.clase.filo.reino.nombre}"></span> </li>
+                        <li>Filo : <span th:text="${especie.genero.familia.orden.clase.filo.nombre}"></span> </li>
+                        <li>Clase : <span th:text="${especie.genero.familia.orden.clase.nombre}"></span> </li>
+                        <li>Orden : <span th:text="${especie.genero.familia.orden.nombre}"></span> </li>
+                        <li>Familia : <span th:text="${especie.genero.familia.nombre}"></span> </li>
+                        <li>Genero : <span th:text="${especie.genero.nombre}"></span> </li>
+                        <li>Especie : <span th:text="${especie.nombre}"></span> </li>
+                        <li class="mt-3">Nombre común: <span th:text="${especie.descripcion}"></span> </li>
+                    </ul>
+                    
+                </div>
+
+            </div>
+            <div class="row text-dark mt-5 detalles">
+                <p th:text="${especie.detalles}">Textaco</p>
+            </div>
         </div>
     </main>
     <footer th:replace="~{fragmentos/footer::footer}">

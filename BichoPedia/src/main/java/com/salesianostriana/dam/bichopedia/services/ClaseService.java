@@ -30,5 +30,9 @@ public class ClaseService extends BaseService <Clase,Long,ClaseRepository>{
 	public List<Clase>sortedFil(){
 		return this.repositorio.findByOrderByFiloNombreAsc();
 	}
+	public List<Clase>findAllByFiloId(Long filoId){
+		
+		return this.repositorio.findByFiloId(filoId);
+	}
 
 }

@@ -32,7 +32,7 @@
                             <a class="nav-link" th:href="@{/encuentros/}" href="/encuentros">Encuentros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" th:href="@{/especies/}" href="/especies">Especies</a>
+                            <a class="nav-link" th:href="@{/reinos/}" href="/especies">Especies</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/registro/}" href="/registro">Registrar</a>
@@ -62,8 +62,10 @@
                             </div>
                         </li>
                     </ul>
-                    <button class="btn loginbutton bg-light" type="button"> <a th:href="@{/login}"
+                    <button sec:authorize="isAnonymous()" class="btn loginbutton bg-light" type="button"> <a th:href="@{/login}"
                             href="/templates/login.html">Login</a></button>
+                    <button sec:authorize="isAuthenticated()" class="btn loginbutton bg-light" type="button"> <a th:href="@{/login}"
+                            href="/templates/login.html">LogOut</a></button>
                 </div>
             </div>
         </nav>
