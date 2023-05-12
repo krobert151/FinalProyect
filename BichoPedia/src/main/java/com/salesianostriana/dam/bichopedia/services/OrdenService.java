@@ -22,25 +22,18 @@ public class OrdenService extends BaseService<Orden,Long,OrdenRepository>{
 	}
 	
 	public List<Orden>sortedName(){
-		return this.repositorio.findAll()
-				.stream()
-				.sorted((x,y)->x.getNombre()
-						.compareToIgnoreCase(y.getNombre()))
-				.toList();
+		return this.repositorio.findByOrderByNombreAsc();
 	}
 	public List<Orden>sortedCla(){
-		return this.repositorio.findAll()
-				.stream()
-				.sorted((x,y)->x.getClase().getNombre()
-						.compareToIgnoreCase(y.getClase().getNombre()))
-				.toList();
+		return this.repositorio.findByOrderByClaseNombreAsc();
 	}
 	public List<Orden>sortedComunN(){
-		return this.repositorio.findAll()
-				.stream()
-				.sorted((x,y)->x.getDescripcion()
-						.compareToIgnoreCase(y.getDescripcion()))
-				.toList();
+		return this.repositorio.findByOrderByDescripcionAsc();
+		
+	}
+	public List<Orden> findAllByClaseId(Long claseId){
+		
+		return this.repositorio.findByClaseId(claseId);
 		
 	}
 	

@@ -22,25 +22,17 @@ public class ClaseService extends BaseService <Clase,Long,ClaseRepository>{
 	}
 	
 	public List<Clase>sortedName(){
-		return this.repositorio.findAll()
-				.stream()
-				.sorted((x,y)->x.getNombre()
-						.compareToIgnoreCase(y.getNombre()))
-				.toList();
+		return this.repositorio.findByOrderByNombreAsc();
 	}
 	public List<Clase>sortedComun(){
-		return this.repositorio.findAll()
-				.stream()
-				.sorted((x,y)->x.getNombre()
-						.compareToIgnoreCase(y.getNombre()))
-				.toList();
+		return this.repositorio.findByOrderByDescripcionAsc();
 	}
 	public List<Clase>sortedFil(){
-		return this.repositorio.findAll()
-				.stream()
-				.sorted((x,y)->x.getFilo().getNombre()
-						.compareToIgnoreCase(y.getFilo().getNombre()))
-				.toList();
+		return this.repositorio.findByOrderByFiloNombreAsc();
+	}
+	public List<Clase>findAllByFiloId(Long filoId){
+		
+		return this.repositorio.findByFiloId(filoId);
 	}
 
 }

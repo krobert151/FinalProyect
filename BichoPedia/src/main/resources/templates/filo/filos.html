@@ -1,4 +1,4 @@
-<!DOCTYPE html >
+<!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
@@ -7,15 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link th:href="@{/css/style.css}" rel="stylesheet">
-        <link rel="stylesheet" href="../static/css/style.css">
+    <link th:href="@{/css/estilos.css}" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/estilos.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <title>Index</title>
 </head>
 
 <body class="indexmain">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark" th:replace="~{fragmentos/menu::menu}" >
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark" th:replace="~{fragmentos/menu::menu}">
         </nav>
     </header>
     <main>
@@ -32,29 +32,28 @@
                 <div class="col ">
                     <form action="">
                         <div class="d-flex my-3">
-                            <input type="text" class="form-control " id="filo" placeholder="Nombre de la filo"
-                            required>
+                            <input type="text" class="form-control " id="filo" placeholder="Nombre de la filo" required>
                             <button class="btn btn-light">
                                 <i class="bi bi-search"></i>
                             </button>
                         </div>
                     </form>
                     <div class="row d-flex justify-content-center text-light">
-                        <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1" 
-                            th:each="filo : ${filoList}">
-                            <img class="background-image" 
-                            th:if="${filo.clases != null and filo.clases.size() > 0 and filo.clases[0].ordenes 
-                                != null and filo.clases[0].ordenes.size() > 0 and filo.clases[0].ordenes[0].familias 
-                                != null and filo.clases[0].ordenes[0].familias.size() > 0 and filo.clases[0].ordenes[0].familias[0].generos 
-                                != null and filo.clases[0].ordenes[0].familias[0].generos.size() > 0 and filo.clases[0].ordenes[0].familias[0].generos[0].especies 
-                                != null and filo.clases[0].ordenes[0].familias[0].generos[0].especies.size() > 0}" 
-                            th:src="${filo.clases[0].ordenes[0].familias[0].generos[0].especies[0].foto}" />
-                            <div class="text">
-                                <h3 th:text="${filo.nombre}">Gypaetus barbatus</h3>
-                                <p th:text="${filo.descripcion}">Description</p>
-                            </div>
+                        <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1" th:each="filo : ${filoList}">
+                            <a class="h-100 w-100" th:href="@{/clases/?(filoId=${filo.id})}">
+                                <img class="background-image" th:if="${filo.clases != null and filo.clases.size() > 0 and filo.clases[0].ordenes 
+                                    != null and filo.clases[0].ordenes.size() > 0 and filo.clases[0].ordenes[0].familias 
+                                    != null and filo.clases[0].ordenes[0].familias.size() > 0 and filo.clases[0].ordenes[0].familias[0].generos 
+                                    != null and filo.clases[0].ordenes[0].familias[0].generos.size() > 0 and filo.clases[0].ordenes[0].familias[0].generos[0].especies 
+                                    != null and filo.clases[0].ordenes[0].familias[0].generos[0].especies.size() > 0}"
+                                    th:src="${filo.clases[0].ordenes[0].familias[0].generos[0].especies[0].foto}" />
+                                <div class="text">
+                                    <h3 th:text="${filo.nombre}">Gypaetus barbatus</h3>
+                                    <p th:text="${filo.descripcion}">Description</p>
+                                </div>
+                            </a>
                         </div>
-                    </div>                  
+                    </div>
                 </div>
                 <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block">
                     <button class="botonTax my-2">

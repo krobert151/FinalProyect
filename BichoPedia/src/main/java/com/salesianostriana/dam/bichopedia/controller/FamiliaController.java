@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.bichopedia.model.Familia;
 import com.salesianostriana.dam.bichopedia.services.FamiliaService;
@@ -25,9 +26,18 @@ public class FamiliaController {
 	private OrdenService ordenService;
 	
 	@GetMapping("/")
-	public String showFamilias(Model model) {
+	public String showFamilias(@RequestParam(name="ordenId", required=false)Long ordenId,  Model model) {
 		
-		model.addAttribute("familiaList", service.findAll());
+		List<Familia> familias;
+		
+		if(ordenId==null) {
+			
+			familias= service.findAll();
+			
+		}else {
+			familias=service.findAllByOrdenId(ordenId);
+		}
+		model.addAttribute("familiaList", familias);
 		
 		return "familia/familias";
 	}

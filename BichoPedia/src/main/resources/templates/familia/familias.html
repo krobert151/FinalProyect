@@ -1,4 +1,4 @@
-<!DOCTYPE html >
+<!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
@@ -7,15 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link th:href="@{/css/style.css}" rel="stylesheet">
-        <link rel="stylesheet" href="../static/css/style.css">
+    <link th:href="@{/css/estilos.css}" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/estilos.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <title>Index</title>
 </head>
 
 <body class="indexmain">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark" th:replace="~{fragmentos/menu::menu}" >
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark" th:replace="~{fragmentos/menu::menu}">
         </nav>
     </header>
     <main>
@@ -29,39 +29,42 @@
                         </a>
                     </button>
                 </div>
-            <div class="col">
+                <div class="col">
                     <form action="">
                         <div class="d-flex my-3">
                             <input type="text" class="form-control " id="familia" placeholder="Nombre de la familia"
-                            required>
+                                required>
                             <button class="btn btn-light">
                                 <i class="bi bi-search"></i>
                             </button>
                         </div>
                     </form>
                     <div class="row d-flex justify-content-center text-light">
-                        <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1" th:each="familia : ${familiaList}">
-                            <img class="background-image" 
-                            th:if="${familia.generos != null and familia.generos.size() > 0 and familia.generos[0].especies != null and familia.generos[0].especies.size() > 0}" 
-                            th:src="${familia.generos[0].especies[0].foto}" />                            
-                            <div class="text">
-                                <h3 th:text="${familia.nombre}">Gypaetus barbatus</h3>
-                                <p th:text="${familia.descripcion}">Description</p>
-                            </div>
+                        <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1"
+                            th:each="familia : ${familiaList}">
+                            <a class="h-100 w-100" th:href="@{/generos/?(idFamilia=${familia.id})}">
+                                <img class="background-image"
+                                    th:if="${familia.generos != null and familia.generos.size() > 0 and familia.generos[0].especies != null and familia.generos[0].especies.size() > 0}"
+                                    th:src="${familia.generos[0].especies[0].foto}" />
+                                <div class="text">
+                                    <h3 th:text="${familia.nombre}">Gypaetus barbatus</h3>
+                                    <p th:text="${familia.descripcion}">Description</p>
+                                </div>
+                            </a>
                         </div>
-                    </div>                  
+                    </div>
                 </div>
                 <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block">
                     <button class="botonTax my-2">
-                        <a  class="py-1 px-3 botonLink" th:href="@{/ordenes/}" href="/ordenes">
+                        <a class="py-1 px-3 botonLink" th:href="@{/ordenes/}" href="/ordenes">
                             <i class="bi bi-arrow-up botonIcono"></i>
-                            <span class="botonTexto" >Ordenes</span>
+                            <span class="botonTexto">Ordenes</span>
                         </a>
                     </button>
                     <button class="botonTax my-2">
-                        <a  class="py-1 px-3 botonLink" th:href="@{/generos/}" href="/generos">
+                        <a class="py-1 px-3 botonLink" th:href="@{/generos/}" href="/generos">
                             <i class="bi bi-arrow-down botonIcono"></i>
-                            <span class="botonTexto" >Generos</span>
+                            <span class="botonTexto">Generos</span>
                         </a>
                     </button>
                 </div>

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.bichopedia.model.Orden;
 import com.salesianostriana.dam.bichopedia.services.ClaseService;
@@ -25,9 +26,19 @@ public class OrdenController {
 	private ClaseService claseService;
 	
 	@GetMapping("/")
-	public String showOrdenes(Model model) {
+	public String showOrdenes(@RequestParam(name="claseId", required=false)Long claseId, Model model) {
 		
-		model.addAttribute("ordenList", service.findAll());
+		List<Orden>ordenes;
+		
+		if(claseId==null) {
+			
+			ordenes= service.findAll();
+			
+		}else {
+			ordenes=service.findAllByClaseId(claseId);
+		}		
+		
+		model.addAttribute("ordenList", ordenes);
 		
 		return "orden/ordenes";
 	}

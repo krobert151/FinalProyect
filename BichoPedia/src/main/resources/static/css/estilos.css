@@ -1,5 +1,7 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
-
+*{
+    text-align: justify;
+}
 .indexmain{
     background-image: url("../img/indexLandscape.jpg");
     background-repeat: no-repeat;
@@ -67,8 +69,13 @@ a {
     text-decoration: none;
 }
 .formulario{
-    background-color: rgba(222, 184, 135, 0.801);
+    background-color: rgba(212, 176, 128, 0.842);
     border-radius: 5pt;
+    box-shadow: 10px 10px 25px #111311;
+}
+.fondodifu{
+    border-radius: 10pt;
+    background-color: rgba(245, 199, 138, 0.842);
     box-shadow: 10px 10px 25px #111311;
 }
 .mainblock:hover {
@@ -80,7 +87,7 @@ a {
     transform: scale(1.1) translate(-10px, -5px);
 
 }
-.registroBox{
+.registroBox>a{
     position: relative;
     aspect-ratio: 1/1;
     display: flex;
@@ -90,10 +97,14 @@ a {
     border: rgb(0, 0, 0) 1px solid;
     padding: 0;
 }
-.registroBox>img{
+.row>*{
+    padding-left: 0;
+    padding-right: 0;
+}
+.registroBox>a>img{
     border-radius: 5pt;
 }
-.registroBox>div{
+.registroBox>a>div{
     background-color: #2525255e;
     padding: 5px;
     margin: 5px;
@@ -178,5 +189,25 @@ a {
 }
 .loginbutton:hover{
     transform: scale(1.1);
+} 
+.imagenEspecie{
+    border-radius: 25pt;
+    width: 100%;  
+    border: 2px solid black;
+    
+}
+.taxList{
+    height: 80%;
+    justify-content: space-evenly;
+    list-style: none;
+    font-size: 130%;
+    font-weight: 700;
+}
 
+.detalles{
+    font-size: 120%;
+    font-weight: 600;
+}
+.nombreEspecie{
+    font-weight: bolder;
 }

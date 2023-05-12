@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.bichopedia.model.Especie;
 import com.salesianostriana.dam.bichopedia.services.EspecieService;
@@ -27,11 +28,34 @@ public class EspecieController {
 	private GeneroService genServcie;
 	
 	@GetMapping("/")
-	public String verEspecies(Model model) {
-	    List<Especie> especies = service.findAll();
-	    Collections.shuffle(especies);
+	public String verEspecies(@RequestParam(name="idGenero",required=false)Long idGenero,Model model) {
+		
+	    List<Especie> especies; 
+	    
+	    if (idGenero == null) {
+	    	especies = service.findAll();
+	    	Collections.shuffle(especies);
+	    }else {
+	    	especies = service.findAllByGenero(idGenero);
+	    }
 	    model.addAttribute("especieList", especies);
 	    return "especie/especies";
+	}
+	
+	@GetMapping("/details/{id}")
+	public String detalleEspecie(@PathVariable("id") Long id,Model model) {
+		
+		Especie especieDetailed = service.findById(id);
+		
+		if (especieDetailed != null) {
+			
+			model.addAttribute("especie", especieDetailed);
+			return "especie/especieDetails";
+			
+		}else
+			return "redirect:/especies/";
+		
+		
 	}
 	
 	@GetMapping("/newEspecie")
@@ -81,7 +105,7 @@ public class EspecieController {
 	}
 	
 	@GetMapping("/admin/editarEspecie/{id}")
-	public String mostrarFormularioEdicionEspecie(@PathVariable("id") long id, Model model) {
+	public String mostrarFormularioEdicionEspecie(@PathVariable("id") Long id, Model model) {
 		Especie especieEdit= service.findById(id);
 		
 		if(especieEdit != null) {
@@ -95,7 +119,7 @@ public class EspecieController {
 	}
 	
 	@GetMapping("/admin/borrar/{id}")
-	public String borrarEspecie(@PathVariable("id")long id) {
+	public String borrarEspecie(@PathVariable("id")Long id) {
 		service.deleteById(id);
 		return "redirect:/especies/gestEspecies";
 		

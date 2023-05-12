@@ -39,3 +39,14 @@ thead>tr>th:first-child>a:hover{
 form{
     width: 50%;
 }
+table>tbody>tr>td>img{
+    width:32px; height: 32px; object-fit: cover; border-radius: 10pt;
+}
+  .texto-completo {
+    display: none;
+  }
+  .oculto {
+    display: none;
+  }
+  
+  

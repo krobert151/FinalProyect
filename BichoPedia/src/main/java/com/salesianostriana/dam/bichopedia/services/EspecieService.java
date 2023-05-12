@@ -16,28 +16,21 @@ public class EspecieService extends BaseService<Especie,Long,EspecieRepository>{
 	}
 
 	public List<Especie> sortedName(){
-		return super.findAll()
-					.stream()
-					.sorted((x,y)-> x.getNombre()
-							.compareToIgnoreCase(y.getNombre()))
-					.toList();
+		return this.repositorio.findByOrderByNombreAsc();
 		
 	}
 	public List<Especie> sortedGen(){
-		return super.findAll()
-					.stream()
-					.sorted((x,y)-> x.getGenero().getNombre()
-							.compareToIgnoreCase(y.getGenero().getNombre()))
-					.toList();
+		return this.repositorio.findByOrderByGeneroNombreAsc();
 		
 	}
 	public List<Especie> sortedComunN(){
-		return super.findAll()
-					.stream()
-					.sorted((x,y)->x.getDescripcion()
-							.compareToIgnoreCase(y.getDescripcion()))
-					.toList();
+		return this.repositorio.findByOrderByDescripcionAsc();
 	}
 	
+	public List<Especie> findAllByGenero(Long generoId){
+		
+		return this.repositorio.findByGeneroId(generoId);
+		
+	}
 	
 }
