@@ -3,8 +3,10 @@ package com.salesianostriana.dam.bichopedia.model;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -24,11 +26,12 @@ public class Encuentro {
 	private Long id;
 	
 	@ManyToOne
+	@JoinColumn(foreignKey= @ForeignKey(name="fk_encuentro_usuario"))
 	private Usuario usuario;
 	
 	@ManyToOne
+	@JoinColumn(foreignKey= @ForeignKey(name="fk_encuentro_especie"))
 	private Especie especie;
-	
 	private LocalDateTime fecha;
 	private String descripcion;
 	private String foto;

@@ -64,8 +64,8 @@
                     </ul>
                     <button sec:authorize="isAnonymous()" class="btn loginbutton bg-light" type="button"> <a th:href="@{/login}"
                             href="/templates/login.html">Login</a></button>
-                    <button sec:authorize="isAuthenticated()" class="btn loginbutton bg-light" type="button"> <a th:href="@{/login}"
-                            href="/templates/login.html">LogOut</a></button>
+                    <button sec:authorize="isAuthenticated()" class="btn loginbutton bg-light" type="button"> 
+                        <a th:href="@{/logout}">LogOut</a></button>
                 </div>
             </div>
         </nav>
