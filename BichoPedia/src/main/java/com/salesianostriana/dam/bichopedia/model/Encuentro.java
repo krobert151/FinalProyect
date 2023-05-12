@@ -40,5 +40,10 @@ public class Encuentro {
 	private double peso;
 	private char sexo;
 	
+	public Encuentro getEncuentro() {
+		
+		return this;
+	}
+	
 	
 }
