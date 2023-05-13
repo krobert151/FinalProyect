@@ -7,9 +7,9 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.bichopedia.model.Encuentro;
 import com.salesianostriana.dam.bichopedia.model.Especie;
@@ -28,6 +28,9 @@ public class EncuentoController {
 	@Autowired
 	private UsuarioService userService;
 	
+	@Autowired
+	private EspecieService especieService;
+	
 	@GetMapping("/")
 	public String encuentros(Model model) {
 		
@@ -45,7 +48,6 @@ public class EncuentoController {
 		model.addAttribute("usuario", u);
 		model.addAttribute("encuentro", new Encuentro());
 		model.addAttribute("especies", especies);
-		
 		return "encuentro/encuentroForm";
 		
 	}
@@ -58,8 +60,40 @@ public class EncuentoController {
 	    service.save(encuentro);
 	    return "redirect:/encuentros/";
 	}
+	
+	@GetMapping("/admin/editarEncuentro/{id}")
+	public String editarEncuentro(@PathVariable("id")Long id,Model model) {
+		Encuentro encuentroEdit=service.findById(id);
+		
+		if(encuentroEdit!=null) {
+			model.addAttribute("especies", especieService.findAll());
+			model.addAttribute("encuentro", encuentroEdit);
+			model.addAttribute("usuarios", userService.findAll());
+			return "admin/encuentroEdit";
+		}else{
+			return "redirect:admin/encuentros";
+		}
+	}
 
-
-
+	@PostMapping("/encuentroeditSubmit")
+	public String registroEditado(Encuentro encuentro, Model model) {
+		service.save(encuentro);
+		return "redirect:/encuentros/";
+	}
+	
+	@GetMapping("/admin/gestEncuentro")
+	public String crudEncuentros(Model model) {
+		
+		model.addAttribute("encuentros", service.findAll());
+		return "admin/encuentros";
+		
+	}
+	@GetMapping("/admin/borrar/{id}")
+	public String borrarEncuentro(@PathVariable("id")Long id) {
+		service.deleteById(id);
+		return "redirect:/encuentros/admin/gestEncuentro";
+		
+	}
+	
 	
 }

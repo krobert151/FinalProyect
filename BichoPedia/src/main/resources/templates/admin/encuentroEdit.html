@@ -24,14 +24,16 @@
             <div class="col">
             </div>
             <div class="col-10  col-lg-8 col-xl-7 formulario my-5 py-5 px-4">
-                <form class="  text-center" method="POST" th:action="@{/encuentros/encuentroSubmit}"
-                    th:object="${encuentro}">
+                <form class="  text-center" method="POST" th:action="@{/encuentros/encuentroeditSubmit}" th:object="${encuentro}">
                     <div class="container-fluid">
-                        <div class="d-flex justify-content-end">
-                            <p th:text=${usuario.username}>Nombre de usuario</p>
-                        </div>
                         <h2>Ficha de Encuentro</h2>
                         <input th:if="${encuentro.id != 0}" type="hidden" name="id" th:field="*{id}" />
+                        <label for="usuario">Usuario</label>
+                        <select th:field="*{usuario}" class="form-control">
+                            <option value="-1">---</option>
+                            <option th:each="usuario : ${usuarios}" th:value="${usuario.id}" th:text="${usuario.username}">
+                                usuario</option>
+                        </select>
                         <label for="especie">Especie</label>
                         <select th:field="*{especie}" class="form-control">
                             <option value="-1">---</option>
