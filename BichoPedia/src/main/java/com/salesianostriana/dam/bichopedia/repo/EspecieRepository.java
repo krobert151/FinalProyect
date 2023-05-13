@@ -22,4 +22,6 @@ public interface EspecieRepository extends JpaRepository<Especie, Long>{
 	@Query("select e from Especie e where e.genero.id = ?1")
 	public List<Especie> findByGeneroId(Long generoId);
 	
+	
+	
 }

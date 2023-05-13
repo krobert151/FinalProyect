@@ -88,6 +88,6 @@ insert into Especie (id,nombre,descripcion,detalles,foto,genero_id) values (24,'
 
 
 
-insert into Encuentro (id,usuario_id,especie_id,fecha,descripcion,foto,zona,tamanio,peso,sexo) values (1,1,1,'2023-01-01T12:30:30','encuentro de un bicho','https://lahuertinadetoni.es/wp-content/uploads/2015/01/233-163-Copiar.jpg','Gerena',10,5,'f');
+insert into Encuentro (id,usuario_id,especie_id,fecha,descripcion,foto,zona,tamanio,peso,sexo) values (1,1,1,'2023-01-01','encuentro de un bicho','https://lahuertinadetoni.es/wp-content/uploads/2015/01/233-163-Copiar.jpg','Gerena',10,5,'f');
 
 alter sequence hibernate_sequence restart with 100;

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link th:href="@{/css/estilos.css}" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/estilos.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <title>Document</title>
+</head>
+
+<body class="indexmain">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark" th:replace="~{fragmentos/menu::menu}">
+        </nav>
+    </header>
+    <main class="mb-5 pb-5">
+        <div class="row my-5 ">
+            <div class="col">
+            </div>
+            <div class="col-10  col-lg-8 col-xl-7 formulario my-5 py-5 px-4">
+                <form class="  text-center" method="POST" th:action="@{/encuentros/encuentroSubmit}"
+                    th:object="${encuentro}">
+                    <div class="container-fluid">
+                        <div class="d-flex justify-content-end">
+                            <p th:text=${usuario.username}>Nombre de usuario</p>
+                        </div>
+                        <h2>Ficha de Encuentro</h2>
+                        <input th:if="${encuentro.id != 0}" type="hidden" name="id" th:field="*{id}" />
+                        <label for="especie">Especie</label>
+                        <select th:field="*{especie}" class="form-control">
+                            <option value="-1">---</option>
+                            <option th:each="especie : ${especies}" th:value="${especie.id}" th:text="${especie.nombre}">
+                                Especie</option>
+                        </select>
+                        <div class="row mt-3 justify-content-between">
+                            <div class="col-5">
+                                <div class="form-group my-1">
+                                    <label>Descripción:</label>
+                                    <textarea class="form-control z-depth-1" rows="5" type="text"
+                                        th:field="*{descripcion}" th:value="*{descripcion}">
+                                    </textarea>
+                                </div>
+                                <div class="form-group my-1">
+                                    <label>Foto:</label>
+                                    <input class="form-control" type="text" th:field="*{foto}" th:value="*{foto}">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group my-1">
+                                    <div class="form-group my-1">
+                                        <label>Fecha:</label>
+                                        <input class="form-control" type="date" th:field="*{fecha}" th:value="*{fecha}">
+                                    </div>
+                                </div>
+                                <div class="form-group my-1">
+                                    <label>Zona:</label>
+                                    <input class="form-control" type="text" th:field="*{zona}" th:value="*{zona}">
+                                </div>
+                                <div class="row justify-content-between">
+                                    <div class="form-group my-1 col-12 col-lg-3">
+                                        <label>Tamaño(cm):</label>
+                                        <input class="form-control" type="number" step="0.1" th:field="*{tamanio}" th:value="*{tamanio}">
+                                    </div>
+                                    <div class="form-group my-1 col-12 col-lg-3">
+                                        <label>Peso(g):</label>
+                                        <input class="form-control" type="number" step="0.1" th:field="*{peso}" th:value="*{peso}">
+                                    </div>
+                                    <div class="form-group my-1 col-12 col-lg-3">
+                                        <label>Sexo:</label>
+                                        <input class="form-control" type="text" th:field="*{sexo}" th:value="*{sexo}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center my-3">
+                            <button class="btn btn-primary enviar" type="submit">Login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+    </main>
+    <footer th:replace="~{fragmentos/footer::footer}">
+    </footer>
+</body>
+
+</html>
