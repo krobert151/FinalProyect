@@ -7,33 +7,39 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.bichopedia.model.Encuentro;
 import com.salesianostriana.dam.bichopedia.model.Especie;
 import com.salesianostriana.dam.bichopedia.model.Usuario;
 import com.salesianostriana.dam.bichopedia.services.EncuentroService;
 import com.salesianostriana.dam.bichopedia.services.EspecieService;
+import com.salesianostriana.dam.bichopedia.services.UsuarioService;
 
 @Controller
+@RequestMapping("/encuentros/")
 public class EncuentoController {
 	
 	@Autowired
 	private EncuentroService service;
 	
-	@GetMapping("/encuentros")
+	@Autowired
+	private UsuarioService userService;
+	
+	@GetMapping("/")
 	public String encuentros(Model model) {
 		
 		model.addAttribute("encuentroList", service.findAll());
 		
-		return "encuentros";
+		return "encuentro/encuentros";
 	}
 	@Autowired
 	private EspecieService espService ;
 	
 	
-	@GetMapping("/registro")
+	@GetMapping("/newEncuentro")
 	public String registro(@AuthenticationPrincipal Usuario u, Model model) {
 		List<Especie>especies = espService.sortedName();
 		model.addAttribute("usuario", u);
@@ -44,13 +50,16 @@ public class EncuentoController {
 		
 	}
 	
-	@PostMapping("/registroOk")
-	public String registroFinalizado(@ModelAttribute("encuentroForm") 
-	Encuentro encuentro, Model model ) {
-		
-		model.addAttribute("encuentro", model);
-		
-		return "registroOk";
-	};
+	@PostMapping("/encuentroSubmit")
+	public String registroFinalizado(Encuentro encuentro, @AuthenticationPrincipal Usuario usuario, Model model) {
+	    usuario = userService.findById(usuario.getId());
+	    encuentro.setUsuario(usuario);
+	    userService.save(usuario);
+	    service.save(encuentro);
+	    return "redirect:/encuentros/";
+	}
+
+
+
 	
 }

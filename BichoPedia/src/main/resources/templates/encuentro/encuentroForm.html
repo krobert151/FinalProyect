@@ -27,12 +27,15 @@
                 <form class="  text-center" method="POST" th:action="encuentroSubmit"
                     th:object="${encuentro}">
                     <div class="container-fluid">
+                        <div class="d-flex justify-content-end">
+                            <p th:text=${usuario.username}>Nombre de usuario</p>
+                        </div>
                         <h2>Ficha de Encuentro</h2>
                         <input th:if="${encuentro.id != 0}" type="hidden" name="id" th:field="*{id}" />
-                        <input type="hidden" name="id" th:field="*{usuario}" th:value=${usuario.id} />
                         <label for="especie">Especie</label>
                         <select th:field="*{especie}" class="form-control">
-                            <option th:each="especie : ${especies}" th:value="${especie}" th:text="${especie.nombre}">
+                            <option value="-1">---</option>
+                            <option th:each="especie : ${especies}" th:value="${especie.id}" th:text="${especie.nombre}">
                                 Especie</option>
                         </select>
                         <div class="row mt-3 justify-content-between">
@@ -52,7 +55,7 @@
                                 <div class="form-group my-1">
                                     <div class="form-group my-1">
                                         <label>Fecha:</label>
-                                        <input class="form-control" type="datetime-local" th:field="*{fecha}" th:value="*{fecha}">
+                                        <input class="form-control" type="date" th:field="*{fecha}" th:value="*{fecha}">
                                     </div>
                                 </div>
                                 <div class="form-group my-1">
@@ -76,7 +79,6 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-center my-3">
-
                             <button class="btn btn-primary enviar" type="submit">Login</button>
                         </div>
                     </div>

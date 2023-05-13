@@ -1,6 +1,6 @@
 package com.salesianostriana.dam.bichopedia.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,7 +34,8 @@ public class Encuentro {
 	@ManyToOne
 	@JoinColumn(foreignKey= @ForeignKey(name="fk_encuentro_especie"))
 	private Especie especie;
-	private LocalDateTime fecha;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private LocalDate fecha;
 	private String descripcion;
 	private String foto;
 	private String zona;

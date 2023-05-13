@@ -34,8 +34,8 @@
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/reinos/}" href="/especies">Especies</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/registro/}" href="/registro">Registrar</a>
+                        <li class="nav-item" sec:authorize="isAuthenticated()">
+                            <a class="nav-link" th:href="@{/encuentros/newEncuentro}" href="/registro">Registrar</a>
                         </li>
                         <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item">
                             <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
