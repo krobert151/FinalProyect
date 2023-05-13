@@ -3,4 +3,5 @@ function mostrarTextoCompleto(elemento) {
     elemento.parentNode.querySelector('.texto-completo').style.display = 'block';
     elemento.style.display = 'none';
   }
-  
+
+ 

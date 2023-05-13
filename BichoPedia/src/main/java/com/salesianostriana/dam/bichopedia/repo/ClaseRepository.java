@@ -12,11 +12,7 @@ public interface ClaseRepository extends JpaRepository<Clase,Long>{
 
 	List<Clase>findAll();
 	
-	List<Clase>findByOrderByNombreAsc();
 	
-	List<Clase>findByOrderByDescripcionAsc();
-	
-	List<Clase>findByOrderByFiloNombreAsc();
 	
 	@Query("select c from Clase c where c.filo.id = ?1")
 	public List<Clase> findByFiloId(Long filoId);

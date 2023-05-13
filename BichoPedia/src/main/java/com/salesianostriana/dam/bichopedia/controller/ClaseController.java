@@ -58,33 +58,34 @@ public class ClaseController {
 
 	}
 	
-	@GetMapping("/admin/gestClases")
-	public String crudClases(Model model) {
-		List<Clase>clases = service.findAll();
+	@GetMapping("/admin/gestClases/{orderBy}")
+	public String crudClaseSorted(Model model, @PathVariable String orderBy) {
+		
+		List<Clase>clases;
+		
+		switch(orderBy) {
+		
+		case"id":
+			clases = service.findAll();
+			break;
+		case "nombre":
+			clases = service.findAllBySorted("nombre");
+			break;
+		case "descripcion":
+			clases = service.findAllBySorted("descripcion");
+			break;
+		case "orden":
+			clases = service.findAllBySorted("filo.nombre");
+			break;
+		default:
+			clases=service.findAll();	
+		
+		}
 		model.addAttribute("clases", clases);
 		return "admin/clases";
-	}
-	
-	@GetMapping("/admin/gestClases/sortedName")
-	public String crudClasesSortedName(Model model) {
-		List<Clase>clases = service.sortedName();
-		model.addAttribute("clases", clases);
-		return "admin/clases";
-	}
-	
-	@GetMapping("/admin/gestClases/sortedComun")
-	public String crudClasesSortedComun(Model model) {
-		List<Clase>clases = service.sortedComun();
-		model.addAttribute("clases", clases);
-		return "admin/clases";
-	}
-	
-	@GetMapping("/admin/gestClases/sortedFil")
-	public String crudClasesSortedFil(Model model) {
-		List<Clase>clases = service.sortedFil();
-		model.addAttribute("clases", clases);
-		return "admin/clases";
-	}
+		
+		
+	} 
 
 	@GetMapping("/admin/editarClase/{id}")
 	public String mostrarFormularioEdicionClases(@PathVariable("id")long id,Model model) {
@@ -93,7 +94,7 @@ public class ClaseController {
 			if(claseEdit != null) {
 				
 				model.addAttribute("clase", claseEdit);
-				model.addAttribute("filos", filoService.sortedName());
+				model.addAttribute("filos", filoService.findAllBySorted("nombre"));
 				return "clase/claseForm";
 				
 			}else

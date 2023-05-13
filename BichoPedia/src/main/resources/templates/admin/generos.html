@@ -34,10 +34,10 @@
                                     <i class="bi bi-plus-square"></i>
                                 </a>
                             </th>
-                            <th scope="col"><a th:href="@{/generos/admin/gestGeneros}">Id</a></th>
-                            <th scope="col"><a th:href="@{/generos/admin/gestGeneros/sortedName}">Nombre</a></th>
-                            <th scope="col"><a th:href="@{/generos/admin/gestGeneros/sortedComun}">N.Común</a></th>
-                            <th scope="col"><a th:href="@{/generos/admin/gestGeneros/sortedFam}">N. Familia </a></th>
+                            <th class="col-1"><a th:href="@{/generos/admin/gestGeneros/{orderBy}(orderBy='id')}">Id</a></th>
+                          <th class="col"><a th:href="@{/generos/admin/gestGeneros/{orderBy}(orderBy='nombre')}">Nombre</a></th>
+                          <th class="col"><a th:href="@{/generos/admin/gestGeneros/{orderBy}(orderBy='descripcion')}">N.Común</a></th>
+                          <th class="col-1"><a th:href="@{/generos/admin/gestGeneros/{orderBy}(orderBy='familia.nombre')}">N. Familia</a></th>
                             <th scope="col"></th>
                         </tr>
                     </thead>

@@ -58,34 +58,33 @@ public class FamiliaController {
 
 	}
 	
-	@GetMapping("/admin/gestFamilias")
-	public String curdFamilias(Model model) {
-		List<Familia> familias = service.findAll();
-		model.addAttribute("familias", familias);
-		return "admin/familias";		
+	@GetMapping("/admin/gestFamilias/{orderBy}")
+	public String crusFamiliasSorted(Model model,@PathVariable String orderBy) {
 		
-	}
-	
-	@GetMapping("/admin/gestFamilias/sortedName")
-	public String crudFamiliasSortedName(Model model) {
-		List<Familia> familias = service.sortedName();
+		List<Familia>familias;
+		
+		switch(orderBy) {
+		
+		case "id":
+			familias = service.findAll();
+			break;
+		case "nombre":
+			familias = service.findAllSorted("nombre");
+			break;
+		case "descripcion":
+			familias = service.findAllSorted("descripcion");
+			break;
+		case "orden":
+			familias = service.findAllSorted("orden.nombre");
+			break;
+		default:
+			familias= service.findAll();
+		
+		
+		}
 		model.addAttribute("familias", familias);
 		return "admin/familias";
 		
-	}
-	
-	@GetMapping("/admin/gestFamilias/sortedOrd")
-	public String crudFamiliasSortedOrd(Model model) {
-		List<Familia> familias = service.sortedOrd();
-		model.addAttribute("familias", familias);
-		return "admin/familias";	
-		
-	}
-	@GetMapping("/admin/gestFamilias/sortedComun")
-	public String crudFamiliasSortedComun(Model model) {
-		List<Familia>familias=service.sortedComunN();
-		model.addAttribute("familias", familias);
-		return "admin/familias";
 		
 	}
 	
@@ -95,7 +94,7 @@ public class FamiliaController {
 		
 		if(familiaEdit != null) {
 			model.addAttribute("familia", familiaEdit);
-			model.addAttribute("ordenes", ordenService.sortedName());
+			model.addAttribute("ordenes", ordenService.findAllBySorted("nombre"));
 			return "familia/familiaForm";
 		}else
 			return "redirect:/familias/gestFamilias";

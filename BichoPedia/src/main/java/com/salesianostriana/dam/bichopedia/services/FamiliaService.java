@@ -2,6 +2,7 @@ package com.salesianostriana.dam.bichopedia.services;
 
 import java.util.List;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.salesianostriana.dam.bichopedia.model.Familia;
@@ -21,20 +22,13 @@ public class FamiliaService extends BaseService<Familia,Long,FamiliaRepository>{
 		// TODO Auto-generated method stub
 		return this.repositorio.findAll();
 	}
+	public List<Familia> findAllSorted(String orderBy){
 	
-	public List<Familia> sortedName(){
-		return this.repositorio.findByOrderByNombreAsc();
-	}
+		Sort sort = Sort.by(orderBy);
+		return this.repositorio.findAll(sort);
+	}	
 	
-	public List<Familia>sortedComunN(){
-		return this.repositorio.findByOrderByDescripcionAsc();
-	} 
 	
-	public List<Familia>sortedOrd(){
-		
-		return this.repositorio.findByOrderByOrdenNombreAsc();
-		
-	}
 	public List<Familia> findAllByOrdenId(Long ordenId){
 		
 		return this.repositorio.findByOrdenId(ordenId);

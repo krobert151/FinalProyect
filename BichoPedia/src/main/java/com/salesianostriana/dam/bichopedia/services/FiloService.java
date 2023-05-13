@@ -2,6 +2,7 @@ package com.salesianostriana.dam.bichopedia.services;
 
 import java.util.List;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.salesianostriana.dam.bichopedia.model.Filo;
@@ -21,16 +22,13 @@ public class FiloService extends BaseService<Filo,Long,FiloRepository>{
 		return this.repositorio.findAll();
 	}
 
-	public List<Filo>sortedName(){
-		return this.repositorio.findByOrderByNombreAsc();
-	};
-	public List<Filo>sortedComunN(){
-		return this.repositorio.findByOrderByDescripcionAsc();
+	public List<Filo>findAllBySorted(String orderBy){
 		
-	};
-	public List<Filo>sortedReino(){
-		return this.repositorio.findByOrderByReinoNombreAsc();
-	};
+		Sort sort = Sort.by(orderBy);
+		return this.repositorio.findAll(sort);
+		
+	}
+
 	
 	public List<Filo>FindAllByReinoId(Long reinoId){
 		

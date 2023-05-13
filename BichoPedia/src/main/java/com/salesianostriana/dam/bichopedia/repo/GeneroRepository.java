@@ -10,11 +10,7 @@ public interface GeneroRepository extends JpaRepository<Genero,Long>{
 	
 	List<Genero>findAll();
 	
-	List<Genero> findByOrderByNombreAsc();
-	
-	List<Genero> findByOrderByDescripcionAsc();
-	
-	List<Genero>findByOrderByFamiliaNombreAsc();
+
 	
 	@Query("select g from Genero g where g.familia.id = ?1")
 	public List<Genero> findByFamiliaId(Long familiaId);

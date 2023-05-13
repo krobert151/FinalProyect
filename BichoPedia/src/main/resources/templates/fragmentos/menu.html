@@ -47,13 +47,13 @@
                                         </a>
                                         <ul class="dropdown-menu dropdown-menu-dark"
                                             aria-labelledby="navbarDarkDropdownMenuLink">
-                                            <li><a class="dropdown-item" th:href="@{/especies/admin/gestEspecies}">Especies</a></li>
-                                            <li><a class="dropdown-item" th:href="@{/generos/admin/gestGeneros}">Generos</a></li>
-                                            <li><a class="dropdown-item" th:href="@{/familias/admin/gestFamilias}">Familias</a></li>
-                                            <li><a class="dropdown-item" th:href="@{/ordenes/admin/gestOrdenes}">Ordenes</a></li>
-                                            <li><a class="dropdown-item" th:href="@{/clases/admin/gestClases}">Clases</a></li>
-                                            <li><a class="dropdown-item" th:href="@{/filos/admin/gestFilos}">Filos</a></li>
-                                            <li><a class="dropdown-item" th:href="@{/reinos/admin/gestReinos}">Reinos</a></li>
+                                            <li><a class="dropdown-item" th:href="@{/especies/admin/gestEspecies/{orderBy}(orderBy='id')}">Especies</a></li>
+                                            <li><a class="dropdown-item" th:href="@{/generos/admin/gestGeneros/{orderBy}(orderBy='id')}">Generos</a></li>
+                                            <li><a class="dropdown-item" th:href="@{/familias/admin/gestFamilias/{orderBy}(orderBy='id')}">Familias</a></li>
+                                            <li><a class="dropdown-item" th:href="@{/ordenes/admin/gestOrdenes/{orderBy}(orderBy='id')}">Ordenes</a></li>
+                                            <li><a class="dropdown-item" th:href="@{/clases/admin/gestClases/{orderBy}(orderBy='id')}">Clases</a></li>
+                                            <li><a class="dropdown-item" th:href="@{/filos/admin/gestFilos/{orderBy}(orderBy='id')}">Filos</a></li>
+                                            <li><a class="dropdown-item" th:href="@{/reinos/admin/gestReinos/{orderBy}(orderBy='id')}">Reinos</a></li>
                                             <li><a class="dropdown-item" th:href="@{/admin/}">Usuarios</a></li>
                                             <li><a class="dropdown-item" th:href="@{encuentros/admin/gestEncuentro}">Encuentros</a></li>
                                         </ul>

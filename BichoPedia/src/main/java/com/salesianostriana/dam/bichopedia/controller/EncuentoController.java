@@ -44,7 +44,7 @@ public class EncuentoController {
 	
 	@GetMapping("/newEncuentro")
 	public String registro(@AuthenticationPrincipal Usuario u, Model model) {
-		List<Especie>especies = espService.sortedName();
+		List<Especie>especies = espService.findAll();
 		model.addAttribute("usuario", u);
 		model.addAttribute("encuentro", new Encuentro());
 		model.addAttribute("especies", especies);

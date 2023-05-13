@@ -61,25 +61,29 @@ public class FiloController {
 	
 	}
 	
-	@GetMapping("/admin/gestFilos/sortedName")
-	public String crudFiloSortedName(Model model) {
-		List<Filo>filos = service.sortedName();
-		model.addAttribute("filos", filos);
-		return "admin/filos";
+	@GetMapping("/admin/gestFilos/{orderBy}")
+	public String crudFilosSorted(Model model,@PathVariable String orderBy) {
 		
-	}
-	
-	@GetMapping("/admin/gestFilos/sortedComun")
-	public String crudFiloSortedComun(Model model) {
-		List<Filo>filos = service.sortedComunN();
-		model.addAttribute("filos", filos);
-		return "admin/filos";
+		List<Filo>filos;
 		
-	}
-	
-	@GetMapping("/gestFilos/sortedReino")
-	public String crudFiloSortedRei(Model model) {
-		List<Filo>filos = service.sortedReino();
+		switch(orderBy) {
+		
+		case "id":
+			filos= service.findAll();
+			break;
+		case "nombre":
+			filos = service.findAllBySorted("nombre");
+			break;
+		case "descripcion":
+			filos = service.findAllBySorted("descripcion");
+			break;
+		case "reino":
+			filos = service.findAllBySorted("reino.nombre");
+			break;
+		default:
+			filos = service.findAll();	
+		
+		}
 		model.addAttribute("filos", filos);
 		return "admin/filos";
 		

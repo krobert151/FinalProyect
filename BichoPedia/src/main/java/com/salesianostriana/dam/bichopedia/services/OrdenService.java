@@ -2,6 +2,7 @@ package com.salesianostriana.dam.bichopedia.services;
 
 import java.util.List;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.salesianostriana.dam.bichopedia.model.Orden;
@@ -21,16 +22,14 @@ public class OrdenService extends BaseService<Orden,Long,OrdenRepository>{
 		return this.repositorio.findAll();
 	}
 	
-	public List<Orden>sortedName(){
-		return this.repositorio.findByOrderByNombreAsc();
-	}
-	public List<Orden>sortedCla(){
-		return this.repositorio.findByOrderByClaseNombreAsc();
-	}
-	public List<Orden>sortedComunN(){
-		return this.repositorio.findByOrderByDescripcionAsc();
+	public List<Orden>findAllBySorted(String orderBy){
+		
+		Sort sort=Sort.by(orderBy);
+		return this.repositorio.findAll(sort);
+		
 		
 	}
+	
 	public List<Orden> findAllByClaseId(Long claseId){
 		
 		return this.repositorio.findByClaseId(claseId);

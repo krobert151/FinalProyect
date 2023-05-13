@@ -44,7 +44,7 @@ public class GeneroController {
 	public String nuevoGenero(Model model) {
 		
 		model.addAttribute("genero", new Genero());		
-		model.addAttribute("familias", familiaService.sortedName());
+		model.addAttribute("familias", familiaService.findAllSorted("nombre"));
 		
 		return "genero/generoForm";
 	}
@@ -56,47 +56,45 @@ public class GeneroController {
 
 	}
 	
-	@GetMapping("/admin/gestGeneros")
-	public String crudGeneros(Model model) {
+	
+	@GetMapping("/admin/gestGeneros/{orderBy}")
+	public String crudGenerosSorted(Model model,@PathVariable String orderBy) {
+		List<Genero>generos;
+		switch(orderBy) {
 		
-		List<Genero> generos = service.findAll();
-		
+		case"id":
+			generos = service.findAll();
+			break;
+		case "nombre":
+			generos = service.findAllSorted("nombre");
+			break;
+		case "descripcion":
+			generos = service.findAllSorted("descripcion");
+			break;
+		case "familia":
+			generos = service.findAllSorted("familia.nombre");
+			break;
+		default:
+			generos = service.findAll();
+		}
 		model.addAttribute("generos", generos);
 		return "admin/generos";
-	}
+			
+		
+		
+		
+		}
+		
+		
 	
-	@GetMapping("/admin/gestGeneros/sortedName")
-	public String crudGenerosSortedNAme(Model model) {
-		List<Genero> generos = service.sortedName();
-		
-		model.addAttribute("generos", generos);
-		return "admin/generos";
-		
-	}
 	
-	@GetMapping("/admin/gestGeneros/sortedFam")
-	public String crudGenerosSortedFam(Model model) {
-		List<Genero> generos = service.sortedFam();
-		model.addAttribute("generos", generos);
-		return "admin/generos";
-		
-	}
-	
-	@GetMapping("/admin/gestGeneros/sortedComun")
-	public String crudGenerosSortedComun(Model model) {
-		List<Genero> generos = service.sortedComunN();
-		model.addAttribute("generos", generos);
-		return"admin/generos";
-		
-		
-	}
 	@GetMapping("/admin/editarGenero/{id}")
 	public String mostrarFormularioEdicionGenero(@PathVariable("id")long id,Model model) {
 		Genero generoEdit= service.findById(id);
 		
 		if(generoEdit != null) {
 			model.addAttribute("genero", generoEdit);
-			model.addAttribute("familias", familiaService.sortedName() );
+			model.addAttribute("familias", familiaService.findAllSorted("nombre") );
 			return "genero/generoForm";		
 		}else
 			return "redirect:/genero/gestGeneros";

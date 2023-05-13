@@ -13,11 +13,6 @@ public interface EspecieRepository extends JpaRepository<Especie, Long>{
 	@Override
 	List<Especie> findAll();
 	
-	List<Especie> findByOrderByNombreAsc();
-	
-	List<Especie> findByOrderByDescripcionAsc();
-	
-	List<Especie> findByOrderByGeneroNombreAsc();
 
 	@Query("select e from Especie e where e.genero.id = ?1")
 	public List<Especie> findByGeneroId(Long generoId);

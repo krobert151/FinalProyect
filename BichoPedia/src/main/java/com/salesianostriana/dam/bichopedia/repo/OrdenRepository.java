@@ -12,11 +12,7 @@ public interface OrdenRepository extends JpaRepository<Orden,Long>{
 
 	List<Orden> findAll();
 	
-	List<Orden> findByOrderByNombreAsc();
 	
-	List<Orden> findByOrderByDescripcionAsc();
-	
-	List<Orden> findByOrderByClaseNombreAsc();
 	
 	@Query("select o from Orden o where o.clase.id = ?1")
 	public List<Orden> findByClaseId(Long claseId);

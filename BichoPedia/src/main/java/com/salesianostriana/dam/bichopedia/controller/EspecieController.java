@@ -62,7 +62,7 @@ public class EspecieController {
 	public String nuevaEspecie(Model model) {
 		
 		model.addAttribute("especie", new Especie());
-		model.addAttribute("generos", genServcie.sortedName());
+		model.addAttribute("generos", genServcie.findAllSorted("nombre"));
 		return "especie/especieForm";
 	}
 
@@ -73,44 +73,37 @@ public class EspecieController {
 		return "redirect:/especies/";
 
 	}
-	@GetMapping("/admin/gestEspecies")
-	public String crudEspecies(Model model) {
-		List<Especie> especies = service.findAll();
-		
-		model.addAttribute("especies", especies);
-		return "admin/especies";
+	@GetMapping("/admin/gestEspecies/{orderBy}")
+	public String crudEspeciesSorted(Model model, @PathVariable String orderBy) {
+	    List<Especie> especies;
+	    switch (orderBy) {
+	        case "id":
+	            especies = service.findAll();
+	            break;
+	        case "nombre":
+	            especies = service.findAllSorted("nombre");
+	            break;
+	        case "descripcion":
+	            especies = service.findAllSorted("descripcion");
+	            break;
+	        case "genero":
+	            especies = service.findAllSorted("genero.nombre");
+	            break;
+	        default:
+	            especies = service.findAll();
+	    }
+	    model.addAttribute("especies", especies);
+	    return "admin/especies";
 	}
-	@GetMapping("/admin/gestEspecies/sortedName")	
-	public String crudEspeciesSortedName(Model model) {
-		List<Especie> especies = service.sortedName();
-		
-		model.addAttribute("especies", especies);
-		return "admin/especies";
-			
-	}
-	
-	@GetMapping("/admin/gestEspecies/sortedGen")	
-	public String crudEspeciesSortedGen(Model model) {
-		List<Especie> especies = service.sortedGen();
-		model.addAttribute("especies", especies);
-		return "admin/especies";
-		
-	}
-	
-	@GetMapping("/admin/gestEspecies/sortedComun")
-	public String crudEspeciesSortedComunName(Model model) {
-		List<Especie> especies = service.sortedComunN();
-		model.addAttribute("especies", especies);
-		return "admin/especies";
-	}
-	
+
+
 	@GetMapping("/admin/editarEspecie/{id}")
 	public String mostrarFormularioEdicionEspecie(@PathVariable("id") Long id, Model model) {
 		Especie especieEdit= service.findById(id);
 		
 		if(especieEdit != null) {
 			model.addAttribute("especie", especieEdit);
-			model.addAttribute("generos", genServcie.sortedName());
+			model.addAttribute("generos", genServcie.findAllSorted("nombre"));
 			return "especie/especieForm";
 		}else
 			return "redirect:/especies/gestEspecies";

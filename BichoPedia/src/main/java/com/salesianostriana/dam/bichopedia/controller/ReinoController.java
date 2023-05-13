@@ -42,25 +42,26 @@ public class ReinoController {
 
 	}
 	
-	@GetMapping("/admin/gestReinos")
-	public String crudReinos(Model model) {
-		List<Reino>reinos=service.findAll();
-		model.addAttribute("reinos", reinos);
-		return "admin/reinos";
-			
-	}
-	
-	@GetMapping("/admin/gestReinos/sortedName")
-	public String crudReinosSortedName(Model model) {
-		List<Reino>reinos=service.sortedName();
-		model.addAttribute("reinos", reinos);
-		return "admin/reinos";
+	@GetMapping("/admin/gestReinos/{orderBy}")
+	public String crudReinosSorted(Model model, @PathVariable String orderBy){
 		
-	}
-	
-	@GetMapping("/admin/gestReinos/sortedComun")
-	public String crudReinosSortedComun(Model model) {
-		List<Reino>reinos=service.sortedComunN();
+		List<Reino>reinos;
+		
+		switch(orderBy) {
+		
+		case "id":
+			reinos = service.findAll();
+			break;
+		case "nombre":
+			reinos = service.findAllSortedBy("nombre");
+			break;
+		case "descripcion":
+			reinos = service.findAllSortedBy("descripcion");
+			break;
+		default:
+			reinos = service.findAll();		
+		
+		}
 		model.addAttribute("reinos", reinos);
 		return "admin/reinos";
 		
