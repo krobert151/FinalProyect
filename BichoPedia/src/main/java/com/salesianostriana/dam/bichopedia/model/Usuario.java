@@ -49,6 +49,7 @@ public class Usuario implements UserDetails{
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaNac;
 	
+	private String fotoPerfil;
 
 	@Column(nullable = true)
 	private boolean administrator  ;

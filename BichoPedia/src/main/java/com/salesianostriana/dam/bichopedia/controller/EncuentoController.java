@@ -38,13 +38,12 @@ public class EncuentoController {
 		
 		return "encuentro/encuentros";
 	}
-	@Autowired
-	private EspecieService espService ;
+	
 	
 	
 	@GetMapping("/newEncuentro")
 	public String registro(@AuthenticationPrincipal Usuario u, Model model) {
-		List<Especie>especies = espService.findAll();
+		List<Especie>especies = especieService.findAll();
 		model.addAttribute("usuario", u);
 		model.addAttribute("encuentro", new Encuentro());
 		model.addAttribute("especies", especies);
