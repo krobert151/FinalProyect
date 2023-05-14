@@ -75,6 +75,9 @@ public class EncuentoController {
 		}
 	}
 
+	
+	
+	
 	@PostMapping("/encuentroeditSubmit")
 	public String registroEditado(Encuentro encuentro, Model model) {
 		service.save(encuentro);
@@ -88,6 +91,46 @@ public class EncuentoController {
 		return "admin/encuentros";
 		
 	}
+	@GetMapping("/admin/gestEncuentro/{orderBy}")
+	public String crudEncuentrosSorted(Model model, @PathVariable("orderBy") String orderBy) {
+		
+		List<Encuentro>encuentros;
+		
+		switch(orderBy) {
+		
+		case"id":
+			encuentros = service.findAll();
+			break;
+		case "especie.nombre":
+			encuentros = service.findAllBySorted("especie.nombre");
+			break;
+		case "zona":
+			encuentros = service.findAllBySorted("zona");
+			break;
+		case "fecha":
+			encuentros = service.findAllBySorted("fecha");
+			break;
+		case "usuario.username":
+			encuentros = service.findAllBySorted("usuario.username");
+			break;
+		case "peso":
+			encuentros = service.findAllBySorted("peso");
+			break;
+		case "tamanio":
+			encuentros = service.findAllBySorted("tamanio");
+			break;
+		default:
+			encuentros = service.findAll();
+				
+		}
+		model.addAttribute("encuentros", encuentros);
+		return "admin/encuentros";
+		
+		
+		
+	}
+	
+	
 	@GetMapping("/admin/borrar/{id}")
 	public String borrarEncuentro(@PathVariable("id")Long id) {
 		service.deleteById(id);
