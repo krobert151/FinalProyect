@@ -22,34 +22,36 @@
         <table class="table container mx-5">
             <thead>
                 <tr>
-                    <th scope="col" class="text-center ">        
+                    <th class="text-center col-1 ">        
                         <a href="#" th:href="@{/register}">
                             <i class="bi bi-plus-square"></i>
                         </a>
                     </th>
-                    <th scope="col">id</th>
-                    <th scope="col">nombre</th>
-                    <th scope="col">apellidos</th>
-                    <th scope="col">correo</th>
-                    <th scope="col">username</th>
-                    <th scope="col">fechaNac</th>
-                    <th scope="col">admin</th>
-                    <th scope="col"></th>
+                    <th class="col-1">id</th>
+                    <th class="col-1">nombre</th>
+                    <th class="col-2">apellidos</th>
+                    <th class="col-3">correo</th>
+                    <th class="col-1">username</th>
+                    <th class="col-1">fechaNac</th>
+                    <th class="col-1">admin</th>
+                    <th class="col-1"></th>
                     
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="usuario:${userList}" >
-                    <td></td>
-                    <td th:text="${usuario.id}" scope="row">Id</td>
-                    <td th:text="${usuario.nombre}">Nombre</td>
-                    <td th:text="${usuario.apellidos}">apellidos</td>
-                    <td th:text="${usuario.correo}">correo</td>
-                    <td th:text="${usuario.username}">username</td>
-                    <td th:text="${usuario.fechaNac}">fechaNac</td>
-                    <td th:text="${usuario.administrator}">admin</td>
-                    <td class="d-flex justify-content-around pe-4">
-                                <a href="#" th:href="@{/user/editarUsuario/{id}(id=${usuario.id})}">
+                    <td class="col-1 ">
+                        <img th:src="${usuario.fotoPerfil}"/>
+                    </td>
+                    <td class="col-1" th:text="${usuario.id}" scope="row">Id</td>
+                    <td class="col-1" th:text="${usuario.nombre}">Nombre</td>
+                    <td class="col-2" th:text="${usuario.apellidos}">apellidos</td>
+                    <td class="col-3" th:text="${usuario.correo}">correo</td>
+                    <td class="col-1" th:text="${usuario.username}">username</td>
+                    <td class="col-1" th:text="${usuario.fechaNac}">fechaNac</td>
+                    <td class="col-1" th:text="${usuario.administrator}">admin</td>
+                    <td class="col-1 ">
+                                <a  href="#" th:href="@{/user/editarUsuario/{id}(id=${usuario.id})}">
                                     <i class="bi bi-pencil-square "></i>
                                 </a>
                                 <a href="#" th:href="@{/user/borrar/{id}(id=${usuario.id})}">

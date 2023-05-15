@@ -30,19 +30,26 @@
                 <table class="table ">
                     <thead class="container-fluid">
                         <tr class="row container-fluid">
-                          <th scope="col-1" class="text-center col-1 ">
-                            <a href="#" th:href="@{/especies/admin/newEspecie}">
-                              <i class="bi bi-plus-square"></i>
-                            </a>
-                          </th>
-                          <th class="col-1"><a th:href="@{/especies/admin/gestEspecies/{orderBy}(orderBy='id')}">Id</a></th>
-                          <th class="col-2"><a th:href="@{/especies/admin/gestEspecies/{orderBy}(orderBy='nombre')}">Nombre</a></th>
-                          <th class="col-2"><a th:href="@{/especies/admin/gestEspecies/{orderBy}(orderBy='descripcion')}">N.Común</a></th>
-                          <th class="col-4">Descripción</th>
-                          <th class="col-1"><a th:href="@{/especies/admin/gestEspecies/{orderBy}(orderBy='genero.nombre')}">N. Genero</a></th>
-                          <th class="col-1"></th>
+                            <th scope="col-1" class="text-center col-1 ">
+                                <a href="#" th:href="@{/especies/admin/newEspecie}">
+                                    <i class="bi bi-plus-square"></i>
+                                </a>
+                            </th>
+                            <th class="col-1"><a
+                                    th:href="@{/especies/admin/gestEspecies/{orderBy}(orderBy='id')}">Id</a></th>
+                            <th class="col-2"><a
+                                    th:href="@{/especies/admin/gestEspecies/{orderBy}(orderBy='nombre')}">Nombre</a>
+                            </th>
+                            <th class="col-2"><a
+                                    th:href="@{/especies/admin/gestEspecies/{orderBy}(orderBy='descripcion')}">N.Común</a>
+                            </th>
+                            <th class="col-4">Descripción</th>
+                            <th class="col-1"><a
+                                    th:href="@{/especies/admin/gestEspecies/{orderBy}(orderBy='genero.nombre')}">N.
+                                    Genero</a></th>
+                            <th class="col-1"></th>
                         </tr>
-                      </thead>                 
+                    </thead>
                     <tbody class="container-fluid">
                         <tr th:each="especie:${especies}" class="row container-fluid">
                             <td class="col-1 d-flex justify-content-center "><img th:src="${especie.foto}" /></td>
@@ -51,10 +58,11 @@
                             <td class="col-2" th:text="${especie.descripcion}">N.Común</td>
                             <td class="col-4">
                                 <p th:text="${especie.detalles}" class="texto-completo" style="display:none"></p>
-                                <a th:text="${#strings.length(especie.detalles) gt 50} ? ${especie.detalles.substring(0, 50)}+'...' : ${especie.detalles}" class="texto-corto"></a>
+                                <a th:text="${#strings.length(especie.detalles) gt 50} ? ${especie.detalles.substring(0, 50)}+'...' : ${especie.detalles}"
+                                    class="texto-corto"></a>
                                 <a href="#" class="leer-mas" onclick="mostrarTextoCompleto(this)"> leer más</a>
                             </td>
-                              
+
                             <td class="col-1" th:text="${especie.genero.nombre}">Genero</td>
                             <td class="col pe-4">
                                 <a class="me-2" href="#"
