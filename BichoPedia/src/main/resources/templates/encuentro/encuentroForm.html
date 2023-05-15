@@ -28,7 +28,8 @@
                     th:object="${encuentro}">
                     <div class="container-fluid">
                         <div class="d-flex justify-content-end">
-                            <p th:text=${usuario.username}>Nombre de usuario</p>
+                            <img th:src="${usuario.fotoPerfil}" class="fotoPerfilResgistro"/>
+                            <span class="fw-bold" th:text=${usuario.username}>Nombre de usuario</span>
                         </div>
                         <h2>Ficha de Encuentro</h2>
                         <input th:if="${encuentro.id != 0}" type="hidden" name="id" th:field="*{id}" />

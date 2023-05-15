@@ -22,35 +22,40 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col"></div>
-                <div class="col-10 col-xl-8 profileContainer  text-light my-5 p-1 mx-3">
-                    <h2 class="text-center my-4" th:text="${usuario.username}">Usuario</h2>
-                    <div class="row">
-                        <div class="col d-flex justify-content-center">
-                            <img class="userimage" th:src="${usuario.fotoPerfil}">
-                        </div>
-                        <div class="col">
-                            <div class="d-flex justify-content-between flex-column mt-3">
-                                <p>Nombre: <span th:text="${usuario.nombre}"></span></p>
-                                <p>Apellidos: <span th:text="${usuario.apellidos}"> </span></p>
-                                <p>Fecha Nacimiento: <span th:text="${usuario.fechaNac}"></span></p>
-                                <p>Correo: <span th:text="${usuario.correo}"></span></p>
+                <div class="col-10 col-xl-8 text-light my-5 profileContainer">
+                    <div class=" profileContainer1 pt-5">
+                        <h2 class="text-center mb-5" th:text="${usuario.username}">Usuario</h2>
+                        <div class="row">
+                            <div class="col d-flex justify-content-center">
+                                <img class="userimage" th:src="${usuario.fotoPerfil}">
+                            </div>
+                            <div class="col">
+                                <div class="userData">
+                                    <p>Nombre: <span th:text="${usuario.nombre}"></span></p>
+                                    <p>Apellidos: <span th:text="${usuario.apellidos}"> </span></p>
+                                    <p>Fecha Nacimiento: <span th:text="${usuario.fechaNac}"></span></p>
+                                    <p>Correo: <span th:text="${usuario.correo}"></span></p>
+                                </div>
                             </div>
                         </div>
+                        <div class="d-flex justify-content-center mt-4 pb-4">
+                            <button class="btn btn-danger" type="button"> <a th:href="@{/logout}">Logout</a></button>
+                        </div>
                     </div>
-                    <div class="d-flex justify-content-center my-4">
-                        <button class="btn btn-danger" type="button"> <a th:href="@{/logout}">Logout</a></button>
-                    </div>
-                    <h2 class="text-center my-5">Mis Encuentros</h2>
-                    <div class="row d-flex justify-content-center text-light">
-                        <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1"
-                            th:each="encuentro : ${encuentros}">
-                            <a class="h-100 w-100">
-                                <img class="background-image" th:src="${encuentro.foto}"/>
-                                <div class="text">
-                                    <h3 th:text="${encuentro.especie.nombre}">Aún no ha resgistrado ninguna especie</h3>
-                                    <p th:text="${encuentro.especie.descripcion}"></p>
-                                </div>
-                            </a>
+                    <div class="profileContainer2 pt-5 pb-5">
+                        <h2 class="text-center mb-5">Mis Encuentros</h2>
+                        <div class="row d-flex justify-content-center text-light">
+                            <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1"
+                                th:each="encuentro : ${encuentros}">
+                                <a class="h-100 w-100">
+                                    <img class="background-image" th:src="${encuentro.foto}" />
+                                    <div class="text">
+                                        <h3 th:text="${encuentro.especie.nombre}">Aún no ha resgistrado ninguna especie
+                                        </h3>
+                                        <p th:text="${encuentro.especie.descripcion}"></p>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
