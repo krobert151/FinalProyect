@@ -9,7 +9,7 @@ import com.salesianostriana.dam.bichopedia.repo.EncuentroRepository;
 import com.salesianostriana.dam.bichopedia.services.base.BaseService;
 
 @Service
-public abstract class EncuentroService extends BaseService <Encuentro,Long,EncuentroRepository>{
+public class EncuentroService extends BaseService <Encuentro,Long,EncuentroRepository>{
 
 	public EncuentroService(EncuentroRepository repo) {
 		super(repo);

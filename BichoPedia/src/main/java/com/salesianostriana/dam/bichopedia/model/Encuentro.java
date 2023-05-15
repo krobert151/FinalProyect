@@ -7,6 +7,7 @@ import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -36,6 +37,8 @@ public class Encuentro {
 	private Especie especie;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate fecha;
+
+	@Lob
 	private String descripcion;
 	private String foto;
 	private String zona;

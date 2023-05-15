@@ -224,12 +224,7 @@ a {
     border-radius: 10pt;
     background-color: rgba(41, 34, 26, 0.842);
     box-shadow: 10px 10px 25px #111311;
+    z-index: -1;
 }
-.exit{
-    font-size: 150%;
-}
-.exit:hover{
-    color: red;
-    scale: 1.3;
-}
+
 
