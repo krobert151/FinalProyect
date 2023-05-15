@@ -118,6 +118,28 @@ a {
     height: 100%;
     z-index: -1;
 }
+.text>p {
+    display: none;
+    font-size: x-large;
+}
+
+.text:hover>p {
+    display: block;
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.hidden {
+    display: none;
+}
 .userimage{
     aspect-ratio: 1/1;
     object-fit: cover;
@@ -254,5 +276,40 @@ a {
     border-radius: 50pt;
     border: 1px solid white;
     margin-right: 3% ;
+
+}
+.taxonomias{
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 15pt;
+
+}
+
+.taxonomias>div>div>a,.taxonomias>div>div>span{
+    border-radius: 5pt;
+    display: block;
+    height: 100%;
+    width: 100%;
+    background-color: #005c1f;
+}
+
+.taxonomias>div>div>a:hover,.taxonomias>div>div>span:hover {
+    transform: scale(1.1);
+    font-size: 120;
+    font-weight: 600;
+  }
+.taxonomias>button{
+    background-color: #005c1f;
+    border: 0;
+    border-radius: 15pt;
+}
+.taxonomias>button:hover{
+    transform: scale(1.1);
+    font-size: 120;
+    font-weight: 600;
+}
+.taxonomias>button>a{
+    display: block;
 
 }
