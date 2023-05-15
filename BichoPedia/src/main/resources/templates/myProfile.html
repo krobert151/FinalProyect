@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link th:href="@{/css/estilos.css}" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/estilos.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>My Profile</title>
+</head>
+
+<body class="indexmain">
+    <header>
+        <nav th:replace="~{fragmentos/menu::menu}">
+        </nav>
+    </header>
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-10 col-xl-8 text-light my-5 profileContainer">
+                    <div class=" profileContainer1 pt-5">
+                        <h2 class="text-center mb-5" th:text="${usuario.username}">Usuario</h2>
+                        <div class="row">
+                            <div class="col d-flex justify-content-center">
+                                <img class="userimage" th:src="${usuario.fotoPerfil}">
+                            </div>
+                            <div class="col">
+                                <div class="userData">
+                                    <p>Nombre: <span th:text="${usuario.nombre}"></span></p>
+                                    <p>Apellidos: <span th:text="${usuario.apellidos}"> </span></p>
+                                    <p>Fecha Nacimiento: <span th:text="${usuario.fechaNac}"></span></p>
+                                    <p>Correo: <span th:text="${usuario.correo}"></span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center mt-4 pb-4">
+                            <button class="btn btn-danger" type="button"> <a th:href="@{/logout}">Logout</a></button>
+                        </div>
+                    </div>
+                    <div class="profileContainer2 pt-5 pb-5">
+                        <h2 class="text-center mb-5">Mis Encuentros</h2>
+                        <div class="row d-flex justify-content-center text-light">
+                            <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1"
+                                th:each="encuentro : ${encuentros}">
+                                <a class="h-100 w-100">
+                                    <img class="background-image" th:src="${encuentro.foto}" />
+                                    <div class="text">
+                                        <h3 th:text="${encuentro.especie.nombre}">Aún no ha resgistrado ninguna especie
+                                        </h3>
+                                        <p th:text="${encuentro.especie.descripcion}"></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+    </main>
+    <footer th:replace="~{fragmentos/footer::footer}">
+    </footer>
+</body>
+
+</html>

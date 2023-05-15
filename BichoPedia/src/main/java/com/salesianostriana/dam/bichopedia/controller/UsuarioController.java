@@ -27,6 +27,8 @@ public class UsuarioController {
 		
 	}
 	
+	
+	
 	@GetMapping("newUser")
 	public String nuevoUsuario(Model model) {
 		

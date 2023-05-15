@@ -21,12 +21,12 @@
     <main>
         <div class="container fondodifu p-3 my-3 px-5">
             <h1 class="text-center text-dark mb-4 nombreEspecie " th:text="${especie.nombre}" >Nombre de la especie</h1>
-            <div class="row text-dark">
-                <div class="col-3 col-md-6 col-lg-7 col-xl-8" >
+            <div class="row text-dark pb-4">
+                <div class="col-12 col-md-12 col-lg-7 col-xl-8 mb-2" >
                     <img class="imagenEspecie" th:src="${especie.foto}"  src="../../static/img/fotoEspecie.png" alt="">
                 </div>
-                <div class="col">
-                    <ul class="d-flex flex-column taxList ms-3 pb-5 pt-4">
+                <div class="col-12 col-md-12 col-lg-5 col-xl-4">
+                    <ul class="d-flex flex-column taxList ms-3  pt-4">
                         <li>Reino :   <span th:text="${especie.genero.familia.orden.clase.filo.reino.nombre}"></span> </li>
                         <li>Filo : <span th:text="${especie.genero.familia.orden.clase.filo.nombre}"></span> </li>
                         <li>Clase : <span th:text="${especie.genero.familia.orden.clase.nombre}"></span> </li>

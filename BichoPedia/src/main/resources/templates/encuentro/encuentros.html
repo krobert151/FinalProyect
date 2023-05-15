@@ -36,7 +36,7 @@
                             th:each="encuentro : ${encuentroList}">
                             <img class="background-image" th:src="${encuentro.foto}" src="https://lahuertinadetoni.es/wp-content/uploads/2015/01/233-163-Copiar.jpg" />
                             <div class="encuentroInfo">
-                                <h3 th:text="${encuentro.especie.nombre}">Nombre especie</h3>
+                                <h3 th:text="${encuentro.especie.descripcion}"></h3>
                                 <span th:text="${encuentro.zona}">zona</span>
                                 <span> - </span>
                                 <span th:text="${encuentro.usuario.username}">nombre</span>

@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
 import com.salesianostriana.dam.bichopedia.model.Encuentro;
 import com.salesianostriana.dam.bichopedia.repo.EncuentroRepository;
 import com.salesianostriana.dam.bichopedia.services.base.BaseService;
@@ -24,11 +23,17 @@ public class EncuentroService extends BaseService <Encuentro,Long,EncuentroRepos
 		
 	}
 	
-	
+
 	@Override
 	public List<Encuentro> findAll() {
 		// TODO Auto-generated method stub
 		return this.repositorio.findAll();
+	}
+	
+	public List<Encuentro> findAllByUser(Long userId){
+		
+		return this.repositorio.findByUsuarioId(userId);
+		
 	}
 
 }
