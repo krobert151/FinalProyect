@@ -29,6 +29,11 @@ public class ClaseService extends BaseService <Clase,Long,ClaseRepository>{
 		
 	}
 	
+	public List<Clase>findByNombre(String nombre){
+		
+		return this.repositorio.findByNombreContainingIgnoreCase(nombre);
+		
+	}
 	
 	public List<Clase>findAllByFiloId(Long filoId){
 		

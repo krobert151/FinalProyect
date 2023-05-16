@@ -8,10 +8,12 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.salesianostriana.dam.bichopedia.formbeans.SearchBean;
 import com.salesianostriana.dam.bichopedia.model.Encuentro;
 import com.salesianostriana.dam.bichopedia.model.Especie;
 import com.salesianostriana.dam.bichopedia.model.Usuario;
@@ -38,6 +40,32 @@ public class EncuentoController {
 		model.addAttribute("encuentroList", service.findAll());
 		
 		return "encuentro/encuentros";
+	}
+	
+	@PostMapping("/search")
+	public String verEncuentro(@ModelAttribute("searchForm") SearchBean searchBean,Model model){
+		
+		List<Encuentro>encuentros;
+		encuentros =service.findByNombre(searchBean.getSearch());
+		model.addAttribute("encuentro", encuentros);
+		return "encuentro/encuentros";
+		
+		
+	}
+	
+	@GetMapping("/details/{id}")
+	public String detallesEncuentro(@PathVariable Long id,Model model) {
+		
+		Encuentro encuentro = service.findById(id);
+		
+		if(encuentro!=null) {
+			model.addAttribute("encuentro", encuentro);
+			return "encuentro/encuentroDetails";
+		}else
+			return "redirect:/encuentros/";
+			
+		
+		
 	}
 	
 	@GetMapping("/orderBy/{orderBy}")

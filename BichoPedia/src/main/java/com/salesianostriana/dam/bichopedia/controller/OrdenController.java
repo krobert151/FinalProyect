@@ -7,11 +7,13 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.salesianostriana.dam.bichopedia.formbeans.SearchBean;
 import com.salesianostriana.dam.bichopedia.model.Orden;
 import com.salesianostriana.dam.bichopedia.services.ClaseService;
 import com.salesianostriana.dam.bichopedia.services.OrdenService;
@@ -25,6 +27,15 @@ public class OrdenController {
 	
 	@Autowired
 	private ClaseService claseService;
+	
+	@PostMapping("/search")
+	public String buscarOrden(@ModelAttribute("searchForm")SearchBean searchBean,Model model) {
+		
+		List<Orden>ordenes;
+		ordenes=service.findByName(searchBean.getSearch());
+		model.addAttribute("ordenList", ordenes);
+		return "orden/ordenes";
+	}
 	
 	@GetMapping("/")
 	public String showOrdenes(@RequestParam(name="claseId", required=false)Long claseId, Model model) {

@@ -24,6 +24,12 @@ public class ReinoService extends BaseService<Reino, Long, ReinoRepository> {
 		return this.repositorio.findAll();
 	}
 
+	public List<Reino>findByName(String nombre){
+		
+		return this.repositorio.findByNombreContainingIgnoreCase(nombre);
+		
+	}
+	
 	
 	public List<Reino>findAllSortedBy(Direction direction,String orderBy) {
         Sort sort = Sort.by(direction, orderBy);

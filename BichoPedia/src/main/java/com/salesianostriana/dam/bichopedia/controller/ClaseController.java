@@ -7,11 +7,13 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.salesianostriana.dam.bichopedia.formbeans.SearchBean;
 import com.salesianostriana.dam.bichopedia.model.Clase;
 import com.salesianostriana.dam.bichopedia.model.Filo;
 import com.salesianostriana.dam.bichopedia.services.ClaseService;
@@ -26,7 +28,26 @@ public class ClaseController {
 	
 	@Autowired
 	private FiloService filoService;
-			
+	
+	@PostMapping("/search")
+	public String buscarClases(@ModelAttribute("searchForm")SearchBean searchBean,Model model) {
+		
+		List<Clase>clases;
+		clases = service.findByNombre(searchBean.getSearch());
+		model.addAttribute("claseList", clases);
+		return "clase/clases";
+		
+	}
+	@PostMapping("/admin/search")
+	public String buscarClasesAdmin(@ModelAttribute("searchForm")SearchBean searchBean,Model model) {
+		
+		List<Clase>clases;
+		clases = service.findByNombre(searchBean.getSearch());
+		model.addAttribute("clases", clases);
+		return "admin/clases";
+		
+	}
+	
 	@GetMapping("/")
 	public String showCalses(@RequestParam(name="filoId",required=false)Long filoId,  Model model) {
 		

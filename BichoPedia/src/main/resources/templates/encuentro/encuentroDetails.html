@@ -22,29 +22,28 @@
         <div class="container fondodifu p-3 my-3 px-5">
             <div class="text-dark mb-4 nombreEspecie d-flex flex-row-reverse">
                 <a  th:text="${encuentro.usuario.username}" >Username</a>
-                <img class="" th:src="${encuentro.usuario.fotoPerfil}" alt="Foto de perfil">
+                <img class="fotoPerfilResgistro" th:src="${encuentro.usuario.fotoPerfil}" alt="Profile Photo">
             </div>
             <h1 class="text-center text-dark mb-4 nombreEspecie " th:text="${encuentro.especie.nombre}" >Nombre de la especie</h1>
             <div class="row text-dark pb-4">
                 <div class="col-12 col-md-12 col-lg-7 col-xl-8 mb-2" >
-                    <img class="imagenEspecie" th:src="${especie.foto}"  src="../../static/img/fotoEspecie.png" alt="">
+                    <img class="imagenEspecie" th:src="${encuentro.foto}"  src="../../static/img/fotoEspecie.png" alt="foto encuentro">
                 </div>
                 <div class="col-12 col-md-12 col-lg-5 col-xl-4">
-                    <ul class="d-flex flex-column taxList ms-3  pt-4">
-                        <li>Reino :   <span th:text="${especie.genero.familia.orden.clase.filo.reino.nombre}"></span> </li>
-                        <li>Filo : <span th:text="${especie.genero.familia.orden.clase.filo.nombre}"></span> </li>
-                        <li>Clase : <span th:text="${especie.genero.familia.orden.clase.nombre}"></span> </li>
-                        <li>Orden : <span th:text="${especie.genero.familia.orden.nombre}"></span> </li>
-                        <li>Familia : <span th:text="${especie.genero.familia.nombre}"></span> </li>
-                        <li>Genero : <span th:text="${especie.genero.nombre}"></span> </li>
-                        <li>Especie : <span th:text="${especie.nombre}"></span> </li>
-                        <li class="mt-3">Nombre común: <span th:text="${especie.descripcion}"></span> </li>
+                    <ul class="d-flex flex-column taxList ms-3  pt-4">  
+                        <li>Nombre :   <span th:text="${encuentro.especie.nombre}"></span> </li>
+                        <li>Fecha : <span th:text="${encuentro.fecha}"></span> </li>
+                        <li>Zona : <span th:text="${encuentro.zona}"></span> </li>
+                        <li>Peso : <span th:text="${encuentro.peso}"></span><span>g</span> </li>
+                        <li>Tamaño : <span th:text="${encuentro.tamanio}"></span><span>cm</span> </li>
+                        <li>Sexo : <span th:text="${encuentro.sexo}"></span> </li>
+                        <li class="mt-3">Nombre común: <span th:text="${encuentro.especie.descripcion}"></span> </li>
                     </ul>
                     
                 </div>
             </div>
             <div class="row text-dark mt-5 detalles">
-                <p th:text="${especie.detalles}">Textaco</p>
+                <p th:text="${encuentro.descripcion}">Textaco</p>
             </div>
         </div>
     </main>

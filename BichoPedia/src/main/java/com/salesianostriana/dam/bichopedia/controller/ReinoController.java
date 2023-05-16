@@ -7,10 +7,12 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.salesianostriana.dam.bichopedia.formbeans.SearchBean;
 import com.salesianostriana.dam.bichopedia.model.Reino;
 import com.salesianostriana.dam.bichopedia.services.ReinoService;
 
@@ -20,12 +22,22 @@ public class ReinoController {
 	@Autowired
 	private ReinoService service;
 	
+	@PostMapping("/search")
+	public String buscarReinos(@ModelAttribute("searchForm")SearchBean searchBean,Model model) {
+		
+		List<Reino>reinos;
+		reinos=service.findByName(searchBean.getSearch());
+		model.addAttribute("reinoList", reinos);
+		return "reino/reinos";		
+		
+	}
+	
 	@GetMapping("/")
 	public String showReinos(Model model) {
 		
 		model.addAttribute("reinoList", service.findAll());
-		
 		return "reino/reinos";
+		
 	}
 	
 	@GetMapping ("/orderBy/{orderBy}")
@@ -116,10 +128,10 @@ public class ReinoController {
 			return "reino/reinoForm";			
 		}else {
 			return "redirect:/reinos/gestReinos";
-		}
-		
-		
+		}	
 	}
+	
+	
 	@GetMapping("/admin/borrar/{id}")
 	public String borrarReino(@PathVariable("id")long id) {
 		service.deleteById(id);

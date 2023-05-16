@@ -29,10 +29,15 @@ public class GeneroService extends BaseService<Genero,Long,GeneroRepository>{
 	}
 	
 	
-	
 	public List<Genero> findAllByFamilia(Long familiaId){
 		
 		return this.repositorio.findByFamiliaId(familiaId);
+		
+	}
+	
+	public List<Genero>findByName(String nombre){
+		
+		return this.repositorio.findByNombreContainingIgnoreCase(nombre);
 		
 	}
 	

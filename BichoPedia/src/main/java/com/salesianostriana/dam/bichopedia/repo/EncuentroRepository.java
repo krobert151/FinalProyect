@@ -15,4 +15,10 @@ public interface EncuentroRepository extends JpaRepository<Encuentro, Long> {
 	@Query("select e from Encuentro e where e.usuario.id = ?1")
 	List<Encuentro> findByUsuarioId(Long encuentroId);
 	
+	@Query("SELECT e FROM Encuentro e WHERE UPPER(e.especie.descripcion) LIKE UPPER(CONCAT('%', ?1, '%'))")
+	List<Encuentro> findByEspecieDescripcion(String nombre);
+
+
+
+	
 }

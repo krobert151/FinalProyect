@@ -8,11 +8,13 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.salesianostriana.dam.bichopedia.formbeans.SearchBean;
 import com.salesianostriana.dam.bichopedia.model.Especie;
 import com.salesianostriana.dam.bichopedia.services.EspecieService;
 import com.salesianostriana.dam.bichopedia.services.GeneroService;
@@ -28,6 +30,24 @@ public class EspecieController {
 	@Autowired 
 	private GeneroService genServcie;
 	
+	@PostMapping("/search")
+	public String buscarEspecie(@ModelAttribute("searchForm")SearchBean searchBean,Model model) {
+		
+		List<Especie>especies;
+		especies = service.findByDesc(searchBean.getSearch());
+		model.addAttribute("especieList", especies);
+		return "especie/especies";
+		
+	}
+	@PostMapping("/admin/search")
+	public String buscarEspecieAdmin(@ModelAttribute("searchForm")SearchBean searchBean,Model model) {
+		
+		List<Especie>especies;
+		especies = service.findByDesc(searchBean.getSearch());
+		model.addAttribute("especies", especies);
+		return "admin/especies";
+		
+	}
 	@GetMapping("/")
 	public String verEspecies(@RequestParam(name="idGenero",required=false)Long idGenero,Model model) {
 		

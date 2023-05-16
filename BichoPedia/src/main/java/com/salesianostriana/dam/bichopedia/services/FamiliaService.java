@@ -28,6 +28,14 @@ public class FamiliaService extends BaseService<Familia,Long,FamiliaRepository>{
         return this.repositorio.findAll(sort);
 	}	
 	
+	public List<Familia>findByName(String nombre){
+		
+		return this.repositorio.findByNombreContainingIgnoreCase(nombre);
+		
+	}
+	
+
+	
 	
 	public List<Familia> findAllByOrdenId(Long ordenId){
 		

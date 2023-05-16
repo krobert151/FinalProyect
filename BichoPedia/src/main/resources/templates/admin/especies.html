@@ -27,6 +27,21 @@
         </div>
         <div class="row">
             <div class="col-12">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-1  d-none d-xl-block"></div>
+                    <div class="col-10 d-flex justify-content-center">
+                        <form action="3" th:action="@{/especies/admin/search}" th:object="${searchForm}" method="POST">
+                            <div class="d-flex my-3">
+                                <input type="text" class="form-control" name="search" id="nombre"
+                                    placeholder="Nombre de la especie" required>
+                                <button class="btn btn-light">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-1  d-none d-xl-block"></div>
+                </div>
                 <table class="table ">
                     <thead class="container-fluid">
                         <tr class="row container-fluid">
@@ -61,13 +76,13 @@
                             </th>
                             <th class="col-3">Descripción</th>
                             <th class="col-2"><a>N.Genero</a>
-                            <a th:href="@{/especies/admin/gestEspecies/{orderBy}(orderBy='genero')}">
-                                <i class="bi bi-arrow-up"></i>
-                            </a>
-                            <a th:href="@{/especies/admin/gestEspecies/{orderBy}(orderBy='generoDesc')}">
-                                <i class="bi bi-arrow-down"></i>
-                            </a>
-                        </th>
+                                <a th:href="@{/especies/admin/gestEspecies/{orderBy}(orderBy='genero')}">
+                                    <i class="bi bi-arrow-up"></i>
+                                </a>
+                                <a th:href="@{/especies/admin/gestEspecies/{orderBy}(orderBy='generoDesc')}">
+                                    <i class="bi bi-arrow-down"></i>
+                                </a>
+                            </th>
                             <th class="col-1"></th>
                         </tr>
                     </thead>

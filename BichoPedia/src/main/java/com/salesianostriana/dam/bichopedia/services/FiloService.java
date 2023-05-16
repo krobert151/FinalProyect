@@ -30,6 +30,12 @@ public class FiloService extends BaseService<Filo,Long,FiloRepository>{
 	}
 
 	
+	public List<Filo>findByNombre(String nombre){
+		
+		return this.repositorio.findByNombreContainingIgnoreCase(nombre);
+	}
+	
+	
 	public List<Filo>FindAllByReinoId(Long reinoId){
 		
 		return this.repositorio.findByReinoId(reinoId);
