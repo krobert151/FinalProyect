@@ -111,12 +111,37 @@ a {
     margin: 5px;
     border-radius: 5pt;
 }
+
+
+
 .background-image {
     object-fit: cover;
     position: absolute;
     width: 100%;
     height: 100%;
     z-index: -1;
+}
+.text>p {
+    display: none;
+    font-size: x-large;
+}
+
+.text:hover>p {
+    display: block;
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.hidden {
+    display: none;
 }
 .userimage{
     aspect-ratio: 1/1;
@@ -174,13 +199,28 @@ a {
     aspect-ratio: 1/1;
     display: flex;
     flex-direction: column;
-    justify-content: end;
     border-radius: 5pt;
     border: rgb(0, 0, 0) 1px solid;
     padding: 0;
 }
 .encuentroInfo{
     text-align: center;
+    background-color: #2525255e;
+    padding: 5px;
+    margin: 5px;
+    margin-top: 40%;
+    border-radius: 5pt;
+}
+.encuentroinfo2{
+    background-color: rgba(41, 34, 26, 0.199);
+    border-radius: 25pt;
+
+}
+.encuentroinfo2>img{
+    aspect-ratio: 1/1;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50pt;
 }
 .encuentroInfo>h3{
     font-size: 1.2em;
@@ -254,5 +294,40 @@ a {
     border-radius: 50pt;
     border: 1px solid white;
     margin-right: 3% ;
+
+}
+.taxonomias{
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff8e;
+    border-radius: 15pt;
+
+}
+
+.taxonomias>div>div>a,.taxonomias>div>div>span{
+    border-radius: 5pt;
+    display: block;
+    height: 100%;
+    width: 100%;
+    background-color: #005c1f;
+}
+
+.taxonomias>div>div>a:hover,.taxonomias>div>div>span:hover {
+    transform: scale(1.1);
+    font-size: 120;
+    font-weight: 600;
+  }
+.taxonomias>button{
+    background-color: #005c1f;
+    border: 0;
+    border-radius: 15pt;
+}
+.taxonomias>button:hover{
+    transform: scale(1.1);
+    font-size: 120;
+    font-weight: 600;
+}
+.taxonomias>button>a{
+    display: block;
 
 }

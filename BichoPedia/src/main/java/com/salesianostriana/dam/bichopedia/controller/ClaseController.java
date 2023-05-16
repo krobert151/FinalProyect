@@ -3,6 +3,7 @@ package com.salesianostriana.dam.bichopedia.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,6 +43,40 @@ public class ClaseController {
 		return "clase/clases";
 		
 	}
+	@GetMapping("/orderBy/{orderBy}")
+	public String verClasesSorted(@PathVariable String orderBy,Model model) {
+		
+		List<Clase>clases;
+		
+		switch (orderBy) {
+		
+		case "nombreAsc":
+			clases = service.findAllSorted(Direction.ASC,"descripcion");
+			break;
+		case "nombreDesc":
+			clases = service.findAllSorted(Direction.DESC,"descripcion");
+			break;
+		case "cientificoAsc":
+			clases = service.findAllSorted(Direction.ASC,"nombre");
+			break;
+		case "cientificoDesc":
+			clases = service.findAllSorted(Direction.DESC,"nombre");
+			break;
+		case "filoAsc":
+			clases = service.findAllSorted(Direction.ASC,"filo.nombre");
+			break;
+		case "filoDesc":
+			clases = service.findAllSorted(Direction.DESC,"filo.nombre");
+			break;
+		default:
+			clases=service.findAll();		
+		}
+		
+		model.addAttribute("claseList", clases);
+		return "clase/clases";
+		
+	}
+	
 	@GetMapping("/newClase")
 	public String nuevaClase(Model model) {
 		
@@ -66,16 +101,28 @@ public class ClaseController {
 		switch(orderBy) {
 		
 		case"id":
-			clases = service.findAll();
+			clases = service.findAllSorted(Direction.ASC,"id");
 			break;
 		case "nombre":
-			clases = service.findAllBySorted("nombre");
+			clases = service.findAllSorted(Direction.ASC,"nombre");
 			break;
 		case "descripcion":
-			clases = service.findAllBySorted("descripcion");
+			clases = service.findAllSorted(Direction.ASC,"descripcion");
 			break;
-		case "orden":
-			clases = service.findAllBySorted("filo.nombre");
+		case "filo":
+			clases = service.findAllSorted(Direction.ASC,"filo.nombre");
+			break;
+		case"idDesc":
+			clases = service.findAllSorted(Direction.DESC,"id");
+			break;
+		case "nombreDesc":
+			clases = service.findAllSorted(Direction.DESC,"nombre");
+			break;
+		case "descripcionDesc":
+			clases = service.findAllSorted(Direction.DESC,"descripcion");
+			break;
+		case "filoDesc":
+			clases = service.findAllSorted(Direction.DESC,"filo.nombre");
 			break;
 		default:
 			clases=service.findAll();	
@@ -94,7 +141,7 @@ public class ClaseController {
 			if(claseEdit != null) {
 				
 				model.addAttribute("clase", claseEdit);
-				model.addAttribute("filos", filoService.findAllBySorted("nombre"));
+				model.addAttribute("filos", filoService.findAllBySorted(Direction.ASC,"nombre"));
 				return "clase/claseForm";
 				
 			}else

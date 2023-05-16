@@ -3,6 +3,7 @@ package com.salesianostriana.dam.bichopedia.services;
 import java.util.List;
 
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import com.salesianostriana.dam.bichopedia.model.Encuentro;
 import com.salesianostriana.dam.bichopedia.repo.EncuentroRepository;
@@ -16,10 +17,9 @@ public class EncuentroService extends BaseService <Encuentro,Long,EncuentroRepos
 		// TODO Auto-generated constructor stub
 	}
 
-	public List<Encuentro>findAllBySorted(String orderBy){
-		
-		Sort sort = Sort.by(orderBy);
-		return this.repositorio.findAll(sort);
+	public List<Encuentro>findAllBySorted(Direction direction,String orderBy) {
+        Sort sort = Sort.by(direction, orderBy);
+        return this.repositorio.findAll(sort);
 		
 	}
 	

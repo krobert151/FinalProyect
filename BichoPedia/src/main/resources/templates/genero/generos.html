@@ -21,15 +21,46 @@
     <main>
         <div>
             <div class="row">
-                <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block">
-                    <button class="botonTax my-2">
-                        <a class="py-1 px-3 botonLink" th:href="@{/generos/newGenero}" href="/newGenero">
-                            <span class="botonTexto">Nueva Genero</span>
-                            <i class="bi bi-plus-circle botonIcono"></i>
-                        </a>
-                    </button>
+                <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block ">
+                    <div class="taxonomias m-3 p-3">
+                        <h3 class="text-center mb-3">Buscar por</h3>
+                        <div>
+                            <div>
+                                <span class="row text-center p-2 text-light my-1">
+                                    <a class="col-10 text-center">Nombre</a>
+                                    <a class="col-1 mx-1"th:href="@{/generos/orderBy/{orderBy}(orderBy='nombreAsc')}">
+                                        <i class="bi bi-arrow-up"></i>
+                                    </a>
+                                    <a class="col-1 mx-1" th:href="@{/generos/orderBy/{orderBy}(orderBy='nombreDesc')}">
+                                        <i class="bi bi-arrow-down"></i>
+                                    </a>
+                                </span>
+                            </div>
+                            <div>
+                                <span class="row text-center col p-2 text-light my-1">
+                                    <a class="col-10 text-center">N.Científico</a>
+                                    <a class="col-1 mx-1" th:href="@{/generos/orderBy/{orderBy}(orderBy='cientificoAsc')}">
+                                        <i class="bi bi-arrow-up"></i>
+                                    </a>
+                                    <a class="col-1 mx-1" th:href="@{/generos/orderBy/{orderBy}(orderBy='cientificoDesc')}">
+                                        <i class="bi bi-arrow-down"></i>
+                                    </a>
+                                </span>
+                            </div>
+                            <div>
+                                <span class="row text-center col p-2 text-light my-1">
+                                    <a class="col-10 text-center">Generos</a>
+                                    <a class="col-1 mx-1" th:href="@{/generos/orderBy/{orderBy}(orderBy='familiaAsc')}"><i class="bi bi-arrow-up"></i>
+                                    </a>
+                                    <a class="col-1 mx-1" th:href="@{/generos/orderBy/{orderBy}(orderBy='familiaDesc')}"><i class="bi bi-arrow-down"></i>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col ">
+                    <h1 class="text-center text-light">Generos</h1>
                     <form action="">
                         <div class="d-flex my-3">
                             <input type="text" class="form-control " id="genero" placeholder="Nombre de la genero"
@@ -52,19 +83,18 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block">
-                    <button class="botonTax my-2">
-                        <a class="py-1 px-3 botonLink" th:href="@{/familias/}" href="/familias">
-                            <i class="bi bi-arrow-up botonIcono"></i>
-                            <span class="botonTexto">Familias</span>
-                        </a>
-                    </button>
-                    <button class="botonTax my-2">
-                        <a class="py-1 px-3 botonLink" th:href="@{/especies/}" href="/especies">
-                            <i class="bi bi-arrow-down botonIcono"></i>
-                            <span class="botonTexto">Especies</span>
-                        </a>
-                    </button>
+                <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block" >
+                    <div th:replace="~{especie/especies::menu-lateral}">
+                    </div>
+                    <div class="taxonomias m-3 p-3">
+                        <h3 class="text-center mb-3">No está?!</h3>
+                        <button>
+                                <a class="py-1 px-3 botonLink text-center" th:href="@{/generos/newGenero}" href="/newGenero">
+                                    <span class="botonTexto">Nuevo Genero</span>
+                                    <i class="ms-2 bi bi-plus-circle botonIcono"></i>
+                                </a>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

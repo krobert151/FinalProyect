@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,6 +43,7 @@ public class EspecieController {
 	    return "especie/especies";
 	}
 	
+	
 	@GetMapping("/details/{id}")
 	public String detalleEspecie(@PathVariable("id") Long id,Model model) {
 		
@@ -62,7 +64,7 @@ public class EspecieController {
 	public String nuevaEspecie(Model model) {
 		
 		model.addAttribute("especie", new Especie());
-		model.addAttribute("generos", genServcie.findAllSorted("nombre"));
+		model.addAttribute("generos", genServcie.findAllSorted(Direction.ASC,"nombre"));
 		return "especie/especieForm";
 	}
 
@@ -73,22 +75,68 @@ public class EspecieController {
 		return "redirect:/especies/";
 
 	}
+	
+	@GetMapping("/orderBy/{orderBy}")
+	public String verEspeciesSorted(@PathVariable String orderBy,Model model) {
+		
+		List<Especie> especies;
+		switch (orderBy) {
+		
+		case "nombreAsc":
+			especies = service.findAllSorted(Direction.ASC,"descripcion");
+			break;
+		case "nombreDesc":
+			especies = service.findAllSorted(Direction.DESC,"descripcion");
+			break;
+		case "cientificoAsc":
+			especies = service.findAllSorted(Direction.ASC,"nombre");
+			break;
+		case "cientificoDesc":
+			especies = service.findAllSorted(Direction.DESC,"nombre");
+			break;
+		case "generoAsc":
+			especies = service.findAllSorted(Direction.ASC,"genero.nombre");
+			break;
+		case "generoDesc":
+			especies = service.findAllSorted(Direction.DESC,"genero.nombre");
+			break;
+		default:
+			especies = service.findAll();
+				
+		}
+		model.addAttribute("especieList", especies);
+		return "especie/especies";
+		
+	}
+	
 	@GetMapping("/admin/gestEspecies/{orderBy}")
 	public String crudEspeciesSorted(Model model, @PathVariable String orderBy) {
 	    List<Especie> especies;
 	    switch (orderBy) {
 	        case "id":
-	            especies = service.findAll();
+	            especies = service.findAllSorted(Direction.ASC,"id");
 	            break;
+	        case "idDesc":
+	            especies = service.findAllSorted(Direction.DESC,"id");
+	        	break;
 	        case "nombre":
-	            especies = service.findAllSorted("nombre");
+	            especies = service.findAllSorted(Direction.ASC,"nombre");
 	            break;
 	        case "descripcion":
-	            especies = service.findAllSorted("descripcion");
+	            especies = service.findAllSorted(Direction.ASC,"descripcion");
 	            break;
 	        case "genero":
-	            especies = service.findAllSorted("genero.nombre");
+	            especies = service.findAllSorted(Direction.ASC,"genero.nombre");
 	            break;
+	        case "nombreDesc":
+	        	especies = service.findAllSorted(Direction.DESC,"nombre");
+	        	break;
+	        case "descripcionDesc":
+	        	especies = service.findAllSorted(Direction.DESC,"descripcion");
+	        	break;
+	        case "generoDesc":
+	        	especies = service.findAllSorted(Direction.DESC,"genero.nombre");
+	        	break;
 	        default:
 	            especies = service.findAll();
 	    }
@@ -103,7 +151,7 @@ public class EspecieController {
 		
 		if(especieEdit != null) {
 			model.addAttribute("especie", especieEdit);
-			model.addAttribute("generos", genServcie.findAllSorted("nombre"));
+			model.addAttribute("generos", genServcie.findAllSorted(Direction.ASC,"nombre"));
 			return "especie/especieForm";
 		}else
 			return "redirect:/especies/gestEspecies";

@@ -3,6 +3,7 @@ package com.salesianostriana.dam.bichopedia.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,6 +40,43 @@ public class FiloController {
 		return "filo/filos";
 		
 	} 
+	
+	@GetMapping("/orderBy/{orderBy}")
+	public String verFilosSorted (@PathVariable String orderBy,Model model) {
+		
+		List<Filo>filos;
+		
+		switch (orderBy) {
+		
+		case "nombreAsc":
+			filos = service.findAllBySorted(Direction.ASC,"descripcion");
+			break;
+		case "nombreDesc":
+			filos = service.findAllBySorted(Direction.DESC,"descripcion");
+			break;
+		case "cientificoAsc":
+			filos = service.findAllBySorted(Direction.ASC,"nombre");
+			break;
+		case "cientificoDesc":
+			filos = service.findAllBySorted(Direction.DESC,"nombre");
+			break;
+		case "reinoAsc":
+			filos = service.findAllBySorted(Direction.ASC,"reino.nombre");
+			break;
+		case "reinoDesc":
+			filos = service.findAllBySorted(Direction.DESC,"reino.nombre");
+			break;
+		default:
+			filos=service.findAll();		
+		}
+		
+		model.addAttribute("filoList", filos);
+		return "filo/filos";
+		
+		
+		
+	}
+	
 	@GetMapping("/newFilo")
 	public String nuevoFilo(Model model) {
 		
@@ -69,16 +107,28 @@ public class FiloController {
 		switch(orderBy) {
 		
 		case "id":
-			filos= service.findAll();
+			filos= service.findAllBySorted(Direction.ASC,"id");
 			break;
 		case "nombre":
-			filos = service.findAllBySorted("nombre");
+			filos = service.findAllBySorted(Direction.ASC,"nombre");
 			break;
 		case "descripcion":
-			filos = service.findAllBySorted("descripcion");
+			filos = service.findAllBySorted(Direction.ASC,"descripcion");
 			break;
 		case "reino":
-			filos = service.findAllBySorted("reino.nombre");
+			filos = service.findAllBySorted(Direction.ASC,"reino.nombre");
+			break;
+		case "idDesc":
+			filos= service.findAllBySorted(Direction.DESC,"id");
+			break;
+		case "nombreDesc":
+			filos = service.findAllBySorted(Direction.DESC,"nombre");
+			break;
+		case "descripcionDesc":
+			filos = service.findAllBySorted(Direction.DESC,"descripcion");
+			break;
+		case "reinoDesc":
+			filos = service.findAllBySorted(Direction.DESC,"reino.nombre");
 			break;
 		default:
 			filos = service.findAll();	
