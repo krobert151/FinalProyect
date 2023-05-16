@@ -30,25 +30,55 @@
                                     <i class="bi bi-plus-square"></i>
                                 </a>
                             </th>
-                            <th class="col-1"><a th:href="@{/familias/admin/gestFamilias/{orderBy}(orderBy='id')}">Id</a></th>
-                          <th class="col"><a th:href="@{/familias/admin/gestFamilias/{orderBy}(orderBy='nombre')}">Nombre</a></th>
-                          <th class="col"><a th:href="@{/familias/admin/gestFamilias/{orderBy}(orderBy='descripcion')}">N.Común</a></th>
-                          <th class="col-1"><a th:href="@{/familias/admin/gestFamilias/{orderBy}(orderBy='orden.nombre')}">N. Orden</a></th>
+                            <th class="col-1"><a>Id</a>
+                                <a th:href="@{/familias/admin/gestFamilias/{orderBy}(orderBy='id')}">
+                                    <i class="bi bi-arrow-up"></i>
+                                </a>
+                                <a th:href="@{/familias/admin/gestFamilias/{orderBy}(orderBy='idDesc')}">
+                                    <i class="bi bi-arrow-down"></i>
+                                </a>
+                            </th>
+                            <th class="col"><a>Nombre</a>
+                                <a th:href="@{/familias/admin/gestFamilias/{orderBy}(orderBy='nombre')}">
+                                    <i class="bi bi-arrow-up"></i>
+                                </a>
+                                <a th:href="@{/familias/admin/gestFamilias/{orderBy}(orderBy='nombreDesc')}">
+                                    <i class="bi bi-arrow-down"></i>
+                                </a>
+                            </th>
+                            <th class="col"><a>N.Común</a>
+                                <a th:href="@{/familias/admin/gestFamilias/{orderBy}(orderBy='descripcion')}">
+                                    <i class="bi bi-arrow-up"></i>
+                                </a>
+                                <a th:href="@{/familias/admin/gestFamilias/{orderBy}(orderBy='descripcionDesc')}">
+                                    <i class="bi bi-arrow-down"></i>
+                                </a>
+                            </th>
+                            <th class="col-1"><a>N.Orden</a>
+                                <a th:href="@{/familias/admin/gestFamilias/{orderBy}(orderBy='orden')}">
+                                    <i class="bi bi-arrow-up"></i>
+                                </a>
+                                <a th:href="@{/familias/admin/gestFamilias/{orderBy}(orderBy='ordenDesc')}">
+                                    <i class="bi bi-arrow-down"></i>
+                                </a>
+                            </th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="familias:${familias}">
                             <td class="text-wrap d-flex justify-content-center">
-                                <img th:if="${familias.generos != null and familias.generos.size() > 0 and familias.generos[0].especies != null and familias.generos[0].especies.size() > 0}" 
-                            th:src="${familias.generos[0].especies[0].foto}" 
-                                style="width:32px; height: 32px; object-fit: cover; border-radius: 10pt;" /></td>    
+                                <img th:if="${familias.generos != null and familias.generos.size() > 0 and familias.generos[0].especies != null and familias.generos[0].especies.size() > 0}"
+                                    th:src="${familias.generos[0].especies[0].foto}"
+                                    style="width:32px; height: 32px; object-fit: cover; border-radius: 10pt;" />
+                            </td>
                             <td th:text="${familias.id}" scope="row">Id</td>
                             <td th:text="${familias.nombre}">Nombre</td>
                             <td th:text="${familias.descripcion}">N.Común</td>
                             <td th:text="${familias.orden.nombre}">Orden</td>
                             <td class="pe-2">
-                                <a class="me-2" href="#" th:href="@{/familias/admin/editarFamilia/{id}(id=${familias.id})}">
+                                <a class="me-2" href="#"
+                                    th:href="@{/familias/admin/editarFamilia/{id}(id=${familias.id})}">
                                     <i class="bi bi-pencil-square "></i>
                                 </a>
                                 <a href="#" th:href="@{/familias/admin/borrar/{id}(id=${familias.id})}">

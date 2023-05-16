@@ -1,6 +1,9 @@
 package com.salesianostriana.dam.bichopedia.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +30,59 @@ public class UsuarioController {
 		
 	}
 	
+	
+	@GetMapping("/orderBy/{orderBy}")
+	public String listarUsuariosSorted (@PathVariable String orderBy,Model model) {
+		
+		List<Usuario>usuarios;
+		
+		switch(orderBy) {
+		
+		case "idAsc":
+			usuarios = usuarioService.findAllSorted(Direction.ASC, "id");
+			break;
+		case "idDesc":
+			usuarios = usuarioService.findAllSorted(Direction.DESC, "id");
+			break;
+		case "nombreAsc":
+			usuarios = usuarioService.findAllSorted(Direction.ASC, "nombre");
+			break;
+		case "nombreDesc":
+			usuarios = usuarioService.findAllSorted(Direction.DESC, "nombre");
+			break;
+		case "apellidosAsc":
+			usuarios = usuarioService.findAllSorted(Direction.ASC, "apellidos");
+			break;
+		case "apellidosDesc":
+			usuarios = usuarioService.findAllSorted(Direction.DESC, "apellidos");
+			break;		
+		case "correoAsc":
+			usuarios = usuarioService.findAllSorted(Direction.ASC, "correo");
+			break;
+		case "correoDesc":
+			usuarios = usuarioService.findAllSorted(Direction.DESC, "correo");
+			break;
+		case "usernameAsc":
+			usuarios = usuarioService.findAllSorted(Direction.ASC, "username");
+			break;
+		case "usernameDesc":
+			usuarios = usuarioService.findAllSorted(Direction.DESC, "username");
+			break;
+		case "fechanacAsc":
+			usuarios = usuarioService.findAllSorted(Direction.ASC, "fechaNac");
+			break;
+		case "fechanacDesc":
+			usuarios = usuarioService.findAllSorted(Direction.DESC, "fechaNac");
+			break;
+		default:
+			usuarios = usuarioService.findAll();
+		}
+		
+		
+		model.addAttribute("userList", usuarios);
+		return "/admin/usuarios";
+		
+	}
 	
 	
 	@GetMapping("newUser")

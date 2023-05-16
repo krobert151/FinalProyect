@@ -30,10 +30,22 @@
                                     <i class="bi bi-plus-square"></i>
                                 </a>
                             </th>
-                            <th class="col-1"><a th:href="@{/filos/admin/gestFilos/{orderBy}(orderBy='id')}">Id</a></th>
-                            <th class="col"><a th:href="@{/filos/admin/gestFilos/{orderBy}(orderBy='nombre')}">Nombre</a></th>
-                            <th class="col"><a th:href="@{/filos/admin/gestFilos/{orderBy}(orderBy='descripcion')}">N.Común</a></th>
-                            <th class="col-1"><a th:href="@{/filos/admin/gestFilos/{orderBy}(orderBy='reino.nombre')}">N. Genero</a></th>
+                            <th class="col-1"><a >Id</a> 
+                            <a  th:href="@{/filos/admin/gestFilos/{orderBy}(orderBy='id')}"><i class="bi bi-arrow-up"></i></a>
+                            <a  th:href="@{/filos/admin/gestFilos/{orderBy}(orderBy='idDesc')}"><i class="bi bi-arrow-down"></i></a>
+                            </th>
+                            <th class="col"><a >Nombre</a> 
+                            <a  th:href="@{/filos/admin/gestFilos/{orderBy}(orderBy='nombre')}"><i class="bi bi-arrow-up"></i></a>
+                            <a  th:href="@{/filos/admin/gestFilos/{orderBy}(orderBy='nombreDesc')}"><i class="bi bi-arrow-down"></i></a>
+                            </th>
+                            <th class="col"><a >N.Común</a> 
+                            <a  th:href="@{/filos/admin/gestFilos/{orderBy}(orderBy='descripcion')}"><i class="bi bi-arrow-up"></i></a>
+                            <a  th:href="@{/filos/admin/gestFilos/{orderBy}(orderBy='descripcionDesc')}"><i class="bi bi-arrow-down"></i></a>
+                            </th>
+                            <th class="col-2"><a >N. Genero</a> 
+                            <a  th:href="@{/filos/admin/gestFilos/{orderBy}(orderBy='reino')}"><i class="bi bi-arrow-up"></i></a>
+                            <a  th:href="@{/filos/admin/gestFilos/{orderBy}(orderBy='reinoDesc')}"><i class="bi bi-arrow-down"></i></a>
+                            </th>
                             <th scope="col"></th>
                         </tr>
                     </thead>

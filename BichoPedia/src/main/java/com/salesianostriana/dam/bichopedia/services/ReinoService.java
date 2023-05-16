@@ -3,6 +3,7 @@ package com.salesianostriana.dam.bichopedia.services;
 import java.util.List;
 
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.salesianostriana.dam.bichopedia.model.Reino;
@@ -24,10 +25,9 @@ public class ReinoService extends BaseService<Reino, Long, ReinoRepository> {
 	}
 
 	
-	public List<Reino>findAllSortedBy(String orderBy){
-		
-		Sort sort = Sort.by(orderBy);
-		return this.repositorio.findAll(sort);
+	public List<Reino>findAllSortedBy(Direction direction,String orderBy) {
+        Sort sort = Sort.by(direction, orderBy);
+        return this.repositorio.findAll(sort);
 		
 	}
 	

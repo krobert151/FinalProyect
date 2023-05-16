@@ -27,28 +27,32 @@
                         <div>
                             <div>
                                 <span class="row text-center p-2 text-light my-1">
-                                    <a class="col text-center">Nombre</a>
-                                    <a class="col-1 mx-1" href=""><i class="bi bi-arrow-up"></i>
+                                    <a class="col-10 text-center">Nombre</a>
+                                    <a class="col-1 mx-1"th:href="@{/especies/orderBy/{orderBy}(orderBy='nombreAsc')}">
+                                        <i class="bi bi-arrow-up"></i>
                                     </a>
-                                    <a class="col-1 mx-1" href=""><i class="bi bi-arrow-down"></i>
-                                    </a>
-                                </span>
-                            </div>
-                            <div>
-                                <span class="row text-center col p-2 text-light my-1">
-                                    <a class="col text-center">N.Científico</a>
-                                    <a class="col-1 mx-1" href=""><i class="bi bi-arrow-up"></i>
-                                    </a>
-                                    <a class="col-1 mx-1" href=""><i class="bi bi-arrow-down"></i>
+                                    <a class="col-1 mx-1" th:href="@{/especies/orderBy/{orderBy}(orderBy='nombreDesc')}">
+                                        <i class="bi bi-arrow-down"></i>
                                     </a>
                                 </span>
                             </div>
                             <div>
                                 <span class="row text-center col p-2 text-light my-1">
-                                    <a class="col text-center">Generos</a>
-                                    <a class="col-1 mx-1" href=""><i class="bi bi-arrow-up"></i>
+                                    <a class="col-10 text-center">N.Científico</a>
+                                    <a class="col-1 mx-1" th:href="@{/especies/orderBy/{orderBy}(orderBy='cientificoAsc')}">
+                                        <i class="bi bi-arrow-up"></i>
                                     </a>
-                                    <a class="col-1 mx-1" href=""><i class="bi bi-arrow-down"></i>
+                                    <a class="col-1 mx-1" th:href="@{/especies/orderBy/{orderBy}(orderBy='cientificoDesc')}">
+                                        <i class="bi bi-arrow-down"></i>
+                                    </a>
+                                </span>
+                            </div>
+                            <div>
+                                <span class="row text-center col p-2 text-light my-1">
+                                    <a class="col-10 text-center">Generos</a>
+                                    <a class="col-1 mx-1" th:href="@{/especies/orderBy/{orderBy}(orderBy='generoAsc')}"><i class="bi bi-arrow-up"></i>
+                                    </a>
+                                    <a class="col-1 mx-1" th:href="@{/especies/orderBy/{orderBy}(orderBy='generoDesc')}"><i class="bi bi-arrow-down"></i>
                                     </a>
                                 </span>
                             </div>
@@ -79,9 +83,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block "
-                    th:fragment="menu-lateral">
-                    <div class="taxonomias m-3 p-3">
+                <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block ">
+                    <div class="taxonomias m-3 p-3" th:fragment="menu-lateral">
                         <h3 class="text-center mb-3">Busca tu especie</h3>
                         <div>
                             <div><a class="text-center p-2 text-light my-1" th:href="@{/reinos/}"

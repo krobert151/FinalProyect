@@ -3,6 +3,7 @@ package com.salesianostriana.dam.bichopedia.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,6 +43,38 @@ public class FamiliaController {
 		return "familia/familias";
 	}
 	
+	@GetMapping("/orderBy/{orderBy}")
+	public String verFamiliasSorted(@PathVariable String orderBy,Model model) {
+		
+		List<Familia>familias;
+		switch (orderBy) {
+		
+		case "nombreAsc":
+			familias = service.findAllSorted(Direction.ASC,"descripcion");
+			break;
+		case "nombreDesc":
+			familias = service.findAllSorted(Direction.DESC,"descripcion");
+			break;
+		case "cientificoAsc":
+			familias = service.findAllSorted(Direction.ASC,"nombre");
+			break;
+		case "cientificoDesc":
+			familias = service.findAllSorted(Direction.DESC,"nombre");
+			break;
+		case "ordenAsc":
+			familias = service.findAllSorted(Direction.ASC,"orden.nombre");
+			break;
+		case "ordenDesc":
+			familias = service.findAllSorted(Direction.DESC,"orden.nombre");
+			break;
+		default:
+			familias=service.findAll();		
+		}
+		model.addAttribute("familiaList", familias);
+		return "familia/familias";
+		
+	}
+	
 	@GetMapping("/newFamilia")
 	public String nuevaFamilia(Model model) {
 		
@@ -66,16 +99,28 @@ public class FamiliaController {
 		switch(orderBy) {
 		
 		case "id":
-			familias = service.findAll();
+			familias = service.findAllSorted(Direction.ASC,"id");
 			break;
 		case "nombre":
-			familias = service.findAllSorted("nombre");
+			familias = service.findAllSorted(Direction.ASC,"nombre");
 			break;
 		case "descripcion":
-			familias = service.findAllSorted("descripcion");
+			familias = service.findAllSorted(Direction.ASC,"descripcion");
 			break;
 		case "orden":
-			familias = service.findAllSorted("orden.nombre");
+			familias = service.findAllSorted(Direction.ASC,"orden.nombre");
+			break;
+		case "idDesc":
+			familias = service.findAllSorted(Direction.DESC,"id");
+			break;
+		case "nombreDesc":
+			familias = service.findAllSorted(Direction.DESC,"nombre");
+			break;
+		case "descripcionDesc":
+			familias = service.findAllSorted(Direction.DESC,"descripcion");
+			break;
+		case "ordenDesc":
+			familias = service.findAllSorted(Direction.DESC,"orden.nombre");
 			break;
 		default:
 			familias= service.findAll();
@@ -94,7 +139,7 @@ public class FamiliaController {
 		
 		if(familiaEdit != null) {
 			model.addAttribute("familia", familiaEdit);
-			model.addAttribute("ordenes", ordenService.findAllBySorted("nombre"));
+			model.addAttribute("ordenes", ordenService.findAllBySorted(Direction.ASC,"nombre"));
 			return "familia/familiaForm";
 		}else
 			return "redirect:/familias/gestFamilias";

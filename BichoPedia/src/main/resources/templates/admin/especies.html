@@ -35,18 +35,39 @@
                                     <i class="bi bi-plus-square"></i>
                                 </a>
                             </th>
-                            <th class="col-1"><a
-                                    th:href="@{/especies/admin/gestEspecies/{orderBy}(orderBy='id')}">Id</a></th>
-                            <th class="col-2"><a
-                                    th:href="@{/especies/admin/gestEspecies/{orderBy}(orderBy='nombre')}">Nombre</a>
+                            <th class="col-1"><a>Id</a>
+                                <a th:href="@{/especies/admin/gestEspecies/{orderBy}(orderBy='id')}">
+                                    <i class="bi bi-arrow-up"></i>
+                                </a>
+                                <a th:href="@{/especies/admin/gestEspecies/{orderBy}(orderBy='idDesc')}">
+                                    <i class="bi bi-arrow-down"></i>
+                                </a>
                             </th>
-                            <th class="col-2"><a
-                                    th:href="@{/especies/admin/gestEspecies/{orderBy}(orderBy='descripcion')}">N.Común</a>
+                            <th class="col-2"><a>Nombre</a>
+                                <a th:href="@{/especies/admin/gestEspecies/{orderBy}(orderBy='nombre')}">
+                                    <i class="bi bi-arrow-up"></i>
+                                </a>
+                                <a th:href="@{/especies/admin/gestEspecies/{orderBy}(orderBy='nombreDesc')}">
+                                    <i class="bi bi-arrow-down"></i>
+                                </a>
                             </th>
-                            <th class="col-4">Descripción</th>
-                            <th class="col-1"><a
-                                    th:href="@{/especies/admin/gestEspecies/{orderBy}(orderBy='genero.nombre')}">N.
-                                    Genero</a></th>
+                            <th class="col-2"><a>N.Común</a>
+                                <a th:href="@{/especies/admin/gestEspecies/{orderBy}(orderBy='descripcion')}">
+                                    <i class="bi bi-arrow-up"></i>
+                                </a>
+                                <a th:href="@{/especies/admin/gestEspecies/{orderBy}(orderBy='descripcionDesc')}">
+                                    <i class="bi bi-arrow-down"></i>
+                                </a>
+                            </th>
+                            <th class="col-3">Descripción</th>
+                            <th class="col-2"><a>N.Genero</a>
+                            <a th:href="@{/especies/admin/gestEspecies/{orderBy}(orderBy='genero')}">
+                                <i class="bi bi-arrow-up"></i>
+                            </a>
+                            <a th:href="@{/especies/admin/gestEspecies/{orderBy}(orderBy='generoDesc')}">
+                                <i class="bi bi-arrow-down"></i>
+                            </a>
+                        </th>
                             <th class="col-1"></th>
                         </tr>
                     </thead>
@@ -56,14 +77,14 @@
                             <td class="col-1" th:text="${especie.id}" scope="row">Id</td>
                             <td class="col-2" th:text="${especie.nombre}">Nombre</td>
                             <td class="col-2" th:text="${especie.descripcion}">N.Común</td>
-                            <td class="col-4">
+                            <td class="col-3">
                                 <p th:text="${especie.detalles}" class="texto-completo" style="display:none"></p>
                                 <a th:text="${#strings.length(especie.detalles) gt 50} ? ${especie.detalles.substring(0, 50)}+'...' : ${especie.detalles}"
                                     class="texto-corto"></a>
                                 <a href="#" class="leer-mas" onclick="mostrarTextoCompleto(this)"> leer más</a>
                             </td>
 
-                            <td class="col-1" th:text="${especie.genero.nombre}">Genero</td>
+                            <td class="col-2" th:text="${especie.genero.nombre}">Genero</td>
                             <td class="col pe-4">
                                 <a class="me-2" href="#"
                                     th:href="@{/especies/admin/editarEspecie/{id}(id=${especie.id})}">

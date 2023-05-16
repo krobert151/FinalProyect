@@ -3,6 +3,7 @@ package com.salesianostriana.dam.bichopedia.services;
 import java.util.List;
 
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.salesianostriana.dam.bichopedia.model.Genero;
@@ -22,10 +23,9 @@ public class GeneroService extends BaseService<Genero,Long,GeneroRepository>{
 		return this.repositorio.findAll();
 	}
 	
-	public List<Genero> findAllSorted(String orderBy){
-		
-		Sort sort = Sort.by(orderBy);
-		return this.repositorio.findAll(sort);
+	public List<Genero> findAllSorted(Direction direction,String orderBy) {
+        Sort sort = Sort.by(direction, orderBy);
+        return this.repositorio.findAll(sort);
 	}
 	
 	

@@ -111,6 +111,9 @@ a {
     margin: 5px;
     border-radius: 5pt;
 }
+
+
+
 .background-image {
     object-fit: cover;
     position: absolute;
@@ -196,13 +199,28 @@ a {
     aspect-ratio: 1/1;
     display: flex;
     flex-direction: column;
-    justify-content: end;
     border-radius: 5pt;
     border: rgb(0, 0, 0) 1px solid;
     padding: 0;
 }
 .encuentroInfo{
     text-align: center;
+    background-color: #2525255e;
+    padding: 5px;
+    margin: 5px;
+    margin-top: 40%;
+    border-radius: 5pt;
+}
+.encuentroinfo2{
+    background-color: rgba(41, 34, 26, 0.199);
+    border-radius: 25pt;
+
+}
+.encuentroinfo2>img{
+    aspect-ratio: 1/1;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50pt;
 }
 .encuentroInfo>h3{
     font-size: 1.2em;
@@ -281,7 +299,7 @@ a {
 .taxonomias{
     display: flex;
     flex-direction: column;
-    background-color: #ffffff;
+    background-color: #ffffff8e;
     border-radius: 15pt;
 
 }

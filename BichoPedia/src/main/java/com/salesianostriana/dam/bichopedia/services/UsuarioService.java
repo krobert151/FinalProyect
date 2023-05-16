@@ -3,6 +3,8 @@ package com.salesianostriana.dam.bichopedia.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.salesianostriana.dam.bichopedia.model.Usuario;
@@ -21,6 +23,12 @@ public class UsuarioService extends BaseService<Usuario,Long,UsuarioRepository>{
 		// TODO Auto-generated constructor stub
 	}
 
+	public List<Usuario>findAllSorted(Direction direction,String orderBy) {
+        Sort sort = Sort.by(direction, orderBy);
+        return this.repositorio.findAll(sort);
+		
+	}
+	
 	@Override
 	public Usuario save(Usuario t) {
 		// TODO Auto-generated method stub

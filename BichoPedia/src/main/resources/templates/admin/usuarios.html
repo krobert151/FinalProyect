@@ -19,7 +19,7 @@
     </header>
     <main class="d-flex flex-column align-items-center">
         <h2 class="text-light">Usuarios</h2>
-        <table class="table container mx-5">
+        <table class="table container-fluid mx-5">
             <thead>
                 <tr>
                     <th class="text-center col-1 ">        
@@ -27,20 +27,20 @@
                             <i class="bi bi-plus-square"></i>
                         </a>
                     </th>
-                    <th class="col-1">id</th>
-                    <th class="col-1">nombre</th>
-                    <th class="col-2">apellidos</th>
-                    <th class="col-3">correo</th>
-                    <th class="col-1">username</th>
-                    <th class="col-1">fechaNac</th>
-                    <th class="col-1">admin</th>
-                    <th class="col-1"></th>
+                    <th class="col-1">id  <a th:href="@{/admin/orderBy/{orderBy}(orderBy='idAsc')}"><i class="bi bi-arrow-up"></i></a><a th:href="@{/admin/orderBy/{orderBy}(orderBy='idDesc')}"><i class="bi bi-arrow-down"></i></a> </th>
+                    <th class="col-1">nombre  <a th:href="@{/admin/orderBy/{orderBy}(orderBy='nombreAsc')}"><i class="bi bi-arrow-up"></i></a><a th:href="@{/admin/orderBy/{orderBy}(orderBy='nombreDesc')}"><i class="bi bi-arrow-down"></i></a> </th>
+                    <th class="col-2">apellidos  <a th:href="@{/admin/orderBy/{orderBy}(orderBy='apellidosAsc')}"><i class="bi bi-arrow-up"></i></a><a th:href="@{/admin/orderBy/{orderBy}(orderBy='ApellidosDesc')}"><i class="bi bi-arrow-down"></i></a> </th>
+                    <th class="col-3">correo  <a th:href="@{/admin/orderBy/{orderBy}(orderBy='correoAsc')}"><i class="bi bi-arrow-up"></i></a><a th:href="@{/admin/orderBy/{orderBy}(orderBy='correoDesc')}"><i class="bi bi-arrow-down"></i></a> </th>
+                    <th class="col-1">user  <a th:href="@{/admin/orderBy/{orderBy}(orderBy='usernameAsc')}"><i class="bi bi-arrow-up"></i></a><a th:href="@{/admin/orderBy/{orderBy}(orderBy='UsernameDesc')}"><i class="bi bi-arrow-down"></i></a> </th>
+                    <th class="col-1">fechaN  <a th:href="@{/admin/orderBy/{orderBy}(orderBy='fechanacAsc')}"><i class="bi bi-arrow-up"></i></a><a th:href="@{/admin/orderBy/{orderBy}(orderBy='fechanacDesc')}"><i class="bi bi-arrow-down"></i></a> </th>
+                    <th class="col-1">admin </th>
+                    <th class="col-1">  </th>
                     
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="usuario:${userList}" >
-                    <td class="col-1 ">
+                    <td class="col-1 text-center">
                         <img th:src="${usuario.fotoPerfil}"/>
                     </td>
                     <td class="col-1" th:text="${usuario.id}" scope="row">Id</td>

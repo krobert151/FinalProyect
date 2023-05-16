@@ -3,6 +3,7 @@ package com.salesianostriana.dam.bichopedia.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,6 +44,39 @@ public class OrdenController {
 		return "orden/ordenes";
 	}
 	
+	@GetMapping("/orderBy/{orderBy}")
+	public String verOrdenesSorted(@PathVariable String orderBy,Model model) {
+		
+		List<Orden>ordenes;
+		switch (orderBy) {
+		
+		case "nombreAsc":
+			ordenes = service.findAllBySorted(Direction.ASC,"descripcion");
+			break;
+		case "nombreDesc":
+			ordenes = service.findAllBySorted(Direction.DESC,"descripcion");
+			break;
+		case "cientificoAsc":
+			ordenes = service.findAllBySorted(Direction.ASC,"nombre");
+			break;
+		case "cientificoDesc":
+			ordenes = service.findAllBySorted(Direction.DESC,"nombre");
+			break;
+		case "claseAsc":
+			ordenes = service.findAllBySorted(Direction.ASC,"clase.nombre");
+			break;
+		case "claseDesc":
+			ordenes = service.findAllBySorted(Direction.DESC,"clase.nombre");
+			break;
+		default:
+			ordenes=service.findAll();		
+		}
+		model.addAttribute("ordenList", ordenes);
+		return "orden/ordenes";
+		
+		
+	}
+	
 	@GetMapping("/newOrden")
 	public String nuevaOrden(Model model) {
 		
@@ -67,16 +101,28 @@ public class OrdenController {
 		switch(orderBy) {
 		
 		case "id":
-			ordenes = service.findAll();
+			ordenes = service.findAllBySorted(Direction.ASC,"id");
 			break;
 		case "nombre":
-			ordenes = service.findAllBySorted("nombre");
+			ordenes = service.findAllBySorted(Direction.ASC,"nombre");
 			break;
 		case "descripcion":
-			ordenes = service.findAllBySorted("descripcion");
+			ordenes = service.findAllBySorted(Direction.ASC,"descripcion");
 			break;
-		case "orden":
-			ordenes = service.findAllBySorted("clase.nombre");
+		case "clase":
+			ordenes = service.findAllBySorted(Direction.ASC,"clase.nombre");
+			break;
+		case "idDesc":
+			ordenes = service.findAllBySorted(Direction.DESC,"id");
+			break;
+		case "nombreDesc":
+			ordenes = service.findAllBySorted(Direction.DESC,"nombre");
+			break;
+		case "descripcionDesc":
+			ordenes = service.findAllBySorted(Direction.DESC,"descripcion");
+			break;
+		case "claseDesc":
+			ordenes = service.findAllBySorted(Direction.DESC,"clase.nombre");
 			break;
 		default:
 			ordenes = service.findAll();
@@ -95,7 +141,7 @@ public class OrdenController {
 		if(ordenEdit != null) {
 			
 			model.addAttribute("orden", ordenEdit);
-			model.addAttribute("clases", claseService.findAllBySorted("nombre"));
+			model.addAttribute("clases", claseService.findAllSorted(Direction.ASC,"nombre"));
 			return "orden/ordenForm";
 			
 		}else

@@ -35,37 +35,64 @@
                                     <i class="bi bi-plus-square"></i>
                                 </a>
                             </th>
-                            <th class="col-1"><a th:href="@{/encuentros/admin/gestEncuentro/{orderBy}(orderBy='id')}">Id</a></th>
-                            <th class="col-1"><a th:href="@{/encuentros/admin/gestEncuentro/{orderBy}(orderBy='especie.nombre')}">Nombre</a></th>
+                            <th class="col-1"><a>Id</a>
+                                <a th:href="@{/encuentros/admin/gestEncuentro/{orderBy}(orderBy='id')}"><i
+                                        class="bi bi-arrow-up"></i></a>
+                                <a th:href="@{/encuentros/admin/gestEncuentro/{orderBy}(orderBy='idDesc')}"><i
+                                        class="bi bi-arrow-down"></i></a>
+                            </th>
+                            <th class="col-2"><a>Nombre</a>
+                                <a th:href="@{/encuentros/admin/gestEncuentro/{orderBy}(orderBy='especie')}"><i
+                                        class="bi bi-arrow-up"></i></a>
+                                <a th:href="@{/encuentros/admin/gestEncuentro/{orderBy}(orderBy='especieDesc')}"><i
+                                        class="bi bi-arrow-down"></i></a>
+                            </th>
                             <th class="col-2 d-flex">
                                 <span class="w-50">
-                                    <a th:href="@{/encuentros/admin/gestEncuentro/{orderBy}(orderBy='zona')}">
-                                        Zona
-                                    </a>
+                                    <a> Zona </a>
+                                    <a th:href="@{/encuentros/admin/gestEncuentro/{orderBy}(orderBy='zona')}"><i
+                                            class="bi bi-arrow-up"></i></a>
+                                    <a th:href="@{/encuentros/admin/gestEncuentro/{orderBy}(orderBy='zonaDesc')}"><i
+                                            class="bi bi-arrow-down"></i></a>
                                 </span>
                                 <span class="w-50">
-                                    <a th:href="@{/encuentros/admin/gestEncuentro/{orderBy}(orderBy='fecha')}">
-                                        Fecha
-                                    </a>
+                                    <a> Fecha </a>
+                                    <a th:href="@{/encuentros/admin/gestEncuentro/{orderBy}(orderBy='fecha')}"><i
+                                            class="bi bi-arrow-up"></i></a>
+                                    <a th:href="@{/encuentros/admin/gestEncuentro/{orderBy}(orderBy='fechaDesc')}"><i
+                                            class="bi bi-arrow-down"></i></a>
                                 </span>
                             </th>
-                            <th class="col-4">Descripción</th>
-                            <th class="col-1"><a th:href="@{/encuentros/admin/gestEncuentro/{orderBy}(orderBy='usuario.username')}">Usuario</a></th>
+                            <th class="col-3">Descripción</th>
+                            <th class="col-1"><a>User</a>
+                                <a th:href="@{/encuentros/admin/gestEncuentro/{orderBy}(orderBy='usuario')}"><i
+                                        class="bi bi-arrow-up"></i></a>
+                                <a th:href="@{/encuentros/admin/gestEncuentro/{orderBy}(orderBy='usuarioDesc')}"><i
+                                        class="bi bi-arrow-down"></i></a>
+                            </th>
                             <th class="col-1 d-flex">
                                 <span class="w-50">
-                                    <a th:href="@{/encuentros/admin/gestEncuentro/{orderBy}(orderBy='peso')}">
+                                    <a>
                                         Peso
                                     </a>
+                                    <a th:href="@{/encuentros/admin/gestEncuentro/{orderBy}(orderBy='peso')}"><i
+                                            class="bi bi-arrow-up"></i></a>
+                                    <a th:href="@{/encuentros/admin/gestEncuentro/{orderBy}(orderBy='pesoDesc')}"><i
+                                            class="bi bi-arrow-down"></i></a>
                                 </span>
                                 <span class="w-50">
-                                    <a th:href="@{/encuentros/admin/gestEncuentro/{orderBy}(orderBy='tamanio')}">
+                                    <a>
                                         Tamaño
                                     </a>
+                                    <a th:href="@{/encuentros/admin/gestEncuentro/{orderBy}(orderBy='tamanio')}"><i
+                                            class="bi bi-arrow-up"></i></a>
+                                    <a th:href="@{/encuentros/admin/gestEncuentro/{orderBy}(orderBy='tamanioDesc')}"><i
+                                            class="bi bi-arrow-down"></i></a>
                                 </span>
-                            </th>    
+                            </th>
                             <th class="col-1"><a>
-                            
-                            </a></th>
+
+                                </a></th>
 
 
                         </tr>
@@ -74,7 +101,7 @@
                         <tr th:each="encuentro:${encuentros}" class="row container-fluid">
                             <td class="col-1 d-flex justify-content-center "><img th:src="${encuentro.foto}" /></td>
                             <td class="col-1" th:text="${encuentro.id}" scope="row">Id</td>
-                            <td class="col-1" th:text="${encuentro.especie.nombre}">Nombre</td>
+                            <td class="col-2" th:text="${encuentro.especie.nombre}">Nombre</td>
                             <td class="col-2 d-flex">
                                 <span th:text="${encuentro.zona}" class="w-50">
                                     Zona
@@ -83,7 +110,7 @@
                                     Fecha
                                 </span>
                             </td>
-                            <td class="col-4">
+                            <td class="col-3">
                                 <p th:text="${encuentro.descripcion}" class="texto-completo" style="display:none"></p>
                                 <a th:text="${#strings.length(encuentro.descripcion) gt 50} ? ${encuentro.descripcion.substring(0, 50)}+'...' : ${encuentro.descripcion}"
                                     class="texto-corto"></a>
@@ -93,14 +120,14 @@
                             <td class="col-1" th:text="${encuentro.usuario.nombre}">Usuario</td>
                             <td class="col-1 d-flex">
                                 <div class="w-50">
-                                    <span th:text="${encuentro.peso}" >
+                                    <span th:text="${encuentro.peso}">
                                     </span>
                                     <span>
                                         (g)
                                     </span>
                                 </div>
                                 <div class="w-50">
-                                    <span th:text="${encuentro.tamanio}" >
+                                    <span th:text="${encuentro.tamanio}">
                                     </span>
                                     <span>
                                         (cm)

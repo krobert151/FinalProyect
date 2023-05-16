@@ -3,6 +3,7 @@ package com.salesianostriana.dam.bichopedia.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,35 @@ public class ReinoController {
 		model.addAttribute("reinoList", service.findAll());
 		
 		return "reino/reinos";
+	}
+	
+	@GetMapping ("/orderBy/{orderBy}")
+	public String verReinosSorted(@PathVariable String orderBy,Model model) {
+		
+		List<Reino>reinos;
+		
+		switch (orderBy) {
+		
+		case "nombreAsc":
+			reinos = service.findAllSortedBy(Direction.ASC,"descripcion");
+			break;
+		case "nombreDesc":
+			reinos = service.findAllSortedBy(Direction.ASC,"descripcion");
+			break;
+		case "cientificoAsc":
+			reinos = service.findAllSortedBy(Direction.ASC,"nombre");
+			break;
+		case "cientificoDesc":
+			reinos = service.findAllSortedBy(Direction.ASC,"nombre");
+			break;
+
+		default:
+			reinos=service.findAll();		
+		}
+		
+		model.addAttribute("reinoList", reinos);
+		return "reino/reinos";
+		
 	}
 	
 	@GetMapping("/newReino")
@@ -50,13 +80,22 @@ public class ReinoController {
 		switch(orderBy) {
 		
 		case "id":
-			reinos = service.findAll();
+			reinos = service.findAllSortedBy(Direction.ASC,"id");
 			break;
 		case "nombre":
-			reinos = service.findAllSortedBy("nombre");
+			reinos = service.findAllSortedBy(Direction.ASC,"nombre");
 			break;
 		case "descripcion":
-			reinos = service.findAllSortedBy("descripcion");
+			reinos = service.findAllSortedBy(Direction.ASC,"descripcion");
+			break;
+		case "idDesc":
+			reinos = service.findAllSortedBy(Direction.DESC,"id");
+			break;
+		case "nombreDesc":
+			reinos = service.findAllSortedBy(Direction.DESC,"nombre");
+			break;
+		case "descripcionDesc":
+			reinos = service.findAllSortedBy(Direction.DESC,"descripcion");
 			break;
 		default:
 			reinos = service.findAll();		

@@ -3,6 +3,7 @@ package com.salesianostriana.dam.bichopedia.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,6 +40,69 @@ public class EncuentoController {
 		return "encuentro/encuentros";
 	}
 	
+	@GetMapping("/orderBy/{orderBy}")
+	public String encuentrosSorted(@PathVariable String orderBy,Model model) {
+		
+		List<Encuentro>encuentros;
+		
+		switch(orderBy) {
+		
+		case"id":
+			encuentros = service.findAllBySorted(Direction.ASC,"id");
+			break;
+		case "especie":
+			encuentros = service.findAllBySorted(Direction.ASC,"especie.descripcion");
+			break;
+		case "zona":
+			encuentros = service.findAllBySorted(Direction.ASC,"zona");
+			break;
+		case "fecha":
+			encuentros = service.findAllBySorted(Direction.ASC,"fecha");
+			break;
+		case "usuario":
+			encuentros = service.findAllBySorted(Direction.ASC,"usuario.username");
+			break;
+		case "peso":
+			encuentros = service.findAllBySorted(Direction.ASC,"peso");
+			break;
+		case "tamanio":
+			encuentros = service.findAllBySorted(Direction.ASC,"tamanio");
+			break;
+		case"idDesc":
+			encuentros = service.findAllBySorted(Direction.DESC,"id");
+			break;
+		case "especieDesc":
+			encuentros = service.findAllBySorted(Direction.DESC,"especie.descripcion");
+			break;
+		case "zonaDesc":
+			encuentros = service.findAllBySorted(Direction.DESC,"zona");
+			break;
+		case "fechaDesc":
+			encuentros = service.findAllBySorted(Direction.DESC,"fecha");
+			break;
+		case "usuarioDesc":
+			encuentros = service.findAllBySorted(Direction.DESC,"usuario.username");
+			break;
+		case "pesoDesc":
+			encuentros = service.findAllBySorted(Direction.DESC,"peso");
+			break;
+		case "tamanioDesc":
+			encuentros = service.findAllBySorted(Direction.DESC,"tamanio");
+			break;
+		case "cientifico":
+			encuentros=service.findAllBySorted(Direction.ASC, "especie.nombre");
+			break;
+		case "cientificoDesc":
+			encuentros=service.findAllBySorted(Direction.DESC, "especie.nombre");
+			break;
+		default:
+			encuentros=service.findAll();
+		}
+		
+		model.addAttribute("encuentroList", encuentros);
+		return "encuentro/encuentros";
+		
+	}
 	
 	
 	@GetMapping("/newEncuentro")
@@ -98,25 +162,46 @@ public class EncuentoController {
 		switch(orderBy) {
 		
 		case"id":
-			encuentros = service.findAll();
+			encuentros = service.findAllBySorted(Direction.ASC,"id");
 			break;
-		case "especie.nombre":
-			encuentros = service.findAllBySorted("especie.nombre");
+		case "especie":
+			encuentros = service.findAllBySorted(Direction.ASC,"especie.nombre");
 			break;
 		case "zona":
-			encuentros = service.findAllBySorted("zona");
+			encuentros = service.findAllBySorted(Direction.ASC,"zona");
 			break;
 		case "fecha":
-			encuentros = service.findAllBySorted("fecha");
+			encuentros = service.findAllBySorted(Direction.ASC,"fecha");
 			break;
-		case "usuario.username":
-			encuentros = service.findAllBySorted("usuario.username");
+		case "usuario":
+			encuentros = service.findAllBySorted(Direction.ASC,"usuario.username");
 			break;
 		case "peso":
-			encuentros = service.findAllBySorted("peso");
+			encuentros = service.findAllBySorted(Direction.ASC,"peso");
 			break;
 		case "tamanio":
-			encuentros = service.findAllBySorted("tamanio");
+			encuentros = service.findAllBySorted(Direction.ASC,"tamanio");
+			break;
+		case"idDesc":
+			encuentros = service.findAllBySorted(Direction.DESC,"id");
+			break;
+		case "especieDesc":
+			encuentros = service.findAllBySorted(Direction.DESC,"especie.nombre");
+			break;
+		case "zonaDesc":
+			encuentros = service.findAllBySorted(Direction.DESC,"zona");
+			break;
+		case "fechaDesc":
+			encuentros = service.findAllBySorted(Direction.DESC,"fecha");
+			break;
+		case "usuarioDesc":
+			encuentros = service.findAllBySorted(Direction.DESC,"usuario.username");
+			break;
+		case "pesoDesc":
+			encuentros = service.findAllBySorted(Direction.DESC,"peso");
+			break;
+		case "tamanioDesc":
+			encuentros = service.findAllBySorted(Direction.DESC,"tamanio");
 			break;
 		default:
 			encuentros = service.findAll();
