@@ -1,5 +1,6 @@
 package com.salesianostriana.dam.bichopedia.controller;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import com.salesianostriana.dam.bichopedia.model.Usuario;
 import com.salesianostriana.dam.bichopedia.services.EncuentroService;
 import com.salesianostriana.dam.bichopedia.services.EspecieService;
 import com.salesianostriana.dam.bichopedia.services.UsuarioService;
+import com.salesianostriana.dam.bichopedia.services.ValoracionService;
 
 @Controller
 @RequestMapping("/encuentros/")
@@ -34,13 +36,16 @@ public class EncuentoController {
 	@Autowired
 	private EspecieService especieService;
 	
+	@Autowired
+	private ValoracionService valService;
 	
 
 	
 	@GetMapping("/")
 	public String encuentros(Model model) {
 		
-		model.addAttribute("encuentroList", service.findAll());
+		model.addAttribute("encuentroList", service.ordenarEncuentrosPorValoracionMedia(service.findAll()));
+		model.addAttribute("valoracionList", valService.mediasPorEncuentros(service.ordenarEncuentrosPorValoracionMedia(service.findAll())));
 		
 		return "encuentro/encuentros";
 	}
@@ -127,11 +132,19 @@ public class EncuentoController {
 		case "cientificoDesc":
 			encuentros=service.findAllBySorted(Direction.DESC, "especie.nombre");
 			break;
+		case "puntuacionAsc":
+			encuentros= service.ordenarEncuentrosPorValoracionMedia(service.findAll());
+			break;
+		case "puntuacionDesc":
+			encuentros= service.ordenarEncuentrosPorValoracionMedia(service.findAll());
+			Collections.reverse(encuentros);
+			break;
 		default:
 			encuentros=service.findAll();
 		}
 		
 		model.addAttribute("encuentroList", encuentros);
+		model.addAttribute("valoracionList", valService.mediasPorEncuentros(encuentros));
 		return "encuentro/encuentros";
 		
 	}
