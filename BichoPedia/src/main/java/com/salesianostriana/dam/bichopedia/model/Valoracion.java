@@ -1,11 +1,11 @@
 package com.salesianostriana.dam.bichopedia.model;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -22,13 +22,15 @@ import lombok.NoArgsConstructor;
 public class Valoracion {
 
 	
-	@Id
-	@GeneratedValue
-	private Long id;
+	@EmbeddedId
+	@Builder.Default
+	private ValoracionPK valoracionPK = new ValoracionPK();
 	
 	@ManyToOne
+	@MapsId("encuentro_id")
 	@JoinColumn (foreignKey =@ForeignKey(name="fk_valoracion_encuentro"))
 	private Encuentro encuentro;
+	
 	
 	@ManyToOne
 	@JoinColumn (foreignKey =@ForeignKey(name="fk_valoracion_usuario"))
