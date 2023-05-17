@@ -10,6 +10,7 @@ public interface FiloRepository extends JpaRepository<Filo, Long> {
 
 	List<Filo> findAll();
 	
+	List<Filo>findByNombreContainingIgnoreCase(String nombre);
 	
 	@Query("select f from Filo f where f.reino.id = ?1")
 	public List<Filo> findByReinoId(Long reinoId);

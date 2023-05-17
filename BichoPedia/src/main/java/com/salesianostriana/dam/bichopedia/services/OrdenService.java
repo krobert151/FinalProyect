@@ -30,6 +30,13 @@ public class OrdenService extends BaseService<Orden,Long,OrdenRepository>{
 		
 	}
 	
+	public List<Orden> findByName(String nombre){
+		
+		return this.repositorio.findByNombreContainingIgnoreCase(nombre);
+		
+	}
+	
+	
 	public List<Orden> findAllByClaseId(Long claseId){
 		
 		return this.repositorio.findByClaseId(claseId);

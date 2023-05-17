@@ -13,5 +13,5 @@ public interface ReinoRepository extends JpaRepository<Reino, Long> {
 	
 	List<Reino> findByOrderByNombreAsc();
 	
-	
+	List<Reino> findByNombreContainingIgnoreCase(String nombre);
 }

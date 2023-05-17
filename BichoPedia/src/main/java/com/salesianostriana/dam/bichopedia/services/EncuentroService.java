@@ -30,6 +30,12 @@ public class EncuentroService extends BaseService <Encuentro,Long,EncuentroRepos
 		return this.repositorio.findAll();
 	}
 	
+	public List<Encuentro>findByNombre(String nombre){
+		
+		return this.repositorio.findByEspecieDescripcion(nombre);
+				
+	}
+	
 	public List<Encuentro> findAllByUser(Long userId){
 		
 		return this.repositorio.findByUsuarioId(userId);

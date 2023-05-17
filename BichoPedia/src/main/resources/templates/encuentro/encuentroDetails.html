@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link th:href="@{/css/estilos.css}" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/estilos.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Encuentro</title>
+</head>
+
+<body class="indexmain">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark" th:replace="~{fragmentos/menu::menu}">
+        </nav>
+    </header>
+    <main>
+        <div class="container fondodifu p-3 my-3 px-5">
+            <div class="text-dark mb-4 nombreEspecie d-flex flex-row-reverse">
+                <a  th:text="${encuentro.usuario.username}" >Username</a>
+                <img class="fotoPerfilResgistro" th:src="${encuentro.usuario.fotoPerfil}" alt="Profile Photo">
+            </div>
+            <h1 class="text-center text-dark mb-4 nombreEspecie " th:text="${encuentro.especie.nombre}" >Nombre de la especie</h1>
+            <div class="row text-dark pb-4">
+                <div class="col-12 col-md-12 col-lg-7 col-xl-8 mb-2" >
+                    <img class="imagenEspecie" th:src="${encuentro.foto}"  src="../../static/img/fotoEspecie.png" alt="foto encuentro">
+                </div>
+                <div class="col-12 col-md-12 col-lg-5 col-xl-4">
+                    <ul class="d-flex flex-column taxList ms-3  pt-4">  
+                        <li>Nombre :   <span th:text="${encuentro.especie.nombre}"></span> </li>
+                        <li>Fecha : <span th:text="${encuentro.fecha}"></span> </li>
+                        <li>Zona : <span th:text="${encuentro.zona}"></span> </li>
+                        <li>Peso : <span th:text="${encuentro.peso}"></span><span>g</span> </li>
+                        <li>Tamaño : <span th:text="${encuentro.tamanio}"></span><span>cm</span> </li>
+                        <li>Sexo : <span th:text="${encuentro.sexo}"></span> </li>
+                        <li class="mt-3">Nombre común: <span th:text="${encuentro.especie.descripcion}"></span> </li>
+                    </ul>
+                    
+                </div>
+            </div>
+            <div class="row text-dark mt-5 detalles">
+                <p th:text="${encuentro.descripcion}">Textaco</p>
+            </div>
+        </div>
+    </main>
+    <footer th:replace="~{fragmentos/footer::footer}">
+    </footer>
+</body>
+
+</html>

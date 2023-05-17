@@ -1,5 +1,6 @@
 package com.salesianostriana.dam.bichopedia.repo;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,6 +11,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario,Long>{
 
 	Optional<Usuario> findFirstByUsername(String username);
 
-	
+	List<Usuario> findByUsernameContainingIgnoreCase(String nombre);
 	
 }

@@ -12,7 +12,7 @@ public interface ClaseRepository extends JpaRepository<Clase,Long>{
 
 	List<Clase>findAll();
 	
-	
+	public List<Clase> findByNombreContainingIgnoreCase (String nombre);
 	
 	@Query("select c from Clase c where c.filo.id = ?1")
 	public List<Clase> findByFiloId(Long filoId);

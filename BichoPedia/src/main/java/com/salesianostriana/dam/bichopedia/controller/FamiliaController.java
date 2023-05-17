@@ -7,11 +7,13 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.salesianostriana.dam.bichopedia.formbeans.SearchBean;
 import com.salesianostriana.dam.bichopedia.model.Familia;
 import com.salesianostriana.dam.bichopedia.services.FamiliaService;
 import com.salesianostriana.dam.bichopedia.services.OrdenService;
@@ -25,6 +27,28 @@ public class FamiliaController {
 	
 	@Autowired 
 	private OrdenService ordenService;
+	
+	@PostMapping("/search")
+	public String buscarFamilia(@ModelAttribute("searchForm")SearchBean searchBean,Model model) {
+		
+		List<Familia>familias;
+		familias = service.findByName(searchBean.getSearch());
+		model.addAttribute("familiaList", familias);
+		return "familia/familias";
+		
+		
+	}
+	@PostMapping("/admin/search")
+	public String buscarFamiliaAdmin(@ModelAttribute("searchForm")SearchBean searchBean,Model model) {
+		
+		List<Familia>familias;
+		familias = service.findByName(searchBean.getSearch());
+		model.addAttribute("familias", familias);
+		return "admin/familias";
+		
+		
+	}
+	
 	
 	@GetMapping("/")
 	public String showFamilias(@RequestParam(name="ordenId", required=false)Long ordenId,  Model model) {

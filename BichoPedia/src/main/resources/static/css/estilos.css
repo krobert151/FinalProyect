@@ -194,7 +194,7 @@ a {
     margin-left: 0.5rem;
   }
   
-.encuentroBox{
+.encuentroBox>a{
     position: relative;
     aspect-ratio: 1/1;
     display: flex;

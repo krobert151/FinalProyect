@@ -19,7 +19,17 @@
     </header>
     <main class="d-flex flex-column align-items-center">
         <h2 class="text-light">Usuarios</h2>
-        <table class="table container-fluid mx-5">
+        <div class="row d-flex justify-content-center">
+                <form action="3" th:action="@{/admin/search}" th:object="${searchForm}" method="POST">
+                    <div class="d-flex my-3">
+                        <input type="text" class="form-control" name="search" id="nombre"
+                            placeholder="Username" required>
+                        <button class="btn btn-light">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </form>
+        <table class="table container-fluid mx-5 w-100">
             <thead>
                 <tr>
                     <th class="text-center col-1 ">        

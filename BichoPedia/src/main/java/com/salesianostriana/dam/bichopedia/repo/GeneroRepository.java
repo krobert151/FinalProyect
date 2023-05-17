@@ -15,4 +15,7 @@ public interface GeneroRepository extends JpaRepository<Genero,Long>{
 	@Query("select g from Genero g where g.familia.id = ?1")
 	public List<Genero> findByFamiliaId(Long familiaId);
 	
+	public List<Genero> findByNombreContainingIgnoreCase(String nombre);
+	
+	
 }

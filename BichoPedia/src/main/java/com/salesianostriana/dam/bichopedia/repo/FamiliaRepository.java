@@ -12,7 +12,7 @@ public interface FamiliaRepository extends JpaRepository<Familia,Long>{
 
 	List<Familia>findAll();
 	
-	
+	public List<Familia> findByNombreContainingIgnoreCase(String nombre);
 	
 	
 	@Query("select f from Familia f where f.orden.id = ?1")

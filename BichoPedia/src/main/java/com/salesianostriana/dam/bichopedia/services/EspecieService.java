@@ -26,4 +26,10 @@ public class EspecieService extends BaseService<Especie,Long,EspecieRepository>{
         return this.repositorio.findByGeneroId(generoId);
     }
 	
+    public List<Especie> findByDesc(String nombre){
+    	
+    	return this.repositorio.findByDescripcionContainingIgnoreCase(nombre);
+    	
+    }
+    
 }
