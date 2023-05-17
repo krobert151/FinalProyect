@@ -34,6 +34,9 @@ public class EncuentoController {
 	@Autowired
 	private EspecieService especieService;
 	
+	
+
+	
 	@GetMapping("/")
 	public String encuentros(Model model) {
 		
@@ -57,6 +60,7 @@ public class EncuentoController {
 	public String detallesEncuentro(@PathVariable Long id,Model model) {
 		
 		Encuentro encuentro = service.findById(id);
+		
 		
 		if(encuentro!=null) {
 			model.addAttribute("encuentro", encuentro);
