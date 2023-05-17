@@ -63,6 +63,18 @@ public class Encuentro {
 			orphanRemoval = true)
 	private List<Valoracion>valoraciones = new ArrayList();
 	
+	public void addValoracion(Valoracion v) {
+		
+		v.setEncuentro(this);
+		this.valoraciones.add(v);	
+		
+	}
+	public void removeValoracion(Valoracion v) {
+		this.valoraciones.remove(v);
+		v.setEncuentro(null);
+		
+	}
+	
 	public Encuentro getEncuentro() {
 		
 		return this;

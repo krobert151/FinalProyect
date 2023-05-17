@@ -34,7 +34,11 @@ public class Valoracion {
 	@JoinColumn (foreignKey =@ForeignKey(name="fk_valoracion_usuario"))
 	private Usuario usuario;
 	
-	private Float puntuacion;
+	private Long sexo;
+	private Long especie;
+	private Long foto;
+	
+	private Float puntuacionTotal;
 	
 	
 	
