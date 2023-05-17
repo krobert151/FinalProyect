@@ -38,6 +38,16 @@ public class GeneroController {
 		
 		
 	}
+	@PostMapping("/admin/search")
+	public String buscarGeneroAdmin(@ModelAttribute("searchForm")SearchBean searchBean,Model model) {
+		
+		List<Genero>generos;
+		generos = service.findByName(searchBean.getSearch());
+		model.addAttribute("generos", generos);
+		return "admin/generos";
+		
+		
+	}
 	
 	@GetMapping("/")
 	public String showGeneros(@RequestParam(name="idFamilia", required=false)Long idFamilia, Model model) {

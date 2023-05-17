@@ -31,6 +31,15 @@ public class ReinoController {
 		return "reino/reinos";		
 		
 	}
+	@PostMapping("/admin/search")
+	public String buscarReinosAdmin(@ModelAttribute("searchForm")SearchBean searchBean,Model model) {
+		
+		List<Reino>reinos;
+		reinos=service.findByName(searchBean.getSearch());
+		model.addAttribute("reinos", reinos);
+		return "admin/reinos";		
+		
+	}
 	
 	@GetMapping("/")
 	public String showReinos(Model model) {

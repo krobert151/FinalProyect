@@ -29,6 +29,12 @@ public class UsuarioService extends BaseService<Usuario,Long,UsuarioRepository>{
 		
 	}
 	
+	public List<Usuario>findByUsername(String username){
+		
+		return this.repositorio.findByUsernameContainingIgnoreCase(username);
+		
+	}
+	
 	@Override
 	public Usuario save(Usuario t) {
 		// TODO Auto-generated method stub

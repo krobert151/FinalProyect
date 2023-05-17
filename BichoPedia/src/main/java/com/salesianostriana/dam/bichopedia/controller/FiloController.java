@@ -37,6 +37,15 @@ public class FiloController {
 		return "filo/filos";
 		
 	}
+	@PostMapping("/admin/search")
+	public String buscarFiloNombre(@ModelAttribute("searchForm")SearchBean searchBean,Model model) {
+		
+		List<Filo>filos;
+		filos = service.findByNombre(searchBean.getSearch());
+		model.addAttribute("filos", filos);
+		return "admin/filos";
+		
+	}
 	
 	
 	@GetMapping("/")

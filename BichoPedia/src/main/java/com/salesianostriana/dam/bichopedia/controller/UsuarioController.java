@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.salesianostriana.dam.bichopedia.formbeans.SearchBean;
 import com.salesianostriana.dam.bichopedia.model.Usuario;
 import com.salesianostriana.dam.bichopedia.services.UsuarioService;
 
@@ -28,6 +29,14 @@ public class UsuarioController {
 		model.addAttribute("userList", usuarioService.findAll());
 		return "/admin/usuarios";
 		
+	}
+	
+	@PostMapping("/search")
+	public String buscarUsuariosAdmin(@ModelAttribute("searchForm")SearchBean searchBean,Model model) {
+		List<Usuario>usuarios;
+		usuarios = usuarioService.findByUsername(searchBean.getSearch());
+		model.addAttribute("userList", usuarios);	
+		return "admin/usuarios";
 	}
 	
 	

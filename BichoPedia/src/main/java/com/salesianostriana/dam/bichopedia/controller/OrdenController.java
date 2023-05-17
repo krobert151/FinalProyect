@@ -36,6 +36,14 @@ public class OrdenController {
 		model.addAttribute("ordenList", ordenes);
 		return "orden/ordenes";
 	}
+	@PostMapping("/admin/search")
+	public String buscarOrdenAdmin(@ModelAttribute("searchForm")SearchBean searchBean,Model model) {
+		
+		List<Orden>ordenes;
+		ordenes=service.findByName(searchBean.getSearch());
+		model.addAttribute("ordenes", ordenes);
+		return "admin/ordenes";
+	}
 	
 	@GetMapping("/")
 	public String showOrdenes(@RequestParam(name="claseId", required=false)Long claseId, Model model) {
