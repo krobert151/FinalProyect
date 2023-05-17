@@ -17,12 +17,12 @@ public class DataGenerator {
 			
 			for (int j = 1; j < encuentros; j++) {
 				
-				int especie = r.nextInt(6);
-				int foto = r.nextInt(6);
-				int sexo = r.nextInt(2)*5;
-				int total = (especie+foto+sexo)/3;
+				double especie = r.nextInt(6);
+				double foto = r.nextInt(6);
+				double sexo = r.nextInt(2)*5;
+				double total = (especie+foto+sexo)/3;
 				
-				System.out.printf("%s%d,%d,%d,%d,%d,%d,%d%s %n",insertInto,count,j,i,especie,foto,sexo,total,insertInto2);
+				System.out.printf("%s%d,%d,%d,%.0f,%.0f,%.0f,%1.2f %s %n",insertInto,count,j,i,especie,foto,sexo,total,insertInto2);
 				count ++;
 			}
 			
