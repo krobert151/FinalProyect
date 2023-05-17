@@ -21737,3 +21737,7 @@ insert into Encuentro (id,usuario_id,especie_id,fecha,descripcion,foto,zona,tama
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+2023-05-17 10:00:28 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]INFORMATION_SCHEMA.SCHEMATA"; se esperaba "INSERT"
+Syntax error in SQL statement "[*]INFORMATION_SCHEMA.SCHEMATA"; expected "INSERT"; SQL statement:
+INFORMATION_SCHEMA.SCHEMATA [42001-214]

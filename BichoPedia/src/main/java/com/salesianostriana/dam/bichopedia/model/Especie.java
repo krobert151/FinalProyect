@@ -3,6 +3,7 @@ package com.salesianostriana.dam.bichopedia.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
@@ -48,7 +49,9 @@ public class Especie {
 	@Builder.Default
 	@OneToMany(
 			mappedBy="especie",
-			fetch = FetchType.EAGER)
+			fetch = FetchType.EAGER,
+			cascade = CascadeType.REMOVE,
+			orphanRemoval = true)
 	private List<Encuentro>encuentros = new ArrayList();
 	
 

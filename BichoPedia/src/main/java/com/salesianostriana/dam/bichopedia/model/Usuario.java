@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -59,9 +60,24 @@ public class Usuario implements UserDetails{
 	@Builder.Default
 	@OneToMany(
 			mappedBy="usuario",
-			fetch = FetchType.EAGER)
+			fetch = FetchType.EAGER,
+			cascade = CascadeType.REMOVE,
+			orphanRemoval=true)
 	private List<Encuentro>encuentros = new ArrayList();
+	
+	@EqualsAndHashCode.Exclude
+	@ToString.Exclude
+	@Builder.Default
+	@OneToMany(
+			mappedBy="usuario",
+			fetch = FetchType.EAGER,
+			cascade = CascadeType.REMOVE,
+			orphanRemoval=true)
+	private List<Valoracion>valoraciones = new ArrayList();
 
+	
+	
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 			String role ="ROLE_";
