@@ -30,80 +30,80 @@
                         <h3 class="text-center mb-3">Buscar por</h3>
                         <div>
                             <div>
-                                <span class="row text-center p-2 text-light my-1">
-                                    <a class="col-10 text-center">Puntiación</a>
-                                    <a class="col-1 mx-1"th:href="@{/encuentros/orderBy/{orderBy}(orderBy='puntuacionAsc')}">
+                                <span class="row text-center p-2 text-light my-1 d-flex">
+                                    <a class="col text-center float-start">Puntiación</a>
+                                    <a class="col-1 mx-1 float-end"th:href="@{/encuentros/orderBy/{orderBy}(orderBy='puntuacionAsc')}">
                                         <i class="bi bi-arrow-up"></i>
                                     </a>
-                                    <a class="col-1 mx-1" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='puntuacionDesc')}">
+                                    <a class="col-1 mx-1 float-end" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='puntuacionDesc')}">
                                         <i class="bi bi-arrow-down"></i>
                                     </a>
                                 </span>
                             </div>
                             <div>
-                                <span class="row text-center p-2 text-light my-1">
-                                    <a class="col-10 text-center">Nombre</a>
-                                    <a class="col-1 mx-1"th:href="@{/encuentros/orderBy/{orderBy}(orderBy='especie')}">
+                                <span class="row text-center p-2 text-light my-1 d-flex">
+                                    <a class="col text-center float-start">Nombre</a>
+                                    <a class="col-1 mx-1 float-end"th:href="@{/encuentros/orderBy/{orderBy}(orderBy='especie')}">
                                         <i class="bi bi-arrow-up"></i>
                                     </a>
-                                    <a class="col-1 mx-1" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='especieDesc')}">
+                                    <a class="col-1 mx-1 float-end" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='especieDesc')}">
                                         <i class="bi bi-arrow-down"></i>
                                     </a>
                                 </span>
                             </div>
                             <div>
-                                <span class="row text-center col p-2 text-light my-1">
-                                    <a class="col-10 text-center">N.Científico</a>
-                                    <a class="col-1 mx-1" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='cientifico')}">
+                                <span class="row text-center col p-2 text-light my-1 d-flex">
+                                    <a class="col text-center float-start">N.Científico</a>
+                                    <a class="col-1 mx-1 float-end" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='cientifico')}">
                                         <i class="bi bi-arrow-up"></i>
                                     </a>
-                                    <a class="col-1 mx-1" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='cientificoDesc')}">
+                                    <a class="col-1 mx-1 float-end" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='cientificoDesc')}">
                                         <i class="bi bi-arrow-down"></i>
                                     </a>
                                 </span>
                             </div>
                             <div>
-                                <span class="row text-center col p-2 text-light my-1">
-                                    <a class="col-10 text-center">Usuarios</a>
-                                    <a class="col-1 mx-1" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='usuario')}"><i class="bi bi-arrow-up"></i>
+                                <span class="row text-center col p-2 text-light my-1 d-flex">
+                                    <a class="col text-center float-start">Usuarios</a>
+                                    <a class="col-1 mx-1 float-end" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='usuario')}"><i class="bi bi-arrow-up"></i>
                                     </a>
-                                    <a class="col-1 mx-1" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='usuarioDesc')}"><i class="bi bi-arrow-down"></i>
-                                    </a>
-                                </span>
-                            </div>
-                            <div>
-                                <span class="row text-center col p-2 text-light my-1">
-                                    <a class="col-10 text-center">Peso</a>
-                                    <a class="col-1 mx-1" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='peso')}"><i class="bi bi-arrow-up"></i>
-                                    </a>
-                                    <a class="col-1 mx-1" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='pesoDesc')}"><i class="bi bi-arrow-down"></i>
+                                    <a class="col-1 mx-1 float-end" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='usuarioDesc')}"><i class="bi bi-arrow-down"></i>
                                     </a>
                                 </span>
                             </div>
                             <div>
-                                <span class="row text-center col p-2 text-light my-1">
-                                    <a class="col-10 text-center">Tamaño</a>
-                                    <a class="col-1 mx-1" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='tamanio')}"><i class="bi bi-arrow-up"></i>
+                                <span class="row text-center col p-2 text-light my-1 d-flex">
+                                    <a class="col text-center float-start">Peso</a>
+                                    <a class="col-1 mx-1 float-end" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='peso')}"><i class="bi bi-arrow-up"></i>
                                     </a>
-                                    <a class="col-1 mx-1" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='tamanioDesc')}"><i class="bi bi-arrow-down"></i>
-                                    </a>
-                                </span>
-                            </div>
-                            <div>
-                                <span class="row text-center col p-2 text-light my-1">
-                                    <a class="col-10 text-center">Zona</a>
-                                    <a class="col-1 mx-1" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='zonba')}"><i class="bi bi-arrow-up"></i>
-                                    </a>
-                                    <a class="col-1 mx-1" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='zonaDesc')}"><i class="bi bi-arrow-down"></i>
+                                    <a class="col-1 mx-1 float-end" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='pesoDesc')}"><i class="bi bi-arrow-down"></i>
                                     </a>
                                 </span>
                             </div>
                             <div>
-                                <span class="row text-center col p-2 text-light my-1">
-                                    <a class="col-10 text-center">Fecha</a>
-                                    <a class="col-1 mx-1" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='fecha')}"><i class="bi bi-arrow-up"></i>
+                                <span class="row text-center col p-2 text-light my-1 d-flex">
+                                    <a class="col text-center float-start">Tamaño</a>
+                                    <a class="col-1 mx-1 float-end" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='tamanio')}"><i class="bi bi-arrow-up"></i>
                                     </a>
-                                    <a class="col-1 mx-1" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='fechaDesc')}"><i class="bi bi-arrow-down"></i>
+                                    <a class="col-1 mx-1 float-end" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='tamanioDesc')}"><i class="bi bi-arrow-down"></i>
+                                    </a>
+                                </span>
+                            </div>
+                            <div>
+                                <span class="row text-center col p-2 text-light my-1 d-flex">
+                                    <a class="col text-center float-start">Zona</a>
+                                    <a class="col-1 mx-1 float-end" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='zonba')}"><i class="bi bi-arrow-up"></i>
+                                    </a>
+                                    <a class="col-1 mx-1 float-end" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='zonaDesc')}"><i class="bi bi-arrow-down"></i>
+                                    </a>
+                                </span>
+                            </div>
+                            <div>
+                                <span class="row text-center col p-2 text-light my-1 d-flex">
+                                    <a class="col text-center float-start">Fecha</a>
+                                    <a class="col-1 mx-1 float-end" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='fecha')}"><i class="bi bi-arrow-up"></i>
+                                    </a>
+                                    <a class="col-1 mx-1 float-end" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='fechaDesc')}"><i class="bi bi-arrow-down"></i>
                                     </a>
                                 </span>
                             </div>

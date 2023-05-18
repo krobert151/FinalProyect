@@ -31,33 +31,33 @@
                         <h3 class="text-center mb-3">Buscar por</h3>
                         <div>
                             <div>
-                                <span class="row text-center p-2 text-light my-1">
-                                    <a class="col-10 text-center">Nombre</a>
-                                    <a class="col-1 mx-1"th:href="@{/familias/orderBy/{orderBy}(orderBy='nombreAsc')}">
+                                <span class="row text-center p-2 text-light my-1 d-flex">
+                                    <a class="col text-center float-start">Nombre</a>
+                                    <a class="col-1 mx-1 float-end"th:href="@{/familias/orderBy/{orderBy}(orderBy='nombreAsc')}">
                                         <i class="bi bi-arrow-up"></i>
                                     </a>
-                                    <a class="col-1 mx-1" th:href="@{/familias/orderBy/{orderBy}(orderBy='nombreDesc')}">
+                                    <a class="col-1 mx-1 float-end" th:href="@{/familias/orderBy/{orderBy}(orderBy='nombreDesc')}">
                                         <i class="bi bi-arrow-down"></i>
                                     </a>
                                 </span>
                             </div>
                             <div>
-                                <span class="row text-center col p-2 text-light my-1">
-                                    <a class="col-10 text-center">N.Científico</a>
-                                    <a class="col-1 mx-1" th:href="@{/familias/orderBy/{orderBy}(orderBy='cientificoAsc')}">
+                                <span class="row text-center col p-2 text-light my-1 d-flex">
+                                    <a class="col text-center float-start">N.Científico</a>
+                                    <a class="col-1 mx-1 float-end" th:href="@{/familias/orderBy/{orderBy}(orderBy='cientificoAsc')}">
                                         <i class="bi bi-arrow-up"></i>
                                     </a>
-                                    <a class="col-1 mx-1" th:href="@{/familias/orderBy/{orderBy}(orderBy='cientificoDesc')}">
+                                    <a class="col-1 mx-1 float-end" th:href="@{/familias/orderBy/{orderBy}(orderBy='cientificoDesc')}">
                                         <i class="bi bi-arrow-down"></i>
                                     </a>
                                 </span>
                             </div>
                             <div>
-                                <span class="row text-center col p-2 text-light my-1">
-                                    <a class="col-10 text-center">Ordenes</a>
-                                    <a class="col-1 mx-1" th:href="@{/familias/orderBy/{orderBy}(orderBy='ordenAsc')}"><i class="bi bi-arrow-up"></i>
+                                <span class="row text-center col p-2 text-light my-1 d-flex">
+                                    <a class="col text-center float-start">Ordenes</a>
+                                    <a class="col-1 mx-1 float-end" th:href="@{/familias/orderBy/{orderBy}(orderBy='ordenAsc')}"><i class="bi bi-arrow-up"></i>
                                     </a>
-                                    <a class="col-1 mx-1" th:href="@{/familias/orderBy/{orderBy}(orderBy='ordenDesc')}"><i class="bi bi-arrow-down"></i>
+                                    <a class="col-1 mx-1 float-end" th:href="@{/familias/orderBy/{orderBy}(orderBy='ordenDesc')}"><i class="bi bi-arrow-down"></i>
                                     </a>
                                 </span>
                             </div>

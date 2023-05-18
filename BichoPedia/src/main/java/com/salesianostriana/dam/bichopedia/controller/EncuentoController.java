@@ -58,7 +58,8 @@ public class EncuentoController {
 		
 		List<Encuentro>encuentros;
 		encuentros =service.findByNombre(searchBean.getSearch());
-		model.addAttribute("encuentro", encuentros);
+		model.addAttribute("encuentroList", encuentros);
+		model.addAttribute("valoracionList", valService.mediasPorEncuentros(encuentros));
 		return "encuentro/encuentros";
 		
 		
