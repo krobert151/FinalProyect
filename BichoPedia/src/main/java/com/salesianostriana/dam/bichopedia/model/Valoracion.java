@@ -3,6 +3,8 @@ package com.salesianostriana.dam.bichopedia.model;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
@@ -24,6 +26,7 @@ public class Valoracion {
 	
 	@EmbeddedId
 	@Builder.Default
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private ValoracionPK valoracionPK = new ValoracionPK();
 	
 	@ManyToOne
@@ -42,6 +45,9 @@ public class Valoracion {
 	
 	private Float puntuacionTotal;
 	
+	public Valoracion getValoracion() {
+		return this;
+	}
 	
 	
 	

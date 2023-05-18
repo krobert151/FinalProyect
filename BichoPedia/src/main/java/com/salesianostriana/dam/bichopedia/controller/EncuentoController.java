@@ -18,10 +18,13 @@ import com.salesianostriana.dam.bichopedia.formbeans.SearchBean;
 import com.salesianostriana.dam.bichopedia.model.Encuentro;
 import com.salesianostriana.dam.bichopedia.model.Especie;
 import com.salesianostriana.dam.bichopedia.model.Usuario;
+import com.salesianostriana.dam.bichopedia.model.Valoracion;
 import com.salesianostriana.dam.bichopedia.services.EncuentroService;
 import com.salesianostriana.dam.bichopedia.services.EspecieService;
 import com.salesianostriana.dam.bichopedia.services.UsuarioService;
 import com.salesianostriana.dam.bichopedia.services.ValoracionService;
+
+
 
 @Controller
 @RequestMapping("/encuentros/")
@@ -69,6 +72,8 @@ public class EncuentoController {
 		
 		if(encuentro!=null) {
 			model.addAttribute("encuentro", encuentro);
+			model.addAttribute("valoracion", valService.mediaValoracionPorEncuentro(id));
+			model.addAttribute("nuevaValoracion", new Valoracion());
 			return "encuentro/encuentroDetails";
 		}else
 			return "redirect:/encuentros/";
@@ -76,6 +81,8 @@ public class EncuentoController {
 		
 		
 	}
+	
+
 	
 	@GetMapping("/orderBy/{orderBy}")
 	public String encuentrosSorted(@PathVariable String orderBy,Model model) {
@@ -167,6 +174,21 @@ public class EncuentoController {
 	    userService.save(usuario);
 	    service.save(encuentro);
 	    return "redirect:/encuentros/";
+	}
+	
+	@PostMapping("/details/submit/{id}")
+	public String guardarValoracion(@PathVariable Long id,@AuthenticationPrincipal Usuario u,  
+			@ModelAttribute("nuevaValoracion") Valoracion nuevaValoracion, Model model) {
+	   
+		nuevaValoracion.setEncuentro(service.findById(id));
+		nuevaValoracion.setPuntuacionTotal((float) ((nuevaValoracion.getFoto()+nuevaValoracion.getSexo()+nuevaValoracion.getEspecie())/3));
+		nuevaValoracion.setUsuario(u);
+		nuevaValoracion.getValoracionPK().setEncuentro_id(id);
+		nuevaValoracion.getValoracionPK().setValoracion_id(service.findById(id).getValoracionNextVal());
+		valService.save(nuevaValoracion);
+		
+		
+		return "redirect:/encuentros/";
 	}
 	
 	@GetMapping("/admin/editarEncuentro/{id}")

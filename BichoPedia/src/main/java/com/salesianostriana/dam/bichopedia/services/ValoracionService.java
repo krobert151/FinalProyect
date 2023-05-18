@@ -13,6 +13,13 @@ import com.salesianostriana.dam.bichopedia.services.base.BaseService;
 public class ValoracionService extends BaseService<Valoracion, ValoracionPK, ValoracionRepository> {
 
 	
+	@Override
+	public Valoracion save(Valoracion t) {
+		// TODO Auto-generated method stub
+		return super.save(t);
+	}
+
+
 	public ValoracionService(ValoracionRepository repo) {
 		super(repo);
 		// TODO Auto-generated constructor stub

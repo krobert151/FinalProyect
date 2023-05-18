@@ -21,17 +21,25 @@
     <main>
         <div class="container fondodifu p-3 my-3 px-5">
             <div class="text-dark mb-4 nombreEspecie d-flex flex-row-reverse">
-                <a  th:text="${encuentro.usuario.username}" >Username</a>
+                <a th:text="${encuentro.usuario.username}">Username</a>
                 <img class="fotoPerfilResgistro" th:src="${encuentro.usuario.fotoPerfil}" alt="Profile Photo">
             </div>
-            <h1 class="text-center text-dark mb-4 nombreEspecie " th:text="${encuentro.especie.nombre}" >Nombre de la especie</h1>
+            <h1 class="text-center text-dark mb-4 nombreEspecie d-flex justify-content-center ">
+                <span th:text="${encuentro.especie.nombre}">
+                    Especie
+                </span>
+                <i class="bi bi-star-fill float-start ms-3  " th:text="${valoracion}">
+                    0.00
+                </i>
+            </h1>
             <div class="row text-dark pb-4">
-                <div class="col-12 col-md-12 col-lg-7 col-xl-8 mb-2" >
-                    <img class="imagenEspecie" th:src="${encuentro.foto}"  src="../../static/img/fotoEspecie.png" alt="foto encuentro">
+                <div class="col-12 col-md-12 col-lg-7 col-xl-8 mb-2">
+                    <img class="imagenEspecie" th:src="${encuentro.foto}" src="../../static/img/fotoEspecie.png"
+                        alt="foto encuentro">
                 </div>
                 <div class="col-12 col-md-12 col-lg-5 col-xl-4">
-                    <ul class="d-flex flex-column taxList ms-3  pt-4">  
-                        <li>Nombre :   <span th:text="${encuentro.especie.nombre}"></span> </li>
+                    <ul class="d-flex flex-column taxList ms-3  pt-4">
+                        <li>Nombre : <span th:text="${encuentro.especie.nombre}"></span> </li>
                         <li>Fecha : <span th:text="${encuentro.fecha}"></span> </li>
                         <li>Zona : <span th:text="${encuentro.zona}"></span> </li>
                         <li>Peso : <span th:text="${encuentro.peso}"></span><span>g</span> </li>
@@ -39,12 +47,87 @@
                         <li>Sexo : <span th:text="${encuentro.sexo}"></span> </li>
                         <li class="mt-3">Nombre común: <span th:text="${encuentro.especie.descripcion}"></span> </li>
                     </ul>
-                    
                 </div>
             </div>
             <div class="row text-dark mt-5 detalles">
                 <p th:text="${encuentro.descripcion}">Textaco</p>
             </div>
+            <form method="POST" class="mx-4 " sec:authorize="isAuthenticated()"
+                th:action="@{/encuentros/details/submit/{id}(id=${encuentro.id})}" th:object="${nuevaValoracion}">
+                <input th:if="${nuevaValoracion.valoracionPK.encuentro_id != 0}" type="hidden"
+                    name="valoracionPK.encuentro_id" th:field="*{valoracionPK.encuentro_id}" th:value="encuentro.id" />
+                <h2 class="text-center mt-5">Valorar</h2>
+                <div class="row text-dark justify-content-between ">
+                    <div class="form-group col-12 col-md-3  mt-3 ">
+                        <label>Sexo:</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="sexo" id="sexoC" value="5"
+                                th:field="*{sexo}" th:checked="${sexo == 5}">
+                            <label class="form-check-label" for="sexoC">
+                                Correcto
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="sexo" id="sexoF" value="0"
+                                th:field="*{sexo}" th:checked="${sexo == '0'}">
+                            <label class="form-check-label" for="sexoF">
+                                Incorrecto
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-12 col-md-3  mt-3">
+                        <label>Especie</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="especie" id="especieGood" value="5"
+                                th:field="*{especie}" th:checked="${especie == '5'}">
+                            <label class="form-check-label" for="especieGood">
+                                Correcto
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="especie" id="especieMid" value="3"
+                                th:field="*{especie}" th:checked="${especie == '3'}">
+                            <label class="form-check-label" for="especieMid">
+                                Se parece
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="especie" id="especieBad" value="0"
+                                th:field="*{especie}" th:checked="${especie == '0'}">
+                            <label class="form-check-label" for="especieBad">
+                                No es esa especie
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-12 col-md-5  mt-3">
+                        <label>Foto</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="foto" id="fotoGood" value="5"
+                                th:field="*{foto}" th:checked="${foto == 5}">
+                            <label class="form-check-label" for="fotoGood">
+                                Perfecta
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="foto" id="fotoNormal" value="3"
+                                th:field="*{foto}" th:checked="${foto == 3}">
+                            <label class="form-check-label" for="fotoNormal">
+                                Al menos se ve bien la especie
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="foto" id="fotoBad" value="0"
+                                th:field="*{foto}" th:checked="${foto == 0}">
+                            <label class="form-check-label" for="fotoBad">
+                                No se puede reconocer la especie
+                            </label>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center my-3">
+                        <button class="btn btn-primary enviar" type="submit">Valorar</button>
+                    </div>
+            </form>
+        </div>
         </div>
     </main>
     <footer th:replace="~{fragmentos/footer::footer}">

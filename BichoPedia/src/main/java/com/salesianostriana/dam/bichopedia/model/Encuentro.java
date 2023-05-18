@@ -2,7 +2,9 @@ package com.salesianostriana.dam.bichopedia.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -64,7 +66,7 @@ public class Encuentro {
 	private List<Valoracion>valoraciones = new ArrayList();
 	
 	public void addValoracion(Valoracion v) {
-		
+		v.getValoracionPK().setValoracion_id(getValoracionNextVal());
 		v.setEncuentro(this);
 		this.valoraciones.add(v);	
 		
@@ -75,10 +77,42 @@ public class Encuentro {
 		
 	}
 	
+	public void removeValoracion(long valoracion_id) {
+		
+		Optional<Valoracion> va = valoraciones.stream()
+					.filter(v -> v.getValoracionPK().getEncuentro_id() == this.id && 
+					v.getValoracionPK().getValoracion_id() == valoracion_id)
+					.findFirst();
+		
+		if (va.isPresent())
+			removeValoracion(va.get());
+	}
+	
+	public long getValoracionNextVal() {
+		
+		if(this.valoraciones.size()>0) {
+			
+			return this.valoraciones.stream()
+						.map(Valoracion::getValoracionPK)
+						.map(ValoracionPK::getValoracion_id)
+						.max(Comparator.naturalOrder())
+						.orElse(0l) + 1l;
+
+		}else 
+			return 1l;
+
+			
+			
+		}
+		
+	
 	public Encuentro getEncuentro() {
 		
 		return this;
 	}
+	
+	
+	
 	
 	
 }
