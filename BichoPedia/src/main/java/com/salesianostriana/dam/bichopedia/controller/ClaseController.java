@@ -172,7 +172,7 @@ public class ClaseController {
 	@GetMapping("/admin/borrar/{id}")
 	public String borrarClase(@PathVariable("id")long id) {
 		service.deleteById(id);
-		return "redirect:/clases/gestClases";
+		return "redirect:/clases/admin/gestClases/id";
 		
 	}
 	

@@ -182,7 +182,7 @@ public class EspecieController {
 	@GetMapping("/admin/borrar/{id}")
 	public String borrarEspecie(@PathVariable("id")Long id) {
 		service.deleteById(id);
-		return "redirect:/especies/gestEspecies";
+		return "redirect:/especies/admin/gestEspecies/id";
 		
 		
 		

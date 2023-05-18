@@ -47,8 +47,11 @@ public class EncuentoController {
 	@GetMapping("/")
 	public String encuentros(Model model) {
 		
-		model.addAttribute("encuentroList", service.ordenarEncuentrosPorValoracionMedia(service.findAll()));
-		model.addAttribute("valoracionList", valService.mediasPorEncuentros(service.ordenarEncuentrosPorValoracionMedia(service.findAll())));
+		List<Encuentro>encuentros =service.ordenarEncuentrosPorValoracionMedia(service.findAll());
+		Collections.reverse(encuentros);
+		
+		model.addAttribute("encuentroList",encuentros );
+		model.addAttribute("valoracionList", valService.mediasPorEncuentros(encuentros));
 		
 		return "encuentro/encuentros";
 	}
@@ -58,7 +61,9 @@ public class EncuentoController {
 		
 		List<Encuentro>encuentros;
 		encuentros =service.findByNombre(searchBean.getSearch());
-		model.addAttribute("encuentro", encuentros);
+		model.addAttribute("encuentroList",service.ordenarEncuentrosPorValoracionMedia(encuentros));
+		model.addAttribute("valoracionList", valService.mediasPorEncuentros(
+				service.ordenarEncuentrosPorValoracionMedia(encuentros)));
 		return "encuentro/encuentros";
 		
 		
@@ -181,7 +186,9 @@ public class EncuentoController {
 			@ModelAttribute("nuevaValoracion") Valoracion nuevaValoracion, Model model) {
 	   
 		nuevaValoracion.setEncuentro(service.findById(id));
-		nuevaValoracion.setPuntuacionTotal((float) ((nuevaValoracion.getFoto()+nuevaValoracion.getSexo()+nuevaValoracion.getEspecie())/3));
+		nuevaValoracion.setPuntuacionTotal((float) ((nuevaValoracion.getFoto()+nuevaValoracion.getSexo()+
+																				nuevaValoracion.getEspecie())/3));
+		
 		nuevaValoracion.setUsuario(u);
 		nuevaValoracion.getValoracionPK().setEncuentro_id(id);
 		nuevaValoracion.getValoracionPK().setValoracion_id(service.findById(id).getValoracionNextVal());
@@ -205,7 +212,6 @@ public class EncuentoController {
 		}
 	}
 
-	
 	
 	
 	@PostMapping("/encuentroeditSubmit")

@@ -167,7 +167,7 @@ public class GeneroController {
 	public String borrarGenero(@PathVariable("id")long id) {
 		
 		service.deleteById(id);
-		return "redirect:/generos/";
+		return "redirect:/generos/admin/gestGeneros/id";
 		
 	}
 	
