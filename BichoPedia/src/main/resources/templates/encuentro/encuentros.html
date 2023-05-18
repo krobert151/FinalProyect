@@ -10,6 +10,8 @@
         <link th:href="@{/css/estilos.css}" rel="stylesheet">
         <link rel="stylesheet" href="../../static/css/estilos.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <title>Encuentros</title>
 </head>
 <body class="indexmain">
@@ -18,6 +20,9 @@
         </nav>
     </header>
     <main>
+        <script>
+            AOS.init();
+        </script>
         <div>
             <div class="row">
                 <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block ">
@@ -117,10 +122,9 @@
                     </form>
                     <div class="row d-flex justify-content-center text-light">
                         <div class="encuentroBox col-6 col-md-6 col-lg-5 col-xl-3 col-xxl-2 m-2"
-                            th:each="encuentro ,iter : ${encuentroList}" >
+                            th:each="encuentro ,iter : ${encuentroList}" data-aos="flip-down" data-aos-duration="1000">
                             <a th:href="@{/encuentros/details/{id}(id=${encuentro.id})}">
-
-                                <img class="background-image" th:src="${encuentro.foto}" src="https://lahuertinadetoni.es/wp-content/uploads/2015/01/233-163-Copiar.jpg" />
+                                <img class="background-image" th:src="${encuentro.foto}"  src="../../static/img/fotoEspecie.png" />
                                 <div class="encuentroinfo2 m-1 ">
                                     <img th:src="${encuentro.usuario.fotoPerfil}" >
                                     <span th:text="${encuentro.usuario.username}">nombre</span>

@@ -10,15 +10,19 @@
         <link th:href="@{/css/estilos.css}" rel="stylesheet">
         <link rel="stylesheet" href="../../static/css/estilos.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <title>Index</title>
 </head>
-
 <body class="indexmain">
     <header>
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark" th:replace="~{fragmentos/menu::menu}" >
         </nav>
     </header>
     <main>
+        <script>
+            AOS.init();
+        </script>
         <div>
             <div class="row">
                 <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block ">
@@ -71,11 +75,13 @@
                         </div>
                     </form>
                     <div class="row d-flex justify-content-center text-light">
-                        <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1" th:each="clase : ${claseList}">
+                        <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1" th:each="clase : ${claseList}"
+                        data-aos="flip-down" data-aos-duration="1000">
                             <a class="w-100 h-100" th:href="@{/ordenes/?(claseId=${clase.id})}">
                                 <img class="background-image" 
                                 th:if="${clase.ordenes != null and clase.ordenes.size() > 0 and clase.ordenes[0].familias != null and clase.ordenes[0].familias.size() > 0 and clase.ordenes[0].familias[0].generos != null and clase.ordenes[0].familias[0].generos.size() > 0 and clase.ordenes[0].familias[0].generos[0].especies != null and clase.ordenes[0].familias[0].generos[0].especies.size() > 0}" 
-                                th:src="${clase.ordenes[0].familias[0].generos[0].especies[0].foto}" />
+                                th:src="${clase.ordenes[0].familias[0].generos[0].especies[0].foto}"
+                                src="../../static/img/fotoEspecie.png" />
                                 <div class="text">
                                     <h3 th:text="${clase.nombre}">Gypaetus barbatus</h3>
                                     <p th:text="${clase.descripcion}">Description</p>

@@ -10,6 +10,8 @@
     <link th:href="@{/css/estilos.css}" rel="stylesheet">
     <link rel="stylesheet" href="../../static/css/estilos.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <title>Index</title>
 </head>
 
@@ -19,6 +21,9 @@
         </nav>
     </header>
     <main>
+        <script>
+            AOS.init();
+        </script>
         <div>
             <div class="row">
                 <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block ">
@@ -71,10 +76,12 @@
                         </div>
                     </form>
                     <div class="row d-flex justify-content-center text-light">
-                        <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1" th:each="genero : ${generoList}">
+                        <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1" th:each="genero : ${generoList}"
+                        data-aos="flip-down" data-aos-duration="1000">
                             <a class="h-100 w-100" th:href="@{/especies/?(idGenero=${genero.id})}">
                                 <img class="background-image"
-                                    th:src="${not (#strings.isEmpty(genero.especies[0].foto))} ? ${genero.especies[0].foto} : '/img/fotoEspecie.png'" />
+                                    th:src="${not (#strings.isEmpty(genero.especies[0].foto))} ? ${genero.especies[0].foto} : '/img/fotoEspecie.png'" 
+                                    src="../../static/img/fotoEspecie.png"/>
                                 <div class="text">
                                     <h3 th:text="${genero.nombre}">Gypaetus barbatus</h3>
                                     <p th:text="${genero.descripcion}">Description</p>

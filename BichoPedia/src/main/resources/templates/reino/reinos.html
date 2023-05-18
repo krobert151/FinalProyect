@@ -10,6 +10,8 @@
     <link th:href="@{/css/estilos.css}" rel="stylesheet">
     <link rel="stylesheet" href="../../static/css/estilos.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <title>Index</title>
 </head>
 
@@ -19,6 +21,9 @@
         </nav>
     </header>
     <main>
+        <script>
+            AOS.init();
+        </script>
         <div>
             <div class="row">
                 <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block ">
@@ -62,7 +67,8 @@
                         </div>
                     </form>
                     <div class=" row d-flex justify-content-center text-light">
-                        <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1" th:each="reino : ${reinoList}">
+                        <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1" th:each="reino : ${reinoList}"
+                        data-aos="flip-down" data-aos-duration="1000">
                             <a class="h-100 w-100" th:href="@{/filos/?(reinoId=${reino.id})}">
                                 <img class="background-image"
                                     th:if="${reino.filos != null and reino.filos.size() > 0 and reino.filos[0].clases 
@@ -71,7 +77,8 @@
                                     != null and reino.filos[0].clases[0].ordenes[0].familias.size() > 0 and reino.filos[0].clases[0].ordenes[0].familias[0].generos 
                                     != null and reino.filos[0].clases[0].ordenes[0].familias[0].generos.size() > 0 and reino.filos[0].clases[0].ordenes[0].familias[0].generos[0].especies 
                                     != null and reino.filos[0].clases[0].ordenes[0].familias[0].generos[0].especies.size() > 0}"
-                                    th:src="${reino.filos[0].clases[0].ordenes[0].familias[0].generos[0].especies[0].foto}" />
+                                    th:src="${reino.filos[0].clases[0].ordenes[0].familias[0].generos[0].especies[0].foto}" 
+                                    src="../../static/img/fotoEspecie.png"/>
                                 <div class="text">
                                     <h3 th:text="${reino.nombre}">Gypaetus barbatus</h3>
                                     <p th:text="${reino.descripcion}">Description</p>
