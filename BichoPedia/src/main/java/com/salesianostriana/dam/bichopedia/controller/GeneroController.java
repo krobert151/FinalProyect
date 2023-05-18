@@ -145,17 +145,13 @@ public class GeneroController {
 		default:
 			generos = service.findAll();
 		}
+		
 		model.addAttribute("generos", generos);
 		return "admin/generos";
-			
-		
-		
 		
 		}
 		
-		
-	
-	
+
 	@GetMapping("/admin/editarGenero/{id}")
 	public String mostrarFormularioEdicionGenero(@PathVariable("id")long id,Model model) {
 		Genero generoEdit= service.findById(id);
@@ -171,7 +167,7 @@ public class GeneroController {
 	public String borrarGenero(@PathVariable("id")long id) {
 		
 		service.deleteById(id);
-		return "redirect:/generos/gestGeneros";
+		return "redirect:/generos/";
 		
 	}
 	

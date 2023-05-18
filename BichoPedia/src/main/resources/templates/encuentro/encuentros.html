@@ -26,6 +26,17 @@
                         <div>
                             <div>
                                 <span class="row text-center p-2 text-light my-1">
+                                    <a class="col-10 text-center">Puntiación</a>
+                                    <a class="col-1 mx-1"th:href="@{/encuentros/orderBy/{orderBy}(orderBy='puntuacionAsc')}">
+                                        <i class="bi bi-arrow-up"></i>
+                                    </a>
+                                    <a class="col-1 mx-1" th:href="@{/encuentros/orderBy/{orderBy}(orderBy='puntuacionDesc')}">
+                                        <i class="bi bi-arrow-down"></i>
+                                    </a>
+                                </span>
+                            </div>
+                            <div>
+                                <span class="row text-center p-2 text-light my-1">
                                     <a class="col-10 text-center">Nombre</a>
                                     <a class="col-1 mx-1"th:href="@{/encuentros/orderBy/{orderBy}(orderBy='especie')}">
                                         <i class="bi bi-arrow-up"></i>
@@ -105,17 +116,21 @@
                         </div>
                     </form>
                     <div class="row d-flex justify-content-center text-light">
-                        <div class="encuentroBox col-6 col-md-6 col-lg-4 col-xl-2 m-2"
-                            th:each="encuentro : ${encuentroList}">
+                        <div class="encuentroBox col-6 col-md-6 col-lg-5 col-xl-3 col-xxl-2 m-2"
+                            th:each="encuentro ,iter : ${encuentroList}" >
                             <a th:href="@{/encuentros/details/{id}(id=${encuentro.id})}">
 
                                 <img class="background-image" th:src="${encuentro.foto}" src="https://lahuertinadetoni.es/wp-content/uploads/2015/01/233-163-Copiar.jpg" />
                                 <div class="encuentroinfo2 m-1 ">
                                     <img th:src="${encuentro.usuario.fotoPerfil}" >
                                     <span th:text="${encuentro.usuario.username}">nombre</span>
+                                    <i class="bi bi-star-fill float-end me-3  " th:text="${valoracionList[iter.index]}">
+                                        0.00                                                              
+                                    </i>
                                 </div>
                                 <div class="encuentroInfo">
-                                    <h3 th:text="${encuentro.especie.descripcion}" class="text-center"></h3>                               
+                                    <h3 th:text="${encuentro.especie.descripcion}" class="text-center"></h3>      
+
                                 </div>
                             </a>
                         </div>

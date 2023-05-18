@@ -1,5 +1,6 @@
 package com.salesianostriana.dam.bichopedia.controller;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,13 @@ import com.salesianostriana.dam.bichopedia.formbeans.SearchBean;
 import com.salesianostriana.dam.bichopedia.model.Encuentro;
 import com.salesianostriana.dam.bichopedia.model.Especie;
 import com.salesianostriana.dam.bichopedia.model.Usuario;
+import com.salesianostriana.dam.bichopedia.model.Valoracion;
 import com.salesianostriana.dam.bichopedia.services.EncuentroService;
 import com.salesianostriana.dam.bichopedia.services.EspecieService;
 import com.salesianostriana.dam.bichopedia.services.UsuarioService;
+import com.salesianostriana.dam.bichopedia.services.ValoracionService;
+
+
 
 @Controller
 @RequestMapping("/encuentros/")
@@ -34,10 +39,16 @@ public class EncuentoController {
 	@Autowired
 	private EspecieService especieService;
 	
+	@Autowired
+	private ValoracionService valService;
+	
+
+	
 	@GetMapping("/")
 	public String encuentros(Model model) {
 		
-		model.addAttribute("encuentroList", service.findAll());
+		model.addAttribute("encuentroList", service.ordenarEncuentrosPorValoracionMedia(service.findAll()));
+		model.addAttribute("valoracionList", valService.mediasPorEncuentros(service.ordenarEncuentrosPorValoracionMedia(service.findAll())));
 		
 		return "encuentro/encuentros";
 	}
@@ -58,8 +69,11 @@ public class EncuentoController {
 		
 		Encuentro encuentro = service.findById(id);
 		
+		
 		if(encuentro!=null) {
 			model.addAttribute("encuentro", encuentro);
+			model.addAttribute("valoracion", valService.mediaValoracionPorEncuentro(id));
+			model.addAttribute("nuevaValoracion", new Valoracion());
 			return "encuentro/encuentroDetails";
 		}else
 			return "redirect:/encuentros/";
@@ -67,6 +81,8 @@ public class EncuentoController {
 		
 		
 	}
+	
+
 	
 	@GetMapping("/orderBy/{orderBy}")
 	public String encuentrosSorted(@PathVariable String orderBy,Model model) {
@@ -123,11 +139,19 @@ public class EncuentoController {
 		case "cientificoDesc":
 			encuentros=service.findAllBySorted(Direction.DESC, "especie.nombre");
 			break;
+		case "puntuacionAsc":
+			encuentros= service.ordenarEncuentrosPorValoracionMedia(service.findAll());
+			break;
+		case "puntuacionDesc":
+			encuentros= service.ordenarEncuentrosPorValoracionMedia(service.findAll());
+			Collections.reverse(encuentros);
+			break;
 		default:
 			encuentros=service.findAll();
 		}
 		
 		model.addAttribute("encuentroList", encuentros);
+		model.addAttribute("valoracionList", valService.mediasPorEncuentros(encuentros));
 		return "encuentro/encuentros";
 		
 	}
@@ -150,6 +174,21 @@ public class EncuentoController {
 	    userService.save(usuario);
 	    service.save(encuentro);
 	    return "redirect:/encuentros/";
+	}
+	
+	@PostMapping("/details/submit/{id}")
+	public String guardarValoracion(@PathVariable Long id,@AuthenticationPrincipal Usuario u,  
+			@ModelAttribute("nuevaValoracion") Valoracion nuevaValoracion, Model model) {
+	   
+		nuevaValoracion.setEncuentro(service.findById(id));
+		nuevaValoracion.setPuntuacionTotal((float) ((nuevaValoracion.getFoto()+nuevaValoracion.getSexo()+nuevaValoracion.getEspecie())/3));
+		nuevaValoracion.setUsuario(u);
+		nuevaValoracion.getValoracionPK().setEncuentro_id(id);
+		nuevaValoracion.getValoracionPK().setValoracion_id(service.findById(id).getValoracionNextVal());
+		valService.save(nuevaValoracion);
+		
+		
+		return "redirect:/encuentros/";
 	}
 	
 	@GetMapping("/admin/editarEncuentro/{id}")
