@@ -144,7 +144,7 @@ public class ReinoController {
 	@GetMapping("/admin/borrar/{id}")
 	public String borrarReino(@PathVariable("id")long id) {
 		service.deleteById(id);
-		return "redirect:/reinos/gestReinos";
+		return "redirect:/reinos/admin/gestReinos/id";
 	}
 	
 }

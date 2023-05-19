@@ -173,7 +173,7 @@ public class FamiliaController {
 	public String borrarFamilia(@PathVariable("id")long id) {
 		
 		service.deleteById(id);
-		return "redirect:/familias/gestFamilias";
+		return "redirect:/familias/admin/gestFamilias/id";
 		
 	}
 	

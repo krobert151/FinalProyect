@@ -110,7 +110,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-9 ">
+                <div class="col-8 ">
                     <form action="3" th:action="@{/encuentros/search}" th:object="${searchForm}" method="POST">
                         <div class="d-flex my-3">
                             <input type="text" class="form-control" name="search" id="nombre"
@@ -124,7 +124,12 @@
                         <div class="encuentroBox col-6 col-md-6 col-lg-5 col-xl-3 col-xxl-2 m-2"
                             th:each="encuentro ,iter : ${encuentroList}" data-aos="flip-down" data-aos-duration="1000">
                             <a th:href="@{/encuentros/details/{id}(id=${encuentro.id})}">
+<<<<<<< HEAD
                                 <img class="background-image" th:src="${encuentro.foto}"  src="../../static/img/fotoEspecie.png" />
+=======
+
+                                <img class="background-image" th:src="${encuentro.foto}" src="../../static/img/fotoEspecie.png" />
+>>>>>>> 0d11606df4f991852379676238907c74588adb91
                                 <div class="encuentroinfo2 m-1 ">
                                     <img th:src="${encuentro.usuario.fotoPerfil}" >
                                     <span th:text="${encuentro.usuario.username}">nombre</span>
@@ -141,6 +146,14 @@
                     </div>
                 </div>
                 <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block ">
+                    <div class="taxonomias m-3 p-3" sec:authorize="isAuthenticated()">
+                        <h3 class="text-center mb-3">Has encontrado algo?!</h3>
+                        <button>
+                            <a class="py-1 px-3 botonLink text-center" th:href="@{/encuentros/newEncuentro}">
+                                <span class="botonTexto">Muestranoslo</span>
+                            </a>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

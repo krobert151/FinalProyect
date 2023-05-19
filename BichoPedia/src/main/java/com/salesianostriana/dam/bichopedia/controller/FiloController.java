@@ -176,7 +176,7 @@ public class FiloController {
 	@GetMapping("/admin/borrar/{id}")
 	public String borrarFilo(@PathVariable("id")long id) {
 		service.deleteById(id);
-		return "redirect:/filos/admin/gestFilos";
+		return "redirect:/filos/admin/gestFilos/id";
 	}
 	
 }

@@ -46,10 +46,18 @@ public class EncuentoController {
 	
 	@GetMapping("/")
 	public String encuentros(Model model) {
+<<<<<<< HEAD
 		List<Encuentro>encuentros;
 		encuentros = service.ordenarEncuentrosPorValoracionMedia(service.findAll());
 		Collections.reverse(encuentros);
 		model.addAttribute("encuentroList", encuentros);
+=======
+		
+		List<Encuentro>encuentros =service.ordenarEncuentrosPorValoracionMedia(service.findAll());
+		Collections.reverse(encuentros);
+		
+		model.addAttribute("encuentroList",encuentros );
+>>>>>>> 0d11606df4f991852379676238907c74588adb91
 		model.addAttribute("valoracionList", valService.mediasPorEncuentros(encuentros));
 		
 		return "encuentro/encuentros";
@@ -67,8 +75,14 @@ public class EncuentoController {
 		
 		List<Encuentro>encuentros;
 		encuentros =service.findByNombre(searchBean.getSearch());
+<<<<<<< HEAD
 		model.addAttribute("encuentroList", encuentros);
 		model.addAttribute("valoracionList", valService.mediasPorEncuentros(encuentros));
+=======
+		model.addAttribute("encuentroList",service.ordenarEncuentrosPorValoracionMedia(encuentros));
+		model.addAttribute("valoracionList", valService.mediasPorEncuentros(
+				service.ordenarEncuentrosPorValoracionMedia(encuentros)));
+>>>>>>> 0d11606df4f991852379676238907c74588adb91
 		return "encuentro/encuentros";
 		
 		
@@ -191,7 +205,9 @@ public class EncuentoController {
 			@ModelAttribute("nuevaValoracion") Valoracion nuevaValoracion, Model model) {
 	   
 		nuevaValoracion.setEncuentro(service.findById(id));
-		nuevaValoracion.setPuntuacionTotal((float) ((nuevaValoracion.getFoto()+nuevaValoracion.getSexo()+nuevaValoracion.getEspecie())/3));
+		nuevaValoracion.setPuntuacionTotal((float) ((nuevaValoracion.getFoto()+nuevaValoracion.getSexo()+
+																				nuevaValoracion.getEspecie())/3));
+		
 		nuevaValoracion.setUsuario(u);
 		nuevaValoracion.getValoracionPK().setEncuentro_id(id);
 		nuevaValoracion.getValoracionPK().setValoracion_id(service.findById(id).getValoracionNextVal());
@@ -215,7 +231,6 @@ public class EncuentoController {
 		}
 	}
 
-	
 	
 	
 	@PostMapping("/encuentroeditSubmit")

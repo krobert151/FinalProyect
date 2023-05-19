@@ -49,6 +49,7 @@ public class Encuentro {
 
 	@Lob
 	private String descripcion;
+	@Lob
 	private String foto;
 	private String zona;
 	private double tamanio;

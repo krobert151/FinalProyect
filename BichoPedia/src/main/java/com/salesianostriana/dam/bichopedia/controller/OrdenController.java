@@ -170,7 +170,7 @@ public class OrdenController {
 	@GetMapping("/admin/borrar/{id}")
 	public String borrarOrden(@PathVariable("id")long id) {
 		service.deleteById(id);
-		return "redirect:/ordenes/gestOrdenes";
+		return "redirect:/ordenes/admin/gestOrdenes/id";
 	}
 	
 	
