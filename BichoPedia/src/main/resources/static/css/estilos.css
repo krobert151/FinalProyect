@@ -293,7 +293,7 @@ a {
     object-fit: cover;
     border-radius: 50pt;
     border: 1px solid white;
-    margin-right: 1% ;
+    margin-right: 3% ;
 
 }
 .taxonomias{
@@ -330,16 +330,4 @@ a {
 .taxonomias>button>a{
     display: block;
 
-}
-.exit{
-    color: rgb(207, 30, 30);
-    height: 35px;
-    width: 35px;
-}
-.exit>i{
-    font-size: 200%;
-    padding-right: 0;
-}
-.exit:hover{
-    color: red;
 }
