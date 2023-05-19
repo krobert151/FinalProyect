@@ -10,6 +10,8 @@
     <link th:href="@{/css/estilos.css}" rel="stylesheet">
     <link rel="stylesheet" href="../../static/css/estilos.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <title>Index</title>
 </head>
 
@@ -19,6 +21,9 @@
         </nav>
     </header>
     <main>
+        <script>
+            AOS.init();
+        </script>
         <div>
             <div class="row">
                 <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block ">
@@ -26,33 +31,37 @@
                         <h3 class="text-center mb-3">Buscar por</h3>
                         <div>
                             <div>
-                                <span class="row text-center p-2 text-light my-1">
-                                    <a class="col-10 text-center">Nombre</a>
-                                    <a class="col-1 mx-1"th:href="@{/filos/orderBy/{orderBy}(orderBy='nombreAsc')}">
+                                <span class="row text-center p-2 text-light my-1 d-flex">
+                                    <a class="col text-center float-start">Nombre</a>
+                                    <a class="col-1 mx-1 float-end" th:href="@{/filos/orderBy/{orderBy}(orderBy='nombreAsc')}">
                                         <i class="bi bi-arrow-up"></i>
                                     </a>
-                                    <a class="col-1 mx-1" th:href="@{/filos/orderBy/{orderBy}(orderBy='nombreDesc')}">
+                                    <a class="col-1 mx-1 float-end" th:href="@{/filos/orderBy/{orderBy}(orderBy='nombreDesc')}">
                                         <i class="bi bi-arrow-down"></i>
                                     </a>
                                 </span>
                             </div>
                             <div>
-                                <span class="row text-center col p-2 text-light my-1">
-                                    <a class="col-10 text-center">N.Científico</a>
-                                    <a class="col-1 mx-1" th:href="@{/filos/orderBy/{orderBy}(orderBy='cientificoAsc')}">
+                                <span class="row text-center col p-2 text-light my-1 d-flex">
+                                    <a class="col text-center float-start">N.Científico</a>
+                                    <a class="col-1 mx-1 float-end"
+                                        th:href="@{/filos/orderBy/{orderBy}(orderBy='cientificoAsc')}">
                                         <i class="bi bi-arrow-up"></i>
                                     </a>
-                                    <a class="col-1 mx-1" th:href="@{/filos/orderBy/{orderBy}(orderBy='cientificoDesc')}">
+                                    <a class="col-1 mx-1 float-end"
+                                        th:href="@{/filos/orderBy/{orderBy}(orderBy='cientificoDesc')}">
                                         <i class="bi bi-arrow-down"></i>
                                     </a>
                                 </span>
                             </div>
                             <div>
-                                <span class="row text-center col p-2 text-light my-1">
-                                    <a class="col-10 text-center">Reino</a>
-                                    <a class="col-1 mx-1" th:href="@{/filos/orderBy/{orderBy}(orderBy='reinoAsc')}"><i class="bi bi-arrow-up"></i>
+                                <span class="row text-center col p-2 text-light my-1 d-flex">
+                                    <a class="col text-center float-start">Reino</a>
+                                    <a class="col-1 mx-1 float-end" th:href="@{/filos/orderBy/{orderBy}(orderBy='reinoAsc')}"><i
+                                            class="bi bi-arrow-up"></i>
                                     </a>
-                                    <a class="col-1 mx-1" th:href="@{/filos/orderBy/{orderBy}(orderBy='reinoDesc')}"><i class="bi bi-arrow-down"></i>
+                                    <a class="col-1 mx-1 float-end" th:href="@{/filos/orderBy/{orderBy}(orderBy='reinoDesc')}"><i
+                                            class="bi bi-arrow-down"></i>
                                     </a>
                                 </span>
                             </div>
@@ -71,14 +80,16 @@
                         </div>
                     </form>
                     <div class="row d-flex justify-content-center text-light">
-                        <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1" th:each="filo : ${filoList}">
+                        <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1" th:each="filo : ${filoList}"
+                            data-aos="flip-down" data-aos-duration="1000">
                             <a class="h-100 w-100" th:href="@{/clases/?(filoId=${filo.id})}">
                                 <img class="background-image" th:if="${filo.clases != null and filo.clases.size() > 0 and filo.clases[0].ordenes 
                                     != null and filo.clases[0].ordenes.size() > 0 and filo.clases[0].ordenes[0].familias 
                                     != null and filo.clases[0].ordenes[0].familias.size() > 0 and filo.clases[0].ordenes[0].familias[0].generos 
                                     != null and filo.clases[0].ordenes[0].familias[0].generos.size() > 0 and filo.clases[0].ordenes[0].familias[0].generos[0].especies 
                                     != null and filo.clases[0].ordenes[0].familias[0].generos[0].especies.size() > 0}"
-                                    th:src="${filo.clases[0].ordenes[0].familias[0].generos[0].especies[0].foto}" />
+                                    th:src="${filo.clases[0].ordenes[0].familias[0].generos[0].especies[0].foto}"
+                                    src="../../static/img/fotoEspecie.png" />
                                 <div class="text">
                                     <h3 th:text="${filo.nombre}">Gypaetus barbatus</h3>
                                     <p th:text="${filo.descripcion}">Description</p>
@@ -87,15 +98,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block"  >
+                <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block">
                     <div th:replace="~{especie/especies::menu-lateral}"></div>
                     <div class="taxonomias m-3 p-3">
                         <h3 class="text-center mb-3">No está?!</h3>
                         <button>
-                                <a class="py-1 px-3 botonLink text-center" th:href="@{/filos/newFilo}" href="/newFilo">
-                                    <span class="botonTexto">Nuevo Filo</span>
-                                    <i class="ms-2 bi bi-plus-circle botonIcono"></i>
-                                </a>
+                            <a class="py-1 px-3 botonLink text-center" th:href="@{/filos/newFilo}" href="/newFilo">
+                                <span class="botonTexto">Nuevo Filo</span>
+                                <i class="ms-2 bi bi-plus-circle botonIcono"></i>
+                            </a>
                         </button>
                     </div>
                 </div>

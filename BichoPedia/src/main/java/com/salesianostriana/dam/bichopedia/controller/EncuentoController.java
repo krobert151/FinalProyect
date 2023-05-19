@@ -46,14 +46,28 @@ public class EncuentoController {
 	
 	@GetMapping("/")
 	public String encuentros(Model model) {
+<<<<<<< HEAD
+		List<Encuentro>encuentros;
+		encuentros = service.ordenarEncuentrosPorValoracionMedia(service.findAll());
+		Collections.reverse(encuentros);
+		model.addAttribute("encuentroList", encuentros);
+=======
 		
 		List<Encuentro>encuentros =service.ordenarEncuentrosPorValoracionMedia(service.findAll());
 		Collections.reverse(encuentros);
 		
 		model.addAttribute("encuentroList",encuentros );
+>>>>>>> 0d11606df4f991852379676238907c74588adb91
 		model.addAttribute("valoracionList", valService.mediasPorEncuentros(encuentros));
 		
 		return "encuentro/encuentros";
+	}
+	
+	@GetMapping("/exit")
+	public String exit(){
+		
+	return "redirect:/encuentros/";	
+		
 	}
 	
 	@PostMapping("/search")
@@ -61,9 +75,14 @@ public class EncuentoController {
 		
 		List<Encuentro>encuentros;
 		encuentros =service.findByNombre(searchBean.getSearch());
+<<<<<<< HEAD
+		model.addAttribute("encuentroList", encuentros);
+		model.addAttribute("valoracionList", valService.mediasPorEncuentros(encuentros));
+=======
 		model.addAttribute("encuentroList",service.ordenarEncuentrosPorValoracionMedia(encuentros));
 		model.addAttribute("valoracionList", valService.mediasPorEncuentros(
 				service.ordenarEncuentrosPorValoracionMedia(encuentros)));
+>>>>>>> 0d11606df4f991852379676238907c74588adb91
 		return "encuentro/encuentros";
 		
 		

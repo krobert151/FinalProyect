@@ -101,8 +101,6 @@ public class Encuentro {
 
 		}else 
 			return 1l;
-
-			
 			
 		}
 		

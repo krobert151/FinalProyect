@@ -20,9 +20,14 @@
     </header>
     <main>
         <div class="container fondodifu p-3 my-3 px-5">
-            <div class="text-dark mb-4 nombreEspecie d-flex flex-row-reverse">
-                <a th:text="${encuentro.usuario.username}">Username</a>
-                <img class="fotoPerfilResgistro" th:src="${encuentro.usuario.fotoPerfil}" alt="Profile Photo">
+            <div class="text-dark mb-4  nombreEspecie d-flex flex-row">
+                <img class="fotoPerfilResgistro mt-3" th:src="${encuentro.usuario.fotoPerfil}" alt="Profile Photo">
+                <a class="mt-3" th:text="${encuentro.usuario.username}">Username</a>
+                <div class="d-flex flex-column justify-content-center align-items-end w-100">
+                    <a class="exit mb-1" th:href="@{/encuentros/exit}">
+                        <i class="bi bi-x-circle-fill "></i>
+                    </a>
+                </div>
             </div>
             <h1 class="text-center text-dark mb-4 nombreEspecie d-flex justify-content-center ">
                 <span th:text="${encuentro.especie.nombre}">
@@ -32,8 +37,8 @@
                     0.00
                 </i>
             </h1>
-            <div class="row text-dark pb-4">
-                <div class="col-12 col-md-12 col-lg-7 col-xl-8 mb-2">
+            <div class="row text-dark justify-content-center mt-3 pb-4">
+                <div class="col-12 col-md-12 col-lg-7 col-xl-6 mb-2">
                     <img class="imagenEspecie" th:src="${encuentro.foto}" src="../../static/img/fotoEspecie.png"
                         alt="foto encuentro">
                 </div>
@@ -58,8 +63,13 @@
                     name="valoracionPK.encuentro_id" th:field="*{valoracionPK.encuentro_id}" th:value="encuentro.id" />
                 <h2 class="text-center mt-5">Valorar</h2>
                 <div class="row text-dark justify-content-between ">
+<<<<<<< HEAD
+                    <div class="form-group col-12 ps-3 col-md-4  mt-3 ">
+                        <label>Sexo:</label>
+=======
                     <div class="form-group col-12 col-md-3  mt-3 ">
                         <label><strong>Sexo:</strong></label>
+>>>>>>> 0d11606df4f991852379676238907c74588adb91
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="sexo" id="sexoC" value="5"
                                 th:field="*{sexo}" th:checked="${sexo == 5}">
@@ -75,8 +85,13 @@
                             </label>
                         </div>
                     </div>
+<<<<<<< HEAD
+                    <div class="form-group col-12 ps-3 col-md-4  mt-3">
+                        <label>Especie</label>
+=======
                     <div class="form-group col-12 col-md-3  mt-3">
                         <label><strong>Especie:</strong></label>
+>>>>>>> 0d11606df4f991852379676238907c74588adb91
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="especie" id="especieGood" value="5"
                                 th:field="*{especie}" th:checked="${especie == '5'}">
@@ -99,8 +114,13 @@
                             </label>
                         </div>
                     </div>
+<<<<<<< HEAD
+                    <div class="form-group col-12 ps-3 col-md-4  mt-3">
+                        <label>Foto</label>
+=======
                     <div class="form-group col-12 col-md-4 pe-4  mt-3">
                         <label><strong>Foto:</strong></label>
+>>>>>>> 0d11606df4f991852379676238907c74588adb91
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="foto" id="fotoGood" value="5"
                                 th:field="*{foto}" th:checked="${foto == 5}">
@@ -123,7 +143,7 @@
                             </label>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-center my-3">
+                    <div class="d-flex justify-content-center my-5 ">
                         <button class="btn btn-primary enviar" type="submit">Valorar</button>
                     </div>
             </form>

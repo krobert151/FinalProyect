@@ -98,7 +98,8 @@
                                     class="texto-corto"></a>
                                 <a href="#" class="leer-mas" onclick="mostrarTextoCompleto(this)"> leer más</a>
                             </td>
-
+                            <!--He tenido que usar forzadamente el onclick puesto a que son elementos dinámicos no he podido darle un id único por lo que si uso js 
+                            capturando el id siempre al hacer la función va a coger el primer elemento-->
                             <td class="col-2" th:text="${especie.genero.nombre}">Genero</td>
                             <td class="col pe-4">
                                 <a class="me-2" href="#"
