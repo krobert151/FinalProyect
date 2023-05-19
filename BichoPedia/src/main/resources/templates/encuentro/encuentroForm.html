@@ -10,7 +10,7 @@
     <link th:href="@{/css/estilos.css}" rel="stylesheet">
     <link rel="stylesheet" href="../../static/css/estilos.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script th:href="@{/js/script.js}" src="/js/script.js"></script>
+    <script th:href="@{/js/formEncuentroScript.js}" src="/js/formEncuentroScript.js" defer></script>
     <title>Document</title>
 </head>
 
@@ -24,11 +24,11 @@
             <div class="col">
             </div>
             <div class="col-10  col-lg-8 col-xl-7 formulario my-5 py-5 px-4">
-                <form class="was-validated text-center" method="POST" th:action="@{/encuentros/encuentroSubmit}"
-                    th:object="${encuentro}">
+                <form class="was-validated text-center" name="formEncuentro" id="formularioEncuentro" method="POST"
+                    th:action="@{/encuentros/encuentroSubmit}" th:object="${encuentro}">
                     <div class="container-fluid">
                         <div class="d-flex justify-content-end">
-                            <img th:src="${usuario.fotoPerfil}" class="fotoPerfilResgistro"/>
+                            <img th:src="${usuario.fotoPerfil}" class="fotoPerfilResgistro" />
                             <span class="fw-bold" th:text=${usuario.username}>Nombre de usuario</span>
                         </div>
                         <h2>Ficha de Encuentro</h2>
@@ -36,7 +36,8 @@
                         <label for="especie">Especie</label>
                         <select th:field="*{especie}" class="form-control is-valid" required>
                             <option value="-1">---</option>
-                            <option th:each="especie : ${especies}" th:value="${especie.id}" th:text="${especie.nombre}">
+                            <option th:each="especie : ${especies}" th:value="${especie.id}"
+                                th:text="${especie.nombre}">
                                 Especie</option>
                         </select>
                         <div class="invalid-feedback">Selecciona la especie.</div>
@@ -45,49 +46,56 @@
                                 <div class="form-group my-1">
                                     <label>Descripción:</label>
                                     <textarea class="form-control is-valid z-depth-1" rows="5" type="text"
-                                        th:field="*{descripcion}" th:value="*{descripcion}" required> 
+                                        th:field="*{descripcion}" th:value="*{descripcion}" required>
                                     </textarea>
                                     <div class="invalid-feedback">Escribe la descrcripcion de tu encuentro.</div>
                                 </div>
                                 <div class="form-group my-1">
                                     <label>Foto:</label>
-                                    <input class="form-control is-valid" type="text" th:field="*{foto}" th:value="*{foto}" required>
+                                    <input class="form-control is-valid" type="text" th:field="*{foto}"
+                                        th:value="*{foto}" required>
                                     <div class="invalid-feedback">Sube un enlace de la foto</div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group my-1">
-                                    <div class="form-group my-1">
-                                        <label>Fecha:</label>
-                                        <input class="form-control is-valid" type="date" th:field="*{fecha}" th:value="*{fecha}" required>
-                                        <div class="invalid-feedback">Selecciona la fecha</div>
-
+                                    <label>Fecha:</label>
+                                    <input class="form-control is-valid" id="fecha" name="fecha" type="date"
+                                        th:field="*{fecha}" th:value="*{fecha}" required>
+                                    <div class="invalid-feedback">Selecciona una fecha anterior o igual al día de hoy.
                                     </div>
                                 </div>
                                 <div class="form-group my-1">
                                     <label>Zona:</label>
-                                    <input class="form-control is-valid" type="text" th:field="*{zona}" th:value="*{zona}" required>
+                                    <input class="form-control is-valid" type="text" th:field="*{zona}"
+                                        th:value="*{zona}" required>
                                     <div class="invalid-feedback">Selecciona la zona</div>
                                 </div>
                                 <div class="row justify-content-between">
                                     <div class="form-group my-1 col-12 col-lg-3">
                                         <label>Tamaño(cm):</label>
-                                        <input class="form-control is-valid" type="number" step="0.1" th:field="*{tamanio}" th:value="*{tamanio}">
+                                        <input class="form-control is-valid" type="number" step="0.1" required
+                                            th:field="*{tamanio}" th:value="*{tamanio}">
+                                        <div class="invalid-feedback">Menor que 0!</div>
                                     </div>
                                     <div class="form-group my-1 col-12 col-lg-3">
                                         <label>Peso(g):</label>
-                                        <input class="form-control is-valid" type="number" step="0.1" th:field="*{peso}" th:value="*{peso}">
+                                        <input class="form-control is-valid" type="number" step="0.1" required
+                                            th:field="*{peso}" th:value="*{peso}">
+                                        <div class="invalid-feedback">Menor que 0!</div>
                                     </div>
                                     <div class="form-group my-1 col-12 col-lg-3">
                                         <label>Sexo:</label>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="sexo" id="sexoM" value="M" th:field="*{sexo}" th:checked="${sexo == 'M'}">
+                                            <input class="form-check-input" type="radio" name="sexo" required id="sexoM"
+                                                value="M" th:field="*{sexo}" th:checked="${sexo == 'M'}">
                                             <label class="form-check-label" for="sexoM">
                                                 Masculino
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="sexo" id="sexoF" value="F" th:field="*{sexo}" th:checked="${sexo == 'F'}">
+                                            <input class="form-check-input" type="radio" name="sexo" required id="sexoF"
+                                                value="F" th:field="*{sexo}" th:checked="${sexo == 'F'}">
                                             <label class="form-check-label" for="sexoF">
                                                 Femenino
                                             </label>

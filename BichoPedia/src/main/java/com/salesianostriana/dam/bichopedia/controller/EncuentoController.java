@@ -46,11 +46,20 @@ public class EncuentoController {
 	
 	@GetMapping("/")
 	public String encuentros(Model model) {
-		
-		model.addAttribute("encuentroList", service.ordenarEncuentrosPorValoracionMedia(service.findAll()));
-		model.addAttribute("valoracionList", valService.mediasPorEncuentros(service.ordenarEncuentrosPorValoracionMedia(service.findAll())));
+		List<Encuentro>encuentros;
+		encuentros = service.ordenarEncuentrosPorValoracionMedia(service.findAll());
+		Collections.reverse(encuentros);
+		model.addAttribute("encuentroList", encuentros);
+		model.addAttribute("valoracionList", valService.mediasPorEncuentros(encuentros));
 		
 		return "encuentro/encuentros";
+	}
+	
+	@GetMapping("/exit")
+	public String exit(){
+		
+	return "redirect:/encuentros/";	
+		
 	}
 	
 	@PostMapping("/search")
