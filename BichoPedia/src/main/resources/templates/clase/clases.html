@@ -80,13 +80,8 @@
                             <a class="w-100 h-100" th:href="@{/ordenes/?(claseId=${clase.id})}">
                                 <img class="background-image" 
                                 th:if="${clase.ordenes != null and clase.ordenes.size() > 0 and clase.ordenes[0].familias != null and clase.ordenes[0].familias.size() > 0 and clase.ordenes[0].familias[0].generos != null and clase.ordenes[0].familias[0].generos.size() > 0 and clase.ordenes[0].familias[0].generos[0].especies != null and clase.ordenes[0].familias[0].generos[0].especies.size() > 0}" 
-<<<<<<< HEAD
-                                th:src="${clase.ordenes[0].familias[0].generos[0].especies[0].foto}"
-                                src="../../static/img/fotoEspecie.png" />
-=======
                                 th:src="${clase.ordenes[0].familias[0].generos[0].especies[0].foto}" 
                                 src="../../static/img/fotoEspecie.png"/>
->>>>>>> 0d11606df4f991852379676238907c74588adb91
                                 <div class="text">
                                     <h3 th:text="${clase.nombre}">Gypaetus barbatus</h3>
                                     <p th:text="${clase.descripcion}">Description</p>

@@ -123,23 +123,17 @@
                     <div class="row d-flex justify-content-center text-light">
                         <div class="encuentroBox col-6 col-md-6 col-lg-5 col-xl-3 col-xxl-2 m-2"
                             th:each="encuentro ,iter : ${encuentroList}" data-aos="flip-down" data-aos-duration="1000">
-                            <a th:href="@{/encuentros/details/{id}(id=${encuentro.id})}">
-<<<<<<< HEAD
+                            <a th:href="@{/encuentros/details/{id}(id=${encuentro.id})}" class="d-flex flex-column justify-content- h-100">
                                 <img class="background-image" th:src="${encuentro.foto}"  src="../../static/img/fotoEspecie.png" />
-=======
-
-                                <img class="background-image" th:src="${encuentro.foto}" src="../../static/img/fotoEspecie.png" />
->>>>>>> 0d11606df4f991852379676238907c74588adb91
-                                <div class="encuentroinfo2 m-1 ">
+                                <div class="encuentroinfo2 m-1 float-start">
                                     <img th:src="${encuentro.usuario.fotoPerfil}" >
                                     <span th:text="${encuentro.usuario.username}">nombre</span>
                                     <i class="bi bi-star-fill float-end me-3  " th:text="${valoracionList[iter.index]}">
                                         0.00                                                              
                                     </i>
                                 </div>
-                                <div class="encuentroInfo">
+                                <div class="encuentroInfo float-end">
                                     <h3 th:text="${encuentro.especie.descripcion}" class="text-center"></h3>      
-
                                 </div>
                             </a>
                         </div>

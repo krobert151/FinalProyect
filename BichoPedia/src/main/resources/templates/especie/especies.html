@@ -11,10 +11,6 @@
     <link rel="stylesheet" href="../../static/css/estilos.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<<<<<<< HEAD
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-=======
->>>>>>> 0d11606df4f991852379676238907c74588adb91
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <title>Index</title>
 </head>
@@ -87,18 +83,11 @@
                         </div>
                     </form>
                     <div class="row d-flex justify-content-center text-light">
-<<<<<<< HEAD
                         <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1" 
                             data-aos="flip-down" data-aos-duration="1000"
                             th:each="especie : ${especieList}">
                             <a class="h-100 w-100" th:href="@{/especies/details/{id}(id=${especie.id})}">
                                 <img class="background-image" th:src="${especie.foto}"  src="../../static/img/fotoEspecie.png"/>
-=======
-                        <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1" data-aos="flip-up"
-                            th:each="especie : ${especieList}">
-                            <a class="h-100 w-100" th:href="@{/especies/details/{id}(id=${especie.id})}" src="../../static/img/fotoEspecie.png">
-                                <img class="background-image" th:src="${especie.foto}" />
->>>>>>> 0d11606df4f991852379676238907c74588adb91
                                 <div class="text">
                                     <h3 th:text="${especie.descripcion}" class="text-center">Description</h3>
                                     <p th:text="${especie.nombre}" class="text-center hidden">Gypaetus barbatus </p>
