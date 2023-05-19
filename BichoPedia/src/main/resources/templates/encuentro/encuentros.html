@@ -123,7 +123,7 @@
                     <div class="row d-flex justify-content-center text-light">
                         <div class="encuentroBox col-6 col-md-6 col-lg-5 col-xl-3 col-xxl-2 m-2"
                             th:each="encuentro ,iter : ${encuentroList}" data-aos="flip-down" data-aos-duration="1000">
-                            <a th:href="@{/encuentros/details/{id}(id=${encuentro.id})}" class="d-flex flex-column justify-content- h-100">
+                            <a th:href="@{/encuentros/details/{id}(id=${encuentro.id})}" class="d-flex flex-column justify-content-between h-100">
                                 <img class="background-image" th:src="${encuentro.foto}"  src="../../static/img/fotoEspecie.png" />
                                 <div class="encuentroinfo2 m-1 float-start">
                                     <img th:src="${encuentro.usuario.fotoPerfil}" >

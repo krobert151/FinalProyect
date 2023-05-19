@@ -38,6 +38,7 @@ public class Especie {
 	private String descripcion;
 	@Lob
 	private String detalles;
+	@Lob
 	private String foto;
 	
 	@ManyToOne
