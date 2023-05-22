@@ -25,8 +25,8 @@ function validarFecha() {
 
 
 function validarNumeros(event) {
-    var tamanioInput = document.querySelector('input[name="tamanio"]');
-    var pesoInput = document.querySelector('input[name="peso"]');
+    let tamanioInput = document.querySelector('input[name="tamanio"]');
+    let pesoInput = document.querySelector('input[name="peso"]');
     if (tamanioInput.value < 0 || pesoInput.value < 0) {
         event.preventDefault();
         if (tamanioInput.value < 0) {
@@ -50,7 +50,7 @@ function validarNumeros(event) {
 }
 
 function validarEspecie(event) {
-    var especieInput = document.querySelector('select[name="especie"]');
+    let especieInput = document.querySelector('select[name="especie"]');
     if (especieInput.value == -1) {
         event.preventDefault();
         especieInput.classList.remove('is-valid');
@@ -63,11 +63,11 @@ function validarEspecie(event) {
     }
 }
 function validarFoto(event) {
-    var fotoInput = document.querySelector('input[name="foto"]');
-    var fotoValue = fotoInput.value;
-    var extensionesValidas = ['.jpg', '.jpeg', '.png', '.gif'];
-    var esEnlaceImagen = false;
-    for (var i = 0; i < extensionesValidas.length; i++) {
+    let fotoInput = document.querySelector('input[name="foto"]');
+    let fotoValue = fotoInput.value;
+    let extensionesValidas = ['.jpg', '.jpeg', '.png', '.gif'];
+    let esEnlaceImagen = false;
+    for (let i = 0; i < extensionesValidas.length; i++) {
         if (fotoValue.endsWith(extensionesValidas[i])) {
             esEnlaceImagen = true;
             break;
