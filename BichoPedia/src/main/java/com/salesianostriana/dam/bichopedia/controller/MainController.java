@@ -40,7 +40,7 @@ public class MainController {
 		return "myProfile";
 	}
 	
-	@GetMapping("/aboutUs")
+	@GetMapping("/aboutUs/")
 	private String aboutUs() {
 		
 		return "aboutUs";
