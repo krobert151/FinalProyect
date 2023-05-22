@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.bichopedia.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort.Direction;
@@ -154,10 +155,10 @@ public class GeneroController {
 
 	@GetMapping("/admin/editarGenero/{id}")
 	public String mostrarFormularioEdicionGenero(@PathVariable("id")long id,Model model) {
-		Genero generoEdit= service.findById(id);
+		Optional<Genero> generoEdit= service.findById(id);
 		
-		if(generoEdit != null) {
-			model.addAttribute("genero", generoEdit);
+		if(generoEdit.isPresent()) {
+			model.addAttribute("genero", generoEdit.get());
 			model.addAttribute("familias", familiaService.findAllSorted(Direction.ASC,"nombre") );
 			return "genero/generoForm";		
 		}else

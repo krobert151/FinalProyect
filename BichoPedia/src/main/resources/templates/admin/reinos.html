@@ -68,8 +68,9 @@
                                     != null and reinos.filos[0].clases[0].ordenes.size() > 0 and reinos.filos[0].clases[0].ordenes[0].familias 
                                     != null and reinos.filos[0].clases[0].ordenes[0].familias.size() > 0 and reinos.filos[0].clases[0].ordenes[0].familias[0].generos 
                                     != null and reinos.filos[0].clases[0].ordenes[0].familias[0].generos.size() > 0 and reinos.filos[0].clases[0].ordenes[0].familias[0].generos[0].especies 
-                                    != null and reinos.filos[0].clases[0].ordenes[0].familias[0].generos[0].especies.size() > 0}" 
-                                th:src="${reinos.filos[0].clases[0].ordenes[0].familias[0].generos[0].especies[0].foto}" 
+                                    != null and reinos.filos[0].clases[0].ordenes[0].familias[0].generos[0].especies.size() > 0}"                                 
+                                    alt="foto de la especie"
+                                    th:src="${reinos.filos[0].clases[0].ordenes[0].familias[0].generos[0].especies[0].foto}" 
                                 style="width:32px; height: 32px; object-fit: cover; border-radius: 10pt;" /></td>
                             <td th:text="${reinos.id}" scope="row">Id</td>
                             <td th:text="${reinos.nombre}">Nombre</td>

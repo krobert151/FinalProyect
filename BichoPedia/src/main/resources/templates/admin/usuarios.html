@@ -7,71 +7,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link rel="stylesheet" th:href="@{/css/adminGestion.css}" href="/css/loginRegister.css">
-        <link rel="stylesheet" href="../../static/css/adminGestion.css">
+    <link rel="stylesheet" th:href="@{/css/adminGestion.css}" href="/css/loginRegister.css">
+    <link rel="stylesheet" href="../../static/css/adminGestion.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <title>Usuarios</title>
 </head>
+
 <body>
     <header>
-        <nav th:replace="~{fragmentos/menu::menu}" >
+        <nav th:replace="~{fragmentos/menu::menu}">
         </nav>
     </header>
     <main class="d-flex flex-column align-items-center">
         <h2 class="text-light">Usuarios</h2>
         <div class="row d-flex justify-content-center">
-                <form action="3" th:action="@{/admin/search}" th:object="${searchForm}" method="POST">
-                    <div class="d-flex my-3">
-                        <input type="text" class="form-control" name="search" id="nombre"
-                            placeholder="Username" required>
-                        <button class="btn btn-light">
-                            <i class="bi bi-search"></i>
-                        </button>
-                    </div>
-                </form>
-        <table class="table container-fluid mx-5 w-100">
-            <thead>
-                <tr>
-                    <th class="text-center col-1 ">        
-                        <a href="#" th:href="@{/register}">
-                            <i class="bi bi-plus-square"></i>
-                        </a>
-                    </th>
-                    <th class="col-1">id  <a th:href="@{/admin/orderBy/{orderBy}(orderBy='idAsc')}"><i class="bi bi-arrow-up"></i></a><a th:href="@{/admin/orderBy/{orderBy}(orderBy='idDesc')}"><i class="bi bi-arrow-down"></i></a> </th>
-                    <th class="col-1">nombre  <a th:href="@{/admin/orderBy/{orderBy}(orderBy='nombreAsc')}"><i class="bi bi-arrow-up"></i></a><a th:href="@{/admin/orderBy/{orderBy}(orderBy='nombreDesc')}"><i class="bi bi-arrow-down"></i></a> </th>
-                    <th class="col-2">apellidos  <a th:href="@{/admin/orderBy/{orderBy}(orderBy='apellidosAsc')}"><i class="bi bi-arrow-up"></i></a><a th:href="@{/admin/orderBy/{orderBy}(orderBy='ApellidosDesc')}"><i class="bi bi-arrow-down"></i></a> </th>
-                    <th class="col-3">correo  <a th:href="@{/admin/orderBy/{orderBy}(orderBy='correoAsc')}"><i class="bi bi-arrow-up"></i></a><a th:href="@{/admin/orderBy/{orderBy}(orderBy='correoDesc')}"><i class="bi bi-arrow-down"></i></a> </th>
-                    <th class="col-1">user  <a th:href="@{/admin/orderBy/{orderBy}(orderBy='usernameAsc')}"><i class="bi bi-arrow-up"></i></a><a th:href="@{/admin/orderBy/{orderBy}(orderBy='UsernameDesc')}"><i class="bi bi-arrow-down"></i></a> </th>
-                    <th class="col-1">fechaN  <a th:href="@{/admin/orderBy/{orderBy}(orderBy='fechanacAsc')}"><i class="bi bi-arrow-up"></i></a><a th:href="@{/admin/orderBy/{orderBy}(orderBy='fechanacDesc')}"><i class="bi bi-arrow-down"></i></a> </th>
-                    <th class="col-1">admin </th>
-                    <th class="col-1">  </th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="usuario:${userList}" >
-                    <td class="col-1 text-center">
-                        <img th:src="${usuario.fotoPerfil}"/>
-                    </td>
-                    <td class="col-1" th:text="${usuario.id}" scope="row">Id</td>
-                    <td class="col-1" th:text="${usuario.nombre}">Nombre</td>
-                    <td class="col-2" th:text="${usuario.apellidos}">apellidos</td>
-                    <td class="col-3" th:text="${usuario.correo}">correo</td>
-                    <td class="col-1" th:text="${usuario.username}">username</td>
-                    <td class="col-1" th:text="${usuario.fechaNac}">fechaNac</td>
-                    <td class="col-1" th:text="${usuario.administrator}">admin</td>
-                    <td class="col-1 ">
-                                <a  href="#" th:href="@{/user/editarUsuario/{id}(id=${usuario.id})}">
-                                    <i class="bi bi-pencil-square "></i>
-                                </a>
-                                <a href="#" th:href="@{/user/borrar/{id}(id=${usuario.id})}">
-                                    <i class="bi bi-trash3-fill"></i>
-                                </a>
-                    </td>                    
-                </tr>
-            </tbody>
-            
-        </table>
+            <form action="3" th:action="@{/admin/search}" th:object="${searchForm}" method="POST">
+                <div class="d-flex my-3">
+                    <input type="text" class="form-control" name="search" id="nombre" placeholder="Username" required>
+                    <button class="btn btn-light">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </form>
+            <table class="table container-fluid mx-5 w-100">
+                <thead>
+                    <tr>
+                        <th class="text-center col-1 ">
+                            <a href="#" th:href="@{/register}">
+                                <i class="bi bi-plus-square"></i>
+                            </a>
+                        </th>
+                        <th class="col-1">id <a th:href="@{/admin/orderBy/{orderBy}(orderBy='idAsc')}"><i
+                                    class="bi bi-arrow-up"></i></a><a
+                                th:href="@{/admin/orderBy/{orderBy}(orderBy='idDesc')}"><i
+                                    class="bi bi-arrow-down"></i></a> </th>
+                        <th class="col-1">nombre <a th:href="@{/admin/orderBy/{orderBy}(orderBy='nombreAsc')}"><i
+                                    class="bi bi-arrow-up"></i></a><a
+                                th:href="@{/admin/orderBy/{orderBy}(orderBy='nombreDesc')}"><i
+                                    class="bi bi-arrow-down"></i></a> </th>
+                        <th class="col-2">apellidos <a th:href="@{/admin/orderBy/{orderBy}(orderBy='apellidosAsc')}"><i
+                                    class="bi bi-arrow-up"></i></a><a
+                                th:href="@{/admin/orderBy/{orderBy}(orderBy='ApellidosDesc')}"><i
+                                    class="bi bi-arrow-down"></i></a> </th>
+                        <th class="col-3">correo <a th:href="@{/admin/orderBy/{orderBy}(orderBy='correoAsc')}"><i
+                                    class="bi bi-arrow-up"></i></a><a
+                                th:href="@{/admin/orderBy/{orderBy}(orderBy='correoDesc')}"><i
+                                    class="bi bi-arrow-down"></i></a> </th>
+                        <th class="col-1">user <a th:href="@{/admin/orderBy/{orderBy}(orderBy='usernameAsc')}"><i
+                                    class="bi bi-arrow-up"></i></a><a
+                                th:href="@{/admin/orderBy/{orderBy}(orderBy='UsernameDesc')}"><i
+                                    class="bi bi-arrow-down"></i></a> </th>
+                        <th class="col-1">fechaN <a th:href="@{/admin/orderBy/{orderBy}(orderBy='fechanacAsc')}"><i
+                                    class="bi bi-arrow-up"></i></a><a
+                                th:href="@{/admin/orderBy/{orderBy}(orderBy='fechanacDesc')}"><i
+                                    class="bi bi-arrow-down"></i></a> </th>
+                        <th class="col-1">admin </th>
+                        <th class="col-1"> </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="usuario:${userList}">
+                        <td class="col-1 text-center">
+                            <img th:src="${usuario.fotoPerfil}" alt="foto de perfil" />
+                        </td>
+                        <td class="col-1" th:text="${usuario.id}" scope="row">Id</td>
+                        <td class="col-1" th:text="${usuario.nombre}">Nombre</td>
+                        <td class="col-2" th:text="${usuario.apellidos}">apellidos</td>
+                        <td class="col-3" th:text="${usuario.correo}">correo</td>
+                        <td class="col-1" th:text="${usuario.username}">username</td>
+                        <td class="col-1" th:text="${usuario.fechaNac}">fechaNac</td>
+                        <td class="col-1" th:text="${usuario.administrator}">admin</td>
+                        <td class="col-1 ">
+                            <a href="#" th:href="@{/admin/editarUsuario/{id}(id=${usuario.id})}">
+                                <i class="bi bi-pencil-square "></i>
+                            </a>
+                            <a href="#" th:href="@{/admin/borrar/{id}(id=${usuario.id})}">
+                                <i class="bi bi-trash3-fill"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
     </main>
 </body>
 

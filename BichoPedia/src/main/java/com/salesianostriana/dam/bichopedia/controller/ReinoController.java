@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.bichopedia.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort.Direction;
@@ -130,10 +131,10 @@ public class ReinoController {
 	@GetMapping("/admin/editarReino/{id}")
 	public String mostrarFormularioEdicionReinos(@PathVariable("id")long id,Model model) {
 		
-		Reino reinoEdit=service.findById(id);
+		Optional<Reino> reinoEdit=service.findById(id);
 		
-		if(reinoEdit!=null) {
-			model.addAttribute("reino",reinoEdit);
+		if(reinoEdit.isPresent()) {
+			model.addAttribute("reino",reinoEdit.get());
 			return "reino/reinoForm";			
 		}else {
 			return "redirect:/reinos/gestReinos";

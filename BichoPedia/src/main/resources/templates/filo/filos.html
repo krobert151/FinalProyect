@@ -25,7 +25,7 @@
             AOS.init();
         </script>
         <div>
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block ">
                     <div class="taxonomias m-3 p-3">
                         <h3 class="text-center mb-3">Buscar por</h3>
@@ -88,6 +88,7 @@
                                     != null and filo.clases[0].ordenes[0].familias.size() > 0 and filo.clases[0].ordenes[0].familias[0].generos 
                                     != null and filo.clases[0].ordenes[0].familias[0].generos.size() > 0 and filo.clases[0].ordenes[0].familias[0].generos[0].especies 
                                     != null and filo.clases[0].ordenes[0].familias[0].generos[0].especies.size() > 0}"
+                                    alt="foto de la especie"
                                     th:src="${filo.clases[0].ordenes[0].familias[0].generos[0].especies[0].foto}"
                                     src="../../static/img/fotoEspecie.png" />
                                 <div class="text">

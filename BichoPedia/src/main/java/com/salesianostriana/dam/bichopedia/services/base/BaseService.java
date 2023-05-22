@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.bichopedia.services.base;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -33,8 +34,8 @@ public abstract class BaseService<T, ID, R extends JpaRepository<T, ID>> impleme
 	 * @return
 	 */
 	@Override
-	public T findById(ID id) {
-		return repositorio.findById(id).orElse(null);
+	public Optional<T> findById(ID id) {
+		return repositorio.findById(id);
 	}
 	
 	/**

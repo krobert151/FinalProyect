@@ -25,7 +25,7 @@
             AOS.init();
         </script>
         <div>
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block ">
                     <div class="taxonomias m-3 p-3">
                         <h3 class="text-center mb-3">Buscar por</h3>
@@ -33,7 +33,8 @@
                             <div>
                                 <span class="row text-center p-2 text-light my-1 d-flex">
                                     <a class="col text-center float-start">Nombre</a>
-                                    <a class="col-1 mx-1 float-end" th:href="@{/especies/orderBy/{orderBy}(orderBy='nombreAsc')}">
+                                    <a class="col-1 mx-1 float-end"
+                                        th:href="@{/especies/orderBy/{orderBy}(orderBy='nombreAsc')}">
                                         <i class="bi bi-arrow-up"></i>
                                     </a>
                                     <a class="col-1 mx-1 float-end"
@@ -83,11 +84,11 @@
                         </div>
                     </form>
                     <div class="row d-flex justify-content-center text-light">
-                        <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1" 
-                            data-aos="flip-down" data-aos-duration="1000"
-                            th:each="especie : ${especieList}">
+                        <div class="registroBox col-5 col-md-5 col-lg-3 col-xl-2 m-1" data-aos="flip-down"
+                            data-aos-duration="1000" th:each="especie : ${especieList}">
                             <a class="h-100 w-100" th:href="@{/especies/details/{id}(id=${especie.id})}">
-                                <img class="background-image" th:src="${especie.foto}"  src="../../static/img/fotoEspecie.png"/>
+                                <img class="background-image" th:src="${especie.foto}"
+                                    src="../../static/img/fotoEspecie.png" alt="foto de la especie" />
                                 <div class="text">
                                     <h3 th:text="${especie.descripcion}" class="text-center">Description</h3>
                                     <p th:text="${especie.nombre}" class="text-center hidden">Gypaetus barbatus </p>

@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.bichopedia.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort.Direction;
@@ -163,10 +164,10 @@ public class FiloController {
 	
 	@GetMapping("/admin/editarFilo/{id}")
 	public String mostrarFormularioEdicionFilos(@PathVariable("id")long id,Model model) {
-		Filo filoEdit = service.findById(id);
+		Optional<Filo> filoEdit = service.findById(id);
 		
-		if(filoEdit!=null) {
-			model.addAttribute("filo", filoEdit);
+		if(filoEdit.isPresent()) {
+			model.addAttribute("filo", filoEdit.get());
 			model.addAttribute("reinos", reinoService.findAll());
 			return "filo/filoForm";			
 		}else

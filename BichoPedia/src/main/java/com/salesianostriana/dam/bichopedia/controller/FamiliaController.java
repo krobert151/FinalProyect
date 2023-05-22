@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.bichopedia.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort.Direction;
@@ -159,10 +160,10 @@ public class FamiliaController {
 	
 	@GetMapping("/admin/editarFamilia/{id}")
 	public String mostrarFormularioEdicionFamilias(@PathVariable("id")long id,Model model) {
-		Familia familiaEdit = service.findById(id);
+		Optional<Familia> familiaEdit = service.findById(id);
 		
-		if(familiaEdit != null) {
-			model.addAttribute("familia", familiaEdit);
+		if(familiaEdit.isPresent()) {
+			model.addAttribute("familia", familiaEdit.get());
 			model.addAttribute("ordenes", ordenService.findAllBySorted(Direction.ASC,"nombre"));
 			return "familia/familiaForm";
 		}else

@@ -2,6 +2,18 @@
 *{
     text-align: justify;
 }
+.nav-link{
+    font-style: none;
+    text-decoration: none;
+    color: #6c757d;
+    padding: 0;
+}
+.video-js{
+    border-radius: 5pt;
+    background-color: rgba(0, 0, 0, 0.178);
+    height: 75%;
+    width: 75%;
+}
 .indexmain{
     background-image: url("../img/indexLandscape.jpg");
     background-repeat: no-repeat;
@@ -341,4 +353,10 @@ a {
 }
 .exit:hover{
     color: red;
+}
+.aboutus{
+    background-color: rgba(0, 0, 0, 0.411);
+    border-radius: 10pt;
+    box-shadow: 10px 10px 25px #111311;
+
 }

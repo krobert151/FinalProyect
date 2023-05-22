@@ -88,7 +88,8 @@
                     </thead>
                     <tbody class="container-fluid">
                         <tr th:each="especie:${especies}" class="row container-fluid">
-                            <td class="col-1 d-flex justify-content-center "><img th:src="${especie.foto}" /></td>
+                            <td class="col-1 d-flex justify-content-center "><img th:src="${especie.foto}"
+                                    alt="foto de la especie" /></td>
                             <td class="col-1" th:text="${especie.id}" scope="row">Id</td>
                             <td class="col-2" th:text="${especie.nombre}">Nombre</td>
                             <td class="col-2" th:text="${especie.descripcion}">N.Común</td>

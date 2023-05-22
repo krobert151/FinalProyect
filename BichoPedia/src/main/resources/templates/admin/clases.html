@@ -69,6 +69,7 @@
                             <td class="text-wrap d-flex justify-content-center">
                                 <img th:if="${clases.ordenes != null and clases.ordenes.size() > 0 and clases.ordenes[0].familias != null and clases.ordenes[0].familias.size() > 0 and clases.ordenes[0].familias[0].generos != null and clases.ordenes[0].familias[0].generos.size() > 0 and clases.ordenes[0].familias[0].generos[0].especies != null and clases.ordenes[0].familias[0].generos[0].especies.size() > 0}"
                                     th:src="${clases.ordenes[0].familias[0].generos[0].especies[0].foto}"
+                                    alt="foto de la especie"
                                     style="width:32px; height: 32px; object-fit: cover; border-radius: 10pt;" />
                             </td>
                             <td th:text="${clases.id}" scope="row">Id</td>

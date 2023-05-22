@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link th:href="@{/css/estilos.css}" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/estilos.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://vjs.zencdn.net/8.3.0/video.min.js"></script>
+    <link href="https://vjs.zencdn.net/8.3.0/video-js.css" rel="stylesheet" />
+    <title>AboutUs</title>
+</head>
+
+<body class="indexmain">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark" th:replace="~{fragmentos/menu::menu}">
+        </nav>
+    </header>
+    <main>
+        <script>
+            AOS.init();
+        </script>
+        <div>
+            <div class="row">
+                <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block ">
+
+                </div>
+                <div class="col aboutus mt-md-3 pt-3 ">
+                    <h1 class="text-center text-light">Sobre Nosotros</h1>
+                    <div class="row d-flex justify-content-center text-light">
+                        <div class="col p-5 pb-0">
+                            <p>
+                                Bienvenidos a Bichopedia, un sitio web creado por la asociación GerenaWild, cuyo
+                                objetivo es registrar encuentros con especies de la fauna autóctona española. GerenaWild
+                                es una organización dedicada a la preservación y el estudio de las especies locales del
+                                municipio de Gerena, en la provincia de Sevilla.
+                            </p>
+                            <p>
+                                En Bichopedia, estamos comprometidos con la promoción de la biodiversidad y la
+                                conciencia ambiental. Nuestra misión es fomentar la educación y la sensibilización hacia
+                                el medio ambiente y las especies que lo habitan. Creemos que el conocimiento es la clave
+                                para la conservación y la protección de la naturaleza.
+                            </p>
+                            <p>
+                                En nuestro sitio web, encontrarás información detallada y fotografías de las especies de
+                                vida silvestre que habitan en España. Desde aves y mamíferos hasta reptiles y anfibios,
+                                nuestro objetivo es documentar y compartir los encuentros con estas maravillosas
+                                criaturas.
+                            </p>
+                            <p>
+                                Pero no solo nos limitamos a mostrar imágenes y descripciones de las especies, sino que
+                                también nos enfocamos en su conservación. GerenaWild trabaja incansablemente en la
+                                preservación de los hábitats naturales y la implementación de prácticas sostenibles para
+                                reducir el impacto humano en el medio ambiente.
+                            </p>
+
+
+                        </div>
+                        <div class="col-lg-5 d-none d-lg-block pt-5 mt-1" id="video-container">
+                            <video id="my-video" class="video-js" controls preload="auto" width="100%" data-setup='{}'>
+                                <source src="../static/video/salvandonatrixmaura.mp4"
+                                    th:src="@{/video/salvandonatrixmaura.mp4}" type="video/mp4">
+                            </video>
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    var player = videojs('my-video');
+                                });
+                            </script>
+                        </div>
+                        <div class="p-5 pt-0">
+                            <p>
+                                En el siguiente video, podrásver un ejemplo de nuestro compromiso con la preservación de
+                                las especies. En él, rescatamos una natrix maura que había caído en un agujero. Este es
+                                solo un ejemplo de la labor que realizamos día a día para proteger y cuidar nuestra
+                                fauna autóctona.
+                            </p>
+                            <p>
+                                En Bichopedia, creemos que todos podemos hacer la diferencia. Cada uno de nosotros tiene
+                                un papel importante que desempeñar en la conservación de nuestro planeta y sus
+                                habitantes. Por eso, te invitamos a unirte a nosotros en esta misión. Explora nuestro
+                                sitio web, aprende sobre las especies que habitan nuestro país y únete a nuestra causa.
+                            </p>
+                            <p>
+                                Juntos, podemos hacer una diferencia positiva en el mundo y asegurar un futuro
+                                sostenible para las generaciones venideras. Gracias por visitar Bichopedia y por tu
+                                compromiso con la conservación de la naturaleza.
+                            </p>
+                        </div>
+                        <div class="p-5 pt-0">
+                            <h2 class="py-3">Protección del medio ambiente</h2>
+                            <p>En Bichopedia, entendemos que la conservación de las especies y la protección del medio
+                                ambiente son temas complejos y multifacéticos. No se trata solo de documentar y
+                                registrar encuentros con animales, sino que también debemos comprender los factores que
+                                amenazan su supervivencia y buscar soluciones para abordar estas problemáticas.
+                            </p>
+                            <p>
+                                Por esta razón, en nuestro sitio web también encontrarás información sobre los
+                                principales desafíos ambientales que enfrentamos hoy en día, así como los esfuerzos que
+                                se llevan a cabo para enfrentarlos. Desde la pérdida de hábitats naturales hasta el
+                                cambio climático y la contaminación, son muchos los desafíos que debemos superar para
+                                garantizar un futuro sostenible para nuestro planeta.
+                            </p>
+                            <p>
+                                Además, en Bichopedia creemos que la educación es fundamental para la conservación de la
+                                biodiversidad. Por esta razón, ofrecemos recursos didácticos y herramientas para
+                                fomentar el aprendizaje y la conciencia ambiental en todas las edades. Desde materiales
+                                educativos para niños hasta cursos y talleres para adultos, nuestra meta es promover la
+                                educación ambiental y la sensibilización hacia los temas que afectan a nuestro mundo.
+                            </p>
+                            <p>
+                                En resumen, Bichopedia es mucho más que un simple sitio web de registro de encuentros
+                                con animales. Es unaplataforma que se preocupa por la preservación y el estudio de la
+                                fauna autóctona española y que busca fomentar la conciencia ambiental y la educación
+                                para la conservación del medio ambiente. A través de nuestro trabajo, esperamos inspirar
+                                a otros a unirse a nuestra causa y marcar una diferencia positiva en el mundo. Te
+                                invitamos a explorar nuestro sitio web y unirte a nosotros en la promoción de la
+                                biodiversidad y la protección de nuestro planeta.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block ">
+                </div>
+    </main>
+    <footer th:replace="~{fragmentos/footer::footer}">
+    </footer>
+</body>

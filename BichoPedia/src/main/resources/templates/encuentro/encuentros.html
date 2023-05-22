@@ -24,7 +24,7 @@
             AOS.init();
         </script>
         <div>
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block ">
                     <div class="taxonomias m-3 p-3">
                         <h3 class="text-center mb-3">Buscar por</h3>
@@ -124,7 +124,8 @@
                         <div class="encuentroBox col-6 col-md-6 col-lg-5 col-xl-3 col-xxl-2 m-2"
                             th:each="encuentro ,iter : ${encuentroList}" data-aos="flip-down" data-aos-duration="1000">
                             <a th:href="@{/encuentros/details/{id}(id=${encuentro.id})}" class="d-flex flex-column justify-content-between h-100">
-                                <img class="background-image" th:src="${encuentro.foto}"  src="../../static/img/fotoEspecie.png" />
+                                <img class="background-image" th:src="${encuentro.foto}"
+                                src="../../static/img/fotoEspecie.png" alt="imagen de la especie" />
                                 <div class="encuentroinfo2 m-1 float-start">
                                     <img th:src="${encuentro.usuario.fotoPerfil}" >
                                     <span th:text="${encuentro.usuario.username}">nombre</span>

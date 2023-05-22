@@ -72,7 +72,8 @@
                                     != null and filos.clases[0].ordenes[0].familias.size() > 0 and filos.clases[0].ordenes[0].familias[0].generos 
                                     != null and filos.clases[0].ordenes[0].familias[0].generos.size() > 0 and filos.clases[0].ordenes[0].familias[0].generos[0].especies 
                                     != null and filos.clases[0].ordenes[0].familias[0].generos[0].especies.size() > 0}" 
-                                th:src="${filos.clases[0].ordenes[0].familias[0].generos[0].especies[0].foto}" 
+                                    alt="foto de la especie"
+                                    th:src="${filos.clases[0].ordenes[0].familias[0].generos[0].especies[0].foto}" 
                                 style="width:32px; height: 32px; object-fit: cover; border-radius: 10pt;" /></td>
                             <td th:text="${filos.id}" scope="row">Id</td>
                             <td th:text="${filos.nombre}">Nombre</td>

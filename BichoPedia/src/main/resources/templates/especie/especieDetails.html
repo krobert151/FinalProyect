@@ -20,6 +20,11 @@
     </header>
     <main>
         <div class="container fondodifu p-3 my-3 px-5">
+            <div class="d-flex flex-column justify-content-center align-items-end w-100">
+                <a class="exit mb-1" th:href="@{/especies/exit}">
+                    <i class="bi bi-x-circle-fill "></i>
+                </a>
+            </div>
             <h1 class="text-center text-dark mb-4 nombreEspecie " th:text="${especie.nombre}" >Nombre de la especie</h1>
             <div class="row text-dark pb-4">
                 <div class="col-12 col-md-12 col-lg-7 col-xl-8 mb-2" >

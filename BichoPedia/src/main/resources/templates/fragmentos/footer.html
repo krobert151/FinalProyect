@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="../../static/css/estilos.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <title>Footer</title>
@@ -45,9 +45,8 @@
                             Dbichos
                         </h6>
                         <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam voluptatem blanditiis
-                            recusandae saepe odit voluptatum, quidem doloremque debitis libero architecto facilis ipsam
-                            excepturi vero inventore, impedit tempora accusantium, fugiat alias?
+                            Bienvenidos a Bichopedia, un sitio web creado por la asociación GerenaWild, cuyo objetivo es
+                            registrar encuentros con especies de la fauna autóctona española
                         </p>
                     </div>
                     <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
@@ -55,16 +54,16 @@
                             Links
                         </h6>
                         <p>
-                            <a href="fotos.html" class="text-reset">Home</a>
+                            <a class="nav-link" th:href="@{/index/}" href="/index">Home</a>
                         </p>
                         <p>
-                            <a href="araña.html" class="text-reset">Encuentros</a>
+                            <a class="nav-link" th:href="@{/encuentros/}" href="/encuentros">Encuentros</a>
                         </p>
                         <p>
-                            <a href="scolopendra.html" class="text-reset">Especies</a>
+                            <a class="nav-link" th:href="@{/especies/}" href="/especies">Especies</a>
                         </p>
                         <p>
-                            <a href="scorpiones.html" class="text-reset">Tienda</a>
+                            <a class="nav-link" th:href="@{/encuentros/newEncuentro}" href="/registro">Registrar</a>
                         </p>
                     </div>
                     <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">

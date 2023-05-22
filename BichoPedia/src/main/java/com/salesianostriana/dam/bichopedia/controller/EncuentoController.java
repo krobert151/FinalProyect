@@ -2,6 +2,7 @@ package com.salesianostriana.dam.bichopedia.controller;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort.Direction;
@@ -78,11 +79,11 @@ public class EncuentoController {
 	@GetMapping("/details/{id}")
 	public String detallesEncuentro(@PathVariable Long id,Model model) {
 		
-		Encuentro encuentro = service.findById(id);
+		Optional<Encuentro> encuentro = service.findById(id);
 		
 		
-		if(encuentro!=null) {
-			model.addAttribute("encuentro", encuentro);
+		if(encuentro.isPresent()) {
+			model.addAttribute("encuentro", encuentro.get());
 			model.addAttribute("valoracion", valService.mediaValoracionPorEncuentro(id));
 			model.addAttribute("nuevaValoracion", new Valoracion());
 			return "encuentro/encuentroDetails";
@@ -180,7 +181,7 @@ public class EncuentoController {
 	
 	@PostMapping("/encuentroSubmit")
 	public String registroFinalizado(Encuentro encuentro, @AuthenticationPrincipal Usuario usuario, Model model) {
-	    usuario = userService.findById(usuario.getId());
+	    usuario = userService.findById(usuario.getId()).get();
 	    encuentro.setUsuario(usuario);
 	    userService.save(usuario);
 	    service.save(encuentro);
@@ -191,26 +192,29 @@ public class EncuentoController {
 	public String guardarValoracion(@PathVariable Long id,@AuthenticationPrincipal Usuario u,  
 			@ModelAttribute("nuevaValoracion") Valoracion nuevaValoracion, Model model) {
 	   
-		nuevaValoracion.setEncuentro(service.findById(id));
+
+		
+		nuevaValoracion.setEncuentro(service.findById(id).get());
 		nuevaValoracion.setPuntuacionTotal((float) ((nuevaValoracion.getFoto()+nuevaValoracion.getSexo()+
 																				nuevaValoracion.getEspecie())/3));
 		
 		nuevaValoracion.setUsuario(u);
 		nuevaValoracion.getValoracionPK().setEncuentro_id(id);
-		nuevaValoracion.getValoracionPK().setValoracion_id(service.findById(id).getValoracionNextVal());
+		nuevaValoracion.getValoracionPK().setValoracion_id(service.findById(id).get().getValoracionNextVal());
 		valService.save(nuevaValoracion);
 		
 		
 		return "redirect:/encuentros/";
+		
 	}
 	
 	@GetMapping("/admin/editarEncuentro/{id}")
 	public String editarEncuentro(@PathVariable("id")Long id,Model model) {
-		Encuentro encuentroEdit=service.findById(id);
+		Optional<Encuentro> encuentroEdit=service.findById(id);
 		
-		if(encuentroEdit!=null) {
+		if(encuentroEdit.isPresent()) {
 			model.addAttribute("especies", especieService.findAll());
-			model.addAttribute("encuentro", encuentroEdit);
+			model.addAttribute("encuentro", encuentroEdit.get());
 			model.addAttribute("usuarios", userService.findAll());
 			return "admin/encuentroEdit";
 		}else{

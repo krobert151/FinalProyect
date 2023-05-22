@@ -25,7 +25,7 @@
             AOS.init();
         </script>
         <div>
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block ">
                     <div class="taxonomias m-3 p-3">
                         <h3 class="text-center mb-3">Buscar por</h3>
@@ -81,7 +81,8 @@
                             <a class="h-100 w-100" th:href="@{/especies/?(idGenero=${genero.id})}">
                                 <img class="background-image"
                                     th:src="${not (#strings.isEmpty(genero.especies[0].foto))} ? ${genero.especies[0].foto} : '/img/fotoEspecie.png'" 
-                                    src="../../static/img/fotoEspecie.png"/>
+                                    src="../../static/img/fotoEspecie.png"
+                                    alt="foto de la especie"/>
                                 <div class="text">
                                     <h3 th:text="${genero.nombre}">Gypaetus barbatus</h3>
                                     <p th:text="${genero.descripcion}">Description</p>

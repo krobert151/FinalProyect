@@ -24,7 +24,7 @@
             <div class="col">
             </div>
             <div class="col-10  col-lg-8 col-xl-7 formulario my-5 py-5 px-4">
-                <form class="was-validated text-center" name="formEncuentro" id="formularioEncuentro" method="POST"
+                <form class="was-validated text-center" name="miForm" id="formularioEncuentro" method="POST"
                     th:action="@{/encuentros/encuentroSubmit}" th:object="${encuentro}">
                     <div class="container-fluid">
                         <div class="d-flex justify-content-end">
@@ -34,7 +34,7 @@
                         <h2>Ficha de Encuentro</h2>
                         <input th:if="${encuentro.id != 0}" type="hidden" name="id" th:field="*{id}" />
                         <label for="especie">Especie</label>
-                        <select th:field="*{especie}" class="form-control is-valid" required>
+                        <select th:field="*{especie}" class="form-control is-valid" requireds>
                             <option value="-1">---</option>
                             <option th:each="especie : ${especies}" th:value="${especie.id}"
                                 th:text="${especie.nombre}">
@@ -74,13 +74,13 @@
                                 <div class="row justify-content-between">
                                     <div class="form-group my-1 col-12 col-lg-3">
                                         <label>Tamaño(cm):</label>
-                                        <input class="form-control is-valid" type="number" step="0.1" required
+                                        <input class="form-control is-valid" type="number" step="0.1" required name="tamanio"
                                             th:field="*{tamanio}" th:value="*{tamanio}">
                                         <div class="invalid-feedback">Menor que 0!</div>
                                     </div>
                                     <div class="form-group my-1 col-12 col-lg-3">
                                         <label>Peso(g):</label>
-                                        <input class="form-control is-valid" type="number" step="0.1" required
+                                        <input class="form-control is-valid" type="number" step="0.1" required name="peso"
                                             th:field="*{peso}" th:value="*{peso}">
                                         <div class="invalid-feedback">Menor que 0!</div>
                                     </div>

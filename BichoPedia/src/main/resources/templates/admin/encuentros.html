@@ -99,7 +99,9 @@
                     </thead>
                     <tbody class="container-fluid">
                         <tr th:each="encuentro:${encuentros}" class="row container-fluid">
-                            <td class="col-1 d-flex justify-content-center "><img th:src="${encuentro.foto}" /></td>
+                            <td class="col-1 d-flex justify-content-center "><img th:src="${encuentro.foto}"
+                                alt="foto del encuentro"
+                                /></td>
                             <td class="col-1" th:text="${encuentro.id}" scope="row">Id</td>
                             <td class="col-2" th:text="${encuentro.especie.nombre}">Nombre</td>
                             <td class="col-2 d-flex">

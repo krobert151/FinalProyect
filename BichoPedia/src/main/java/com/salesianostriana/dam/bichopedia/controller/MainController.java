@@ -40,4 +40,10 @@ public class MainController {
 		return "myProfile";
 	}
 	
+	@GetMapping("/aboutUs")
+	private String aboutUs() {
+		
+		return "aboutUs";
+		
+	}
 }

@@ -2,6 +2,7 @@ package com.salesianostriana.dam.bichopedia.controller;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort.Direction;
@@ -67,11 +68,11 @@ public class EspecieController {
 	@GetMapping("/details/{id}")
 	public String detalleEspecie(@PathVariable("id") Long id,Model model) {
 		
-		Especie especieDetailed = service.findById(id);
+		Optional<Especie> especieDetailed = service.findById(id);
 		
-		if (especieDetailed != null) {
+		if (especieDetailed.isPresent()) {
 			
-			model.addAttribute("especie", especieDetailed);
+			model.addAttribute("especie", especieDetailed.get());
 			return "especie/especieDetails";
 			
 		}else
@@ -167,10 +168,10 @@ public class EspecieController {
 
 	@GetMapping("/admin/editarEspecie/{id}")
 	public String mostrarFormularioEdicionEspecie(@PathVariable("id") Long id, Model model) {
-		Especie especieEdit= service.findById(id);
+		Optional<Especie> especieEdit= service.findById(id);
 		
-		if(especieEdit != null) {
-			model.addAttribute("especie", especieEdit);
+		if(especieEdit.isPresent()) {
+			model.addAttribute("especie", especieEdit.get());
 			model.addAttribute("generos", genServcie.findAllSorted(Direction.ASC,"nombre"));
 			return "especie/especieForm";
 		}else
@@ -188,6 +189,12 @@ public class EspecieController {
 		
 	}
 	
-	
+	@GetMapping("/exit")
+	public String exit() {
+		
+		return "redirect:/especies/";
+		
+	}
+
 	
 }

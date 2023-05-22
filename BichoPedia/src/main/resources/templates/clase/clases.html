@@ -24,7 +24,7 @@
             AOS.init();
         </script>
         <div>
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="col-2 pt-5 d-flex flex-column justify-content-center d-none d-md-block ">
                     <div class="taxonomias m-3 p-3">
                         <h3 class="text-center mb-3">Buscar por</h3>
@@ -80,6 +80,7 @@
                             <a class="w-100 h-100" th:href="@{/ordenes/?(claseId=${clase.id})}">
                                 <img class="background-image" 
                                 th:if="${clase.ordenes != null and clase.ordenes.size() > 0 and clase.ordenes[0].familias != null and clase.ordenes[0].familias.size() > 0 and clase.ordenes[0].familias[0].generos != null and clase.ordenes[0].familias[0].generos.size() > 0 and clase.ordenes[0].familias[0].generos[0].especies != null and clase.ordenes[0].familias[0].generos[0].especies.size() > 0}" 
+                                alt="foto de la especie"
                                 th:src="${clase.ordenes[0].familias[0].generos[0].especies[0].foto}" 
                                 src="../../static/img/fotoEspecie.png"/>
                                 <div class="text">

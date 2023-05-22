@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.bichopedia.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort.Direction;
@@ -113,10 +114,10 @@ public class UsuarioController {
 	@GetMapping("/editarUsuario/{id}")
 	public String mostrarFormularioEdicion(@PathVariable("id") long id, Model model) {
 		
-		Usuario userEdit = usuarioService.findById(id);
+		Optional<Usuario> userEdit = usuarioService.findById(id);
 		
-		if(userEdit != null) {
-			model.addAttribute("usuario", userEdit);
+		if(userEdit.isPresent()) {
+			model.addAttribute("usuario", userEdit.get());
 			return "/admin/formularioUsuario";
 			
 		}else {
@@ -136,7 +137,7 @@ public class UsuarioController {
 	@GetMapping("/borrar/{id}")
 	public String borrarUsuario(@PathVariable("id")long id) {
 		usuarioService.deleteById(id);
-		return "redirect:/admin/usuarios";		
+		return "redirect:/admin/";		
 
 		
 	}

@@ -85,6 +85,7 @@
                             <td class="text-wrap d-flex justify-content-center">
                                 <img th:if="${familias.generos != null and familias.generos.size() > 0 and familias.generos[0].especies != null and familias.generos[0].especies.size() > 0}"
                                     th:src="${familias.generos[0].especies[0].foto}"
+                                    alt="foto de la especie"
                                     style="width:32px; height: 32px; object-fit: cover; border-radius: 10pt;" />
                             </td>
                             <td th:text="${familias.id}" scope="row">Id</td>

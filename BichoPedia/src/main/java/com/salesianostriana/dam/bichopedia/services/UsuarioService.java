@@ -41,11 +41,7 @@ public class UsuarioService extends BaseService<Usuario,Long,UsuarioRepository>{
 		return usuarioRepository.save(t);
 	}
 
-	@Override
-	public Usuario findById(Long id) {
-		// TODO Auto-generated method stub
-		return usuarioRepository.findById(id).orElse(null);
-	}
+
 
 	@Override
 	public List<Usuario> findAll() {

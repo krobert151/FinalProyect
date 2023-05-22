@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.bichopedia.services.base;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Sort;
 
@@ -19,7 +20,7 @@ public interface IBaseService<T, ID> {
 	 * @param id
 	 * @return
 	 */
-	T findById(ID id);
+	Optional<T> findById(ID id);
 
 	/**
 	 * Obtenemos todas las entidades de un tipo de entidad

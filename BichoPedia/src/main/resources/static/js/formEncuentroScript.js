@@ -1,4 +1,4 @@
-let formulario = document.forms.formEncuentro;
+let formulario = document.forms.miForm;
 let fechaInput = formulario.elements.fecha;
 
 fechaInput.addEventListener('change', validarFecha);
@@ -25,16 +25,16 @@ function validarFecha() {
 
 
 function validarNumeros(event) {
-    let tamanioInput = document.querySelector('input[name="tamanio"]');
-    let pesoInput = document.querySelector('input[name="peso"]');
-    if (tamanioInput.value < 0 || pesoInput.value < 0) {
+    let tamanioInput = document.forms.miForm.elements.tamanio;
+    let pesoInput = document.forms.miForm.elements.peso;
+    if (tamanioInput.value <= 0 || pesoInput.value <=0) {
         event.preventDefault();
-        if (tamanioInput.value < 0) {
+        if (tamanioInput.value <= 0) {
             tamanioInput.classList.remove('is-valid');
             tamanioInput.classList.add('is-invalid');
             tamanioInput.nextElementSibling.style.display = 'block';
         }
-        if (pesoInput.value < 0) {
+        if (pesoInput.value <= 0) {
             pesoInput.classList.remove('is-valid');
             pesoInput.classList.add('is-invalid');
             pesoInput.nextElementSibling.style.display = 'block';
@@ -50,7 +50,7 @@ function validarNumeros(event) {
 }
 
 function validarEspecie(event) {
-    let especieInput = document.querySelector('select[name="especie"]');
+    let especieInput = document.forms.miForm.elements.especie;
     if (especieInput.value == -1) {
         event.preventDefault();
         especieInput.classList.remove('is-valid');
