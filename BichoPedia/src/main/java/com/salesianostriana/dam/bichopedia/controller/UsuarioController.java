@@ -121,7 +121,7 @@ public class UsuarioController {
 			return "/admin/formularioUsuario";
 			
 		}else {
-			return "redirect:/users/";
+			return "redirect:/admin/";
 		}
 		
 	}
@@ -130,7 +130,7 @@ public class UsuarioController {
 	    
 		usuarioService.edit(usuario);
 		
-		return "redirect:/users/";
+		return "redirect:/admin/";
 		
 	}
 	

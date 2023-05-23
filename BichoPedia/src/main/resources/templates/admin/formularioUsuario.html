@@ -20,7 +20,7 @@
         </nav>
     </header>
     <main class="d-flex justify-content-center">
-        <form class=" logincard p-5 text-center" th:action=" @{/user/usuarios/editar} " th:object="${usuario}"
+        <form class=" logincard p-5 text-center" th:action=" @{/admin/usuarios/editar} " th:object="${usuario}"
             method="post">
             <h1 class="text-light text-center mb-5">Editar Usuario</h1>
             <input th:if="${usuario.id != 0}" type="hidden" name="id" th:field="*{id}" />
