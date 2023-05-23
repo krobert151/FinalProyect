@@ -4,16 +4,17 @@ Bichopedia es un sitio en el que la gente interesada en los encuentros con las e
 
 <h2>Uso</h2>
 En el programa sin iniciar sesión podermos "bichearlo" y ver los encuentros que han realizado los usuarios y las especies que puedes resgitrar, e incluso registrar una especie si no está y nos la encontramos, para poder acceder a tu perfil y poder hacer registros primero deberás iniciar sesión, para ello se atorgan las siguientes credenciales.
-
+<br>
+<br>
 Usuario común:
-
-  username: user
-  password: 1234
+<br>
+  -username: user<br>
+  -password: 1234<br><br>
 
 Usuario administrador:
-
-  username: admin
-  password: admin
+<br>
+ -username: admin<br>
+ -password: admin<br>
   
  Si iniciamos sesión como usuario vamos a poder registrar encuentro y darle valoraciones a los encuentros de los demás, y si inicamos sesión como administrador vamos a poder gestionar literalmente todas las entidades del programa.
 
